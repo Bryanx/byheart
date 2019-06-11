@@ -1,18 +1,14 @@
 package com.example.byheart
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.core.content.ContextCompat
-import com.example.byheart.qa.QaActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import com.example.byheart.overview.OverviewFragment
+import com.example.byheart.qa.QaFragment
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -65,11 +61,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                val intent = Intent(this@MainActivity, QaActivity::class.java)
-                startActivityForResult(intent, 1)
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, QaFragment()).commit()
             }
             R.id.nav_gallery -> {
-
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, OverviewFragment()).commit()
             }
             R.id.nav_slideshow -> {
 
