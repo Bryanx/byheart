@@ -47,9 +47,9 @@ abstract class QaDatabase : RoomDatabase() {
         }
 
         fun populateDatabase(qaDao: QaDao) {
-            qaDao.deleteAll()
-            val qa = Qa(1, "Hello", "Bonjour")
-            qaDao.insert(qa)
+//            qaDao.deleteAll()
+//            val qa = Qa( "Hello", "Bonjour")
+//            qaDao.insert(qa)
         }
     }
 }

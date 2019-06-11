@@ -54,4 +54,14 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/buttonPlay"
             app:layout_constraintStart_toEndOf="@+id/buttonPlay" android:layout_marginStart="24dp"/>
 
+    <LinearLayout
+            android:id="@+id/llBottom"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_width="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.byheart.qa
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,17 @@ class QaListAdapter internal constructor(context: Context) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: QaViewHolder, position: Int) {
         val current = qas[position]
         holder.qaItemView.text = current.question
+        holder.qaItemView.setOnClickListener {
+            if (holder.qaItemView.text == current.question) {
+                holder.qaItemView.text = current.answer
+                holder.qaItemView.setTextColor(Color.WHITE)
+                holder.qaItemView.setBackgroundResource(R.drawable.card_answer)
+            } else {
+                holder.qaItemView.text = current.question
+                holder.qaItemView.setTextColor(Color.BLACK)
+                holder.qaItemView.setBackgroundResource(R.drawable.card)
+            }
+        }
     }
 
     internal fun setQas(qas: List<Qa>) {
