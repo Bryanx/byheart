@@ -1,8 +1,7 @@
-package com.example.byheart.persistence
+package com.example.byheart.qa
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.example.byheart.model.Qa
 
 class QaRepository(private val qaDao: QaDao) {
 
@@ -10,6 +9,6 @@ class QaRepository(private val qaDao: QaDao) {
 
     @WorkerThread
     suspend fun insert(qa: Qa) {
-        qaDao.insertAll(qa)
+        qaDao.insert(qa)
     }
 }

@@ -1,11 +1,10 @@
-package com.example.byheart.persistence
+package com.example.byheart.qa
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.byheart.model.Qa
 
 @Dao
 interface QaDao {
@@ -19,8 +18,11 @@ interface QaDao {
     fun findByQuestion(question: String): Qa
 
     @Insert
-    fun insertAll(vararg qas: Qa)
+    fun insert(qa: Qa)
 
     @Delete
     fun delete(qa: Qa)
+
+    @Query("DELETE FROM qa")
+    fun deleteAll()
 }

@@ -1,4 +1,4 @@
-package com.example.byheart
+package com.example.byheart.qa
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.byheart.model.Qa
+import com.example.byheart.R
 
 class QaListAdapter internal constructor(context: Context) : RecyclerView.Adapter<QaListAdapter.QaViewHolder>() {
 

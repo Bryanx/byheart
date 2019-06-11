@@ -1,11 +1,9 @@
-package com.example.byheart.viewmodel
+package com.example.byheart.qa
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.byheart.model.Qa
 import com.example.byheart.persistence.QaDatabase
-import com.example.byheart.persistence.QaRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -22,7 +20,7 @@ class QaViewModel(application: Application) : AndroidViewModel(application) {
     val allQas: LiveData<List<Qa>>
 
     init {
-        val qaDao = QaDatabase.getDatabase(application).qaDao()
+        val qaDao = QaDatabase.getDatabase(application, scope).qaDao()
         repo = QaRepository(qaDao)
         allQas = repo.allQas
     }

@@ -1,4 +1,4 @@
-package com.example.byheart.model
+package com.example.byheart.qa
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
