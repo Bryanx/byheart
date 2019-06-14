@@ -1,4 +1,4 @@
-package com.example.byheart.qa
+package com.example.byheart.card
 
 import android.content.Context
 import android.os.Bundle
@@ -18,26 +18,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.R
 
 
-class QaFragment : Fragment() {
+class CardFragment : Fragment() {
 
-    private lateinit var qaViewModel: QaViewModel
+    private lateinit var cardViewModel: CardViewModel
     private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        layout = inflater.inflate(R.layout.content_qa, container, false)
-        qaViewModel = ViewModelProviders.of(this).get(QaViewModel::class.java)
+        layout = inflater.inflate(R.layout.content_card, container, false)
+        cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
         val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = QaListAdapter(layout.context)
+        val adapter = CardListAdapter(layout.context)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(layout.context)
         addEventHandlers(adapter)
         return layout
     }
 
-    private fun addEventHandlers(adapter: QaListAdapter) {
-        qaViewModel.allQas.observe(this, Observer { qas ->
+    private fun addEventHandlers(adapter: CardListAdapter) {
+        cardViewModel.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
-            qas?.let { adapter.setQas(it) }
+            cards?.let { adapter.setCards(it) }
         })
         layout.findViewById<Button>(R.id.buttonAdd)?.setOnClickListener {
             val etInput = EditText(activity)
@@ -48,7 +48,7 @@ class QaFragment : Fragment() {
             }
             etInput.setOnKeyListener { view, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    qaViewModel.insert(Qa(etInput.text.toString(), "bla"))
+                    cardViewModel.insert(Card(etInput.text.toString(), "bla"))
                     view.clearFocus()
                     layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
                 }

@@ -1,16 +1,16 @@
-package com.example.byheart.qa
+package com.example.byheart.pile
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
 // Manages queries and allows you to use multiple backends.
 // Decides whether to fetch data from a network or use results cached in a local database.
-class QaRepository(private val qaDao: QaDao) {
+class PileRepository(private val pileDao: PileDao) {
 
-    val allQas: LiveData<List<Qa>> = qaDao.getAll()
+    val allPiles: LiveData<List<Pile>> = pileDao.getAll()
 
     @WorkerThread
-    suspend fun insert(qa: Qa) {
-        qaDao.insert(qa)
+    suspend fun insert(pile: Pile) {
+        pileDao.insert(pile)
     }
 }

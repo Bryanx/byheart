@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:background="@android:color/white"
         android:layout_height="match_parent"
-        tools:context=".qa.QaFragment">
+        tools:context=".card.CardFragment">
 
     <TextView
             android:id="@+id/tv"
@@ -24,7 +24,7 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/recyclerview_qa_item"
+            tools:listitem="@layout/recyclerview_card_item"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"

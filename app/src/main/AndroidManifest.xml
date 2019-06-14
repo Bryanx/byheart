@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".qa.QaFragment"
+        <activity android:name=".card.CardFragment"
                   android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".BaseActivity"/>
