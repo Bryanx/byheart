@@ -43,7 +43,7 @@ class CardFragment : Fragment() {
             val etInput = EditText(activity)
             layout.findViewById<LinearLayout>(R.id.llBottom)?.addView(etInput)
             etInput.requestFocus()
-            etInput.setOnFocusChangeListener { view, hasFocus ->
+            etInput.setOnFocusChangeListener { _, hasFocus ->
                 if (!hasFocus) layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
             }
             etInput.setOnKeyListener { view, keyCode, event ->

@@ -5,12 +5,22 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import com.example.byheart.pile.PileFragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.card.CardFragment
+import com.example.byheart.pile.Overview
+import com.example.byheart.pile.Pile
+import com.example.byheart.pile.PileFragment
+import com.example.byheart.pile.PileViewModel
+import com.example.byheart.shared.PileAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.util.Arrays.asList
+
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -18,19 +28,29 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
+        populateMenu()
+    }
+
+    private fun populateMenu() {
+        val recyclerView = findViewById<RecyclerView>(R.id.testlist)
+        val layoutManager = LinearLayoutManager(this)
+        val pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        pileViewModel.allPiles.observe(this, Observer<List<Pile>> { piles ->
+            val overviews = asList(Overview("Overview", piles))
+            val adapter = PileAdapter(overviews)
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
+        })
     }
 
     override fun onBackPressed() = when {

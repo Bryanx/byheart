@@ -54,4 +54,7 @@ dependencies {
     // Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
+    //expandable recyclerview
+    implementation 'com.thoughtbot:expandablerecyclerview:1.3'
 }

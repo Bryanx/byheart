@@ -58,6 +58,11 @@ abstract class CardDatabase : RoomDatabase() {
             card.pileId = 5
             pileDao.insert(pile)
             cardDao.insert(card)
+            val pile2 = Pile("German")
+            val pile3 = Pile("Turkish")
+            pileDao.insert(pile2)
+            pileDao.insert(pile3)
+
         }
     }
 }
