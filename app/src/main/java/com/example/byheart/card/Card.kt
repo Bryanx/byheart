@@ -8,21 +8,18 @@ import com.example.byheart.pile.Pile
 
 @Entity(
     tableName = "card",
-    foreignKeys = arrayOf(
-        ForeignKey(
-            entity = Pile::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("pile_id"),
-            onDelete = ForeignKey.CASCADE
-        )
-    )
+    foreignKeys = [ForeignKey(
+        entity = Pile::class,
+        parentColumns = arrayOf("id"),
+        childColumns = arrayOf("pile_id"),
+        onDelete = ForeignKey.CASCADE
+    )]
 )
 data class Card(
     @ColumnInfo(name = "question") val question: String?,
-    @ColumnInfo(name = "answer") val answer: String?
+    @ColumnInfo(name = "answer") val answer: String?,
+    @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
-    @ColumnInfo(name = "pile_id")
-    var pileId: Long = 1
 }

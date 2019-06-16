@@ -54,8 +54,7 @@ abstract class CardDatabase : RoomDatabase() {
             pileDao.deleteAll()
             val pile = Pile("French")
             pile.id = 5
-            val card = Card( "Hello", "Bonjour")
-            card.pileId = 5
+            val card = Card( "Hello", "Bonjour", 5)
             pileDao.insert(pile)
             cardDao.insert(card)
             val pile2 = Pile("German")
