@@ -13,7 +13,7 @@ interface PileDao {
     fun getAll(): LiveData<List<Pile>>
 
     @Insert
-    fun insert(pile: Pile)
+    fun insert(pile: Pile): Long
 
     @Delete
     fun delete(pile: Pile)

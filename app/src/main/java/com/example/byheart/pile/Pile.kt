@@ -9,15 +9,15 @@ import androidx.room.PrimaryKey
 @Entity
 data class Pile(@ColumnInfo(name = "name") val name: String?) : Parcelable {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
 
     constructor(parcel: Parcel) : this(parcel.readString()) {
-        id = parcel.readInt()
+        id = parcel.readLong()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeInt(id)
+        parcel.writeLong(id)
     }
 
     override fun describeContents(): Int {

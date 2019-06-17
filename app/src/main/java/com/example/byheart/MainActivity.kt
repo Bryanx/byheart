@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.card.CardFragment
-import com.example.byheart.pile.Overview
+import com.example.byheart.overview.Overview
 import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
@@ -24,10 +24,13 @@ import java.util.Arrays.asList
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
@@ -42,7 +45,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun populateMenu() {
-        val recyclerView = findViewById<RecyclerView>(R.id.testlist)
+        recyclerView = findViewById(R.id.activity_main_recyclerview)
         val layoutManager = LinearLayoutManager(this)
         val pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
         pileViewModel.allPiles.observe(this, Observer<List<Pile>> { piles ->
@@ -53,8 +56,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         })
     }
 
+    fun closeDrawer(): Unit = drawer_layout.closeDrawer(GravityCompat.START)
+
     override fun onBackPressed() = when {
-        drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
+        drawer_layout.isDrawerOpen(GravityCompat.START) -> closeDrawer()
         else -> super.onBackPressed()
     }
 
@@ -79,7 +84,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
+        closeDrawer()
         return true
     }
 }

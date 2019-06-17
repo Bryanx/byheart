@@ -8,7 +8,7 @@
     <RelativeLayout
             android:id="@+id/overview_layout"
             android:layout_width="match_parent"
-            android:layout_toStartOf="@id/btn_overview"
+            android:layout_toStartOf="@id/list_group_button_add_pile"
             android:paddingEnd="15dp"
             android:layout_height="match_parent">
 
@@ -42,7 +42,7 @@
     </RelativeLayout>
 
     <ImageButton
-            android:id="@+id/btn_overview"
+            android:id="@+id/list_group_button_add_pile"
             android:layout_gravity="center_vertical"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -50,6 +50,7 @@
             android:scaleY="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_add_black_24dp"/>
+            android:src="@drawable/ic_add_black_24dp"
+            android:contentDescription="Button for creating piles"/>
 
 </RelativeLayout>

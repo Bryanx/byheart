@@ -4,18 +4,15 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.byheart.shared.CardDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class PileViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var parentJob = Job()
+    private var parentJob: Job = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + Dispatchers.Main
-    private val scope = CoroutineScope(coroutineContext)
+    private val scope: CoroutineScope = CoroutineScope(coroutineContext)
     private val repo: PileRepository
     val allPiles: LiveData<List<Pile>>
 
@@ -25,7 +22,7 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
         allPiles = repo.allPiles
     }
 
-    fun insert(pile: Pile) = scope.launch(Dispatchers.IO) {
+    suspend fun insert(pile: Pile): Deferred<Long> = GlobalScope.async {
         repo.insert(pile)
     }
 

@@ -1,12 +1,16 @@
-package com.example.byheart.pile
+package com.example.byheart.overview
 
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.Animation.RELATIVE_TO_SELF
 import android.view.animation.RotateAnimation
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.byheart.R
+import com.example.byheart.pile.edit.EditPileFragment
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder
 
@@ -14,6 +18,16 @@ class OverviewViewHolder(itemView: View) : GroupViewHolder(itemView) {
 
     private val pileTitle: TextView = itemView.findViewById(R.id.pile_title)
     private val arrow: ImageView = itemView.findViewById(R.id.icon_expand)
+    private val btnAddPile: ImageButton = itemView.findViewById(R.id.list_group_button_add_pile)
+
+    init {
+        btnAddPile.setOnClickListener {
+            (itemView.context as AppCompatActivity).supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_container, EditPileFragment())
+                .commit()
+        }
+    }
 
     fun setOverviewTitle(group: ExpandableGroup<*>) {
         pileTitle.text = group.title

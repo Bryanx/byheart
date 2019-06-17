@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.byheart.MainActivity
 import com.example.byheart.R
 
 class CardFragment : Fragment() {
@@ -33,6 +34,7 @@ class CardFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(layout.context)
         addEventHandlers(adapter)
+        (activity as MainActivity).closeDrawer()
         return layout
     }
 

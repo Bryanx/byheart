@@ -1,10 +1,8 @@
 package com.example.byheart.shared
 
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.RelativeLayout
 import com.example.byheart.R
-import com.example.byheart.pile.OverviewViewHolder
+import com.example.byheart.overview.OverviewViewHolder
 import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileViewHolder
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter

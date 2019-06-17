@@ -10,7 +10,7 @@ class PileRepository(private val pileDao: PileDao) {
     val allPiles: LiveData<List<Pile>> = pileDao.getAll()
 
     @WorkerThread
-    suspend fun insert(pile: Pile) {
-        pileDao.insert(pile)
+    suspend fun insert(pile: Pile): Long {
+        return pileDao.insert(pile)
     }
 }

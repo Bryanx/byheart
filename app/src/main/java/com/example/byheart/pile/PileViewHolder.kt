@@ -17,13 +17,8 @@ class PileViewHolder(itemView: View) : ChildViewHolder(itemView) {
         itemView.setOnClickListener {
             (itemView.context as AppCompatActivity).supportFragmentManager
                 .beginTransaction()
-                .replace(
-                    R.id.main_container,
-                    CardFragment.newInstance(
-                        pileName.text.toString(),
-                        pileId.text.toString()
-                    )
-                )
+                .replace(R.id.main_container,
+                    CardFragment.newInstance(pileName.text.toString(), pileId.text.toString()))
                 .commit()
         }
     }
