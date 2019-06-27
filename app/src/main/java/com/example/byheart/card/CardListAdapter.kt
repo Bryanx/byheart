@@ -9,10 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.R
 
-class CardListAdapter internal constructor(context: Context) : RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
+class CardListAdapter internal constructor(
+    private val context: Context,
+    private val cardFragment: CardFragment
+) :
+    RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var cards = emptyList<Card>() // Cached copy
+    private var cards: MutableList<Card> = mutableListOf()
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardItemView: TextView = itemView.findViewById(R.id.textView)
@@ -25,24 +29,35 @@ class CardListAdapter internal constructor(context: Context) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val current = cards[position]
-        holder.cardItemView.text = current.question
-        holder.cardItemView.setOnClickListener {
-            if (holder.cardItemView.text == current.question) {
-                holder.cardItemView.text = current.answer
-                holder.cardItemView.setTextColor(Color.WHITE)
-                holder.cardItemView.setBackgroundResource(R.drawable.card_answer)
+        val itemView = holder.cardItemView
+        itemView.text = current.question
+        itemView.setOnClickListener {
+            if (itemView.text == current.question) {
+                itemView.text = current.answer
+                itemView.setTextColor(Color.WHITE)
+                itemView.setBackgroundResource(R.drawable.card_answer)
             } else {
-                holder.cardItemView.text = current.question
-                holder.cardItemView.setTextColor(Color.BLACK)
-                holder.cardItemView.setBackgroundResource(R.drawable.card)
+                itemView.text = current.question
+                itemView.setTextColor(Color.BLACK)
+                itemView.setBackgroundResource(R.drawable.card)
             }
         }
     }
 
     internal fun setCards(cards: List<Card>) {
-        this.cards = cards
+        this.cards.clear()
+        this.cards.addAll(cards)
         notifyDataSetChanged()
     }
 
-    override fun getItemCount() = cards.size
+    fun deleteItem(i: Int) {
+        val card = this.cards.removeAt(i)
+        cardFragment.removeCard(card)
+        notifyItemRemoved(i)
+    }
+
+    fun getContext(): Context = context
+
+    override fun getItemCount(): Int = cards.size
+
 }

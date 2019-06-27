@@ -13,4 +13,9 @@ class CardRepository(private val cardDao: CardDao) {
     suspend fun insert(card: Card) {
         cardDao.insert(card)
     }
+
+    @WorkerThread
+    suspend fun delete(card: Card) {
+        cardDao.delete(card)
+    }
 }
