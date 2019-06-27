@@ -29,6 +29,9 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
         repo.insert(card)
     }
 
+//    fun getCurrentRehearsalCard() : Card {
+//    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

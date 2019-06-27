@@ -6,4 +6,6 @@
     <color name="colorLightGray">#F5F5F5</color>
     <color name="white">#FFF</color>
     <color name="grey">#737373</color>
+    <color name="green">#00E676</color>
+    <color name="red">#F50057</color>
 </resources>

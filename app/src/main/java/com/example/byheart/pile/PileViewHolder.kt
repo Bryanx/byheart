@@ -2,9 +2,10 @@ package com.example.byheart.pile
 
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.CardFragment
+import com.example.byheart.shared.startFragment
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder
 
 
@@ -15,11 +16,10 @@ class PileViewHolder(itemView: View) : ChildViewHolder(itemView) {
 
     init {
         itemView.setOnClickListener {
-            (itemView.context as AppCompatActivity).supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_container,
-                    CardFragment.newInstance(pileName.text.toString(), pileId.text.toString()))
-                .commit()
+            val activity = itemView.context as MainActivity
+            activity.pileId = pileId.text.toString()
+            activity.pileName = pileName.text.toString()
+            activity.supportFragmentManager.startFragment(CardFragment())
         }
     }
 

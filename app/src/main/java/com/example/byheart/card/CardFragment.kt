@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.MainActivity
 import com.example.byheart.R
+import com.example.byheart.card.edit.CardEditFragment
+import com.example.byheart.rehearsal.RehearsalFragment
+import com.example.byheart.shared.startFragment
 
 class CardFragment : Fragment() {
 
@@ -39,9 +42,9 @@ class CardFragment : Fragment() {
     }
 
     private fun getBundle(layout: View) {
-        val name = arguments!!.getString(NAME_KEY)
-        pileId = arguments!!.getString(ID_KEY)
-        layout.findViewById<TextView>(R.id.content_card_title).text = name
+        val pileName = (activity as MainActivity).pileName
+        pileId = (activity as MainActivity).pileId
+        layout.findViewById<TextView>(R.id.content_card_title).text = pileName
     }
 
     private fun addEventHandlers(adapter: CardListAdapter) {
@@ -51,42 +54,33 @@ class CardFragment : Fragment() {
                 it.pileId.toString() == pileId
             }?.let { adapter.setCards(it) }
         })
+        layout.findViewById<Button>(R.id.buttonPlay).setOnClickListener {
+            (activity as MainActivity).pileId = pileId!!
+            fragmentManager?.startFragment(RehearsalFragment())
+        }
         layout.findViewById<Button>(R.id.buttonAdd)?.setOnClickListener {
-            val etInput = EditText(activity)
-            layout.findViewById<LinearLayout>(R.id.llBottom)?.addView(etInput)
-            etInput.requestFocus()
-            etInput.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus) layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
-            }
-            etInput.setOnKeyListener { view, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    cardViewModel.insert(Card(etInput.text.toString(), "bla", pileId?.toLong() ?: 0))
-                    view.clearFocus()
-                    layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
-                }
-                true
-            }
-            showKeyboard(etInput)
+            (activity as MainActivity).pileId = pileId!!
+            fragmentManager?.startFragment(CardEditFragment())
+//            val etInput = EditText(activity)
+//            layout.findViewById<LinearLayout>(R.id.llBottom)?.addView(etInput)
+//            etInput.requestFocus()
+//            etInput.setOnFocusChangeListener { _, hasFocus ->
+//                if (!hasFocus) layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
+//            }
+//            etInput.setOnKeyListener { view, keyCode, event ->
+//                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+//                    cardViewModel.insert(Card(etInput.text.toString(), "bla", pileId?.toLong() ?: 0))
+//                    view.clearFocus()
+//                    layout.findViewById<LinearLayout>(R.id.llBottom)?.removeAllViews()
+//                }
+//                true
+//            }
+//            showKeyboard(etInput)
         }
     }
 
     private fun showKeyboard(etInput: View) {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
         imm!!.showSoftInput(etInput, InputMethodManager.SHOW_IMPLICIT)
-    }
-
-    companion object {
-        private const val NAME_KEY = "name"
-        private const val ID_KEY = "id"
-
-        // factory method
-        fun newInstance(name: String, pileId: String): CardFragment {
-            val fragment = CardFragment()
-            val args = Bundle()
-            args.putString(NAME_KEY, name)
-            args.putString(ID_KEY, pileId)
-            fragment.arguments = args
-            return fragment
-        }
     }
 }
