@@ -6,29 +6,29 @@
         android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pile_edit_name_layout"
+            android:id="@+id/pileNameLayout"
             android:layout_width="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="wrap_content"
-            android:hint="Pile name" app:layout_constraintTop_toTopOf="parent"
+            android:hint="Pile name"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+                android:id="@+id/pileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/content_edit_pile_edittext_name"/>
+                android:ems="10"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <Button
             android:text="@string/save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/content_edit_pile_button_submit"
+            android:id="@+id/btnSavePile"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/pile_edit_name_layout"/>
+            app:layout_constraintTop_toBottomOf="@+id/pileNameLayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

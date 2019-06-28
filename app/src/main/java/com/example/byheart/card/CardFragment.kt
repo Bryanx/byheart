@@ -1,10 +1,9 @@
 package com.example.byheart.card
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +17,7 @@ import com.example.byheart.rehearsal.RehearsalFragment
 import com.example.byheart.shared.SwipeToDeleteCallback
 import com.example.byheart.shared.startFragment
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CardFragment : Fragment() {
@@ -37,7 +37,19 @@ class CardFragment : Fragment() {
         val adapter = setUpAdapter()
         addEventHandlers(adapter)
         (activity as MainActivity).closeDrawer()
+        setHasOptionsMenu(true)
         return layout
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun findViews() {

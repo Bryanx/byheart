@@ -3,9 +3,7 @@ package com.example.byheart.rehearsal
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +13,7 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.shared.*
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.content_rehearsal.*
 
 class RehearsalFragment : Fragment() {
@@ -35,7 +34,13 @@ class RehearsalFragment : Fragment() {
         getCards()
         loadAnimations()
         (activity as MainActivity).closeDrawer()
+        setHasOptionsMenu(true)
+        activity?.findViewById<AppBarLayout>(R.id.app_bar)?.setExpanded(false, true)
         return layout
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.rehearsal_menu, menu)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

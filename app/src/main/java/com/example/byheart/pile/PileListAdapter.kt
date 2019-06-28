@@ -18,7 +18,7 @@ class PileListAdapter internal constructor(context: Context) : RecyclerView.Adap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PileViewHolder {
-        val itemView = inflater.inflate(R.layout.recyclerview_card_item, parent, false)
+        val itemView = inflater.inflate(R.layout.item_card, parent, false)
         return PileViewHolder(itemView)
     }
 
