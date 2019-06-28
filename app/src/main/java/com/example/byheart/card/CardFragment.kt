@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,11 +17,13 @@ import com.example.byheart.card.edit.CardEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
 import com.example.byheart.shared.SwipeToDeleteCallback
 import com.example.byheart.shared.startFragment
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CardFragment : Fragment() {
 
-    private lateinit var btnPlay: Button
-    private lateinit var btnAdd: Button
+    private lateinit var btnPlay: FloatingActionButton
+    private lateinit var btnAdd: FloatingActionButton
     private lateinit var pileTitle: TextView
     private lateinit var cardViewModel: CardViewModel
     private lateinit var layout: View
@@ -40,9 +41,9 @@ class CardFragment : Fragment() {
     }
 
     private fun findViews() {
-        pileTitle = layout.findViewById(R.id.content_card_title)
-        btnPlay = layout.findViewById(R.id.buttonPlay)
-        btnAdd = layout.findViewById(R.id.buttonAdd)
+        pileTitle = activity?.findViewById(R.id.content_card_title)!!
+        btnPlay = activity?.findViewById(R.id.buttonPlay)!!
+        btnAdd = activity?.findViewById(R.id.buttonAdd)!!
     }
 
     private fun setUpAdapter(): CardListAdapter {

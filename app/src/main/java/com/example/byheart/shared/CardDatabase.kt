@@ -43,7 +43,7 @@ abstract class CardDatabase : RoomDatabase() {
                 super.onOpen(db)
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.cardDao(), database.pileDao())
+//                        populateDatabase(database.cardDao(), database.pileDao())
                     }
                 }
             }

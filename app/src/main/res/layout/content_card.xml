@@ -5,62 +5,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:background="@android:color/transparent"
-        android:layout_height="match_parent"
-        tools:context=".card.CardFragment">
-
-    <TextView
-            android:id="@+id/content_card_title"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:layout_marginTop="64dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/buttonPlay"/>
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:listitem="@layout/recyclerview_card_item"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/buttonPlay"/>
-    <Button
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/ic_circle_play"
-            android:id="@+id/buttonPlay" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/content_card_title"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
-    <Button
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/ic_circle_add"
-            android:id="@+id/buttonAdd"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonPlay"
-            app:layout_constraintBaseline_toBaselineOf="@+id/buttonPlay"/>
-    <Button
-            android:layout_width="55dp"
-            android:layout_height="53dp"
-            android:background="@drawable/ic_circle_bar"
-            android:id="@+id/buttonScores"
-            app:layout_constraintBaseline_toBaselineOf="@+id/buttonPlay"
-            app:layout_constraintStart_toEndOf="@+id/buttonPlay" android:layout_marginStart="24dp"/>
-
-    <LinearLayout
-            android:id="@+id/llBottom"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" android:layout_width="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-    </LinearLayout>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

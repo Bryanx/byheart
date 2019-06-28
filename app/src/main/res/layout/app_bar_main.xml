@@ -6,33 +6,84 @@
         android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/app_bar"
+            android:layout_height="198dp"
             android:layout_width="match_parent"
+            android:background="@color/white"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/white"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                android:layout_height="match_parent"
+                app:title=""
+                app:expandedTitleMarginTop="48dp"
+                app:expandedTitleGravity="top|center_horizontal"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <TextView
+                    android:id="@+id/content_card_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="test"
+                    android:textSize="32sp"
+                    android:paddingBottom="62dp"
+                    android:gravity="center"/>
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:title="test"
+                    app:layout_collapseMode="parallax"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
             android:id="@+id/main_container"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:clickable="true"
-            android:src="@drawable/ic_add_white_24dp"
-            android:id="@+id/fab" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|center"
+            android:paddingBottom="48dp"
+            android:orientation="horizontal">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonPlay"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_play_arrow_black_24dp"
+                android:tint="@color/white"
+                app:elevation="0dp"
+                app:backgroundTint="@color/colorPrimary"
+                android:layout_marginBottom="48dp"
+                android:layout_marginEnd="24dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonAdd"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_add_black_24dp"
+                android:tint="@color/white"
+                app:elevation="0dp"
+                app:backgroundTint="@color/colorPrimary"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonScores"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_bar_chart_24dp"
+                android:tint="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                android:layout_marginStart="24dp"
+                app:elevation="0dp"/>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

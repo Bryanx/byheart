@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,7 +15,7 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.shared.*
-
+import kotlinx.android.synthetic.main.content_rehearsal.*
 
 class RehearsalFragment : Fragment() {
 
@@ -28,30 +26,29 @@ class RehearsalFragment : Fragment() {
     private var flipIn: AnimatorSet? = null
     private var flipOut: AnimatorSet? = null
     private var mIsBackVisible = false
-    private lateinit var cardFront: TextView
-    private lateinit var cardBack: TextView
-    private lateinit var btnCorrect: Button
-    private lateinit var btnFalse: Button
     private var cardIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = container!!.inflate(R.layout.content_rehearsal)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
         pileId = (activity as MainActivity).pileId
-        (activity as MainActivity).closeDrawer()
-        findViews()
         getCards()
         loadAnimations()
-        changeCameraDistance()
+        (activity as MainActivity).closeDrawer()
         return layout
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        addEventHandlers()
+        changeCameraDistance()
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun getCards() {
         cardViewModel.allCards.observe(this, Observer { cardsFromDb ->
             cardsFromDb?.filter { it.pileId.toString() == pileId }
                 ?.let { cards = it }
-            cardFront.text = cards[cardIndex].question
-            cardBack.text = cards[cardIndex].answer
+            updateView()
         })
     }
 
@@ -67,15 +64,17 @@ class RehearsalFragment : Fragment() {
         flipOut = AnimatorInflater.loadAnimator(activity, R.animator.animate_in_flip) as AnimatorSet
     }
 
-    private fun findViews() {
-        cardFront = layout.findViewById(R.id.card_question)
-        cardBack = layout.findViewById(R.id.card_answer)
-        btnCorrect = layout.findViewById(R.id.card_button_correct)
-        btnFalse = layout.findViewById(R.id.card_button_false)
+    private fun addEventHandlers() {
         cardFront.setOnClickListener { flipCard() }
         cardBack.setOnClickListener { flipCard() }
-        btnCorrect.setOnClickListener { nextQuestion() }
-        btnFalse.setOnClickListener { nextQuestion() }
+        cardBtnCorrect.setOnClickListener { nextQuestion() }
+        cardBtnFalse.setOnClickListener { nextQuestion() }
+    }
+
+    private fun updateView() {
+        cardFront.text = cards[cardIndex].question
+        cardBack.text = cards[cardIndex].answer
+        rehearsalCounter.text = "${cardIndex+1}/${cards.size}"
     }
 
     private fun nextQuestion() {
@@ -97,16 +96,13 @@ class RehearsalFragment : Fragment() {
     }
 
     private fun enableButtons(bool: Boolean) {
-        btnCorrect.isEnabled = bool
-        btnFalse.isEnabled = bool
+        cardBtnCorrect.isEnabled = bool
+        cardBtnFalse.isEnabled = bool
     }
 
     private fun nextCard() {
         cardIndex++
-        if (cardIndex < cards.size) {
-            cardFront.text = cards[cardIndex].question
-            cardBack.text = cards[cardIndex].answer
-        }
+        if (cardIndex < cards.size) updateView()
     }
 
     private fun resetCardPosition() {
