@@ -33,9 +33,9 @@ class RehearsalFragment : Fragment() {
         pileId = (activity as MainActivity).pileId
         getCards()
         loadAnimations()
-        (activity as MainActivity).closeDrawer()
         setHasOptionsMenu(true)
-        activity?.findViewById<AppBarLayout>(R.id.app_bar)?.setExpanded(false, true)
+        (activity as MainActivity).closeDrawer()
+        (activity as MainActivity).setToolbarTitle("")
         return layout
     }
 

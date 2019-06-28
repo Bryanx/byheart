@@ -27,7 +27,6 @@ import kotlinx.coroutines.launch
 
 class PileEditFragment : Fragment() {
 
-    private lateinit var pileNameLayout: TextInputLayout
     private lateinit var layout: View
     private lateinit var pileViewModel: PileViewModel
 
@@ -35,13 +34,8 @@ class PileEditFragment : Fragment() {
         layout = container!!.inflate(R.layout.content_pile_edit)
         pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
         (activity as MainActivity).closeDrawer()
-        changeActionBar()
+        (activity as MainActivity).setToolbarTitle("Add pile")
         return layout
-    }
-
-    private fun changeActionBar() {
-        activity?.findViewById<AppBarLayout>(R.id.app_bar)?.setExpanded(false, false)
-        activity?.findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent));
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -33,6 +33,7 @@ class CardEditFragment : Fragment() {
         findViews()
         addEventHandlers()
         (activity as MainActivity).closeDrawer()
+        (activity as MainActivity).setToolbarTitle("Add card")
         return layout
     }
 

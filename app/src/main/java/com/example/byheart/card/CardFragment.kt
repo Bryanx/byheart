@@ -2,8 +2,8 @@ package com.example.byheart.card
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,29 +16,29 @@ import com.example.byheart.card.edit.CardEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
 import com.example.byheart.shared.SwipeToDeleteCallback
 import com.example.byheart.shared.startFragment
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.content_card.*
 
 class CardFragment : Fragment() {
 
-    private lateinit var btnPlay: FloatingActionButton
-    private lateinit var btnAdd: FloatingActionButton
-    private lateinit var pileTitle: TextView
     private lateinit var cardViewModel: CardViewModel
     private lateinit var layout: View
     private var pileId: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent))
         layout = inflater.inflate(R.layout.content_card, container, false)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
-        findViews()
+        (activity as MainActivity).closeDrawer()
+        (activity as MainActivity).setToolbarTitle("")
+        return layout
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         getBundle()
         val adapter = setUpAdapter()
         addEventHandlers(adapter)
-        (activity as MainActivity).closeDrawer()
         setHasOptionsMenu(true)
-        return layout
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -50,12 +50,6 @@ class CardFragment : Fragment() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun findViews() {
-        pileTitle = activity?.findViewById(R.id.content_card_title)!!
-        btnPlay = activity?.findViewById(R.id.buttonPlay)!!
-        btnAdd = activity?.findViewById(R.id.buttonAdd)!!
     }
 
     private fun setUpAdapter(): CardListAdapter {
@@ -71,7 +65,7 @@ class CardFragment : Fragment() {
     private fun getBundle() {
         val pileName = (activity as MainActivity).pileName
         pileId = (activity as MainActivity).pileId
-        pileTitle.text = pileName
+        content_card_title.text = pileName
     }
 
     private fun addEventHandlers(adapter: CardListAdapter) {
@@ -81,14 +75,14 @@ class CardFragment : Fragment() {
                 it.pileId.toString() == pileId
             }?.let {
                 adapter.setCards(it)
-                btnPlay.isEnabled = it.isNotEmpty()
+                buttonPlay.isEnabled = it.isNotEmpty()
             }
         })
-        btnPlay.setOnClickListener {
+        buttonPlay.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(RehearsalFragment())
         }
-        btnAdd.setOnClickListener {
+        buttonAdd.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(CardEditFragment())
         }

@@ -1,14 +1,12 @@
 package com.example.byheart
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.card.CardFragment
 import com.example.byheart.overview.Overview
 import com.example.byheart.pile.Pile
@@ -17,12 +15,10 @@ import com.example.byheart.pile.PileViewModel
 import com.example.byheart.shared.PileAdapter
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.Arrays.asList
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var recyclerView: RecyclerView
     var pileId: String = ""
     var pileName: String = ""
 
@@ -30,7 +26,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = ""
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
@@ -41,18 +36,21 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun populateMenu() {
-        recyclerView = findViewById(R.id.activity_main_recyclerview)
         val layoutManager = LinearLayoutManager(this)
         val pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
         pileViewModel.allPiles.observe(this, Observer<List<Pile>> { piles ->
             val overviews = asList(Overview("Overview", piles))
             val adapter = PileAdapter(overviews)
-            recyclerView.layoutManager = layoutManager
-            recyclerView.adapter = adapter
+            mainMenuRecycler.layoutManager = layoutManager
+            mainMenuRecycler.adapter = adapter
         })
     }
 
     fun closeDrawer(): Unit = drawer_layout.closeDrawer(GravityCompat.START)
+
+    fun setToolbarTitle(title: String) {
+        toolbar.title = title
+    }
 
     override fun onBackPressed() = when {
         drawer_layout.isDrawerOpen(GravityCompat.START) -> closeDrawer()

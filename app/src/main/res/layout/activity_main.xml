@@ -10,10 +10,24 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
-    <include
-            layout="@layout/app_bar_main"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+        <FrameLayout
+                android:id="@+id/main_container"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:title="test"
+                app:elevation="4dp"/>
+    </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
@@ -25,7 +39,7 @@
             app:menu="@menu/activity_main_drawer">
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_main_recyclerview"
+                android:id="@+id/mainMenuRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="192dp"
