@@ -13,7 +13,7 @@ fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
-// Start fragment in main container
+// Start fragment in pile_menu container
 fun FragmentManager.startFragment(fragment: Fragment) {
     this.beginTransaction()
         .replace(R.id.main_container, fragment)

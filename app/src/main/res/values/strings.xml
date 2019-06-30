@@ -11,4 +11,6 @@
     <string name="answer">Answer</string>
     <string name="save">SAVE</string>
     <string name="pile_name">Pile name</string>
+    <string name="edit_pile">Edit pile</string>
+    <string name="delete_pile">Delete pile</string>
 </resources>

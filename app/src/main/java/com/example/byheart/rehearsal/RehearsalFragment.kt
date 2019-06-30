@@ -13,18 +13,21 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.shared.*
-import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.content_rehearsal.*
+import android.speech.tts.TextToSpeech
+import java.util.*
+
 
 class RehearsalFragment : Fragment() {
 
+    private lateinit var ttobj: TextToSpeech
     private lateinit var layout: View
     private lateinit var cardViewModel: CardViewModel
     private lateinit var pileId: String
     private lateinit var cards: List<Card>
     private var flipIn: AnimatorSet? = null
     private var flipOut: AnimatorSet? = null
-    private var mIsBackVisible = false
+    private var backIsVisible = false
     private var cardIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,6 +39,8 @@ class RehearsalFragment : Fragment() {
         setHasOptionsMenu(true)
         (activity as MainActivity).closeDrawer()
         (activity as MainActivity).setToolbarTitle("")
+        ttobj = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
+        ttobj.language = Locale.UK
         return layout
     }
 
@@ -46,7 +51,30 @@ class RehearsalFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addEventHandlers()
         changeCameraDistance()
+        addVoiceButton()
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_restart_rehearsal -> {
+            onRestart()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun onRestart() {
+        cardIndex = 0
+        updateView()
+    }
+
+    private fun addVoiceButton() {
+        ivPronounce.setOnClickListener {
+            when {
+                backIsVisible -> ttobj.speak(cards[cardIndex].answer, TextToSpeech.QUEUE_FLUSH, null)
+                else -> ttobj.speak(cards[cardIndex].question, TextToSpeech.QUEUE_FLUSH, null)
+            }
+        }
     }
 
     private fun getCards() {
@@ -113,12 +141,12 @@ class RehearsalFragment : Fragment() {
     private fun resetCardPosition() {
         cardFront.alpha = 1F
         cardFront.rotationY = 0F
-        mIsBackVisible = false
+        backIsVisible = false
         cardBack.alpha = 0F
     }
 
     private fun flipCard() {
-        mIsBackVisible = if (!mIsBackVisible) {
+        backIsVisible = if (!backIsVisible) {
             flipIn!!.setTarget(cardFront)
             flipOut!!.setTarget(cardBack)
             flipIn!!.start()

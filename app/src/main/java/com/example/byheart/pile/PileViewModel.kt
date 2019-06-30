@@ -26,6 +26,14 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
         repo.insert(pile)
     }
 
+    fun update(pile: Pile) = scope.launch(Dispatchers.IO) {
+        repo.update(pile)
+    }
+
+    fun delete(pile: Pile) = scope.launch(Dispatchers.IO) {
+        repo.delete(pile)
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/card_edit_text_input_question"
+            android:id="@+id/cardEditQuestionLayout"
             android:layout_width="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/card_edit_question"
+                android:id="@+id/cardEditQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
@@ -24,16 +24,16 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/card_edit_text_input_answer"
+            android:id="@+id/cardEditAnswerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
             android:hint="@string/answer"
-            app:layout_constraintTop_toBottomOf="@+id/card_edit_text_input_question"
+            app:layout_constraintTop_toBottomOf="@+id/cardEditQuestionLayout"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/card_edit_answer"
+                android:id="@+id/cardEditAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
@@ -41,7 +41,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-            android:id="@+id/card_edit_btn_save"
+            android:id="@+id/cardEditBtnSave"
             android:text="@string/save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,5 +49,5 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/card_edit_text_input_answer"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardEditAnswerLayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

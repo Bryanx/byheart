@@ -1,10 +1,7 @@
 package com.example.byheart.pile
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface PileDao {
@@ -14,6 +11,9 @@ interface PileDao {
 
     @Insert
     fun insert(pile: Pile): Long
+
+    @Update
+    fun update(pile: Pile)
 
     @Delete
     fun delete(pile: Pile)

@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.shared.startFragment
@@ -21,7 +22,9 @@ class OverviewViewHolder(itemView: View) : GroupViewHolder(itemView) {
 
     init {
         btnAddPile.setOnClickListener {
-            (itemView.context as AppCompatActivity).supportFragmentManager.startFragment(PileEditFragment())
+            val activity = (itemView.context as MainActivity)
+            activity.pileId = ""
+            activity.supportFragmentManager.startFragment(PileEditFragment())
         }
     }
 

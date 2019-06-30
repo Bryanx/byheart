@@ -13,4 +13,14 @@ class PileRepository(private val pileDao: PileDao) {
     suspend fun insert(pile: Pile): Long {
         return pileDao.insert(pile)
     }
+
+    @WorkerThread
+    suspend fun update(pile: Pile) {
+        pileDao.update(pile)
+    }
+
+    @WorkerThread
+    suspend fun delete(pile: Pile) {
+        pileDao.delete(pile)
+    }
 }
