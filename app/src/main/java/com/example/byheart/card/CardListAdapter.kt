@@ -19,7 +19,7 @@ class CardListAdapter internal constructor(
     private var cards: MutableList<Card> = mutableListOf()
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardItemView: TextView = itemView.findViewById(R.id.textView)
+        val cardItemView: TextView = itemView.findViewById(R.id.tvFront)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {

@@ -13,6 +13,7 @@ import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.shared.PileAdapter
+import com.example.byheart.shared.startFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.Arrays.asList
@@ -32,6 +33,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+        supportFragmentManager.startFragment(PileFragment())
         populateMenu()
     }
 
@@ -52,9 +54,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toolbar.title = title
     }
 
-    override fun onBackPressed() = when {
-        drawer_layout.isDrawerOpen(GravityCompat.START) -> closeDrawer()
-        else -> super.onBackPressed()
+    override fun onBackPressed() {
+        supportFragmentManager.startFragment(PileFragment())
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

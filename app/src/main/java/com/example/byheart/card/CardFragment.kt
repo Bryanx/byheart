@@ -15,6 +15,7 @@ import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.edit.CardEditFragment
 import com.example.byheart.pile.Pile
+import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
@@ -72,7 +73,7 @@ class CardFragment : Fragment() {
                 val pile = Pile((activity as MainActivity).pileName)
                 pile.id = pileId!!.toLong()
                 pileViewModel.delete(pile)
-                //TODO: Go to home?
+                fragmentManager?.startFragment(PileFragment())
             }
             .setNegativeButton("Cancel", null)
             .show()

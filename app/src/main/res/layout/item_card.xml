@@ -5,7 +5,7 @@
               android:background="@color/white">
 
     <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvFront"
             style="@style/qa_title"
             android:layout_width="match_parent"/>
 </LinearLayout>
