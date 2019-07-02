@@ -9,7 +9,6 @@
             android:id="@+id/app_bar"
             android:layout_height="198dp"
             android:layout_width="match_parent"
-            android:background="@color/white"
             android:fitsSystemWindows="true"
             android:minHeight="0dp"
             android:theme="@style/AppTheme.AppBarOverlay">
@@ -17,6 +16,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="?mainBackgroundColor"
                 app:title=""
                 app:expandedTitleGravity="top|center_horizontal"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -67,7 +67,7 @@
                     android:id="@+id/card_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@android:color/transparent"
+                    android:background="?mainBackgroundColor"
                     app:title=""
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay"/>

@@ -3,6 +3,7 @@ package com.example.byheart.card
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,7 +21,9 @@ import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
 import com.example.byheart.shared.SwipeToDeleteCallback
+import com.example.byheart.shared.addToolbar
 import com.example.byheart.shared.startFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_card.*
 
 
@@ -36,8 +39,9 @@ class CardFragment : Fragment() {
         layout = inflater.inflate(R.layout.content_card, container, false)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
         pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
-        (activity as MainActivity).closeDrawer()
-        (activity as MainActivity).setToolbarTitle("")
+        addToolbar(activity!!, true, "", true) {
+            fragmentManager?.startFragment(PileFragment())
+        }
         return layout
     }
 
@@ -46,7 +50,6 @@ class CardFragment : Fragment() {
         getBundle()
         val adapter = setUpAdapter()
         addEventHandlers(adapter)
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

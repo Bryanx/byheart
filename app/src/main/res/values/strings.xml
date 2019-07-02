@@ -13,4 +13,9 @@
     <string name="pile_name">Pile name</string>
     <string name="edit_pile">Edit pile</string>
     <string name="delete_pile">Delete pile</string>
+    <string name="settings">Settings</string>
+    <string name="confirm">Confirm</string>
+    <string name="about">About</string>
+    <string name="night_mode">Night mode</string>
+    <string name="dark_mode">Dark mode</string>
 </resources>

@@ -36,9 +36,9 @@ class RehearsalFragment : Fragment() {
         pileId = (activity as MainActivity).pileId
         getCards()
         loadAnimations()
-        setHasOptionsMenu(true)
-        (activity as MainActivity).closeDrawer()
-        (activity as MainActivity).setToolbarTitle("")
+        addToolbar(activity!!, true, "", true) {
+            fragmentManager?.startFragment(CardFragment())
+        }
         ttobj = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
         ttobj.language = Locale.UK
         return layout

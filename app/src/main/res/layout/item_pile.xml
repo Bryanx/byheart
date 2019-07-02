@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
         android:layout_height="120dp"
         android:layout_width="@dimen/pile_dimen">
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_pile2"/>
+            android:src="@drawable/ic_pile3"/>
     <TextView
             android:id="@+id/tvPileFront"
             android:layout_height="match_parent"

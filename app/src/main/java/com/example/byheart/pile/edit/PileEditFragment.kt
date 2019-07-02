@@ -1,17 +1,18 @@
 package com.example.byheart.pile.edit
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.CardFragment
 import com.example.byheart.pile.Pile
+import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
+import com.example.byheart.shared.addToolbar
+import com.example.byheart.shared.focus
 import com.example.byheart.shared.inflate
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,20 +35,39 @@ class PileEditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addEventHandlers()
         getBundle()
+        if ((activity as MainActivity).pileId.isNotEmpty()) {
+            addToolbar(activity!!, true, "Edit pile", true) {
+                    fragmentManager?.startFragment(CardFragment())
+            }
+        } else {
+            addToolbar(activity!!, true, "Create pile", true) {
+                fragmentManager?.startFragment(PileFragment())
+            }
+        }
+        pileName.focus()
     }
 
-    private fun addEventHandlers() {
-        btnSavePile.setOnClickListener {
-            val name = pileName.text.toString()
-            if (name.isEmpty()) {
-                pileNameLayout.error = "You need to enter a name"
-            } else {
-                pileName.clearFocus()
-                val pile = Pile(name)
-                switchToNewPile(pile)
-            }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.edit_pile_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_confirm_edit_pile -> {
+            addPile()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun addPile() {
+        val name = pileName.text.toString()
+        if (name.isEmpty()) {
+            pileNameLayout.error = "You need to enter a name"
+        } else {
+            pileName.clearFocus()
+            val pile = Pile(name)
+            switchToNewPile(pile)
         }
     }
 
@@ -56,21 +76,16 @@ class PileEditFragment : Fragment() {
         if (activity.pileId.isNotEmpty()) {
             pile.id = activity.pileId.toLong()
             pileViewModel.update(pile)
+            activity.pileName = pile.name!!
+            fragmentManager?.startFragment(CardFragment())
         } else {
             activity.pileId = pileViewModel.insert(pile).await().toString()
+            fragmentManager?.startFragment(PileFragment())
         }
-        activity.pileName = pile.name!!
-        fragmentManager?.startFragment(CardFragment())
     }
 
     private fun getBundle() {
         val activity = activity as MainActivity
-        activity.closeDrawer()
-        if (activity.pileId.isEmpty()) {
-            activity.setToolbarTitle("Add pile")
-        } else {
-            activity.setToolbarTitle("Edit pile")
-            pileName.setText(activity.pileName)
-        }
+        if (activity.pileId.isNotEmpty()) pileName.setText(activity.pileName)
     }
 }

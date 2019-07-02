@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="mainBackgroundColor" format="reference"/>
+    <attr name="mainEditTextColor" format="reference"/>
+    <attr name="activeActionBarTheme" format="reference"/>
+    <attr name="cardColor" format="reference"/>
+</resources>

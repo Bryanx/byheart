@@ -1,8 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,14 +9,19 @@
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:textColor">#000000</item>
         <item name="elevation">0dp</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:statusBarColor">@android:color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppThemeDark" parent="AppTheme">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:statusBarColor">@color/black</item>
         <item name="mainBackgroundColor">@color/black</item>
         <item name="mainEditTextColor">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="elevation">0dp</item>
     </style>
