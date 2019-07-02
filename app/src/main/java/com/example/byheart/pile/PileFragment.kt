@@ -52,6 +52,8 @@ class PileFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+        if (Preferences.read(DARK_MODE, false))
+            menu.findItem(R.id.action_dark_mode).title = resources.getString(R.string.light_mode)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {

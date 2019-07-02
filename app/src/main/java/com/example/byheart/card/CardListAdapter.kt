@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
+import com.example.byheart.shared.getAttr
+
 
 class CardListAdapter internal constructor(
     private val context: Context,
@@ -35,7 +37,7 @@ class CardListAdapter internal constructor(
         changeCardColor(itemView)
         itemView.text = current.question
         itemView.setOnClickListener {
-            if (itemView.text == current.question) {
+            if (itemView.currentTextColor != Color.WHITE) {
                 itemView.text = current.answer
                 itemView.setTextColor(Color.WHITE)
                 itemView.setBackgroundResource(R.drawable.card_answer)
@@ -46,12 +48,12 @@ class CardListAdapter internal constructor(
         }
     }
 
-    private fun changeCardColor(itemView: TextView) = when {
-        Preferences.read(DARK_MODE, false) -> {
-            itemView.setTextColor(Color.WHITE)
+    private fun changeCardColor(itemView: TextView) {
+        val color = context.getAttr(R.attr.mainTextColor)
+        itemView.setTextColor(color)
+        if (Preferences.read(DARK_MODE, false)) {
             itemView.setBackgroundResource(R.drawable.card_dark)
-        } else -> {
-            itemView.setTextColor(Color.BLACK)
+        } else {
             itemView.setBackgroundResource(R.drawable.card_light)
         }
     }

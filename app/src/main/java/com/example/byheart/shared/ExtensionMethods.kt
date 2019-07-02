@@ -2,6 +2,7 @@ package com.example.byheart.shared
 
 import android.app.Activity
 import android.content.Context
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,4 +59,10 @@ fun Fragment.addToolbar(
     if (onNavClick != null) {
         activity.toolbar.setNavigationOnClickListener { onNavClick() }
     }
+}
+
+fun Context.getAttr(id: Int): Int {
+    val typedValue = TypedValue()
+    this.theme.resolveAttribute(id, typedValue, true)
+    return typedValue.data
 }

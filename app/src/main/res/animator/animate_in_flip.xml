@@ -11,12 +11,12 @@
             android:valueFrom="-180"
             android:valueTo="0"
             android:propertyName="rotationY"
-            android:duration="300" />
+            android:duration="@integer/flip_duration" />
 
     <objectAnimator
             android:valueFrom="0.0"
             android:valueTo="1.0"
             android:propertyName="alpha"
-            android:startOffset="160"
+            android:startOffset="@integer/half_flip_duration"
             android:duration="0" />
 </set>

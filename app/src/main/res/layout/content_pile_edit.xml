@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="?mainBackgroundColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -12,6 +11,7 @@
             android:layout_height="wrap_content"
             app:errorEnabled="true"
             android:hint="@string/pile_name"
+            app:hintEnabled="false"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="74dp"
@@ -23,7 +23,9 @@
                 android:id="@+id/pileName"
                 android:textSize="24sp"
                 android:hint="@string/pile_name"
-                android:textColor="?mainEditTextColor"
+                app:backgroundTint="@color/grey_500"
+                android:textColor="?mainHeaderTextColor"
+                android:textColorHint="?mainEditTextColorHint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"

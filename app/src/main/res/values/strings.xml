@@ -18,4 +18,7 @@
     <string name="about">About</string>
     <string name="night_mode">Night mode</string>
     <string name="dark_mode">Dark mode</string>
+    <string name="card_front">Card front</string>
+    <string name="card_back">Card back</string>
+    <string name="light_mode">Light mode</string>
 </resources>

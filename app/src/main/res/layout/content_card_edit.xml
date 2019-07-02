@@ -12,8 +12,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
             android:hint="@string/question"
+            app:errorEnabled="true"
+            app:hintEnabled="false"
+            android:textColorHint="?mainEditTextColorHint"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -21,7 +23,12 @@
                 android:id="@+id/cardEditQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:textSize="24sp"
+                android:textColor="?mainHeaderTextColor"
+                app:backgroundTint="@color/grey_500"
+                android:textColorHint="?mainEditTextColorHint"
+                android:hint="@string/card_front"
+                android:inputType="textNoSuggestions"
                 android:ems="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,8 +37,10 @@
             android:id="@+id/cardEditAnswerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
             android:hint="@string/answer"
+            app:errorEnabled="true"
+            app:hintEnabled="false"
+            android:textColorHint="?mainEditTextColorHint"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toBottomOf="@+id/cardEditQuestionLayout"
@@ -41,7 +50,12 @@
                 android:id="@+id/cardEditAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:textSize="24sp"
+                app:backgroundTint="@color/grey_500"
+                android:textColor="?mainHeaderTextColor"
+                android:textColorHint="?mainEditTextColorHint"
+                android:hint="@string/card_back"
+                android:inputType="textNoSuggestions"
                 android:ems="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

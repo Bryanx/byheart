@@ -16,6 +16,8 @@ import com.example.byheart.shared.*
 import kotlinx.android.synthetic.main.content_rehearsal.*
 import android.speech.tts.TextToSpeech
 import java.util.*
+import androidx.core.os.HandlerCompat.postDelayed
+import android.os.Handler
 
 
 class RehearsalFragment : Fragment() {
@@ -65,7 +67,8 @@ class RehearsalFragment : Fragment() {
 
     private fun onRestart() {
         cardIndex = 0
-        updateView()
+        if (backIsVisible) flipCard()
+        Handler().postDelayed(({ updateView() }), resources.getInteger(R.integer.half_flip_duration).toLong())
     }
 
     private fun addVoiceButton() {

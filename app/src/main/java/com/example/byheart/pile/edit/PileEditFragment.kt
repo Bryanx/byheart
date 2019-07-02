@@ -1,8 +1,9 @@
 package com.example.byheart.pile.edit
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.byheart.MainActivity
@@ -15,7 +16,6 @@ import com.example.byheart.shared.addToolbar
 import com.example.byheart.shared.focus
 import com.example.byheart.shared.inflate
 import com.example.byheart.shared.startFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
