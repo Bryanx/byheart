@@ -21,4 +21,6 @@
     <string name="card_front">Card front</string>
     <string name="card_back">Card back</string>
     <string name="light_mode">Light mode</string>
+    <string name="placeholder_text">What will you learn next?</string>
+    <string name="add_a_card">Add a card</string>
 </resources>

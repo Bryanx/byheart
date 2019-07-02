@@ -1,8 +1,6 @@
 package com.example.byheart.shared.views
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.TextView
 import com.example.byheart.R
@@ -15,6 +13,7 @@ class RehearsalCard : TextView {
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        changeCameraDistance()
         changeCardColor()
     }
 
@@ -28,6 +27,12 @@ class RehearsalCard : TextView {
         } else {
             this.setBackgroundResource(R.drawable.shadow)
         }
+    }
+
+    private fun changeCameraDistance() {
+        val distance = 8000
+        val scale = resources.displayMetrics.density * distance
+        this.cameraDistance = scale
     }
 
 }

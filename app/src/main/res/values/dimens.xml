@@ -9,4 +9,5 @@
     <dimen name="pile_dimen">150dp</dimen>
     <dimen name="dialog_margin">20dp</dimen>
     <dimen name="dialog_margin_top">10dp</dimen>
+    <dimen name="collapsible_app_bar_height">198dp</dimen>
 </resources>

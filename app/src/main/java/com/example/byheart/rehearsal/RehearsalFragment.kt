@@ -52,7 +52,6 @@ class RehearsalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addEventHandlers()
-        changeCameraDistance()
         addVoiceButton()
         super.onViewCreated(view, savedInstanceState)
     }
@@ -86,13 +85,6 @@ class RehearsalFragment : Fragment() {
                 ?.let { cards = it }
             updateView()
         })
-    }
-
-    private fun changeCameraDistance() {
-        val distance = 8000
-        val scale = resources.displayMetrics.density * distance
-        cardFront.cameraDistance = scale
-        cardBack.cameraDistance = scale
     }
 
     private fun loadAnimations() {

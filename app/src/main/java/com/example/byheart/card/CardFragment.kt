@@ -1,16 +1,15 @@
 package com.example.byheart.card
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.MainActivity
 import com.example.byheart.R
@@ -20,10 +19,11 @@ import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
+import com.example.byheart.shared.ScrollingLinearLayoutManager
 import com.example.byheart.shared.SwipeToDeleteCallback
 import com.example.byheart.shared.addToolbar
 import com.example.byheart.shared.startFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.content_card.*
 
 
@@ -86,7 +86,8 @@ class CardFragment : Fragment() {
         val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = CardListAdapter(layout.context, this)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(layout.context)
+        val layoutManager = ScrollingLinearLayoutManager(layout.context)
+        recyclerView.layoutManager = layoutManager
         val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(adapter))
         itemTouchHelper.attachToRecyclerView(recyclerView)
         return adapter
@@ -105,9 +106,15 @@ class CardFragment : Fragment() {
                 it.pileId.toString() == pileId
             }?.let {
                 adapter.setCards(it)
+                if (it.isEmpty()) placeholder_no_cards.visibility = View.VISIBLE
+                else placeholder_no_cards.visibility = View.GONE
                 buttonPlay.isEnabled = it.isNotEmpty()
             }
         })
+        btnAddCardPlaceholder.setOnClickListener {
+            (activity as MainActivity).pileId = pileId!!
+            fragmentManager?.startFragment(CardEditFragment())
+        }
         buttonPlay.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(RehearsalFragment())
