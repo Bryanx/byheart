@@ -27,6 +27,12 @@
         <item name="elevation">0dp</item>
     </style>
 
+    <style name="DarkDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#FFF</item>
+        <item name="android:textColorPrimary">#FFF</item>
+        <item name="android:background">#2E2E2E</item>
+    </style>
+
     <style name="WindowAnimationTransition">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>

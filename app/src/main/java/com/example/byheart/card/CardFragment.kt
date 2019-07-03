@@ -1,6 +1,5 @@
 package com.example.byheart.card
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
@@ -19,11 +18,8 @@ import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
-import com.example.byheart.shared.ScrollingLinearLayoutManager
-import com.example.byheart.shared.SwipeToDeleteCallback
-import com.example.byheart.shared.addToolbar
-import com.example.byheart.shared.startFragment
-import com.google.android.material.appbar.AppBarLayout
+import com.example.byheart.shared.*
+import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.content_card.*
 
 
@@ -69,8 +65,10 @@ class CardFragment : Fragment() {
     }
 
     private fun confirmDelete() {
-        AlertDialog.Builder(context!!)
-            .setMessage("Are you sure you want to delete this pile?")
+        when {
+            Preferences.read(DARK_MODE, false) -> AlertDialog.Builder(context!!, R.style.DarkDialogTheme)
+            else -> AlertDialog.Builder(context!!)
+        }.setMessage("Are you sure you want to delete this pile?")
             .setCancelable(false)
             .setPositiveButton("Delete") { _, _ ->
                 val pile = Pile((activity as MainActivity).pileName)

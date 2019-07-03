@@ -30,8 +30,8 @@ class CardEditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        cardEditQuestion.focus()
         super.onViewCreated(view, savedInstanceState)
+        addEventHandlers()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -42,6 +42,7 @@ class CardEditFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_confirm_edit_pile -> {
             addCard()
+            fragmentManager?.startFragment(CardFragment())
             true
         }
         R.drawable.ic_nav_back -> {
@@ -60,7 +61,13 @@ class CardEditFragment : Fragment() {
             cardEditQuestion.clearFocus()
             cardEditAnswer.clearFocus()
             cardViewModel.insert(Card(q, a, (activity as MainActivity).pileId.toLong()))
-            fragmentManager?.startFragment(CardFragment())
+        }
+    }
+
+    private fun addEventHandlers() {
+        btnAddAnotherCard.setOnClickListener {
+            addCard()
+            fragmentManager?.startFragment(CardEditFragment())
         }
     }
 }
