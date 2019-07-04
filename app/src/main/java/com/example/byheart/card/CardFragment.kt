@@ -2,7 +2,6 @@ package com.example.byheart.card
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -18,8 +17,13 @@ import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.rehearsal.RehearsalFragment
+import com.example.byheart.rehearsal.RehearsalMemoryFragment
+import com.example.byheart.rehearsal.RehearsalMultipleChoiceFragment
+import com.example.byheart.rehearsal.RehearsalTypedFragment
 import com.example.byheart.shared.*
-import com.example.byheart.shared.Preferences.DARK_MODE
+import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
+import com.example.byheart.shared.Preferences.REHEARSAL_MULTIPLE_CHOICE
+import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_card.*
 
 
@@ -58,26 +62,10 @@ class CardFragment : Fragment() {
             true
         }
         R.id.action_delete_pile -> {
-            confirmDelete()
+            startDeleteDialog()
             true
         }
         else -> super.onOptionsItemSelected(item)
-    }
-
-    private fun confirmDelete() {
-        when {
-            Preferences.read(DARK_MODE, false) -> AlertDialog.Builder(context!!, R.style.DarkDialogTheme)
-            else -> AlertDialog.Builder(context!!)
-        }.setMessage("Are you sure you want to delete this pile?")
-            .setCancelable(false)
-            .setPositiveButton("Delete") { _, _ ->
-                val pile = Pile((activity as MainActivity).pileName)
-                pile.id = pileId!!.toLong()
-                pileViewModel.delete(pile)
-                fragmentManager?.startFragment(PileFragment())
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 
     private fun setUpAdapter(): CardListAdapter {
@@ -115,12 +103,29 @@ class CardFragment : Fragment() {
         }
         buttonPlay.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
-            fragmentManager?.startFragment(RehearsalFragment())
+            fragmentManager?.startFragment(when {
+                Preferences.read(REHEARSAL_MEMORY) -> RehearsalMemoryFragment()
+                Preferences.read(REHEARSAL_TYPED) -> RehearsalTypedFragment()
+                else -> RehearsalMultipleChoiceFragment()
+            })
         }
         buttonAdd.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(CardEditFragment())
         }
+    }
+
+    private fun startDeleteDialog() {
+        context!!.dialog().setMessage("Are you sure you want to delete this pile?")
+            .setCancelable(false)
+            .setPositiveButton("Delete") { _, _ ->
+                val pile = Pile((activity as MainActivity).pileName)
+                pile.id = pileId!!.toLong()
+                pileViewModel.delete(pile)
+                fragmentManager?.startFragment(PileFragment())
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     fun removeCard(card: Card) {

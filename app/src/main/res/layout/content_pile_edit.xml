@@ -21,13 +21,12 @@
 
         <EditText
                 android:id="@+id/pileName"
-                android:textSize="24sp"
-                android:hint="@string/pile_name"
-                app:backgroundTint="@color/grey_500"
-                android:textColor="?mainHeaderTextColor"
-                android:textColorHint="?mainEditTextColorHint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/editTextDayNight"
+                android:textColor="?mainHeaderTextColor"
+                android:textColorHint="?mainEditTextColorHint"
+                android:hint="@string/pile_name"
                 android:inputType="textNoSuggestions"
                 android:ems="10"/>
 

@@ -23,4 +23,11 @@
     <string name="light_mode">Light mode</string>
     <string name="placeholder_text">What will you learn next?</string>
     <string name="add_a_card">Add a card</string>
+    <string name="reverse_cards">Reverse cards</string>
+    <string name="restart">Restart</string>
+    <string name="shuffle_cards">Shuffle cards</string>
+    <string name="pronounce_cards">Pronounce cards</string>
+    <string name="multiple_choice_mode">Multiple choice mode</string>
+    <string name="typed_mode">Typed mode</string>
+    <string name="memory_mode">Memory mode</string>
 </resources>

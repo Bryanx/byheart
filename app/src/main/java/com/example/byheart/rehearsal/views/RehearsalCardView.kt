@@ -1,14 +1,17 @@
-package com.example.byheart.shared.views
+package com.example.byheart.rehearsal.views
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.TextView
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
 import com.example.byheart.shared.getAttr
+import com.example.byheart.shared.name
 
-class RehearsalCard : TextView {
+
+class RehearsalCardView : TextView {
 
     constructor(context: Context) : super(context)
 
@@ -20,13 +23,18 @@ class RehearsalCard : TextView {
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     private fun changeCardColor() {
-        val color = context.getAttr(R.attr.mainHeaderTextColor)
-        this.setTextColor(color)
-        if (Preferences.read(DARK_MODE, false)) {
-            this.setBackgroundResource(R.drawable.shadow_dark)
-        } else {
-            this.setBackgroundResource(R.drawable.shadow)
+        val darkMode = Preferences.read(DARK_MODE)
+        when {
+            this.name == "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark_back, Color.WHITE)
+            this.name != "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark, Color.WHITE)
+            this.name == "cardBack" && !darkMode -> setBgAndTxt(R.drawable.shadow_back, Color.WHITE)
+            else -> setBgAndTxt(R.drawable.shadow, context.getAttr(R.attr.mainHeaderTextColor))
         }
+    }
+
+    private fun setBgAndTxt(id: Int, color: Int) {
+        this.setBackgroundResource(id)
+        this.setTextColor(color)
     }
 
     private fun changeCameraDistance() {

@@ -51,7 +51,7 @@ class CardListAdapter internal constructor(
     private fun changeCardColor(itemView: TextView) {
         val color = context.getAttr(R.attr.mainTextColor)
         itemView.setTextColor(color)
-        if (Preferences.read(DARK_MODE, false)) {
+        if (Preferences.read(DARK_MODE)) {
             itemView.setBackgroundResource(R.drawable.card_dark)
         } else {
             itemView.setBackgroundResource(R.drawable.card_light)

@@ -2,8 +2,14 @@ package com.example.byheart.rehearsal
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.Handler
+import android.speech.tts.TextToSpeech
 import android.view.*
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,27 +19,31 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.shared.*
+import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
+import com.example.byheart.shared.Preferences.REHEARSAL_PRONOUNCE
+import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
+import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
+import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_rehearsal.*
-import android.speech.tts.TextToSpeech
 import java.util.*
-import androidx.core.os.HandlerCompat.postDelayed
-import android.os.Handler
 
 
-class RehearsalFragment : Fragment() {
+abstract class RehearsalFragment : Fragment() {
 
-    private lateinit var ttobj: TextToSpeech
-    private lateinit var layout: View
-    private lateinit var cardViewModel: CardViewModel
-    private lateinit var pileId: String
-    private lateinit var cards: List<Card>
-    private var flipIn: AnimatorSet? = null
-    private var flipOut: AnimatorSet? = null
-    private var backIsVisible = false
-    private var cardIndex = 0
+    protected lateinit var textToSpeech: TextToSpeech
+    protected lateinit var layout: View
+    protected lateinit var cardViewModel: CardViewModel
+    protected lateinit var pileId: String
+    protected lateinit var cards: MutableList<Card>
+    protected lateinit var flipIn: AnimatorSet
+    protected lateinit var flipOut: AnimatorSet
+    protected lateinit var menu: Menu
+    protected var backOfCardIsVisible = false
+    protected var cardIndex = 0
+
+    abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        layout = container!!.inflate(R.layout.content_rehearsal)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
         pileId = (activity as MainActivity).pileId
         getCards()
@@ -41,50 +51,117 @@ class RehearsalFragment : Fragment() {
         addToolbar(activity!!, true, "", true) {
             fragmentManager?.startFragment(CardFragment())
         }
-        ttobj = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
-        ttobj.language = Locale.UK
+        textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
+        textToSpeech.language = Locale.UK
         return layout
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addEventHandlers()
+        addVoiceButton()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.rehearsal_menu, menu)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addEventHandlers()
-        addVoiceButton()
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_restart_rehearsal -> {
-            onRestart()
-            true
+        this.menu = menu
+        menu.forEachIndexed { _, item ->
+            item.isChecked = Preferences.read(item.getName(resources))
+            if (item.isChecked) hideOtherViews(item)
         }
-        else -> super.onOptionsItemSelected(item)
     }
 
-    private fun onRestart() {
-        cardIndex = 0
-        if (backIsVisible) flipCard()
-        Handler().postDelayed(({ updateView() }), resources.getInteger(R.integer.half_flip_duration).toLong())
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.rehearsal_restart -> restartRehearsal()
+            R.id.rehearsal_pronounce -> {
+                toggleMenuItem(item, item.getName(resources))
+                true
+            }
+            R.id.rehearsal_shuffle -> {
+                toggleMenuItem(item, item.getName(resources))
+                shuffleCards(item.isChecked)
+                updateView()
+                true
+            }
+            R.id.rehearsal_reverse -> {
+                toggleMenuItem(item, item.getName(resources))
+                updateView()
+                true
+            }
+            R.id.rehearsal_typed -> {
+                hideOtherViews(item)
+                fragmentManager?.startFragment(RehearsalTypedFragment())
+                true
+            }
+            R.id.rehearsal_memory -> {
+                hideOtherViews(item)
+                fragmentManager?.startFragment(RehearsalMemoryFragment())
+                true
+            }
+            R.id.rehearsal_multiple_choice -> {
+                if (cards.size < 5) context!!.dialog()
+                    .setMessage("You need at least 5 cards.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok") { _, _ -> }
+                    .create()
+                    .show()
+                else hideOtherViews(item)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
-    private fun addVoiceButton() {
-        ivPronounce.setOnClickListener {
-            when {
-                backIsVisible -> ttobj.speak(cards[cardIndex].answer, TextToSpeech.QUEUE_FLUSH, null)
-                else -> ttobj.speak(cards[cardIndex].question, TextToSpeech.QUEUE_FLUSH, null)
+    // Toggles the other items in the menu, and shows the corresponding view.
+    private fun hideOtherViews(item: MenuItem): Boolean {
+        listOf(R.id.rehearsal_typed, R.id.rehearsal_multiple_choice, R.id.rehearsal_memory).forEach { id ->
+            if (id == item.itemId) {
+                if (!item.isChecked) toggleMenuItem(item, item.getName(resources))
+            } else {
+                val otherItem = menu.findItem(id)
+                if (otherItem.isChecked) toggleMenuItem(otherItem, otherItem.getName(resources))
             }
         }
+        return true
+    }
+
+    private fun toggleMenuItem(item: MenuItem, id: String) {
+        item.isChecked = !item.isChecked
+        Preferences.write(id, item.isChecked)
+    }
+
+    private fun shuffleCards(shuffleIsOn: Boolean) {
+        if (shuffleIsOn) cards.shuffle()
+        else cards.sortBy { it.id }
     }
 
     private fun getCards() {
         cardViewModel.allCards.observe(this, Observer { cardsFromDb ->
-            cardsFromDb?.filter { it.pileId.toString() == pileId }
-                ?.let { cards = it }
+            cardsFromDb?.filter { it.pileId.toString() == pileId }?.let {
+                val tempCards = it.toMutableList()
+                if (Preferences.read(REHEARSAL_SHUFFLE)) tempCards.shuffle()
+                cards = tempCards
+            }
             updateView()
         })
+    }
+
+    private fun restartRehearsal(): Boolean {
+        cardIndex = 0
+        if (backOfCardIsVisible) flipCard()
+        Handler().postDelayed(({ updateView() }), resources.getInteger(R.integer.half_flip_duration).toLong())
+        return true
+    }
+
+    private fun addVoiceButton() {
+        ivPronounce.setOnClickListener {
+            textToSpeech.pronounce(when {
+                    backOfCardIsVisible -> cardBack.string
+                    else -> cardFront.string
+                }
+            )
+        }
     }
 
     private fun loadAnimations() {
@@ -92,40 +169,37 @@ class RehearsalFragment : Fragment() {
         flipOut = AnimatorInflater.loadAnimator(activity, R.animator.animate_in_flip) as AnimatorSet
     }
 
-    private fun addEventHandlers() {
-        cardFront.setOnClickListener { flipCard() }
-        cardBack.setOnClickListener { flipCard() }
-        cardBtnCorrect.setOnClickListener { nextQuestion() }
-        cardBtnFalse.setOnClickListener { nextQuestion() }
-    }
 
     private fun updateView() {
-        cardFront.text = cards[cardIndex].question
-        cardBack.text = cards[cardIndex].answer
-        rehearsalCounter.text = "${cardIndex+1}/${cards.size}"
+        if (Preferences.read(REHEARSAL_REVERSE)) {
+            cardFront.text = cards[cardIndex].answer
+            cardBack.text = cards[cardIndex].question
+        } else {
+            cardFront.text = cards[cardIndex].question
+            cardBack.text = cards[cardIndex].answer
+        }
+        rehearsalCounter.text = "${cardIndex + 1}/${cards.size}"
     }
 
-    private fun nextQuestion() {
-        enableButtons(false)
+    protected fun pronounceAnswer() {
+        textToSpeech.pronounce(cardBack.text.toString())
+    }
+
+    protected fun nextQuestion(doAfter: () -> Unit) {
         val screenWidth = getScreenWidth(activity?.windowManager)
         moveX(cardFront, 0F, -screenWidth)
+        moveX(ivPronounce, 0F, -screenWidth)
         moveX(cardBack, 0F, -screenWidth).onAnimateEnd {
             if (cardIndex + 1 < cards.size) {
                 resetCardPosition()
                 nextCard()
                 moveX(cardFront, screenWidth, 0F)
-                moveX(cardBack, screenWidth, 0F).onAnimateEnd {
-                    enableButtons(true)
-                }
+                moveX(ivPronounce, screenWidth, 0F)
+                moveX(cardBack, screenWidth, 0F).onAnimateEnd { doAfter() }
             } else {
                 fragmentManager?.startFragment(CardFragment())
             }
         }
-    }
-
-    private fun enableButtons(bool: Boolean) {
-        cardBtnCorrect.isEnabled = bool
-        cardBtnFalse.isEnabled = bool
     }
 
     private fun nextCard() {
@@ -136,22 +210,26 @@ class RehearsalFragment : Fragment() {
     private fun resetCardPosition() {
         cardFront.alpha = 1F
         cardFront.rotationY = 0F
-        backIsVisible = false
+        backOfCardIsVisible = false
         cardBack.alpha = 0F
+        Handler().postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 200)
     }
 
-    private fun flipCard() {
-        backIsVisible = if (!backIsVisible) {
-            flipIn!!.setTarget(cardFront)
-            flipOut!!.setTarget(cardBack)
-            flipIn!!.start()
-            flipOut!!.start()
+    protected fun flipCard() {
+        flipY(ivPronounce, 0f, 90f).onAnimateEnd { flipY(ivPronounce, -90f, 0f) }
+        backOfCardIsVisible = if (!backOfCardIsVisible) {
+            Handler().postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 150)
+            flipIn.setTarget(cardFront)
+            flipOut.setTarget(cardBack)
+            flipIn.start()
+            flipOut.start()
             true
         } else {
-            flipIn!!.setTarget(cardBack)
-            flipOut!!.setTarget(cardFront)
-            flipIn!!.start()
-            flipOut!!.start()
+            Handler().postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 150)
+            flipIn.setTarget(cardBack)
+            flipOut.setTarget(cardFront)
+            flipIn.start()
+            flipOut.start()
             false
         }
     }

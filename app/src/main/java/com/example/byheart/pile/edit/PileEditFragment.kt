@@ -12,10 +12,7 @@ import com.example.byheart.card.CardFragment
 import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
-import com.example.byheart.shared.addToolbar
-import com.example.byheart.shared.focus
-import com.example.byheart.shared.inflate
-import com.example.byheart.shared.startFragment
+import com.example.byheart.shared.*
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -61,7 +58,7 @@ class PileEditFragment : Fragment() {
     }
 
     private fun addPile() {
-        val name = pileName.text.toString()
+        val name = pileName.string
         if (name.isEmpty()) {
             pileNameLayout.error = "You need to enter a name"
         } else {

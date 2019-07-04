@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="mainBackgroundColor" format="reference"/>
+    <attr name="mainBackgroundColorLight" format="reference"/>
     <attr name="mainHeaderTextColor" format="reference"/>
     <attr name="mainEditTextColorHint" format="reference"/>
     <attr name="mainTextColor" format="reference"/>

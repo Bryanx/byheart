@@ -107,54 +107,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rehearsal_memory"
-            android:layout_height="65dp"
-            android:layout_width="match_parent"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rehearsal_cards">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/cardBtnCorrect"
-                android:layout_width="@dimen/fab_size"
-                android:layout_height="@dimen/fab_size"
-                app:elevation="0dp"
-                android:src="@drawable/ic_done_black_24dp"
-                app:backgroundTint="?mainBackgroundColorLight"
-                android:tint="@color/green"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline" app:layout_constraintTop_toTopOf="parent"
-        />
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/cardBtnFalse"
-                android:layout_width="@dimen/fab_size"
-                android:layout_height="@dimen/fab_size"
-                app:elevation="0dp"
-                android:src="@drawable/ic_close_black_24dp"
-                app:backgroundTint="?mainBackgroundColorLight"
-                android:tint="@color/red"
-                android:layout_marginStart="32dp"
-                app:layout_constraintStart_toStartOf="@+id/guideline" app:layout_constraintTop_toTopOf="parent"
-        />
-        <androidx.constraintlayout.widget.Guideline
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".5"
-                android:id="@+id/guideline"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rehearsal_multiple_choice"
-            android:layout_width="0dp"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/rehearsal_cards"
-            app:layout_constraintEnd_toEndOf="@+id/rehearsal_cards"
-            app:layout_constraintTop_toBottomOf="@+id/rehearsal_cards" app:layout_constraintBottom_toBottomOf="parent">
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

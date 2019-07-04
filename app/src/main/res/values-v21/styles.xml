@@ -7,7 +7,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="mainBackgroundColor">@color/white</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="mainBackgroundColorLight">@color/grey_200</item>
+        <item name="colorAccent">@color/colorPrimary</item>
         <item name="mainHeaderTextColor">@color/black</item>
         <item name="mainEditTextColorHint">@color/grey_400</item>
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Light</item>
@@ -21,6 +22,7 @@
     <style name="AppThemeDark" parent="AppTheme">
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="mainBackgroundColor">@color/black</item>
+        <item name="mainBackgroundColorLight">@color/grey_800</item>
         <item name="mainHeaderTextColor">@color/white</item>
         <item name="mainEditTextColorHint">@color/grey_600</item>
         <item name="mainTextColor">@color/grey_600</item>

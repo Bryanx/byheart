@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
+import com.example.byheart.shared.Preferences.FIRST_START
+import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,13 +16,21 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val darkMode = Preferences.read(DARK_MODE, false)
+        handleFirstStart()
+        val darkMode = Preferences.read(DARK_MODE)
         if (darkMode) setTheme(R.style.AppThemeDark)
         else setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         supportFragmentManager.startFragment(PileFragment())
         toolbar.setNavigationOnClickListener { onBackPressed() }
+    }
+
+    private fun handleFirstStart() {
+        if (Preferences.read(FIRST_START)) {
+            Preferences.write(FIRST_START, false)
+            Preferences.write(REHEARSAL_MEMORY, true)
+        }
     }
 
     override fun onBackPressed() {
