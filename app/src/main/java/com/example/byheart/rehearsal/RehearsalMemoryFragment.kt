@@ -30,9 +30,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 if (Preferences.read(REHEARSAL_PRONOUNCE)) pronounceAnswer()
                 btnContinue.visibility = VISIBLE
                 flipCard()
-                handler.postDelayed({
-                    nextQuestionWithButtons()
-                }, 5000)
+                handler.postDelayed({ nextQuestionWithButtons() }, 5000)
             }
         }
         btnContinue.setOnClickListener {

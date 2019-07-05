@@ -1,6 +1,7 @@
 package com.example.byheart.pile
 
 import android.content.Intent
+import android.content.Intent.*
 import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
@@ -59,7 +60,8 @@ class PileFragment : Fragment(), IOnBackPressed {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_dark_mode -> {
             Preferences.toggle(DARK_MODE)
-            startActivity(Intent(activity!!, MainActivity::class.java)).run { true }
+            startNewMainActivity((activity as MainActivity), MainActivity::class.java)
+            true
         }
         R.id.action_settings -> {
             true

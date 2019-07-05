@@ -15,6 +15,7 @@ import android.view.*
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -120,6 +121,16 @@ fun EditText.setLineColor(color: Int) {
     if (Build.VERSION.SDK_INT >= 21) {
         this.backgroundTintList = ColorStateList.valueOf(context.color(color))
     }
+}
+
+fun Button.setBackgroundTint(color: Int) {
+    if (Build.VERSION.SDK_INT >= 21) {
+        this.backgroundTintList = ColorStateList.valueOf(context.color(color))
+    }
+}
+
+fun Button.setTxtColor(color: Int) {
+    this.setTextColor(context.color(color))
 }
 
 fun Activity?.hideKeyboard() {

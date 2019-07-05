@@ -59,7 +59,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addEventHandlers()
         addVoiceButton()
     }
 
@@ -102,7 +101,10 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                     .setPositiveButton("Ok") { _, _ -> }
                     .create()
                     .show()
-                else hideOtherViews(item)
+                else {
+                    hideOtherViews(item)
+                    fragmentManager?.startFragment(RehearsalMultipleChoiceFragment())
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -139,9 +141,14 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                 val tempCards = it.toMutableList()
                 if (Preferences.read(REHEARSAL_SHUFFLE)) tempCards.shuffle()
                 cards = tempCards
+                doAfterGetData()
             }
             updateView()
         })
+    }
+
+    open fun doAfterGetData() {
+        addEventHandlers()
     }
 
     open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
