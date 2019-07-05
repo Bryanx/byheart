@@ -4,9 +4,11 @@ import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.ColorFilter
 import android.graphics.PorterDuff
+import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -26,6 +28,7 @@ import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_rehearsal_typed.*
 
 // Easily inflate view groups
 fun ViewGroup.inflate(layoutRes: Int): View {
@@ -110,6 +113,21 @@ fun ObjectAnimator.onAnimateEnd(args: () -> Unit) {
         override fun onAnimationCancel(animation: Animator) {}
         override fun onAnimationRepeat(animation: Animator) {}
     })
+}
+
+fun String.equalsIgnoreCase(string: String): Boolean {
+    return this.toLowerCase() == string.toLowerCase()
+}
+
+fun EditText.setLineColor(context: Context, color: Int) {
+    if (Build.VERSION.SDK_INT >= 21) {
+        this.backgroundTintList = ColorStateList.valueOf(context.color(color))
+    }
+}
+
+fun Activity?.hideKeyboard() {
+    val inputManager = this?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
 // property extensions

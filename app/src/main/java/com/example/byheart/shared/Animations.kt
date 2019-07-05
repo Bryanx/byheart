@@ -11,15 +11,13 @@ import android.animation.ObjectAnimator
 // slide the view from below itself to the current position
 fun moveX(view: View, from: Float, to: Float): TranslateAnimation {
     view.visibility = View.VISIBLE
-    val animate = TranslateAnimation(
-        from, // fromXDelta
-        to, // toXDelta
-        0f,
-        0f
-    )
-    animate.duration = 200
-    animate.fillAfter = true
-    animate.interpolator = AccelerateDecelerateInterpolator()
+
+    val animate: TranslateAnimation = TranslateAnimation(from, to, 0f, 0f).apply {
+        duration = 200
+        fillAfter = true
+        interpolator = AccelerateDecelerateInterpolator()
+    }
+
     view.startAnimation(animate)
     return animate
 }

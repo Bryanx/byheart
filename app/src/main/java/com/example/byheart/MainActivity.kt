@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
-import com.example.byheart.shared.Preferences.FIRST_START
+import com.example.byheart.shared.Preferences.NOT_FIRST_START
 import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,13 +27,9 @@ class MainActivity : BaseActivity() {
     }
 
     private fun handleFirstStart() {
-        if (Preferences.read(FIRST_START)) {
-            Preferences.write(FIRST_START, false)
+        if (!Preferences.read(NOT_FIRST_START)) {
+            Preferences.write(NOT_FIRST_START, true)
             Preferences.write(REHEARSAL_MEMORY, true)
         }
-    }
-
-    override fun onBackPressed() {
-        supportFragmentManager.startFragment(PileFragment())
     }
 }

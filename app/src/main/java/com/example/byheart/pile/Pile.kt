@@ -7,7 +7,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Pile(@ColumnInfo(name = "name") val name: String?) : Parcelable {
+data class Pile(@ColumnInfo(name = "name") var name: String?) : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
 

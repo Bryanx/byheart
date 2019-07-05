@@ -19,7 +19,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class PileEditFragment : Fragment() {
+class PileEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var layout: View
     private lateinit var pileViewModel: PileViewModel
@@ -50,10 +50,7 @@ class PileEditFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_confirm_edit_pile -> {
-            addPile()
-            true
-        }
+        R.id.action_confirm_edit_pile -> addPile().run { true }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -84,5 +81,9 @@ class PileEditFragment : Fragment() {
     private fun getBundle() {
         val activity = activity as MainActivity
         if (activity.pileId.isNotEmpty()) pileName.setText(activity.pileName)
+    }
+
+    override fun onBackPressed(): Boolean {
+        return fragmentManager?.startFragment(PileFragment()).run { true }
     }
 }

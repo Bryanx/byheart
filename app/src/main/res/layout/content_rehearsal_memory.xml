@@ -54,6 +54,7 @@
                 android:id="@+id/ivPronounce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:src="@drawable/ic_volume_up_black_24dp"
                 android:tint="@color/grey_500"
                 android:layout_marginTop="150dp"

@@ -16,18 +16,16 @@ import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.pile.edit.PileEditFragment
-import com.example.byheart.rehearsal.RehearsalFragment
 import com.example.byheart.rehearsal.RehearsalMemoryFragment
 import com.example.byheart.rehearsal.RehearsalMultipleChoiceFragment
 import com.example.byheart.rehearsal.RehearsalTypedFragment
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
-import com.example.byheart.shared.Preferences.REHEARSAL_MULTIPLE_CHOICE
 import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_card.*
 
 
-class CardFragment : Fragment() {
+class CardFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cardViewModel: CardViewModel
     private lateinit var pileViewModel: PileViewModel
@@ -57,14 +55,8 @@ class CardFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_edit_pile -> {
-            fragmentManager?.startFragment(PileEditFragment())
-            true
-        }
-        R.id.action_delete_pile -> {
-            startDeleteDialog()
-            true
-        }
+        R.id.action_edit_pile -> fragmentManager?.startFragment(PileEditFragment()).run { true }
+        R.id.action_delete_pile -> startDeleteDialog().run { true }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -130,5 +122,9 @@ class CardFragment : Fragment() {
 
     fun removeCard(card: Card) {
         cardViewModel.delete(card)
+    }
+
+    override fun onBackPressed(): Boolean {
+        return fragmentManager?.startFragment(PileFragment()).run { true }
     }
 }

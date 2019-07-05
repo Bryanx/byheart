@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 object Preferences {
     private var pref: SharedPreferences? = null
-    val FIRST_START = "FIRST_START"
+    val NOT_FIRST_START = "NOT_FIRST_START"
     val DARK_MODE = "DARK_MODE"
     val REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
     val REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"

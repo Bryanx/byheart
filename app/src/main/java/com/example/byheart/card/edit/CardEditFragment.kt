@@ -9,13 +9,15 @@ import com.example.byheart.R
 import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
+import com.example.byheart.pile.PileFragment
+import com.example.byheart.shared.IOnBackPressed
 import com.example.byheart.shared.addToolbar
 import com.example.byheart.shared.focus
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.content_card_edit.*
 
 
-class CardEditFragment : Fragment() {
+class CardEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cardViewModel: CardViewModel
     private lateinit var layout: View
@@ -42,12 +44,10 @@ class CardEditFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_confirm_edit_pile -> {
             addCard()
-            fragmentManager?.startFragment(CardFragment())
-            true
+            fragmentManager?.startFragment(CardFragment()).run { true }
         }
         R.drawable.ic_nav_back -> {
-            fragmentManager?.startFragment(CardFragment())
-            true
+            fragmentManager?.startFragment(CardFragment()).run { true }
         }
         else -> super.onOptionsItemSelected(item)
     }
@@ -69,5 +69,9 @@ class CardEditFragment : Fragment() {
             addCard()
             fragmentManager?.startFragment(CardEditFragment())
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        return fragmentManager?.startFragment(CardFragment()).run { true }
     }
 }

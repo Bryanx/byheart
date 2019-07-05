@@ -3,12 +3,11 @@ package com.example.byheart.rehearsal
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.graphics.PorterDuff
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.speech.tts.TextToSpeech
 import android.view.*
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,16 +18,14 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.shared.*
-import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
-import com.example.byheart.shared.Preferences.REHEARSAL_PRONOUNCE
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
-import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_rehearsal.*
+import java.lang.Exception
 import java.util.*
 
 
-abstract class RehearsalFragment : Fragment() {
+abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     protected lateinit var textToSpeech: TextToSpeech
     protected lateinit var layout: View
@@ -38,6 +35,9 @@ abstract class RehearsalFragment : Fragment() {
     protected lateinit var flipIn: AnimatorSet
     protected lateinit var flipOut: AnimatorSet
     protected lateinit var menu: Menu
+    protected lateinit var correctSound: MediaPlayer
+    protected lateinit var wrongSound: MediaPlayer
+    protected val handler: Handler = Handler()
     protected var backOfCardIsVisible = false
     protected var cardIndex = 0
 
@@ -53,6 +53,8 @@ abstract class RehearsalFragment : Fragment() {
         }
         textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
         textToSpeech.language = Locale.UK
+        correctSound = MediaPlayer.create(context, R.raw.correct)
+        wrongSound = MediaPlayer.create(context, R.raw.incorrect)
         return layout
     }
 
@@ -75,29 +77,24 @@ abstract class RehearsalFragment : Fragment() {
         return when (item.itemId) {
             R.id.rehearsal_restart -> restartRehearsal()
             R.id.rehearsal_pronounce -> {
-                toggleMenuItem(item, item.getName(resources))
-                true
+                toggleMenuItem(item, item.getName(resources)).run { true }
             }
             R.id.rehearsal_shuffle -> {
                 toggleMenuItem(item, item.getName(resources))
                 shuffleCards(item.isChecked)
-                updateView()
-                true
+                updateView().run { true }
             }
             R.id.rehearsal_reverse -> {
                 toggleMenuItem(item, item.getName(resources))
-                updateView()
-                true
+                updateView().run { true }
             }
             R.id.rehearsal_typed -> {
                 hideOtherViews(item)
-                fragmentManager?.startFragment(RehearsalTypedFragment())
-                true
+                fragmentManager?.startFragment(RehearsalTypedFragment()).run { true }
             }
             R.id.rehearsal_memory -> {
                 hideOtherViews(item)
-                fragmentManager?.startFragment(RehearsalMemoryFragment())
-                true
+                fragmentManager?.startFragment(RehearsalMemoryFragment()).run { true }
             }
             R.id.rehearsal_multiple_choice -> {
                 if (cards.size < 5) context!!.dialog()
@@ -106,7 +103,7 @@ abstract class RehearsalFragment : Fragment() {
                     .setPositiveButton("Ok") { _, _ -> }
                     .create()
                     .show()
-                else hideOtherViews(item)
+                else hideOtherViews(item).run { true }
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -156,7 +153,8 @@ abstract class RehearsalFragment : Fragment() {
 
     private fun addVoiceButton() {
         ivPronounce.setOnClickListener {
-            textToSpeech.pronounce(when {
+            textToSpeech.pronounce(
+                when {
                     backOfCardIsVisible -> cardBack.string
                     else -> cardFront.string
                 }
@@ -182,8 +180,10 @@ abstract class RehearsalFragment : Fragment() {
     }
 
     protected fun pronounceAnswer() {
-        textToSpeech.pronounce(cardBack.text.toString())
+        textToSpeech.pronounce(cardBack.string)
     }
+
+    private lateinit var dk: Card
 
     protected fun nextQuestion(doAfter: () -> Unit) {
         val screenWidth = getScreenWidth(activity?.windowManager)
@@ -212,25 +212,29 @@ abstract class RehearsalFragment : Fragment() {
         cardFront.rotationY = 0F
         backOfCardIsVisible = false
         cardBack.alpha = 0F
-        Handler().postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 200)
+        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 200)
     }
 
     protected fun flipCard() {
         flipY(ivPronounce, 0f, 90f).onAnimateEnd { flipY(ivPronounce, -90f, 0f) }
         backOfCardIsVisible = if (!backOfCardIsVisible) {
-            Handler().postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 150)
+            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 150)
             flipIn.setTarget(cardFront)
             flipOut.setTarget(cardBack)
             flipIn.start()
             flipOut.start()
             true
         } else {
-            Handler().postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 150)
+            handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 150)
             flipIn.setTarget(cardBack)
             flipOut.setTarget(cardFront)
             flipIn.start()
             flipOut.start()
             false
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        return fragmentManager?.startFragment(CardFragment()).run { true }
     }
 }

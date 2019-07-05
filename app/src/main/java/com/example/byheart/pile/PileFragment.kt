@@ -3,7 +3,9 @@ package com.example.byheart.pile
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,16 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.pile.edit.PileEditFragment
-import com.example.byheart.shared.Preferences
+import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.DARK_MODE
-import com.example.byheart.shared.addToolbar
-import com.example.byheart.shared.getDeviceWidth
-import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.content_piles.view.*
 
 
-class PileFragment : Fragment() {
+class PileFragment : Fragment(), IOnBackPressed {
 
+    private var backPressedTwice = false
     private lateinit var layout: View
     private lateinit var pileViewModel: PileViewModel
 
@@ -59,8 +59,7 @@ class PileFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_dark_mode -> {
             Preferences.toggle(DARK_MODE)
-            startActivity(Intent(activity!!, MainActivity::class.java))
-            true
+            startActivity(Intent(activity!!, MainActivity::class.java)).run { true }
         }
         R.id.action_settings -> {
             true
@@ -78,5 +77,13 @@ class PileFragment : Fragment() {
             activity.pileId = ""
             activity.supportFragmentManager.startFragment(PileEditFragment())
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        if (backPressedTwice) return false
+        this.backPressedTwice = true
+        Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({ backPressedTwice = false }, 2000)
+        return true
     }
 }
