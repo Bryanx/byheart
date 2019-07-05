@@ -88,7 +88,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintVertical_bias="0.5" android:id="@+id/textInputLayout">
             <EditText
-                    android:id="@+id/etRehearsalInput"
+                    android:id="@+id/etInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"

@@ -1,7 +1,6 @@
 package com.example.byheart.rehearsal
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -50,5 +49,12 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     private fun buttonsAreEnabled(bool: Boolean) {
         cardBtnCorrect.isEnabled = bool
         cardBtnFalse.isEnabled = bool
+    }
+
+    override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
+        btnContinue.visibility = GONE
+        return super.onRestart(true) {
+            buttonsAreEnabled(true)
+        }
     }
 }

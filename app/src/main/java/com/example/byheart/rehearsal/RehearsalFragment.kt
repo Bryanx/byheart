@@ -21,7 +21,6 @@ import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
 import kotlinx.android.synthetic.main.content_rehearsal.*
-import java.lang.Exception
 import java.util.*
 
 
@@ -48,7 +47,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         pileId = (activity as MainActivity).pileId
         getCards()
         loadAnimations()
-        addToolbar(activity!!, true, "", true) {
+        addToolbar(true, "", true) {
             fragmentManager?.startFragment(CardFragment())
         }
         textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
@@ -75,18 +74,18 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.rehearsal_restart -> restartRehearsal()
+            R.id.rehearsal_restart -> onRestart(true, null)
             R.id.rehearsal_pronounce -> {
                 toggleMenuItem(item, item.getName(resources)).run { true }
             }
             R.id.rehearsal_shuffle -> {
                 toggleMenuItem(item, item.getName(resources))
                 shuffleCards(item.isChecked)
-                updateView().run { true }
+                onRestart(false, null)
             }
             R.id.rehearsal_reverse -> {
                 toggleMenuItem(item, item.getName(resources))
-                updateView().run { true }
+                onRestart(false, null)
             }
             R.id.rehearsal_typed -> {
                 hideOtherViews(item)
@@ -103,7 +102,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                     .setPositiveButton("Ok") { _, _ -> }
                     .create()
                     .show()
-                else hideOtherViews(item).run { true }
+                else hideOtherViews(item)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -112,6 +111,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     // Toggles the other items in the menu, and shows the corresponding view.
     private fun hideOtherViews(item: MenuItem): Boolean {
+        handler.removeMessages(0)
         listOf(R.id.rehearsal_typed, R.id.rehearsal_multiple_choice, R.id.rehearsal_memory).forEach { id ->
             if (id == item.itemId) {
                 if (!item.isChecked) toggleMenuItem(item, item.getName(resources))
@@ -144,10 +144,14 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         })
     }
 
-    private fun restartRehearsal(): Boolean {
-        cardIndex = 0
+    open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
+        handler.removeMessages(0)
+        if (startFromBeginning) cardIndex = 0
         if (backOfCardIsVisible) flipCard()
-        Handler().postDelayed(({ updateView() }), resources.getInteger(R.integer.half_flip_duration).toLong())
+        Handler().postDelayed(({
+            updateView()
+            doAfter?.invoke()
+        }), resources.getInteger(R.integer.half_flip_duration).toLong())
         return true
     }
 
@@ -182,8 +186,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected fun pronounceAnswer() {
         textToSpeech.pronounce(cardBack.string)
     }
-
-    private lateinit var dk: Card
 
     protected fun nextQuestion(doAfter: () -> Unit) {
         val screenWidth = getScreenWidth(activity?.windowManager)

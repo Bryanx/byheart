@@ -11,10 +11,8 @@ import android.graphics.PorterDuff
 import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -55,25 +53,24 @@ fun Animation.onAnimateEnd(args: () -> Unit) {
 fun EditText.focus() {
     this.requestFocus()
     val inputMethodManager = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    inputMethodManager!!.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    inputMethodManager?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
 
 // Adds a toolbar to a fragment
 fun Fragment.addToolbar(
-    activity: Activity,
     hasBackButton: Boolean,
     title: String,
     hasOptions: Boolean,
     onNavClick: (() -> Unit)?
 ) {
     val mainAct = (activity as MainActivity)
-    mainAct.supportActionBar?.setDisplayHomeAsUpEnabled(hasBackButton)
-    mainAct.supportActionBar?.setDisplayShowHomeEnabled(hasBackButton)
-    mainAct.supportActionBar?.title = title
-    this.setHasOptionsMenu(hasOptions)
-    if (onNavClick != null) {
-        activity.toolbar.setNavigationOnClickListener { onNavClick() }
+    mainAct.supportActionBar?.apply {
+        setDisplayHomeAsUpEnabled(hasBackButton)
+        setDisplayShowHomeEnabled(hasBackButton)
+        this.title = title
     }
+    this.setHasOptionsMenu(hasOptions)
+    onNavClick?.let { mainAct.toolbar.setNavigationOnClickListener { onNavClick() } }
 }
 
 // Returns an attribute
@@ -84,7 +81,7 @@ fun Context.getAttr(id: Int): Int {
 }
 
 fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode) {
-    this.setColorFilter(context!!.color(id), blendMode)
+    this.setColorFilter(context.color(id), blendMode)
 }
 
 // Returns a color
@@ -119,7 +116,7 @@ fun String.equalsIgnoreCase(string: String): Boolean {
     return this.toLowerCase() == string.toLowerCase()
 }
 
-fun EditText.setLineColor(context: Context, color: Int) {
+fun EditText.setLineColor(color: Int) {
     if (Build.VERSION.SDK_INT >= 21) {
         this.backgroundTintList = ColorStateList.valueOf(context.color(color))
     }
@@ -128,6 +125,17 @@ fun EditText.setLineColor(context: Context, color: Int) {
 fun Activity?.hideKeyboard() {
     val inputManager = this?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+}
+
+fun EditText.onEnter(action: () -> Boolean) {
+    this.setOnKeyListener(object : View.OnKeyListener {
+        override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+                return action()
+            }
+            return false
+        }
+    })
 }
 
 // property extensions

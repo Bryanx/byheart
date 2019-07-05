@@ -1,9 +1,6 @@
 package com.example.byheart.rehearsal
 
 import android.os.Bundle
-import android.os.Handler
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +8,7 @@ import android.widget.Button
 import com.example.byheart.R
 import com.example.byheart.shared.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.*
+import kotlinx.android.synthetic.main.content_rehearsal_typed.cardBack
 
 
 class RehearsalTypedFragment : RehearsalFragment() {
@@ -24,26 +22,23 @@ class RehearsalTypedFragment : RehearsalFragment() {
     }
 
     override fun addEventHandlers() {
-        etRehearsalInput.setOnKeyListener(object : View.OnKeyListener {
-            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
-                    if (etRehearsalInput.text.isEmpty() || enterCounter > 1) return false
-                    else if (enterCounter == 1) {
-                        enterCounter += 1
-                        skipWaitingGoToNextQuestion()
-                        return false
-                    } else if (enterCounter == 0) {
-                        enterCounter += 1
-                        onEnter()
-                        return true
-                    }
+        etInput.onEnter {
+            return@onEnter when {
+                etInput.text.isEmpty() || enterCounter > 1 -> false
+                enterCounter == 1 -> {
+                    enterCounter += 1
+                    skipWaitingGoToNextQuestion().run { false }
                 }
-                return false
+                enterCounter == 0 -> {
+                    enterCounter += 1
+                    onEnter().run { true }
+                }
+                else -> false
             }
-        })
+        }
         btnGo.setOnClickListener {
             when {
-                etRehearsalInput.text.isEmpty() || enterCounter > 1 -> return@setOnClickListener
+                etInput.text.isEmpty() || enterCounter > 1 -> return@setOnClickListener
                 (it as Button).string.isEmpty() -> skipWaitingGoToNextQuestion()
                 else -> onEnter()
             }
@@ -54,13 +49,13 @@ class RehearsalTypedFragment : RehearsalFragment() {
         btnGo.text = ""
         btnGo.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_forward_white_24dp, 0, 0, 0)
         flipCard()
-        if (etRehearsalInput.string.equalsIgnoreCase(cardBack.string)) {
+        if (etInput.string.equalsIgnoreCase(cardBack.string)) {
             correctSound.start()
-            context?.let { etRehearsalInput.setLineColor(it, R.color.green) }
+            etInput.setLineColor(R.color.green)
             handler.postDelayed({ nextQuestionWithButtons() }, 1000)
         } else {
             wrongSound.start()
-            context?.let { etRehearsalInput.setLineColor(it, R.color.red) }
+            etInput.setLineColor(R.color.red)
             handler.postDelayed({ nextQuestionWithButtons() }, 5000)
         }
         if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) pronounceAnswer()
@@ -74,17 +69,28 @@ class RehearsalTypedFragment : RehearsalFragment() {
 
     private fun nextQuestionWithButtons() {
         nextQuestion {
-            btnGo.text = "GO"
-            btnGo.setCompoundDrawablesWithIntrinsicBounds( 0, 0, 0, 0)
-            etRehearsalInput.text = null
-            context?.let { etRehearsalInput.setLineColor(it, R.color.colorPrimary) }
-            enterCounter = 0
+            resetViews()
             buttonsAreEnabled(true)
         }
     }
 
     private fun buttonsAreEnabled(bool: Boolean) {
         btnGo.isEnabled = bool
+    }
+
+    private fun resetViews() {
+        btnGo.text = "GO"
+        btnGo.setCompoundDrawablesWithIntrinsicBounds( 0, 0, 0, 0)
+        etInput.text = null
+        etInput.setLineColor(R.color.colorPrimary)
+        enterCounter = 0
+    }
+
+    override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
+        resetViews()
+        return super.onRestart(true) {
+            buttonsAreEnabled(true)
+        }
     }
 
     override fun onDestroyView() {

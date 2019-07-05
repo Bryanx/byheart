@@ -34,11 +34,11 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
         if ((activity as MainActivity).pileId.isNotEmpty()) {
-            addToolbar(activity!!, true, "Edit pile", true) {
+            addToolbar(true, "Edit pile", true) {
                     fragmentManager?.startFragment(CardFragment())
             }
         } else {
-            addToolbar(activity!!, true, "Create pile", true) {
+            addToolbar(true, "Create pile", true) {
                 fragmentManager?.startFragment(PileFragment())
             }
         }

@@ -25,7 +25,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
-        addToolbar(activity!!, true, "Add card", true) {
+        addToolbar(true, "Add card", true) {
             fragmentManager?.startFragment(CardFragment())
         }
         return layout

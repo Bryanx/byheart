@@ -37,7 +37,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         layout = inflater.inflate(R.layout.content_card, container, false)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
         pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
-        addToolbar(activity!!, true, "", true) {
+        addToolbar(true, "", true) {
             fragmentManager?.startFragment(PileFragment())
         }
         return layout
