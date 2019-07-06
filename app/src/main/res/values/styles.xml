@@ -9,6 +9,7 @@
         <item name="mainBackgroundColorLighter">@color/grey_100</item>
         <item name="mainBackgroundColorLight">@color/grey_200</item>
         <item name="mainHeaderTextColor">@color/black</item>
+        <item name="mainCard">@drawable/card_light</item>
         <item name="mainEditTextColorHint">@color/grey_400</item>
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:textColor">@color/grey_700</item>
@@ -24,6 +25,7 @@
         <item name="mainBackgroundColor">@color/black</item>
         <item name="mainBackgroundColorLighter">@color/grey_900</item>
         <item name="mainBackgroundColorLight">@color/grey_800</item>
+        <item name="mainCard">@drawable/card_dark</item>
         <item name="mainHeaderTextColor">@color/white</item>
         <item name="mainEditTextColorHint">@color/grey_600</item>
         <item name="mainTextColor">@color/grey_600</item>
@@ -73,12 +75,12 @@
         <item name="android:textSize">@dimen/edit_text_size</item>
         <item name="backgroundTint">@color/grey_500</item>
     </style>
-    <style name="ButtonMultipleChoice">
+    <style name="ButtonMultipleChoice" parent="Widget.AppCompat.Button.Borderless">
         <item name="layout_constraintWidth_percent">.4</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">65dp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="backgroundTint">?mainBackgroundColorLighter</item>
+        <item name="android:background">?mainBackgroundColorLighter</item>
     </style>
 
 </resources>

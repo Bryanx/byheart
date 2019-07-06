@@ -47,9 +47,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         pileId = (activity as MainActivity).pileId
         getCards()
         loadAnimations()
-        addToolbar(true, "", true) {
-            fragmentManager?.startFragment(CardFragment())
-        }
+        addToolbar(true, "", true)
         textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
         textToSpeech.language = Locale.UK
         correctSound = MediaPlayer.create(context, R.raw.correct)
@@ -155,6 +153,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         handler.removeMessages(0)
         if (startFromBeginning) cardIndex = 0
         if (backOfCardIsVisible) flipCard()
+        if (Preferences.read(REHEARSAL_SHUFFLE)) cards.shuffle()
         Handler().postDelayed(({
             updateView()
             doAfter?.invoke()
@@ -244,6 +243,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onBackPressed(): Boolean {
+        handler.removeMessages(0) // clear timers
         return fragmentManager?.startFragment(CardFragment()).run { true }
     }
 }

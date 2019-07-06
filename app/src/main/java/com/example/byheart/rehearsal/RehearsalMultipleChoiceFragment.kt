@@ -1,7 +1,5 @@
 package com.example.byheart.rehearsal
 
-import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +10,7 @@ import com.example.byheart.card.Card
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
+import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.cardBack
 
 
 class RehearsalMultipleChoiceFragment : RehearsalFragment() {
@@ -26,11 +25,11 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
 
     override fun doAfterGetData() {
         buttons = mutableListOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4)
-        fillButtons()
+        resetViews()
         addEventHandlers()
     }
 
-    private fun fillButtons() {
+    private fun resetViews() {
         val tempCards = cards.toMutableList()
         tempCards.removeAt(cardIndex) // remove answer from custom list
         tempCards.shuffle()
@@ -40,11 +39,19 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
         tempButtons.forEachIndexed { i, btn ->
             addAnswerToButton(i, btn, tempCards) // add random answers
         }
+        resetButtons()
     }
 
     private fun addAnswerToButton(i: Int, btn: Button, tempCards: List<Card>) {
         if (Preferences.read(REHEARSAL_REVERSE)) btn.text = tempCards[i].question
         else btn.text = tempCards[i].answer
+    }
+
+    private fun resetButtons() {
+        buttonsAreEnabled(true)
+        buttons.forEach {
+            it.setTextColor(context?.getAttr(R.attr.mainTextColor)!!)
+        }
     }
 
     override fun addEventHandlers() {
@@ -54,12 +61,12 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                     buttonsAreEnabled(false)
                     correctSound.start()
                     if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) pronounceAnswer()
-                    btn.setButtonColors(R.color.green_600, R.color.white)
+                    btn.setTxtColor(R.color.green)
                     flipCard()
                     handler.postDelayed({ nextQuestionWithButtons() }, 5000)
                 } else {
                     wrongSound.start()
-                    btn.setButtonColors(R.color.red, R.color.white)
+                    btn.setTxtColor(R.color.red)
                     //TODO: second try? unlimited tries?
                 }
             }
@@ -67,31 +74,16 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
     }
 
     private fun nextQuestionWithButtons() {
-        nextQuestion {
-            buttonsAreEnabled(true)
-            fillButtons()
-            buttons.forEach {
-                it.setButtonColorsRaw(
-                    context?.getAttr(R.attr.mainBackgroundColorLighter)!!,
-                    context?.getAttr(R.attr.mainTextColor)!!
-                )
-            }
-        }
+        nextQuestion { resetViews() }
     }
 
     private fun buttonsAreEnabled(bool: Boolean) {
         listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { it.isEnabled = bool }
     }
 
-    private fun Button.setButtonColors(backgroundColor: Int, textColor: Int) {
-        this.setBackgroundTint(backgroundColor)
-        this.setTxtColor(textColor)
-    }
-
-    private fun Button.setButtonColorsRaw(backgroundColor: Int, textColor: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            this.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+    override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
+        return super.onRestart(true) {
+            resetViews()
         }
-        this.setTextColor(textColor)
     }
 }

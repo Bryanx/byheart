@@ -9,10 +9,8 @@ import com.example.byheart.R
 import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
-import com.example.byheart.pile.PileFragment
 import com.example.byheart.shared.IOnBackPressed
 import com.example.byheart.shared.addToolbar
-import com.example.byheart.shared.focus
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.content_card_edit.*
 
@@ -25,9 +23,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
-        addToolbar(true, "Add card", true) {
-            fragmentManager?.startFragment(CardFragment())
-        }
+        addToolbar(true, "Add card", true)
         return layout
     }
 

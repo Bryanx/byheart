@@ -46,7 +46,7 @@ class PileFragment : Fragment(), IOnBackPressed {
                 outRect.set(halfSpace, halfSpace, halfSpace, halfSpace)
             }
         })
-        addToolbar(false, resources.getString(R.string.app_name), true, null)
+        addToolbar(false, resources.getString(R.string.app_name), true)
         addEventHandlers(adapter)
         return layout
     }

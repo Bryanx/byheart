@@ -1,9 +1,7 @@
 package com.example.byheart.pile.edit
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.byheart.MainActivity
@@ -34,13 +32,9 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
         if ((activity as MainActivity).pileId.isNotEmpty()) {
-            addToolbar(true, "Edit pile", true) {
-                    fragmentManager?.startFragment(CardFragment())
-            }
+            addToolbar(true, "Edit pile", true)
         } else {
-            addToolbar(true, "Create pile", true) {
-                fragmentManager?.startFragment(PileFragment())
-            }
+            addToolbar(true, "Create pile", true)
         }
         pileName.focus()
     }

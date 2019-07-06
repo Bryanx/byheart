@@ -61,8 +61,7 @@ fun EditText.focus() {
 fun Fragment.addToolbar(
     hasBackButton: Boolean,
     title: String,
-    hasOptions: Boolean,
-    onNavClick: (() -> Unit)?
+    hasOptions: Boolean
 ) {
     val mainAct = (activity as MainActivity)
     mainAct.supportActionBar?.apply {
@@ -71,7 +70,7 @@ fun Fragment.addToolbar(
         this.title = title
     }
     this.setHasOptionsMenu(hasOptions)
-    onNavClick?.let { mainAct.toolbar.setNavigationOnClickListener { onNavClick() } }
+    if (hasBackButton) mainAct.toolbar.setNavigationOnClickListener { mainAct.onBackPressed() }
 }
 
 // Returns an attribute

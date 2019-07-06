@@ -7,4 +7,5 @@
     <attr name="mainEditTextColorHint" format="reference"/>
     <attr name="mainTextColor" format="reference"/>
     <attr name="activeActionBarTheme" format="reference"/>
+    <attr name="mainCard" format="reference"/>
 </resources>
