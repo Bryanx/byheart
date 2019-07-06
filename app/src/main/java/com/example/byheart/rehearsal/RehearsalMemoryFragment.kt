@@ -28,9 +28,13 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 if (it == cardBtnCorrect) correctSound.start()
                 else wrongSound.start()
                 if (Preferences.read(REHEARSAL_PRONOUNCE)) pronounceAnswer()
-                btnContinue.visibility = VISIBLE
                 flipCard()
-                handler.postDelayed({ nextQuestionWithButtons() }, 5000)
+                if (button == cardBtnCorrect) {
+                    handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
+                } else {
+                    btnContinue.visibility = VISIBLE
+                    handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
+                }
             }
         }
         btnContinue.setOnClickListener {

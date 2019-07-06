@@ -52,11 +52,11 @@ class RehearsalTypedFragment : RehearsalFragment() {
         if (etInput.string.equalsIgnoreCase(cardBack.string)) {
             correctSound.start()
             etInput.setLineColor(R.color.green)
-            handler.postDelayed({ nextQuestionWithButtons() }, 1000)
+            handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
         } else {
             wrongSound.start()
             etInput.setLineColor(R.color.red)
-            handler.postDelayed({ nextQuestionWithButtons() }, 5000)
+            handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
         }
         if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) pronounceAnswer()
     }

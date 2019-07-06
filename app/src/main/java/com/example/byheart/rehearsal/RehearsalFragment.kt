@@ -17,6 +17,8 @@ import com.example.byheart.R
 import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
+import com.example.byheart.pile.Pile
+import com.example.byheart.pile.PileFragment
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
@@ -244,6 +246,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         handler.removeMessages(0) // clear timers
-        return fragmentManager?.startFragment(CardFragment()).run { true }
+        context?.let {
+            it.dialog().setMessage("Are you sure you want to quit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { _, _ -> fragmentManager?.startFragment(CardFragment()) }
+            .setNegativeButton("No") { _, _ ->  }
+            .show()
+        }
+        return true
     }
 }
