@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -9,7 +11,7 @@
             android:id="@+id/pileNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
+            app:errorEnabled="false"
             android:hint="@string/pile_name"
             app:hintEnabled="false"
             android:layout_marginStart="16dp"
@@ -31,4 +33,4 @@
                 android:ems="10"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
