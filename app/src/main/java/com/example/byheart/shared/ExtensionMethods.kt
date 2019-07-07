@@ -148,6 +148,14 @@ fun EditText.onEnter(action: () -> Boolean) {
     })
 }
 
+fun Any.getAttr(name: String): Any? {
+    return this.javaClass.getMethod("get${name.initCaps()}").invoke(this)
+}
+
+fun String.initCaps(): String {
+    return this[0].toUpperCase() + this.substring(1, this.length).toLowerCase()
+}
+
 // property extensions
 
 // get viewname

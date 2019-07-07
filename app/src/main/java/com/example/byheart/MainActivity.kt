@@ -13,6 +13,7 @@ class MainActivity : BaseActivity() {
 
     var pileId: String = ""
     var pileName: String = ""
+    var cardId: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

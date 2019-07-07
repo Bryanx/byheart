@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.byheart.MainActivity
 import com.example.byheart.R
+import com.example.byheart.card.edit.CardEditFragment
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
 import com.example.byheart.shared.getAttr
+import com.example.byheart.shared.startFragment
 
 
 class CardListAdapter internal constructor(
@@ -69,6 +72,8 @@ class CardListAdapter internal constructor(
         cardFragment.removeCard(card)
         notifyItemRemoved(i)
     }
+
+    fun editItem(i: Int): Unit = cardFragment.startEditFragment(this.cards[i].id.toString())
 
     fun getContext(): Context = context
 

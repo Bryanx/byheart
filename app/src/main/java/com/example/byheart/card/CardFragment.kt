@@ -64,8 +64,10 @@ class CardFragment : Fragment(), IOnBackPressed {
         recyclerView.adapter = adapter
         val layoutManager = ScrollingLinearLayoutManager(layout.context)
         recyclerView.layoutManager = layoutManager
-        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(adapter))
-        itemTouchHelper.attachToRecyclerView(recyclerView)
+        val itemTouchHelper1 = ItemTouchHelper(SwipeLeftToDeleteCallback(adapter))
+        val itemTouchHelper2 = ItemTouchHelper(SwipeRightToEditCallback(adapter))
+        itemTouchHelper1.attachToRecyclerView(recyclerView)
+        itemTouchHelper2.attachToRecyclerView(recyclerView)
         return adapter
     }
 
@@ -76,6 +78,8 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addEventHandlers(adapter: CardListAdapter) {
+        btnAddCardPlaceholder.setOnClickListener { startEditFragment("") }
+        buttonAdd.setOnClickListener { startEditFragment("") }
         cardViewModel.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
             cards?.filter {
@@ -87,10 +91,6 @@ class CardFragment : Fragment(), IOnBackPressed {
                 buttonPlay.isEnabled = it.isNotEmpty()
             }
         })
-        btnAddCardPlaceholder.setOnClickListener {
-            (activity as MainActivity).pileId = pileId!!
-            fragmentManager?.startFragment(CardEditFragment())
-        }
         buttonPlay.setOnClickListener {
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(when {
@@ -99,10 +99,12 @@ class CardFragment : Fragment(), IOnBackPressed {
                 else -> RehearsalMultipleChoiceFragment()
             })
         }
-        buttonAdd.setOnClickListener {
-            (activity as MainActivity).pileId = pileId!!
-            fragmentManager?.startFragment(CardEditFragment())
-        }
+    }
+
+    fun startEditFragment(id: String) {
+        (activity as MainActivity).pileId = pileId!!
+        (activity as MainActivity).cardId = id
+        fragmentManager?.startFragment(CardEditFragment())
     }
 
     private fun startDeleteDialog() {

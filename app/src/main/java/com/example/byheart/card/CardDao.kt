@@ -1,10 +1,7 @@
 package com.example.byheart.card
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface CardDao {
@@ -19,6 +16,9 @@ interface CardDao {
 
     @Insert
     fun insert(card: Card)
+
+    @Update
+    fun update(card: Card)
 
     @Delete
     fun delete(card: Card)

@@ -28,10 +28,12 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
     fun insert(card: Card) = scope.launch(Dispatchers.IO) {
         repo.insert(card)
     }
+    fun update(card: Card) = scope.launch(Dispatchers.IO) {
+        repo.update(card)
+    }
 
     fun delete(card: Card) = scope.launch(Dispatchers.IO) {
         repo.delete(card)
-
     }
 
     override fun onCleared() {

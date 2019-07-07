@@ -31,12 +31,13 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
-        if ((activity as MainActivity).pileId.isNotEmpty()) {
-            addToolbar(true, "Edit pile", true)
-        } else {
-            addToolbar(true, "Create pile", true)
-        }
-        pileName.focus()
+        addToolbar(true, when {
+                (activity as MainActivity).pileId.isNotEmpty() -> "Edit pile"
+                else -> "Create pile"
+            }, true
+        )
+        etPileName.focus()
+        etPileName.onEnter { addPile().run { true } }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -49,11 +50,11 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addPile() {
-        val name = pileName.string
+        val name = etPileName.string
         if (name.isEmpty()) {
             pileNameLayout.error = "You need to enter a name"
         } else {
-            pileName.clearFocus()
+            etPileName.clearFocus()
             val pile = Pile(name)
             switchToNewPile(pile)
         }
@@ -74,7 +75,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     private fun getBundle() {
         val activity = activity as MainActivity
-        if (activity.pileId.isNotEmpty()) pileName.setText(activity.pileName)
+        if (activity.pileId.isNotEmpty()) etPileName.setText(activity.pileName)
     }
 
     override fun onBackPressed(): Boolean {
