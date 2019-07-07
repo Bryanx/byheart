@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.speech.tts.TextToSpeech
 import android.view.*
+import android.widget.TextView
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,7 +19,7 @@ import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment
 import com.example.byheart.card.CardViewModel
 import com.example.byheart.pile.Pile
-import com.example.byheart.pile.PileFragment
+import com.example.byheart.pile.PileViewModel
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
@@ -28,30 +29,43 @@ import java.util.*
 
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
-    protected lateinit var textToSpeech: TextToSpeech
+    private lateinit var textToSpeech: TextToSpeech
+    private lateinit var cardViewModel: CardViewModel
+    private lateinit var pileViewModel: PileViewModel
+    private lateinit var pileId: String
+    private lateinit var flipIn: AnimatorSet
+    private lateinit var flipOut: AnimatorSet
+    protected lateinit var languageCardFront: Locale
+    protected lateinit var languageCardBack: Locale
     protected lateinit var layout: View
-    protected lateinit var cardViewModel: CardViewModel
-    protected lateinit var pileId: String
+    protected lateinit var pile: Pile
     protected lateinit var cards: MutableList<Card>
-    protected lateinit var flipIn: AnimatorSet
-    protected lateinit var flipOut: AnimatorSet
     protected lateinit var menu: Menu
     protected lateinit var correctSound: MediaPlayer
     protected lateinit var wrongSound: MediaPlayer
     protected val handler: Handler = Handler()
-    protected var backOfCardIsVisible = false
+    private var backOfCardIsVisible = false
     protected var cardIndex = 0
 
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
+        pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
         pileId = (activity as MainActivity).pileId
         getCards()
         loadAnimations()
         addToolbar(true, "", true)
-        textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {})
-        textToSpeech.language = Locale.UK
+        textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {
+            if (it == TextToSpeech.SUCCESS) {
+                pileViewModel.allPiles.observe(this, Observer {piles ->
+                    pile = piles.first { pile -> pile.id == pileId.toLong() }
+                    languageCardFront = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardFront }
+                    languageCardBack = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardBack }
+                    textToSpeech.language = languageCardBack
+                })
+            }
+        })
         correctSound = MediaPlayer.create(context, R.raw.correct)
         wrongSound = MediaPlayer.create(context, R.raw.incorrect)
         return layout
@@ -165,12 +179,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     private fun addVoiceButton() {
         ivPronounce.setOnClickListener {
-            textToSpeech.pronounce(
-                when {
-                    backOfCardIsVisible -> cardBack.string
-                    else -> cardFront.string
-                }
-            )
+            if (backOfCardIsVisible) {
+                speakCard(cardBack, languageCardBack)
+                println("pronounce back, lang:${languageCardBack.displayName}")
+            } else {
+                speakCard(cardFront, languageCardFront)
+                println("pronounce front, lang:${languageCardFront.displayName}")
+            }
         }
     }
 
@@ -191,8 +206,14 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         rehearsalCounter.text = "${cardIndex + 1}/${cards.size}"
     }
 
-    protected fun pronounceAnswer() {
-        textToSpeech.pronounce(cardBack.string)
+    protected fun speakCard(tv: TextView, language: Locale) {
+        when {
+            !Preferences.read(REHEARSAL_REVERSE) -> textToSpeech.language = language
+            tv == cardBack -> textToSpeech.language = languageCardFront
+            else -> textToSpeech.language = languageCardBack
+        }
+        textToSpeech.pronounce(tv.string)
+
     }
 
     protected fun nextQuestion(doAfter: () -> Unit) {

@@ -58,7 +58,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
             etInput.setLineColor(R.color.red)
             handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
         }
-        if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) pronounceAnswer()
+        if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) speakCard(cardBack, languageCardBack)
     }
 
     private fun skipWaitingGoToNextQuestion() {

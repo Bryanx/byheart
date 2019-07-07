@@ -21,6 +21,7 @@ import com.example.byheart.rehearsal.RehearsalMultipleChoiceFragment
 import com.example.byheart.rehearsal.RehearsalTypedFragment
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
+import com.example.byheart.shared.Preferences.REHEARSAL_MULTIPLE_CHOICE
 import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_card.*
 
@@ -92,6 +93,10 @@ class CardFragment : Fragment(), IOnBackPressed {
             }
         })
         buttonPlay.setOnClickListener {
+            if (adapter.cards.size < 5 && Preferences.read(REHEARSAL_MULTIPLE_CHOICE)) {
+                Preferences.write(REHEARSAL_MULTIPLE_CHOICE, false)
+                Preferences.write(REHEARSAL_MEMORY, true)
+            }
             (activity as MainActivity).pileId = pileId!!
             fragmentManager?.startFragment(when {
                 Preferences.read(REHEARSAL_MEMORY) -> RehearsalMemoryFragment()

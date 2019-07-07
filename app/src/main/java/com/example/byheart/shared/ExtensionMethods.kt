@@ -15,11 +15,9 @@ import android.view.*
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -27,6 +25,7 @@ import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.*
 
 // Easily inflate view groups
@@ -148,12 +147,22 @@ fun EditText.onEnter(action: () -> Boolean) {
     })
 }
 
+fun AppCompatSpinner.onSelectItem(args: (Int) -> Unit) {
+    this.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            args(position)
+        }
+        override fun onNothingSelected(parent: AdapterView<*>) {
+        }
+    }
+}
+
 fun Any.getAttr(name: String): Any? {
     return this.javaClass.getMethod("get${name.initCaps()}").invoke(this)
 }
 
 fun String.initCaps(): String {
-    return this[0].toUpperCase() + this.substring(1, this.length).toLowerCase()
+    return this[0].toUpperCase() + this.substring(1, this.length)
 }
 
 // property extensions

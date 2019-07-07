@@ -9,7 +9,6 @@ import com.example.byheart.R
 import com.example.byheart.card.Card
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
-import kotlinx.android.synthetic.main.content_rehearsal_memory.*
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.cardBack
 
@@ -61,7 +60,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                 if (btn.string.equalsIgnoreCase(cardBack.string)) {
                     buttonsAreEnabled(false)
                     correctSound.start()
-                    if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) pronounceAnswer()
+                    if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) speakCard(cardBack, languageCardBack)
                     btn.setTxtColor(R.color.green)
                     flipCard()
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())

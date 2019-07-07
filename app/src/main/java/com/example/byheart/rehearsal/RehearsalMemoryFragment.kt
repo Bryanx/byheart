@@ -27,7 +27,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 buttonsAreEnabled(false)
                 if (it == cardBtnCorrect) correctSound.start()
                 else wrongSound.start()
-                if (Preferences.read(REHEARSAL_PRONOUNCE)) pronounceAnswer()
+                if (Preferences.read(REHEARSAL_PRONOUNCE)) speakCard(cardBack, languageCardBack)
                 flipCard()
                 if (button == cardBtnCorrect) {
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())

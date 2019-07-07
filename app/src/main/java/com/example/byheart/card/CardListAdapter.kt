@@ -23,7 +23,7 @@ class CardListAdapter internal constructor(
     RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var cards: MutableList<Card> = mutableListOf()
+    var cards: MutableList<Card> = mutableListOf()
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardItemView: TextView = itemView.findViewById(R.id.tvFront)

@@ -49,19 +49,18 @@ abstract class CardDatabase : RoomDatabase() {
             }
         }
 
-        fun populateDatabase(cardDao: CardDao, pileDao: PileDao) {
-            cardDao.deleteAll()
-            pileDao.deleteAll()
-            val pile = Pile("French")
-            pile.id = 5
-            val card = Card( "Hello", "Bonjour", 5)
-            pileDao.insert(pile)
-            cardDao.insert(card)
-            val pile2 = Pile("German")
-            val pile3 = Pile("Turkish")
-            pileDao.insert(pile2)
-            pileDao.insert(pile3)
-
-        }
+//        fun populateDatabase(cardDao: CardDao, pileDao: PileDao) {
+//            cardDao.deleteAll()
+//            pileDao.deleteAll()
+//            val pile = Pile("French")
+//            pile.id = 5
+//            val card = Card( "Hello", "Bonjour", 5)
+//            pileDao.insert(pile)
+//            cardDao.insert(card)
+//            val pile2 = Pile("German")
+//            val pile3 = Pile("Turkish")
+//            pileDao.insert(pile2)
+//            pileDao.insert(pile3)
+//        }
     }
 }
