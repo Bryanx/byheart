@@ -27,7 +27,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
                 etInput.text.isEmpty() || enterCounter > 1 -> false
                 enterCounter == 1 -> {
                     enterCounter += 1
-                    skipWaitingGoToNextQuestion().run { false }
+                    skipWaitingGoToNextCard().run { false }
                 }
                 enterCounter == 0 -> {
                     enterCounter += 1
@@ -39,7 +39,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
         btnGo.setOnClickListener {
             when {
                 etInput.text.isEmpty() || enterCounter > 1 -> return@setOnClickListener
-                (it as Button).string.isEmpty() -> skipWaitingGoToNextQuestion()
+                (it as Button).string.isEmpty() -> skipWaitingGoToNextCard()
                 else -> onEnter()
             }
         }
@@ -61,7 +61,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
         if (Preferences.read(Preferences.REHEARSAL_PRONOUNCE)) speakCard(cardBack, languageCardBack)
     }
 
-    private fun skipWaitingGoToNextQuestion() {
+    private fun skipWaitingGoToNextCard() {
         buttonsAreEnabled(false)
         handler.removeMessages(0)
         nextQuestionWithButtons()

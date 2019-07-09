@@ -47,6 +47,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     private var backOfCardIsVisible = false
     protected var cardIndex = 0
 
+    open fun doAfterGetData(): Unit = addEventHandlers()
+
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -144,9 +146,9 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         Preferences.write(id, item.isChecked)
     }
 
-    private fun shuffleCards(shuffleIsOn: Boolean) {
-        if (shuffleIsOn) cards.shuffle()
-        else cards.sortBy { it.id }
+    private fun shuffleCards(shuffleIsOn: Boolean): Unit = when {
+        shuffleIsOn -> cards.shuffle()
+        else -> cards.sortBy { it.id }
     }
 
     private fun getCards() {
@@ -161,10 +163,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         })
     }
 
-    open fun doAfterGetData() {
-        addEventHandlers()
-    }
-
     open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
         handler.removeMessages(0)
         if (startFromBeginning) cardIndex = 0
@@ -177,15 +175,10 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         return true
     }
 
-    private fun addVoiceButton() {
-        ivPronounce.setOnClickListener {
-            if (backOfCardIsVisible) {
-                speakCard(cardBack, languageCardBack)
-                println("pronounce back, lang:${languageCardBack.displayName}")
-            } else {
-                speakCard(cardFront, languageCardFront)
-                println("pronounce front, lang:${languageCardFront.displayName}")
-            }
+    private fun addVoiceButton(): Unit = ivPronounce.setOnClickListener {
+        when {
+            backOfCardIsVisible -> speakCard(cardBack, languageCardBack)
+            else -> speakCard(cardFront, languageCardFront)
         }
     }
 

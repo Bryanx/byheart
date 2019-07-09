@@ -67,7 +67,6 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                 } else {
                     wrongSound.start()
                     btn.setTxtColor(R.color.red)
-                    //TODO: second try? unlimited tries?
                 }
             }
         }

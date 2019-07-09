@@ -20,6 +20,5 @@ data class Card(
     @ColumnInfo(name = "answer") val answer: String?,
     @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+    @PrimaryKey(autoGenerate = true) var id: Long = 0
 }
