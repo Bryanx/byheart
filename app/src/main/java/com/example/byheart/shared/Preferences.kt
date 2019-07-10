@@ -3,6 +3,11 @@ package com.example.byheart.shared
 import android.content.Context
 import android.content.SharedPreferences
 
+/**
+ * Wrapper for SharedPreferences. All keys are added as global properties.
+ * Note that this is an object, all methods and properties are static.
+ * @author Bryan de Ridder
+ */
 object Preferences {
     private var pref: SharedPreferences? = null
     val NOT_FIRST_START = "NOT_FIRST_START"

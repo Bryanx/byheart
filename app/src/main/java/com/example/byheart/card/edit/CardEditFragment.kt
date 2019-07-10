@@ -18,7 +18,10 @@ import com.example.byheart.shared.*
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
 
-
+/**
+ * Fragment that is showed when editing or creating a card.
+ * @author Bryan de Ridder
+ */
 class CardEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cards: List<Card>

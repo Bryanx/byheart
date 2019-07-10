@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.R
 import com.example.byheart.card.CardListAdapter
 
-
+/**
+ * Contains all logic for the cards in the card fragment to be swiped right to be edited.
+ * It also draws an icon behind the card.
+ * @author Bryan de Ridder
+ */
 class SwipeRightToEditCallback(
     private val adapter: CardListAdapter,
     private val icon: Drawable? = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_edit_white_24dp),

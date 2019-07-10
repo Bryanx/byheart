@@ -10,7 +10,11 @@ import com.example.byheart.shared.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.cardBack
 
-
+/**
+ * Fragment that contains the rehearsal typed mode.
+ * Some extra logic was added so a user can press enter twice to quickly switch to the next question.
+ * @author Bryan de Ridder
+ */
 class RehearsalTypedFragment : RehearsalFragment() {
 
     private var enterCounter = 0

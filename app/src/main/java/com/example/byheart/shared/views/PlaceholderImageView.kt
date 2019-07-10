@@ -7,7 +7,11 @@ import com.example.byheart.R
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
 
-
+/**
+ * Custom view that decides whether to use a dark or light placeholder images
+ * based on the whether dark mode is on or not.
+ * @author Bryan de Ridder
+ */
 class PlaceholderImageView(context: Context, attrs: AttributeSet) : ImageView(context, attrs) {
 
     init {

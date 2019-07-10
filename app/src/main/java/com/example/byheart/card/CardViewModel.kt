@@ -10,6 +10,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * All cards in the main card fragment are stored in a LiveData property in this viewmodel.
+ * The card fragment listens for changes on this property.
+ * In the card viewmodel this property is updated by changes in the database or in the fragment.
+ * @author Bryan de Ridder
+ */
 class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     private var parentJob = Job()

@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    <com.example.byheart.rehearsal.views.RehearsalCardsLayout
+    <com.example.byheart.shared.views.AnimatingRelativeLayout
             android:id="@+id/rehearsal_cards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 android:layout_centerHorizontal="true"
                 android:contentDescription="Pronounce text"/>
 
-    </com.example.byheart.rehearsal.views.RehearsalCardsLayout>
+    </com.example.byheart.shared.views.AnimatingRelativeLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

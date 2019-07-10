@@ -11,6 +11,10 @@ import com.example.byheart.R
 import com.example.byheart.card.CardFragment
 import com.example.byheart.shared.startFragment
 
+/**
+ * Adapter that contains all Piles in the main pile fragment (home page).
+ * @author Bryan de Ridder
+ */
 class PileListAdapter internal constructor(context: Context) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)

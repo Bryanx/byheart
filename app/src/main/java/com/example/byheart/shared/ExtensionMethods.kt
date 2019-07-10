@@ -28,6 +28,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.*
 
+/**
+ * Contains all extension method.
+ * @author Bryan de Ridder
+ */
+
 // Easily inflate view groups
 fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)

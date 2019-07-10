@@ -3,8 +3,11 @@ package com.example.byheart.card
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
-// Manages queries and allows you to use multiple backends.
-// Decides whether to fetch data from a network or use results cached in a local database.
+/**
+ * Manages queries and allows you to use multiple backend's.
+ * Decides whether to fetch data from a network or use results cached in a local database.
+ * @author Bryan de Ridder
+ */
 class CardRepository(private val cardDao: CardDao) {
 
     val allCards: LiveData<List<Card>> = cardDao.getAll()

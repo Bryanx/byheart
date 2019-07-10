@@ -25,7 +25,10 @@ import com.example.byheart.shared.Preferences.REHEARSAL_MULTIPLE_CHOICE
 import com.example.byheart.shared.Preferences.REHEARSAL_TYPED
 import kotlinx.android.synthetic.main.content_card.*
 
-
+/**
+ * Fragment that displays all cards in a pile.
+ * @author Bryan de Ridder
+ */
 class CardFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cardViewModel: CardViewModel
@@ -129,6 +132,9 @@ class CardFragment : Fragment(), IOnBackPressed {
         cardViewModel.delete(card)
     }
 
+    /**
+     * This method is called by the BaseActivity.
+     */
     override fun onBackPressed(): Boolean {
         return fragmentManager?.startFragment(PileFragment()).run { true }
     }

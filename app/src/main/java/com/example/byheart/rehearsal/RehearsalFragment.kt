@@ -26,7 +26,11 @@ import com.example.byheart.shared.Preferences.REHEARSAL_SHUFFLE
 import kotlinx.android.synthetic.main.content_rehearsal.*
 import java.util.*
 
-
+/**
+ * Abstract class that contains the base of a rehearsal fragment.
+ * Each Rehearsal Fragment should extend this class.
+ * @author Bryan de Ridder
+ */
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     private lateinit var textToSpeech: TextToSpeech
@@ -186,7 +190,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         flipIn = AnimatorInflater.loadAnimator(activity, R.animator.animate_out_flip) as AnimatorSet
         flipOut = AnimatorInflater.loadAnimator(activity, R.animator.animate_in_flip) as AnimatorSet
     }
-
 
     private fun updateView() {
         if (Preferences.read(REHEARSAL_REVERSE)) {

@@ -7,6 +7,11 @@ import com.example.byheart.shared.CardDatabase
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Viewmodel that contains all the piles in a LiveData object.
+ * The object is updating on backend or frontend changes.
+ * @author Bryan de Ridder
+ */
 class PileViewModel(application: Application) : AndroidViewModel(application) {
 
     private var parentJob: Job = Job()

@@ -23,6 +23,10 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
+/**
+ * In this fragment piles are editing or created.
+ * @author Bryan de Ridder
+ */
 class PileEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var piles: List<Pile>

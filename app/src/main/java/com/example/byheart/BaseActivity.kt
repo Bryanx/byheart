@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.byheart.shared.IOnBackPressed
 import com.example.byheart.shared.Preferences
 
+/**
+ * Base activity class.
+ * @author Bryan de Ridder
+ */
 open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

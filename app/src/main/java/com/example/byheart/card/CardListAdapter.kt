@@ -15,7 +15,10 @@ import com.example.byheart.shared.Preferences.DARK_MODE
 import com.example.byheart.shared.getAttr
 import com.example.byheart.shared.startFragment
 
-
+/**
+ * Adapter that contains all cards in a pile.
+ * @author Bryan de Ridder
+ */
 class CardListAdapter internal constructor(
     private val context: Context,
     private val cardFragment: CardFragment

@@ -12,7 +12,10 @@ import com.example.byheart.shared.Preferences.REHEARSAL_PRONOUNCE
 import com.example.byheart.shared.inflate
 import kotlinx.android.synthetic.main.content_rehearsal_memory.*
 
-
+/**
+ * Fragment that contains the rehearsal memory mode.
+ * @author Bryan de Ridder
+ */
 class RehearsalMemoryFragment : RehearsalFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

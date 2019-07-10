@@ -9,6 +9,10 @@ import com.example.byheart.shared.Preferences.REHEARSAL_MEMORY
 import com.example.byheart.shared.startFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Main entry point of the application.
+ * @author Bryan de Ridder
+ */
 class MainActivity : BaseActivity() {
 
     var pileId: String = ""

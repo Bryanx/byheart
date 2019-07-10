@@ -12,7 +12,12 @@ import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.cardBack
 
-
+/**
+ * Fragment that contains the rehearsal multiple choice mode.
+ * Each time a card appears, 3 answers are randomly added to the buttons and 1 correct is answered
+ * in a random position as well.
+ * @author Bryan de Ridder
+ */
 class RehearsalMultipleChoiceFragment : RehearsalFragment() {
 
     private lateinit var buttons: MutableList<Button>

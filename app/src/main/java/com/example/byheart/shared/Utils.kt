@@ -8,7 +8,10 @@ import android.graphics.Point
 import android.os.Build
 import android.util.TypedValue
 
-
+/**
+ * Contains all utility functions.
+ * @author Bryan de Ridder
+ */
 fun getDeviceWidth(ctx: Activity): Int {
     val display = ctx.windowManager.defaultDisplay
     val size = Point()

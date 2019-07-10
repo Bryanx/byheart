@@ -3,6 +3,12 @@ package com.example.byheart.card
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+/**
+ * The main card database access object.
+ * All queries are written here.
+ * It uses the android Room library to generate queries.
+ * @author Bryan de Ridder
+ */
 @Dao
 interface CardDao {
     @Query("SELECT * FROM card")

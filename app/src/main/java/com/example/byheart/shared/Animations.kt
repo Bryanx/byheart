@@ -7,6 +7,10 @@ import android.view.animation.TranslateAnimation
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.animation.ObjectAnimator
 
+/**
+ * Contains all functions related to animations.
+ * @author Bryan de Ridder
+ */
 
 // slide the view from below itself to the current position
 fun moveX(view: View, from: Float, to: Float): TranslateAnimation {

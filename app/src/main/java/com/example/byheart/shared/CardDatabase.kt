@@ -13,6 +13,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Room data base class.
+ * @author Bryan de Ridder
+ */
 @Database(entities = [Card::class, Pile::class], version = 1)
 abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
