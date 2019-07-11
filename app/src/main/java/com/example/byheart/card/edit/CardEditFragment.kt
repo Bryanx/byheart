@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.Card
@@ -25,13 +26,15 @@ import kotlinx.android.synthetic.main.content_card_edit.*
 class CardEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cards: List<Card>
-    private lateinit var cardViewModel: CardViewModel
+    private lateinit var cardVM: CardViewModel
+    private lateinit var sessionVM: SessionViewModel
     private lateinit var layout: View
     private var editMode: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
-        cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
+        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
+        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         addToolbar(true, "Add card", true)
         return layout
     }
@@ -39,9 +42,9 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         llCardEdit.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
-        editMode = (activity as MainActivity).cardId.isNotEmpty()
+        editMode = sessionVM.cardId.value != NO_ID
         addEventHandlers()
-        cardViewModel.allCards.observe(this, Observer { cardsFromDb ->
+        cardVM.allCards.observe(this, Observer { cardsFromDb ->
             cardsFromDb?.filter { it.pileId.toString() == (activity as MainActivity).pileId }?.let {
                 cards = it
                 updateView()
@@ -86,9 +89,9 @@ class CardEditFragment : Fragment(), IOnBackPressed {
             etCardBack.clearFocus()
             val card = Card(q, a, (activity as MainActivity).pileId.toLong())
             if (editMode) {
-                cardViewModel.update(card.apply { id = (activity as MainActivity).cardId.toLong() })
+                cardVM.update(card.apply { id = sessionVM.cardId.value!! })
             } else {
-                cardViewModel.insert(card)
+                cardVM.insert(card)
             }
         }
         return frontCorrect && backCorrect
@@ -132,8 +135,8 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    private fun getCurrentCard(): Card? = cards.find {
-        it.id == (activity as MainActivity).cardId.toLong()
+    private fun getCurrentCard(): Card? = cards.find { card: Card ->
+        sessionVM.cardId.value?.toLong() == card.id
     }
 
     override fun onBackPressed(): Boolean = fragmentManager?.startFragment(CardFragment()).run { true }

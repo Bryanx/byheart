@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.edit.CardEditFragment
@@ -39,7 +40,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent))
         layout = inflater.inflate(R.layout.content_card, container, false)
-        cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
+        cardViewModel = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
         addToolbar(true, "", true)
         return layout
@@ -82,8 +83,8 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addEventHandlers(adapter: CardListAdapter) {
-        btnAddCardPlaceholder.setOnClickListener { startEditFragment("") }
-        buttonAdd.setOnClickListener { startEditFragment("") }
+        btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
+        buttonAdd.setOnClickListener { startEditFragment() }
         cardViewModel.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
             cards?.filter {
@@ -109,9 +110,9 @@ class CardFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    fun startEditFragment(id: String) {
+    fun startEditFragment(id: Long = NO_ID) {
         (activity as MainActivity).pileId = pileId!!
-        (activity as MainActivity).cardId = id
+        cardViewModel.setSessionCardId(id)
         fragmentManager?.startFragment(CardEditFragment())
     }
 
