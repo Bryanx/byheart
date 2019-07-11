@@ -9,7 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.byheart.MainActivity
+import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.example.byheart.R
 import com.example.byheart.card.CardFragment
 import com.example.byheart.pile.Pile
@@ -31,7 +31,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var piles: List<Pile>
     private lateinit var layout: View
-    private lateinit var pileViewModel: PileViewModel
+    private lateinit var pileVM: PileViewModel
+    private lateinit var sessionVM: SessionViewModel
     private lateinit var textToSpeech: TextToSpeech
     private lateinit var adapter: ArrayAdapter<String>
     private var localeList: MutableList<Locale> = mutableListOf()
@@ -41,7 +42,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = container!!.inflate(R.layout.content_pile_edit)
-        pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         return layout
     }
 
@@ -79,7 +81,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private fun fillSpinner(spinner: AppCompatSpinner, adapter: ArrayAdapter<String>, attr: String) {
         spinner.adapter = adapter
         if (editMode) {
-            val thisPile = piles.find { it.id == (activity as MainActivity).pileId.toLong() }
+            val thisPile = piles.find { it.id == sessionVM.pileId.value }
             spinner.setSelection(localeList.indexOfFirst { it.displayName ==  thisPile?.getAttr(attr)})
         } else {
             spinner.setSelection(countries.indexOfFirst {
@@ -103,7 +105,6 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     private fun checkInput(): Boolean {
         var isCorrect = true
-        val activity = (activity as MainActivity)
         val name = etPileName.string
         when {
             name.isEmpty() -> {
@@ -112,7 +113,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                 isCorrect = false
             }
             name.toLowerCase() in piles.map { it.name?.toLowerCase() } -> {
-                if ((editMode && name != activity.pileName) || !editMode) {
+                if ((editMode && name != sessionVM.pileName.value) || !editMode) {
                     pileNameLayout.isErrorEnabled = true
                     pileNameLayout.error = "You already have a pile with the same name"
                     isCorrect = false
@@ -127,18 +128,17 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addOrUpdatePile() = GlobalScope.launch(Dispatchers.Main) {
-        val activity = activity as MainActivity
         etPileName.clearFocus()
         val pile = Pile(etPileName.string)
         pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
         pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
         if (editMode) {
-            pile.id = activity.pileId.toLong()
-            pileViewModel.update(pile)
-            activity.pileName = pile.name!!
+            pile.id = sessionVM.pileId.value ?: NO_ID
+            pileVM.update(pile)
+            sessionVM.pileName.postValue(pile.name)
             fragmentManager?.startFragment(CardFragment())
         } else {
-            activity.pileId = pileViewModel.insert(pile).await().toString()
+            sessionVM.pileId.postValue(pileVM.insert(pile).await())
             fragmentManager?.startFragment(PileFragment())
         }
     }
@@ -148,9 +148,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getBundle() {
-        val activity = activity as MainActivity
-        editMode = activity.pileId.isNotEmpty()
-        if (editMode) etPileName.setText(activity.pileName)
+        editMode = sessionVM.pileId.value != NO_ID
+        if (editMode) etPileName.setText(sessionVM.pileName.value)
     }
 
     private fun addEventHandlers() {
@@ -158,7 +157,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             if (checkInput()) addOrUpdatePile()
             return@onEnter true
         }
-        pileViewModel.allPiles.observe(this, Observer {
+        pileVM.allPiles.observe(this, Observer {
             piles = it
             setUpTextToSpeech()
         })

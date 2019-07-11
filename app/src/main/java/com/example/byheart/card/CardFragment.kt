@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
-import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.edit.CardEditFragment
 import com.example.byheart.pile.Pile
@@ -32,16 +31,18 @@ import kotlinx.android.synthetic.main.content_card.*
  */
 class CardFragment : Fragment(), IOnBackPressed {
 
-    private lateinit var cardViewModel: CardViewModel
-    private lateinit var pileViewModel: PileViewModel
+    private lateinit var cardVM: CardViewModel
+    private lateinit var sessionVM: SessionViewModel
+    private lateinit var pileVM: PileViewModel
     private lateinit var layout: View
-    private var pileId: String? = null
+    private var pileId: Long = NO_ID
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent))
         layout = inflater.inflate(R.layout.content_card, container, false)
-        cardViewModel = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
-        pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
+        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
+        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
         addToolbar(true, "", true)
         return layout
     }
@@ -77,18 +78,18 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getBundle() {
-        val pileName = (activity as MainActivity).pileName
-        pileId = (activity as MainActivity).pileId
+        val pileName = sessionVM.pileName.value
+        pileId = sessionVM.pileId.value ?: NO_ID
         content_card_title.text = pileName
     }
 
     private fun addEventHandlers(adapter: CardListAdapter) {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
-        cardViewModel.allCards.observe(this, Observer { cards ->
+        cardVM.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
             cards?.filter {
-                it.pileId.toString() == pileId
+                it.pileId == pileId
             }?.let {
                 adapter.setCards(it)
                 if (it.isEmpty()) placeholder_no_cards.visibility = View.VISIBLE
@@ -101,7 +102,7 @@ class CardFragment : Fragment(), IOnBackPressed {
                 Preferences.write(REHEARSAL_MULTIPLE_CHOICE, false)
                 Preferences.write(REHEARSAL_MEMORY, true)
             }
-            (activity as MainActivity).pileId = pileId!!
+            sessionVM.pileId.value = pileId
             fragmentManager?.startFragment(when {
                 Preferences.read(REHEARSAL_MEMORY) -> RehearsalMemoryFragment()
                 Preferences.read(REHEARSAL_TYPED) -> RehearsalTypedFragment()
@@ -111,8 +112,8 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     fun startEditFragment(id: Long = NO_ID) {
-        (activity as MainActivity).pileId = pileId!!
-        cardViewModel.setSessionCardId(id)
+        sessionVM.pileId.postValue(pileId)
+        sessionVM.cardId.postValue(id)
         fragmentManager?.startFragment(CardEditFragment())
     }
 
@@ -120,9 +121,9 @@ class CardFragment : Fragment(), IOnBackPressed {
         context!!.dialog().setMessage("Are you sure you want to delete this pile?")
             .setCancelable(false)
             .setPositiveButton("Delete") { _, _ ->
-                val pile = Pile((activity as MainActivity).pileName)
-                pile.id = pileId!!.toLong()
-                pileViewModel.delete(pile)
+                val pile = Pile(sessionVM.pileName.value)
+                pile.id = pileId
+                pileVM.delete(pile)
                 fragmentManager?.startFragment(PileFragment())
             }
             .setNegativeButton("Cancel", null)
@@ -130,7 +131,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     fun removeCard(card: Card) {
-        cardViewModel.delete(card)
+        cardVM.delete(card)
     }
 
     /**

@@ -17,9 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainActivity : AppCompatActivity() {
 
-    var pileId: String = ""
-    var pileName: String = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         Preferences.init(applicationContext)
         super.onCreate(savedInstanceState)

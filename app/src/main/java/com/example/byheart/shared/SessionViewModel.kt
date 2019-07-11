@@ -19,5 +19,6 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     var cardId: MutableLiveData<Long> = MutableLiveData()
     var pileId: MutableLiveData<Long> = MutableLiveData()
+    var pileName: MutableLiveData<String> = MutableLiveData()
 
 }

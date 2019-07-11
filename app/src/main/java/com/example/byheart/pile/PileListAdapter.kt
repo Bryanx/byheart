@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.CardFragment
+import com.example.byheart.shared.SessionViewModel
+import com.example.byheart.shared.long
 import com.example.byheart.shared.startFragment
+import com.example.byheart.shared.string
 
 /**
  * Adapter that contains all Piles in the main pile fragment (home page).
@@ -17,11 +21,13 @@ import com.example.byheart.shared.startFragment
  */
 class PileListAdapter internal constructor(context: Context) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
+    private lateinit var sessionVM: SessionViewModel
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var piles = emptyList<Pile>() // Cached copy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PileViewHolder {
         val itemView = inflater.inflate(R.layout.item_pile, parent, false)
+        sessionVM = ViewModelProviders.of(parent.context as MainActivity).get(SessionViewModel::class.java)
         return PileViewHolder(itemView)
     }
 
@@ -43,10 +49,9 @@ class PileListAdapter internal constructor(context: Context) : RecyclerView.Adap
         val tvPileId: TextView = itemView.findViewById(R.id.tvPileId)
         init {
             itemView.setOnClickListener {
-                val activity = itemView.context as MainActivity
-                activity.pileId = tvPileId.text.toString()
-                activity.pileName = tvFront.text.toString()
-                activity.supportFragmentManager.startFragment(CardFragment())
+                sessionVM.pileId.postValue(tvPileId.long)
+                sessionVM.pileName.postValue(tvFront.string)
+                (it.context as MainActivity).supportFragmentManager.startFragment(CardFragment())
             }
         }
     }

@@ -45,7 +45,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         editMode = sessionVM.cardId.value != NO_ID
         addEventHandlers()
         cardVM.allCards.observe(this, Observer { cardsFromDb ->
-            cardsFromDb?.filter { it.pileId.toString() == (activity as MainActivity).pileId }?.let {
+            cardsFromDb?.filter { it.pileId == sessionVM.pileId.value }?.let {
                 cards = it
                 updateView()
             }
@@ -87,7 +87,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         if (frontCorrect && backCorrect) {
             etCardFront.clearFocus()
             etCardBack.clearFocus()
-            val card = Card(q, a, (activity as MainActivity).pileId.toLong())
+            val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
             if (editMode) {
                 cardVM.update(card.apply { id = sessionVM.cardId.value!! })
             } else {

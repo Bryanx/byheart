@@ -13,6 +13,7 @@ import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.Card
@@ -34,12 +35,12 @@ import java.util.*
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     private lateinit var textToSpeech: TextToSpeech
-    private lateinit var cardViewModel: CardViewModel
-    private lateinit var pileViewModel: PileViewModel
-    private lateinit var pileId: String
+    private lateinit var cardVM: CardViewModel
+    private lateinit var pileVM: PileViewModel
+    private lateinit var sessionVM: SessionViewModel
     private lateinit var flipIn: AnimatorSet
     private lateinit var flipOut: AnimatorSet
-    protected lateinit var languageCardFront: Locale
+    private lateinit var languageCardFront: Locale
     protected lateinit var languageCardBack: Locale
     protected lateinit var layout: View
     protected lateinit var pile: Pile
@@ -50,22 +51,24 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected val handler: Handler = Handler()
     private var backOfCardIsVisible = false
     protected var cardIndex = 0
+    private var pileId: Long = NO_ID
 
     open fun doAfterGetData(): Unit = addEventHandlers()
 
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        cardViewModel = ViewModelProviders.of(this).get(CardViewModel::class.java)
-        pileViewModel = ViewModelProviders.of(this).get(PileViewModel::class.java)
-        pileId = (activity as MainActivity).pileId
+        cardVM = ViewModelProviders.of(this).get(CardViewModel::class.java)
+        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
+        pileId = sessionVM.pileId.value ?: NO_ID
         getCards()
         loadAnimations()
         addToolbar(true, "", true)
         textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {
             if (it == TextToSpeech.SUCCESS) {
-                pileViewModel.allPiles.observe(this, Observer {piles ->
-                    pile = piles.first { pile -> pile.id == pileId.toLong() }
+                pileVM.allPiles.observe(this, Observer { piles ->
+                    pile = piles.first { pile -> pile.id == pileId }
                     languageCardFront = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardFront }
                     languageCardBack = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardBack }
                     textToSpeech.language = languageCardBack
@@ -156,8 +159,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getCards() {
-        cardViewModel.allCards.observe(this, Observer { cardsFromDb ->
-            cardsFromDb?.filter { it.pileId.toString() == pileId }?.let {
+        cardVM.allCards.observe(this, Observer { cardsFromDb ->
+            cardsFromDb?.filter { it.pileId == pileId }?.let {
                 val tempCards = it.toMutableList()
                 if (Preferences.read(REHEARSAL_SHUFFLE)) tempCards.shuffle()
                 cards = tempCards

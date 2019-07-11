@@ -178,5 +178,6 @@ val View.name: String get() =
     else resources.getResourceEntryName(id) ?: "error-getting-name"
 
 val TextView.string: String get() = this.text.toString()
+val TextView.long: Long get() = this.text.toString().toLong()
 
 val ImageView.tint: ColorFilter get() = this.colorFilter
