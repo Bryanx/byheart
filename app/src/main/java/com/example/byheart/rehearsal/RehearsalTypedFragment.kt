@@ -8,7 +8,6 @@ import android.widget.Button
 import com.example.byheart.R
 import com.example.byheart.shared.*
 import kotlinx.android.synthetic.main.content_rehearsal_typed.*
-import kotlinx.android.synthetic.main.content_rehearsal_typed.cardBack
 
 /**
  * Fragment that contains the rehearsal typed mode.
@@ -83,7 +82,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
     }
 
     private fun resetViews() {
-        btnGo.text = "GO"
+        btnGo.text = resources.getString(R.string.go)
         btnGo.setCompoundDrawablesWithIntrinsicBounds( 0, 0, 0, 0)
         etInput.text = null
         etInput.setLineColor(R.color.colorPrimary)

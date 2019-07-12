@@ -2,7 +2,7 @@ package com.example.byheart.shared.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
@@ -12,7 +12,7 @@ import com.example.byheart.shared.Preferences.DARK_MODE
  * based on the whether dark mode is on or not.
  * @author Bryan de Ridder
  */
-class PlaceholderImageView(context: Context, attrs: AttributeSet) : ImageView(context, attrs) {
+class PlaceholderImageView(context: Context, attrs: AttributeSet) : AppCompatImageView(context, attrs) {
 
     init {
         if (Preferences.read(DARK_MODE)) {

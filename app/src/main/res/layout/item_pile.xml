@@ -7,7 +7,8 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_pile3"/>
+            android:src="@drawable/ic_pile3"
+            android:contentDescription="@string/pile_image"/>
     <TextView
             android:id="@+id/tvPileFront"
             android:layout_height="match_parent"

@@ -30,5 +30,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/fab_margin"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/fab_margin"/>
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:focusable="true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

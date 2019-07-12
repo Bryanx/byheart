@@ -13,17 +13,17 @@ class PileRepository(private val pileDao: PileDao) {
     val allPiles: LiveData<List<Pile>> = pileDao.getAll()
 
     @WorkerThread
-    suspend fun insert(pile: Pile): Long {
+    fun insert(pile: Pile): Long {
         return pileDao.insert(pile)
     }
 
     @WorkerThread
-    suspend fun update(pile: Pile) {
+    fun update(pile: Pile) {
         pileDao.update(pile)
     }
 
     @WorkerThread
-    suspend fun delete(pile: Pile) {
+    fun delete(pile: Pile) {
         pileDao.delete(pile)
     }
 }

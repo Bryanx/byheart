@@ -15,9 +15,11 @@ import android.view.*
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -25,8 +27,6 @@ import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_pile_edit.*
-import kotlinx.android.synthetic.main.content_rehearsal_typed.*
 
 /**
  * Contains all extension method.
@@ -52,13 +52,6 @@ fun Animation.onAnimateEnd(args: () -> Unit) {
         override fun onAnimationEnd(animation: Animation) { args() }
         override fun onAnimationRepeat(animation: Animation) {}
     })
-}
-
-// Brings an edit text into focus
-fun EditText.focus() {
-    this.requestFocus()
-    val inputMethodManager = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    inputMethodManager?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
 
 // Adds a toolbar to a fragment
@@ -126,12 +119,6 @@ fun EditText.setLineColor(color: Int) {
     }
 }
 
-fun Button.setBackgroundTint(color: Int) {
-    if (Build.VERSION.SDK_INT >= 21) {
-        this.backgroundTintList = ColorStateList.valueOf(context.color(color))
-    }
-}
-
 fun Button.setTxtColor(color: Int) {
     this.setTextColor(context.color(color))
 }
@@ -150,16 +137,6 @@ fun EditText.onEnter(action: () -> Boolean) {
             return false
         }
     })
-}
-
-fun AppCompatSpinner.onSelectItem(args: (Int) -> Unit) {
-    this.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-            args(position)
-        }
-        override fun onNothingSelected(parent: AdapterView<*>) {
-        }
-    }
 }
 
 fun Any.getAttr(name: String): Any? {

@@ -138,7 +138,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             sessionVM.pileName.postValue(pile.name)
             fragmentManager?.startFragment(CardFragment())
         } else {
-            sessionVM.pileId.postValue(pileVM.insert(pile).await())
+            sessionVM.pileId.postValue(pileVM.insert(pile))
             fragmentManager?.startFragment(PileFragment())
         }
     }

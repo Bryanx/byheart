@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <TextView
             android:id="@+id/rehearsalCounter"
-            android:text="/"
+            android:text="@string/slash"
             android:gravity="center"
             android:textSize="12sp"
             android:textAlignment="center"
@@ -58,7 +58,7 @@
                 android:tint="@color/grey_500"
                 android:layout_marginTop="150dp"
                 android:layout_centerHorizontal="true"
-                android:contentDescription="Pronounce text"/>
+                android:contentDescription="@string/pronounce_text"/>
 
     </com.example.byheart.shared.views.AnimatingRelativeLayout>
 
@@ -69,7 +69,7 @@
             android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rehearsal_cards"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/constraintLayout">
+    >
 
         <Button
                 android:id="@+id/btnAnswer1"

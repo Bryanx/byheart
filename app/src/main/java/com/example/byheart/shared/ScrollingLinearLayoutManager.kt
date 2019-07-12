@@ -2,7 +2,6 @@ package com.example.byheart.shared
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 /**
  * LinearLayoutManager that contains a check on vertical scroll.

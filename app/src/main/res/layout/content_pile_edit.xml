@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:textSize="16sp"
-                android:text="Language cards front:"/>
+                android:text="@string/language_cards_front"/>
 
         <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinnerCardFront"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginEnd="16dp"
-                android:text="Language cards back:"/>
+                android:text="@string/language_cards_back"/>
 
         <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinnerCardBack"

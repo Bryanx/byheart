@@ -3,7 +3,7 @@ package com.example.byheart.rehearsal.views
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences
 import com.example.byheart.shared.Preferences.DARK_MODE
@@ -11,7 +11,7 @@ import com.example.byheart.shared.getAttr
 import com.example.byheart.shared.name
 
 
-class RehearsalCardView : TextView {
+class RehearsalCardView : AppCompatTextView {
 
     constructor(context: Context) : super(context)
 

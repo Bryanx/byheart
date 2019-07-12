@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView.NO_ID
-import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.card.Card
 import com.example.byheart.card.CardFragment

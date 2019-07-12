@@ -7,7 +7,7 @@
 
     <TextView
             android:id="@+id/rehearsalCounter"
-            android:text="/"
+            android:text="@string/slash"
             android:gravity="center"
             android:textSize="12sp"
             android:textAlignment="center"
@@ -61,7 +61,7 @@
                 android:tint="@color/grey_500"
                 android:layout_marginTop="150dp"
                 android:layout_centerHorizontal="true"
-                android:contentDescription="Pronounce text"/>
+                android:contentDescription="@string/pronounce_text"/>
 
     </com.example.byheart.shared.views.AnimatingRelativeLayout>
 
@@ -78,7 +78,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Type in English"
+                android:hint="@string/type_your_answer"
                 app:errorEnabled="true"
                 app:hintEnabled="false"
                 android:textColorHint="?mainEditTextColorHint"
@@ -92,15 +92,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:hint="Type in English"
+                    android:hint="@string/type_your_answer"
                     android:textSize="20sp"
                     style="@style/editTextDayNight"
                     android:textColor="?mainHeaderTextColor"
-                    android:textColorHint="?mainEditTextColorHint"/>
+                    android:textColorHint="?mainEditTextColorHint"
+                    android:inputType="textNoSuggestions"/>
         </com.google.android.material.textfield.TextInputLayout>
         <Button
                 android:id="@+id/btnGo"
-                android:text="GO"
+                android:text="@string/go"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 app:backgroundTint="@color/colorPrimary"

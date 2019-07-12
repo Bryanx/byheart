@@ -10,14 +10,14 @@ import android.content.SharedPreferences
  */
 object Preferences {
     private var pref: SharedPreferences? = null
-    val NOT_FIRST_START = "NOT_FIRST_START"
-    val DARK_MODE = "DARK_MODE"
-    val REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
-    val REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"
-    val REHEARSAL_TYPED = "REHEARSAL_TYPED"
-    val REHEARSAL_MULTIPLE_CHOICE = "REHEARSAL_MULTIPLE_CHOICE"
-    val REHEARSAL_MEMORY = "REHEARSAL_MEMORY"
-    val REHEARSAL_PRONOUNCE = "REHEARSAL_PRONOUNCE"
+    const val NOT_FIRST_START = "NOT_FIRST_START"
+    const val DARK_MODE = "DARK_MODE"
+    const val REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
+    const val REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"
+    const val REHEARSAL_TYPED = "REHEARSAL_TYPED"
+    const val REHEARSAL_MULTIPLE_CHOICE = "REHEARSAL_MULTIPLE_CHOICE"
+    const val REHEARSAL_MEMORY = "REHEARSAL_MEMORY"
+    const val REHEARSAL_PRONOUNCE = "REHEARSAL_PRONOUNCE"
 
     fun init(context: Context) {
         if (pref == null)

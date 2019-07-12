@@ -27,7 +27,7 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
         allPiles = repo.allPiles
     }
 
-    suspend fun insert(pile: Pile): Deferred<Long> = GlobalScope.async {
+    suspend fun insert(pile: Pile): Long = withContext(Dispatchers.Default) {
         repo.insert(pile)
     }
 

@@ -13,17 +13,17 @@ class CardRepository(private val cardDao: CardDao) {
     val allCards: LiveData<List<Card>> = cardDao.getAll()
 
     @WorkerThread
-    suspend fun insert(card: Card) {
+    fun insert(card: Card) {
         cardDao.insert(card)
     }
 
     @WorkerThread
-    suspend fun delete(card: Card) {
+    fun delete(card: Card) {
         cardDao.delete(card)
     }
 
     @WorkerThread
-    suspend fun update(card: Card) {
+    fun update(card: Card) {
         cardDao.update(card)
     }
 }
