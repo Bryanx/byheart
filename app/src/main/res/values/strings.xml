@@ -3,9 +3,9 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="question">Question</string>
     <string name="answer">Answer</string>
-    <string name="pile_name">Pile name</string>
-    <string name="edit_pile">Edit pile</string>
-    <string name="delete_pile">Delete pile</string>
+    <string name="pile_name">Stack name</string>
+    <string name="edit_pile">Edit stack</string>
+    <string name="delete_pile">Delete stack</string>
     <string name="settings">Settings</string>
     <string name="confirm">Confirm</string>
     <string name="about">About</string>
@@ -22,7 +22,7 @@
     <string name="multiple_choice_mode">Multiple choice mode</string>
     <string name="typed_mode">Typed mode</string>
     <string name="memory_mode">Memory mode</string>
-    <string name="pile_image">Pile image</string>
+    <string name="pile_image">Stack image</string>
     <string name="add_another_card">Add another card</string>
     <string name="language_cards_front">Language cards front:</string>
     <string name="language_cards_back">Language cards back:</string>
@@ -31,4 +31,6 @@
     <string name="type_your_answer">Type your answer</string>
     <string name="go">GO</string>
     <string name="string_continue">CONTINUE</string>
+    <string name="create_pile">Create stack</string>
+    <string name="github_link"><a href="https://github.com/Bryanx/byheart/">Open an issue on github.</a></string>
 </resources>

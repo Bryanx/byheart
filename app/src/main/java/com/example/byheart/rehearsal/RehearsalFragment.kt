@@ -110,11 +110,11 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             }
             R.id.rehearsal_typed -> {
                 hideOtherViews(item)
-                fragmentManager?.startFragment(RehearsalTypedFragment()).run { true }
+                startFragment(RehearsalTypedFragment()).run { true }
             }
             R.id.rehearsal_memory -> {
                 hideOtherViews(item)
-                fragmentManager?.startFragment(RehearsalMemoryFragment()).run { true }
+                startFragment(RehearsalMemoryFragment()).run { true }
             }
             R.id.rehearsal_multiple_choice -> {
                 if (cards.size < 5) context!!.dialog()
@@ -125,7 +125,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                     .show()
                 else {
                     hideOtherViews(item)
-                    fragmentManager?.startFragment(RehearsalMultipleChoiceFragment())
+                    startFragment(RehearsalMultipleChoiceFragment())
                 }
                 true
             }
@@ -226,7 +226,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                 moveX(ivPronounce, screenWidth, 0F)
                 moveX(cardBack, screenWidth, 0F).onAnimateEnd { doAfter() }
             } else {
-                fragmentManager?.startFragment(CardFragment())
+                startFragment(CardFragment())
             }
         }
     }
@@ -266,7 +266,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     override fun onBackPressed(): Boolean {
         handler.removeMessages(0) // clear timers
         context?.dialog()?.setMessage("Are you sure you want to quit?")?.setCancelable(false)
-            ?.setPositiveButton("Yes") { _, _ -> fragmentManager?.startFragment(CardFragment()) }
+            ?.setPositiveButton("Yes") { _, _ -> startFragment(CardFragment()) }
             ?.setNegativeButton("No") { _, _ ->  }?.show()
         return true
     }

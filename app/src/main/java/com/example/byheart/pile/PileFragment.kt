@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.example.byheart.MainActivity
 import com.example.byheart.R
+import com.example.byheart.about.AboutFragment
 import com.example.byheart.pile.edit.PileEditFragment
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.DARK_MODE
@@ -70,6 +71,13 @@ class PileFragment : Fragment(), IOnBackPressed {
         R.id.action_settings -> {
             true
         }
+        R.id.action_about -> {
+            startFragment(AboutFragment(),
+                R.animator.slide_down,
+                R.animator.slide_up
+            )
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -80,7 +88,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         })
         layout.addPileBtn.setOnClickListener {
             sessionVM.pileId.postValue(NO_ID)
-            activity?.supportFragmentManager?.startFragment(PileEditFragment())
+            startFragment(PileEditFragment())
         }
     }
 

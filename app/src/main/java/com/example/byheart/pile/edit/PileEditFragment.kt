@@ -51,8 +51,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
         addToolbar(true, when {
-                editMode -> "Edit pile"
-                else -> "Create pile"
+                editMode -> resources.getString(R.string.edit_pile)
+                else -> resources.getString(R.string.create_pile)
             }, true
         )
         addEventHandlers()
@@ -136,10 +136,10 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             pile.id = sessionVM.pileId.value ?: NO_ID
             pileVM.update(pile)
             sessionVM.pileName.postValue(pile.name)
-            fragmentManager?.startFragment(CardFragment())
+            startFragment(CardFragment())
         } else {
             sessionVM.pileId.postValue(pileVM.insert(pile))
-            fragmentManager?.startFragment(PileFragment())
+            startFragment(PileFragment())
         }
     }
 
@@ -166,6 +166,6 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onBackPressed(): Boolean {
-        return fragmentManager?.startFragment(PileFragment()).run { true }
+        return startFragment(PileFragment()).run { true }
     }
 }

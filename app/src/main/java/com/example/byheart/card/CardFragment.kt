@@ -59,7 +59,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_edit_pile -> fragmentManager?.startFragment(PileEditFragment()).run { true }
+        R.id.action_edit_pile -> startFragment(PileEditFragment()).run { true }
         R.id.action_delete_pile -> startDeleteDialog().run { true }
         else -> super.onOptionsItemSelected(item)
     }
@@ -86,6 +86,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private fun addEventHandlers(adapter: CardListAdapter) {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
+        buttonEdit.setOnClickListener { startFragment(PileEditFragment()) }
         cardVM.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
             cards?.filter {
@@ -103,7 +104,7 @@ class CardFragment : Fragment(), IOnBackPressed {
                 Preferences.write(REHEARSAL_MEMORY, true)
             }
             sessionVM.pileId.value = pileId
-            fragmentManager?.startFragment(when {
+            startFragment(when {
                 Preferences.read(REHEARSAL_MEMORY) -> RehearsalMemoryFragment()
                 Preferences.read(REHEARSAL_TYPED) -> RehearsalTypedFragment()
                 else -> RehearsalMultipleChoiceFragment()
@@ -112,9 +113,8 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     fun startEditFragment(id: Long = NO_ID) {
-        sessionVM.pileId.postValue(pileId)
-        sessionVM.cardId.postValue(id)
-        fragmentManager?.startFragment(CardEditFragment())
+        sessionVM.cardId.value = id
+        startFragment(CardEditFragment())
     }
 
     private fun startDeleteDialog() {
@@ -124,7 +124,7 @@ class CardFragment : Fragment(), IOnBackPressed {
                 val pile = Pile(sessionVM.pileName.value)
                 pile.id = pileId
                 pileVM.delete(pile)
-                fragmentManager?.startFragment(PileFragment())
+                startFragment(PileFragment())
             }
             .setNegativeButton("Cancel", null)
             .show()
@@ -135,9 +135,9 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     /**
-     * This method is called by the BaseActivity.
+     * This method is called by the MainActivity.
      */
     override fun onBackPressed(): Boolean {
-        return fragmentManager?.startFragment(PileFragment()).run { true }
+        return startFragment(PileFragment()).run { true }
     }
 }

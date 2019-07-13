@@ -1,7 +1,6 @@
 package com.example.byheart.shared
 
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
@@ -18,7 +17,7 @@ import com.example.byheart.card.CardListAdapter
 class SwipeLeftToDeleteCallback(
     private val adapter: CardListAdapter,
     private val icon: Drawable? = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_delete_white_36),
-    private val background: ColorDrawable = ColorDrawable(Color.RED)
+    private val background: ColorDrawable = ColorDrawable(adapter.getContext().color(R.color.red_300))
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
     override fun onMove(

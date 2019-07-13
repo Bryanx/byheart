@@ -17,7 +17,7 @@ import com.example.byheart.card.CardListAdapter
 class SwipeRightToEditCallback(
     private val adapter: CardListAdapter,
     private val icon: Drawable? = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_edit_white_24dp),
-    private val background: ColorDrawable = ColorDrawable(adapter.getContext().color(R.color.orange_500))
+    private val background: ColorDrawable = ColorDrawable(adapter.getContext().color(R.color.orange_300))
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 
     override fun onMove(

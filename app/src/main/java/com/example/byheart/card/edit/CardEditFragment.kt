@@ -71,10 +71,10 @@ class CardEditFragment : Fragment(), IOnBackPressed {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_confirm_edit_pile -> {
-            if (addOrUpdateCard()) fragmentManager?.startFragment(CardFragment()).run { true }
+            if (addOrUpdateCard()) startFragment(CardFragment()).run { true }
             else false
         }
-        R.drawable.ic_nav_back -> fragmentManager?.startFragment(CardFragment()).run { true }
+        R.drawable.ic_nav_back -> startFragment(CardFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -118,7 +118,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
 
     private fun addEventHandlers() {
         btnAddAnotherCard.setOnClickListener {
-            if (addOrUpdateCard()) fragmentManager?.startFragment(CardEditFragment())
+            if (addOrUpdateCard()) startFragment(CardEditFragment())
         }
         etCardFront.addTextChangedListener {
             checkInput(etCardFront.string, "question", cardFrontLayout)
@@ -138,6 +138,6 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         sessionVM.cardId.value?.toLong() == card.id
     }
 
-    override fun onBackPressed(): Boolean = fragmentManager?.startFragment(CardFragment()).run { true }
+    override fun onBackPressed(): Boolean = startFragment(CardFragment()).run { true }
 
 }

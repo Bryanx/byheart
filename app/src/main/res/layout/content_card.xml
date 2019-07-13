@@ -52,10 +52,11 @@
                         app:backgroundTint="@color/colorPrimary"
                         android:src="@drawable/ic_add_black_24dp"/>
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonEdit"
                         style="@style/customFab"
                         app:elevation="0dp"
                         app:backgroundTint="@color/colorPrimary"
-                        android:src="@drawable/ic_bar_chart_24dp"
+                        android:src="@drawable/ic_edit_white_24dp"
                         android:layout_marginStart="24dp"/>
             </LinearLayout>
 

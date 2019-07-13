@@ -45,6 +45,21 @@ fun FragmentManager.startFragment(fragment: Fragment) {
         .commit()
 }
 
+// Start fragment in pile_menu container
+fun Fragment.startFragment(fragment: Fragment) {
+    this.fragmentManager?.beginTransaction()
+        ?.replace(R.id.main_container, fragment)
+        ?.commit()
+}
+
+// Start fragment swipe up in
+fun Fragment.startFragment(fragment: Fragment, animateIn: Int, animateOut: Int) {
+    this.fragmentManager?.beginTransaction()
+        ?.setCustomAnimations(animateIn, animateOut)
+        ?.replace(R.id.main_container, fragment)
+        ?.commit()
+}
+
 // Do something on animation end
 fun Animation.onAnimateEnd(args: () -> Unit) {
     this.setAnimationListener(object : Animation.AnimationListener {
@@ -65,6 +80,7 @@ fun Fragment.addToolbar(
         setDisplayHomeAsUpEnabled(hasBackButton)
         setDisplayShowHomeEnabled(hasBackButton)
         this.title = title
+        show()
     }
     this.setHasOptionsMenu(hasOptions)
     if (hasBackButton) mainAct.toolbar.setNavigationOnClickListener { mainAct.onBackPressed() }
