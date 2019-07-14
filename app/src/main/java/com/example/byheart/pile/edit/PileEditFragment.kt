@@ -16,6 +16,7 @@ import com.example.byheart.pile.Pile
 import com.example.byheart.pile.PileFragment
 import com.example.byheart.pile.PileViewModel
 import com.example.byheart.shared.*
+import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -69,8 +70,13 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                         }
                     }
                 }
-                adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, countries)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                if (Preferences.read(DARK_MODE)) {
+                    adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
+                    adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
+                } else {
+                    adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, countries)
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
                 fillSpinner(spinnerCardFront, adapter, "languageCardFront")
                 fillSpinner(spinnerCardBack, adapter, "languageCardBack")
             }
