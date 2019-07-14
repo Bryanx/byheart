@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Byheart</string>
+    <string name="about">À propos de nous</string>
+    <string name="add_a_card">Ajouter une carte</string>
+    <string name="add_another_card">Ajouter une autre carte</string>
+    <string name="add_card">Nouvelle carte</string>
+    <string name="answer">Répondre</string>
+    <string name="card_back">Le dos</string>
+    <string name="card_front">Le devant</string>
+    <string name="confirm">Confirmer</string>
+    <string name="create_pile">Créer une pile</string>
+    <string name="dark_mode">Mode nuit</string>
+    <string name="delete_pile">Enlever la pile</string>
+    <string name="edit_pile">Modifier la pile</string>
+    <string name="github_link">Github link</string>
+    <string name="go">VA</string>
+    <string name="language_cards_back">Langue arrière</string>
+    <string name="language_cards_front">Langue avant</string>
+    <string name="light_mode">Mode de jour</string>
+    <string name="memory_mode">Mode mémoire</string>
+    <string name="multiple_choice_mode">Mode à choix multiples</string>
+    <string name="no">Non</string>
+    <string name="slash">/</string>
+    <string name="yes">Oui</string>
+    <string name="question">Question</string>
+    <string name="restart">Recommencer</string>
+    <string name="reverse_cards">Retourner les cartes</string>
+    <string name="settings">Réglages</string>
+    <string name="shuffle_cards">"Cartes shuffle "</string>
+    <string name="string_continue">CONTINUER</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="type_your_answer">Tapez votre réponse</string>
+    <string name="typed_mode">Mode type</string>
+    <string name="want_to_quit">Êtes-vous sûr de vouloir quitter?</string>
+    <string name="pronounce_text">Prononcez le texte</string>
+    <string name="pronounce_cards">Prononcez les cartes</string>
+    <string name="placeholder_text">Qu\'allez-vous apprendre ensuite?</string>
+    <string name="pile_name">Nom de la pile</string>
+    <string name="pile_image">Image de pile</string>
+</resources>
