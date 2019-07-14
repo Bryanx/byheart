@@ -52,7 +52,7 @@
                 android:alpha="0.0"
                 android:background="@drawable/shadow"/>
 
-        <ImageView
+        <com.example.byheart.rehearsal.views.FlippingImageView
                 android:id="@+id/ivPronounce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

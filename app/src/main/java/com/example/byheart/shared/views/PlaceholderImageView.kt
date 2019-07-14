@@ -18,7 +18,7 @@ class PlaceholderImageView(context: Context, attrs: AttributeSet) : AppCompatIma
         if (Preferences.read(DARK_MODE)) {
             this.setImageResource(R.drawable.ic_study_dark)
         } else {
-            this.setImageResource(R.drawable.ic_study)
+            this.setImageResource(R.drawable.ic_placeholder_light)
         }
     }
 

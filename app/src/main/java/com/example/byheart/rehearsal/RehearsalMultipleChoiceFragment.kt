@@ -10,7 +10,7 @@ import com.example.byheart.card.Card
 import com.example.byheart.shared.*
 import com.example.byheart.shared.Preferences.REHEARSAL_REVERSE
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
-import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.cardBack
+
 
 /**
  * Fragment that contains the rehearsal multiple choice mode.
@@ -72,6 +72,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                 } else {
                     wrongSound.start()
                     btn.setTxtColor(R.color.red)
+                    btn.isEnabled = false
                 }
             }
         }

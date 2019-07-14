@@ -1,11 +1,11 @@
 package com.example.byheart.shared
 
+import android.animation.ObjectAnimator
 import android.graphics.Point
 import android.view.View
 import android.view.WindowManager
-import android.view.animation.TranslateAnimation
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.animation.ObjectAnimator
+import android.view.animation.TranslateAnimation
 
 /**
  * Contains all functions related to animations.
@@ -15,13 +15,11 @@ import android.animation.ObjectAnimator
 // slide the view from below itself to the current position
 fun moveX(view: View, from: Float, to: Float): TranslateAnimation {
     view.visibility = View.VISIBLE
-
     val animate: TranslateAnimation = TranslateAnimation(from, to, 0f, 0f).apply {
         duration = 200
         fillAfter = true
         interpolator = AccelerateDecelerateInterpolator()
     }
-
     view.startAnimation(animate)
     return animate
 }

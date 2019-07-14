@@ -51,7 +51,7 @@ class PileFragment : Fragment(), IOnBackPressed {
                 outRect.set(halfSpace, halfSpace, halfSpace, halfSpace)
             }
         })
-        addToolbar(false, resources.getString(R.string.app_name), true)
+        addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))
         addEventHandlers(adapter)
         return layout
     }
@@ -71,13 +71,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         R.id.action_settings -> {
             true
         }
-        R.id.action_about -> {
-            startFragment(AboutFragment(),
-                R.animator.slide_down,
-                R.animator.slide_up
-            )
-            true
-        }
+        R.id.action_about -> startFragment(AboutFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
 

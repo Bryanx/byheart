@@ -63,7 +63,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         pileId = sessionVM.pileId.value ?: NO_ID
         getCards()
         loadAnimations()
-        addToolbar(true, "", true)
+        addToolbar()
         textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {
             if (it == TextToSpeech.SUCCESS) {
                 pileVM.allPiles.observe(this, Observer { piles ->
@@ -241,13 +241,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         cardFront.rotationY = 0F
         backOfCardIsVisible = false
         cardBack.alpha = 0F
-        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 200)
+        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 100)
     }
 
     protected fun flipCard() {
-        flipY(ivPronounce, 0f, 90f).onAnimateEnd { flipY(ivPronounce, -90f, 0f) }
+        ivPronounce.flip()
         backOfCardIsVisible = if (!backOfCardIsVisible) {
-            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 150)
+            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 100)
             flipIn.setTarget(cardFront)
             flipOut.setTarget(cardBack)
             flipIn.start()
@@ -265,9 +265,9 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         handler.removeMessages(0) // clear timers
-        context?.dialog()?.setMessage("Are you sure you want to quit?")?.setCancelable(false)
-            ?.setPositiveButton("Yes") { _, _ -> startFragment(CardFragment()) }
-            ?.setNegativeButton("No") { _, _ ->  }?.show()
+        context?.dialog()?.setMessage(getString(R.string.want_to_quit))?.setCancelable(false)
+            ?.setPositiveButton(getString(R.string.yes)) { _, _ -> startFragment(CardFragment()) }
+            ?.setNegativeButton(getString(R.string.no)) { _, _ ->  }?.show()
         return true
     }
 }

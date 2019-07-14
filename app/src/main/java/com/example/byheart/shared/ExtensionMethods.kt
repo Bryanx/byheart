@@ -29,7 +29,7 @@ import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * Contains all extension method.
+ * Contains all extension methods.
  * @author Bryan de Ridder
  */
 
@@ -71,9 +71,9 @@ fun Animation.onAnimateEnd(args: () -> Unit) {
 
 // Adds a toolbar to a fragment
 fun Fragment.addToolbar(
-    hasBackButton: Boolean,
-    title: String,
-    hasOptions: Boolean
+    hasBackButton: Boolean = true,
+    hasOptions: Boolean = true,
+    title: String = ""
 ) {
     val mainAct = (activity as MainActivity)
     mainAct.supportActionBar?.apply {

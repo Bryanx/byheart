@@ -34,7 +34,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        addToolbar(true, "Add card", true)
+        addToolbar(title = "Add card")
         return layout
     }
 

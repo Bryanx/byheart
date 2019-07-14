@@ -50,11 +50,10 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
-        addToolbar(true, when {
+        addToolbar(title = when {
                 editMode -> resources.getString(R.string.edit_pile)
                 else -> resources.getString(R.string.create_pile)
-            }, true
-        )
+        })
         addEventHandlers()
     }
 

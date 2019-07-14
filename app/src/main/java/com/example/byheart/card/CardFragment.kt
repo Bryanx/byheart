@@ -43,7 +43,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
-        addToolbar(true, "", true)
+        addToolbar()
         return layout
     }
 

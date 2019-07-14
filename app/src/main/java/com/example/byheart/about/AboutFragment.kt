@@ -19,7 +19,7 @@ class AboutFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = container!!.inflate(R.layout.content_about)
-        addToolbar(true, "", false)
+        addToolbar(hasOptions = false)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity?.window?.statusBarColor = context?.color(R.color.colorPrimary)!!
         }
@@ -30,11 +30,7 @@ class AboutFragment : Fragment(), IOnBackPressed {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity?.window?.statusBarColor = context?.getAttr(R.attr.mainBackgroundColor)!!
         }
-        startFragment(
-            PileFragment(),
-            R.animator.slide_down,
-            R.animator.slide_up
-        )
+        startFragment(PileFragment())
         return true
     }
 }
