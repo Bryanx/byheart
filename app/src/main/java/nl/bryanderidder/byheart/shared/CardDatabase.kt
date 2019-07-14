@@ -56,6 +56,7 @@ abstract class CardDatabase : RoomDatabase() {
             }
         }
 
+        // Check first start
         private fun handleFirstStart() {
             if (!Preferences.read(NOT_FIRST_START)) {
                 Preferences.write(NOT_FIRST_START, true)
