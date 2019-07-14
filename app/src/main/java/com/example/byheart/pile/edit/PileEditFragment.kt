@@ -87,10 +87,10 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         spinner.adapter = adapter
         if (editMode) {
             val thisPile = piles.find { it.id == sessionVM.pileId.value }
-            spinner.setSelection(localeList.indexOfFirst { it.displayName ==  thisPile?.getAttr(attr)})
+            spinner.setSelection(localeList.indexOfFirst { it.code ==  thisPile?.getAttr(attr)})
         } else {
-            spinner.setSelection(countries.indexOfFirst {
-                    country -> country.toLowerCase().contains("united kingdom")
+            spinner.setSelection(localeList.indexOfFirst {
+                    it.code == "en-GB"
             })
         }
     }
@@ -149,7 +149,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getLocaleFromSpinner(spinnerCardFront: AppCompatSpinner): String {
-        return spinnerCardFront.selectedItem.toString()
+        return localeList[spinnerCardFront.selectedItemPosition].code
     }
 
     private fun getBundle() {

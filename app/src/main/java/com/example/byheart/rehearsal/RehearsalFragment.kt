@@ -68,8 +68,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             if (it == TextToSpeech.SUCCESS) {
                 pileVM.allPiles.observe(this, Observer { piles ->
                     pile = piles.first { pile -> pile.id == pileId }
-                    languageCardFront = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardFront }
-                    languageCardBack = Locale.getAvailableLocales().first { loc -> loc.displayName == pile.languageCardBack }
+                    languageCardFront = Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront }
+                    languageCardBack = Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack }
                     textToSpeech.language = languageCardBack
                 })
             }

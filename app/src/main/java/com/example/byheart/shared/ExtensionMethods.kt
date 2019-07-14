@@ -27,6 +27,7 @@ import com.example.byheart.MainActivity
 import com.example.byheart.R
 import com.example.byheart.shared.Preferences.DARK_MODE
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 /**
  * Contains all extension methods.
@@ -48,14 +49,6 @@ fun FragmentManager.startFragment(fragment: Fragment) {
 // Start fragment in pile_menu container
 fun Fragment.startFragment(fragment: Fragment) {
     this.fragmentManager?.beginTransaction()
-        ?.replace(R.id.main_container, fragment)
-        ?.commit()
-}
-
-// Start fragment swipe up in
-fun Fragment.startFragment(fragment: Fragment, animateIn: Int, animateOut: Int) {
-    this.fragmentManager?.beginTransaction()
-        ?.setCustomAnimations(animateIn, animateOut)
         ?.replace(R.id.main_container, fragment)
         ?.commit()
 }
@@ -174,3 +167,5 @@ val TextView.string: String get() = this.text.toString()
 val TextView.long: Long get() = this.text.toString().toLong()
 
 val ImageView.tint: ColorFilter get() = this.colorFilter
+
+val Locale.code: String get() = this.language + "-" + this.country
