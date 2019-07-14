@@ -93,7 +93,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-            <com.example.byheart.shared.views.PlaceholderImageView
+            <nl.bryanderidder.byheart.shared.views.PlaceholderImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     app:layout_constraintStart_toStartOf="parent"
