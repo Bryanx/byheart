@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Byheart</string>
+    <string name="about">Over</string>
+    <string name="add_a_card">Voeg een kaart toe</string>
+    <string name="add_another_card">Voeg nog een kaart toe</string>
+    <string name="answer">Antwoord</string>
+    <string name="card_back">Achterkant</string>
+    <string name="card_front">Voorkant</string>
+    <string name="confirm">Bevestigen</string>
+    <string name="create_pile">Stapel maken</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="delete_pile">Stapel verwijderen</string>
+    <string name="edit_pile">Stapel bewerken</string>
+    <string name="github_link">Github link</string>
+    <string name="go">GO</string>
+    <string name="language_cards_back">Taal achterkant</string>
+    <string name="language_cards_front">Taal voorkant</string>
+    <string name="light_mode">Light mode</string>
+    <string name="memory_mode">Geheugen modus</string>
+    <string name="multiple_choice_mode">Meerkeuze modus</string>
+    <string name="no">Nee</string>
+    <string name="pile_image">Stapel afbeelding</string>
+    <string name="pile_name">Stapel naam</string>
+    <string name="placeholder_text">Wat wil je leren?</string>
+    <string name="pronounce_cards">Spreek kaarten uit</string>
+    <string name="pronounce_text">Spreek tekst</string>
+    <string name="question">Vraag</string>
+    <string name="restart">Begin opnieuw</string>
+    <string name="reverse_cards">Draai kaarten om</string>
+    <string name="settings">Instellingen</string>
+    <string name="shuffle_cards">Schud kaarten</string>
+    <string name="slash">/</string>
+    <string name="string_continue">DOORGAAN</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="type_your_answer">Type je antwoord</string>
+    <string name="typed_mode">Type modus</string>
+    <string name="want_to_quit">Weet je zeker dat je wilt stoppen?</string>
+    <string name="yes">Ja</string>
+    <string name="add_card">Nieuwe kaart</string>
+</resources>
