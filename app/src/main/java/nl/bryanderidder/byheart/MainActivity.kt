@@ -8,7 +8,6 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.shared.IOnBackPressed
 import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
 import nl.bryanderidder.byheart.shared.startFragment
 
 /**
@@ -29,8 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupTheme() {
-        val darkMode = Preferences.read(DARK_MODE)
-        if (darkMode) setTheme(R.style.AppThemeDark)
+        if (Preferences.DARK_MODE) setTheme(R.style.AppThemeDark)
         else setTheme(R.style.AppTheme)
     }
 

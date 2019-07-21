@@ -20,7 +20,6 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
 import java.util.*
 
 
@@ -70,7 +69,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                         }
                     }
                 }
-                if (Preferences.read(DARK_MODE)) {
+                if (Preferences.DARK_MODE) {
                     adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
                     adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
                 } else {

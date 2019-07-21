@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.content_rehearsal_memory.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_PRONOUNCE
 import nl.bryanderidder.byheart.shared.inflate
+import nl.bryanderidder.byheart.shared.string
 
 /**
  * Fragment that contains the rehearsal memory mode.
@@ -30,10 +30,11 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 buttonsAreEnabled(false)
                 if (it == cardBtnCorrect) correctSound.start()
                 else wrongSound.start()
-                if (Preferences.read(REHEARSAL_PRONOUNCE)) speakCard(cardBack, languageCardBack)
+                if (Preferences.REHEARSAL_PRONOUNCE) speakCard(cardBack, languageCardBack)
                 flipCard()
+                val delay = cardBack.string.length*150.toLong()
                 if (button == cardBtnCorrect) {
-                    handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
+                    handler.postDelayed({ nextQuestionWithButtons() }, delay)
                 } else {
                     btnContinue.visibility = VISIBLE
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())

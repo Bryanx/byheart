@@ -12,7 +12,8 @@ import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardDao
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileDao
-import nl.bryanderidder.byheart.shared.Preferences.NOT_FIRST_START
+import nl.bryanderidder.byheart.shared.Preferences.KEY_NOT_FIRST_START
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 
 /**
  * Room data base class.
@@ -47,7 +48,7 @@ abstract class CardDatabase : RoomDatabase() {
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
                 handleFirstStart()
-                if (Preferences.read(NOT_FIRST_START)) return
+                if (Preferences.NOT_FIRST_START) return
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
                         populateDatabase(database.cardDao(), database.pileDao())
@@ -58,9 +59,9 @@ abstract class CardDatabase : RoomDatabase() {
 
         // Check first start
         private fun handleFirstStart() {
-            if (!Preferences.read(NOT_FIRST_START)) {
-                Preferences.write(NOT_FIRST_START, true)
-                Preferences.write(Preferences.REHEARSAL_MEMORY, true)
+            if (!Preferences.NOT_FIRST_START) {
+                Preferences.write(KEY_NOT_FIRST_START, true)
+                Preferences.write(KEY_REHEARSAL_MEMORY, true)
             }
         }
 

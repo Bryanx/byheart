@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
 import java.util.*
 
 /**
@@ -96,8 +95,14 @@ fun Context.color(id: Int): Int {
 
 // Returns a styled alert dialog builder
 fun Context.dialog(): AlertDialog.Builder = when {
-    Preferences.read(DARK_MODE) -> AlertDialog.Builder(this, R.style.DarkDialogTheme)
+    Preferences.DARK_MODE -> AlertDialog.Builder(this, R.style.DarkDialogTheme)
     else -> AlertDialog.Builder(this)
+}
+
+fun AlertDialog.Builder.setAnimation(styleId: Int): AlertDialog {
+    val dialog = this.create()
+    dialog.window?.attributes?.windowAnimations = styleId
+    return dialog
 }
 
 fun TextToSpeech.pronounce(text: String?) = this.speak(text, TextToSpeech.QUEUE_FLUSH, null)

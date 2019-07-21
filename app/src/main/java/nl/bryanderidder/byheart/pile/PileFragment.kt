@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.content_piles.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
+import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
 
 /**
  * Fragment that contains a list of all piles and a button to add a new pile.
@@ -56,13 +56,13 @@ class PileFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
-        if (Preferences.read(DARK_MODE))
+        if (Preferences.DARK_MODE)
             menu.findItem(R.id.action_dark_mode).title = resources.getString(R.string.light_mode)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_dark_mode -> {
-            Preferences.toggle(DARK_MODE)
+            Preferences.toggle(KEY_DARK_MODE)
             startNewMainActivity((activity as nl.bryanderidder.byheart.MainActivity), nl.bryanderidder.byheart.MainActivity::class.java)
             true
         }

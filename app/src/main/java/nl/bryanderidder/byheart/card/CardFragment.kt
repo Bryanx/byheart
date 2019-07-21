@@ -21,9 +21,8 @@ import nl.bryanderidder.byheart.rehearsal.RehearsalMemoryFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalMultipleChoiceFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalTypedFragment
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_MEMORY
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_MULTIPLE_CHOICE
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_TYPED
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
 
 /**
  * Fragment that displays all cards in a pile.
@@ -99,14 +98,14 @@ class CardFragment : Fragment(), IOnBackPressed {
             }
         })
         buttonPlay.setOnClickListener {
-            if (adapter.cards.size < 5 && Preferences.read(REHEARSAL_MULTIPLE_CHOICE)) {
-                Preferences.write(REHEARSAL_MULTIPLE_CHOICE, false)
-                Preferences.write(REHEARSAL_MEMORY, true)
+            if (adapter.cards.size < 5 && Preferences.REHEARSAL_MULTIPLE_CHOICE) {
+                Preferences.write(KEY_REHEARSAL_MULTIPLE_CHOICE, false)
+                Preferences.write(KEY_REHEARSAL_MEMORY, true)
             }
             sessionVM.pileId.value = pileId
             startFragment(when {
-                Preferences.read(REHEARSAL_MEMORY) -> RehearsalMemoryFragment()
-                Preferences.read(REHEARSAL_TYPED) -> RehearsalTypedFragment()
+                Preferences.REHEARSAL_MEMORY -> RehearsalMemoryFragment()
+                Preferences.REHEARSAL_TYPED -> RehearsalTypedFragment()
                 else -> RehearsalMultipleChoiceFragment()
             })
         }
@@ -118,15 +117,17 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun startDeleteDialog() {
-        context!!.dialog().setMessage("Are you sure you want to delete this pile?")
+        context!!.dialog()
+            .setMessage(getString(R.string.delete_confirm_stack))
             .setCancelable(false)
-            .setPositiveButton("Delete") { _, _ ->
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
                 val pile = Pile(sessionVM.pileName.value)
                 pile.id = pileId
                 pileVM.delete(pile)
                 startFragment(PileFragment())
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
+            .setAnimation(R.style.SlidingDialog)
             .show()
     }
 

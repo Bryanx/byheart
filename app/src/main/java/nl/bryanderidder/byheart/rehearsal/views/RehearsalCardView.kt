@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
 import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.name
 
@@ -23,7 +22,7 @@ class RehearsalCardView : AppCompatTextView {
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     private fun changeCardColor() {
-        val darkMode = Preferences.read(DARK_MODE)
+        val darkMode = Preferences.DARK_MODE
         when {
             this.name == "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark_back, Color.WHITE)
             this.name != "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark, Color.WHITE)

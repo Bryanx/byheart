@@ -31,24 +31,12 @@
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.494">
         <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
                 android:id="@+id/cardFront"
-                android:layout_centerInParent="true"
-                android:layout_width="225dp"
-                android:layout_height="225dp"
-                android:gravity="center"
-                android:textSize="@dimen/edit_text_size"
-                android:textAlignment="center"
-                android:background="@drawable/shadow"/>
+                style="@style/rehearsal_card"/>
 
         <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
                 android:id="@+id/cardBack"
-                android:layout_width="225dp"
-                android:layout_centerInParent="true"
-                android:layout_height="225dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="@dimen/edit_text_size"
                 android:alpha="0.0"
-                android:background="@drawable/shadow"/>
+                style="@style/rehearsal_card" />
 
         <nl.bryanderidder.byheart.rehearsal.views.FlippingImageView
                 android:id="@+id/ivPronounce"
@@ -56,8 +44,9 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_volume_up_black_24dp"
                 android:tint="@color/grey_500"
-                android:layout_marginTop="150dp"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/cardBack"
+                android:layout_marginTop="-32dp"
                 android:contentDescription="@string/pronounce_text"/>
 
     </nl.bryanderidder.byheart.shared.views.AnimatingRelativeLayout>

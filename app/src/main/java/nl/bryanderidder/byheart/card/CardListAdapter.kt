@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.Preferences.DARK_MODE
 import nl.bryanderidder.byheart.shared.getAttr
 
 /**
@@ -54,7 +53,7 @@ class CardListAdapter internal constructor(
     private fun changeCardColor(itemView: TextView) {
         val color = context.getAttr(R.attr.mainTextColor)
         itemView.setTextColor(color)
-        if (Preferences.read(DARK_MODE)) {
+        if (Preferences.DARK_MODE) {
             itemView.setBackgroundResource(R.drawable.card_dark)
         } else {
             itemView.setBackgroundResource(R.drawable.card_light)

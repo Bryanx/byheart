@@ -9,7 +9,9 @@ import android.os.Handler
 import android.speech.tts.TextToSpeech
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEachIndexed
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,8 +24,6 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_REVERSE
-import nl.bryanderidder.byheart.shared.Preferences.REHEARSAL_SHUFFLE
 import java.util.*
 
 /**
@@ -118,10 +118,10 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             }
             R.id.rehearsal_multiple_choice -> {
                 if (cards.size < 5) context!!.dialog()
-                    .setMessage("You need at least 5 cards.")
+                    .setMessage(getString(R.string.five_card_warning))
                     .setCancelable(false)
-                    .setPositiveButton("Ok") { _, _ -> }
-                    .create()
+                    .setPositiveButton(getString(R.string.ok)) { _, _ -> }
+                    .setAnimation(R.style.SlidingDialog)
                     .show()
                 else {
                     hideOtherViews(item)
@@ -161,7 +161,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         cardVM.allCards.observe(this, Observer { cardsFromDb ->
             cardsFromDb?.filter { it.pileId == pileId }?.let {
                 val tempCards = it.toMutableList()
-                if (Preferences.read(REHEARSAL_SHUFFLE)) tempCards.shuffle()
+                if (Preferences.REHEARSAL_SHUFFLE) tempCards.shuffle()
                 cards = tempCards
                 doAfterGetData()
             }
@@ -173,7 +173,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         handler.removeMessages(0)
         if (startFromBeginning) cardIndex = 0
         if (backOfCardIsVisible) flipCard()
-        if (Preferences.read(REHEARSAL_SHUFFLE)) cards.shuffle()
+        if (Preferences.REHEARSAL_SHUFFLE) cards.shuffle()
         Handler().postDelayed(({
             updateView()
             doAfter?.invoke()
@@ -194,7 +194,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     private fun updateView() {
-        if (Preferences.read(REHEARSAL_REVERSE)) {
+        if (Preferences.REHEARSAL_REVERSE) {
             cardFront.text = cards[cardIndex].answer
             cardBack.text = cards[cardIndex].question
         } else {
@@ -206,7 +206,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     protected fun speakCard(tv: TextView, language: Locale) {
         when {
-            !Preferences.read(REHEARSAL_REVERSE) -> textToSpeech.language = language
+            !Preferences.REHEARSAL_REVERSE -> textToSpeech.language = language
             tv == cardBack -> textToSpeech.language = languageCardFront
             else -> textToSpeech.language = languageCardBack
         }
@@ -265,9 +265,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         handler.removeMessages(0) // clear timers
-        context?.dialog()?.setMessage(getString(R.string.want_to_quit))?.setCancelable(false)
-            ?.setPositiveButton(getString(R.string.yes)) { _, _ -> startFragment(CardFragment()) }
-            ?.setNegativeButton(getString(R.string.no)) { _, _ ->  }?.show()
+        startFragment(CardFragment())
         return true
     }
 }
