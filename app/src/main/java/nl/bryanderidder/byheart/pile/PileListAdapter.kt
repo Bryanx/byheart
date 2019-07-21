@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.shared.SessionViewModel
@@ -26,7 +27,7 @@ class PileListAdapter internal constructor(context: Context) : RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PileViewHolder {
         val itemView = inflater.inflate(R.layout.item_pile, parent, false)
-        sessionVM = ViewModelProviders.of(parent.context as nl.bryanderidder.byheart.MainActivity).get(SessionViewModel::class.java)
+        sessionVM = ViewModelProviders.of(parent.context as MainActivity).get(SessionViewModel::class.java)
         return PileViewHolder(itemView)
     }
 
@@ -50,7 +51,7 @@ class PileListAdapter internal constructor(context: Context) : RecyclerView.Adap
             itemView.setOnClickListener {
                 sessionVM.pileId.postValue(tvPileId.long)
                 sessionVM.pileName.postValue(tvFront.string)
-                (it.context as nl.bryanderidder.byheart.MainActivity).supportFragmentManager.startFragment(CardFragment())
+                (it.context as MainActivity).supportFragmentManager.startFragment(CardFragment())
             }
         }
     }

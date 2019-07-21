@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.view.*
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.about.AboutFragment
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
@@ -66,7 +67,7 @@ class PileFragment : Fragment(), IOnBackPressed {
             activity?.recreate()
             true
         }
-        R.id.action_about -> startFragment(nl.bryanderidder.byheart.about.AboutFragment()).run { true }
+        R.id.action_about -> startFragment(AboutFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
 

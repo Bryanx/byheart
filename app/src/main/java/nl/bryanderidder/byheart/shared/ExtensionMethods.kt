@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.activity_main.*
+import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import java.util.*
 
@@ -66,7 +67,7 @@ fun Fragment.addToolbar(
     hasOptions: Boolean = true,
     title: String = ""
 ) {
-    val mainAct = (activity as nl.bryanderidder.byheart.MainActivity)
+    val mainAct = (activity as MainActivity)
     mainAct.supportActionBar?.apply {
         setDisplayHomeAsUpEnabled(hasBackButton)
         setDisplayShowHomeEnabled(hasBackButton)
