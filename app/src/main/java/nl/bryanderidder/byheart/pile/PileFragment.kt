@@ -66,9 +66,6 @@ class PileFragment : Fragment(), IOnBackPressed {
             activity?.recreate()
             true
         }
-        R.id.action_settings -> {
-            true
-        }
         R.id.action_about -> startFragment(nl.bryanderidder.byheart.about.AboutFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
