@@ -83,4 +83,20 @@
         <item name="android:background">?mainBackgroundColorLighter</item>
     </style>
 
+    <style name="rehearsal_card">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">225dp</item>
+        <item name="android:layout_height">225dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:background">@drawable/shadow</item>
+    </style>
+
+    <style name="SlidingDialog">
+        <item name="android:windowEnterAnimation">@animator/pop_in</item>
+        <item name="android:windowExitAnimation">@animator/pop_out</item>
+    </style>
+
 </resources>
