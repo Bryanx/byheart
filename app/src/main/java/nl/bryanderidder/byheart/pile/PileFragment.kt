@@ -63,7 +63,7 @@ class PileFragment : Fragment(), IOnBackPressed {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_dark_mode -> {
             Preferences.toggle(KEY_DARK_MODE)
-            startNewMainActivity((activity as nl.bryanderidder.byheart.MainActivity), nl.bryanderidder.byheart.MainActivity::class.java)
+            activity?.recreate()
             true
         }
         R.id.action_settings -> {

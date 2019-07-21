@@ -15,11 +15,3 @@ fun getDeviceWidth(ctx: Activity): Int {
     display.getSize(size)
     return size.x
 }
-
-fun startNewMainActivity(currentActivity: Activity, newTopActivityClass: Class<out Activity>) {
-    val intent = Intent(currentActivity, newTopActivityClass)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK)
-    currentActivity.startActivity(intent)
-}
