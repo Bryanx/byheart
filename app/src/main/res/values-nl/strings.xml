@@ -12,7 +12,6 @@
     <string name="dark_mode">Dark mode</string>
     <string name="delete_pile">Stapel verwijderen</string>
     <string name="edit_pile">Stapel bewerken</string>
-    <string name="github_link">Github link</string>
     <string name="go">GO</string>
     <string name="language_cards_back">Taal achterkant</string>
     <string name="language_cards_front">Taal voorkant</string>
@@ -30,12 +29,15 @@
     <string name="reverse_cards">Draai kaarten om</string>
     <string name="settings">Instellingen</string>
     <string name="shuffle_cards">Schud kaarten</string>
-    <string name="slash">/</string>
     <string name="string_continue">DOORGAAN</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="type_your_answer">Type je antwoord</string>
     <string name="typed_mode">Type modus</string>
     <string name="want_to_quit">Weet je zeker dat je wilt stoppen?</string>
     <string name="yes">Ja</string>
     <string name="add_card">Nieuwe kaart</string>
+    <string name="rate_this_app">Review deze app</string>
+    <string name="buy_me_a_cup_of_coffee">Doneer een kop koffie!</string>
+    <string name="about_description">Bedankt dat je deze app gebruikt! Ik heb deze app gemaakt uit frustratie omdat alle moderne leeromgevingen een premium constructie gebruiken, vol zitten met advertenties of zeer veel overbodige features hebben.</string>
+    <string name="about_subtext">Als je deze app leuk vindt, kan je mij op deze manier steunen:</string>
+    <string name="create_a_suggestion_or_issue_on_github">Maak een suggestie of issue op GitHub</string>
 </resources>

@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="86dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_large_logo"
+        android:src="@drawable/ic_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +39,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Thank you for using this app! I made this because all modern flashcard apps are either bloated with ads, require a subscription or contain alot of unnecessary features."
+        android:text="@string/about_description"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -54,7 +54,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="If you enjoy this app, consider doing the following:"
+        android:text="@string/about_subtext"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -71,7 +71,7 @@
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:text="Rate this app"
+        android:text="@string/rate_this_app"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +85,24 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="16dp"
-        android:text="Buy me a cup of coffee!"
+        android:text="@string/buy_me_a_cup_of_coffee"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rateUs" />
+
+    <TextView
+        android:id="@+id/createIssue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        android:text="@string/create_a_suggestion_or_issue_on_github"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buyCoffee" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Byheart</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Question</string>
     <string name="answer">Answer</string>
     <string name="pile_name">Stack name</string>
@@ -26,15 +26,21 @@
     <string name="add_another_card">Add another card</string>
     <string name="language_cards_front">Language cards front:</string>
     <string name="language_cards_back">Language cards back:</string>
-    <string name="slash">/</string>
+    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Pronounce text</string>
     <string name="type_your_answer">Type your answer</string>
     <string name="go">GO</string>
     <string name="string_continue">CONTINUE</string>
     <string name="create_pile">Create stack</string>
-    <string name="github_link"><a href="https://github.com/Bryanx/byheart/">Open an issue on github.</a></string>
     <string name="want_to_quit">Are you sure you want to quit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_card">Add card</string>
+    <string name="about_description">Thank you for using this app! I made this because all modern flashcard apps are either bloated with ads, require a subscription or contain alot of unnecessary features.</string>
+    <string name="about_subtext">If you enjoy this app, consider doing the following:</string>
+    <string name="rate_this_app">Rate this app</string>
+    <string name="buy_me_a_cup_of_coffee">Buy me a cup of coffee!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Create a suggestion or issue on GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
 </resources>

@@ -32,7 +32,8 @@ class AboutFragment : Fragment(), IOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rateUs.setOnClickListener {}
-        buyCoffee.setOnClickListener { goToUrl( "https://bunq.me/PayBryan/3")}
+        buyCoffee.setOnClickListener { goToUrl( getString(R.string.url_bunq))}
+        createIssue.setOnClickListener { goToUrl( getString(R.string.url_github_issue))}
     }
 
     override fun onBackPressed(): Boolean {
