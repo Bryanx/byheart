@@ -40,4 +40,9 @@
     <string name="about_description">Bedankt dat je deze app gebruikt! Ik heb deze app gemaakt uit frustratie omdat alle moderne leeromgevingen een premium constructie gebruiken, vol zitten met advertenties of zeer veel overbodige features hebben.</string>
     <string name="about_subtext">Als je deze app leuk vindt, kan je mij op deze manier steunen:</string>
     <string name="create_a_suggestion_or_issue_on_github">Maak een suggestie of issue op GitHub</string>
+    <string name="delete_confirm_stack">Weet je zeker dat je deze stapel wilt verwijderen?</string>
+    <string name="delete">Verwijderen</string>
+    <string name="cancel">Annuleren</string>
+    <string name="five_card_warning">Je hebt hiervoor minimaal 5 kaarten nodig.</string>
+    <string name="ok">Oke</string>
 </resources>

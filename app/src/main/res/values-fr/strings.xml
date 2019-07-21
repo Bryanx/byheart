@@ -40,4 +40,9 @@
     <string name="about_description">J\'ai fait cette application, parce que tout les applications moderne avez un construction de premium, avoir beaucoup de publicités ou avoir trop de fonctionnalités.</string>
     <string name="about_subtext">Si tu aimes cette application, vous pouvez m\'aidez avec:</string>
     <string name="create_a_suggestion_or_issue_on_github">Créer une suggestion ou un problème sur GitHub</string>
+    <string name="delete_confirm_stack">Êtes-vous sûr de vouloir supprimer cette pile?</string>
+    <string name="delete">Supprimer</string>
+    <string name="cancel">Annuler</string>
+    <string name="five_card_warning">Vous avez besoin d\'au moins 5 cartes pour cela.</string>
+    <string name="ok">d\'accord</string>
 </resources>

@@ -43,4 +43,9 @@
     <string name="create_a_suggestion_or_issue_on_github">Create a suggestion or issue on GitHub</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Are you sure you want to delete this stack?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="five_card_warning">You need at least 5 cards.</string>
+    <string name="ok">Ok</string>
 </resources>
