@@ -10,16 +10,12 @@ import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.name
 
 
-class RehearsalCardView : AppCompatTextView {
+class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
 
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+    init {
         changeCameraDistance()
         changeCardColor()
     }
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     private fun changeCardColor() {
         val darkMode = Preferences.DARK_MODE

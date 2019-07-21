@@ -59,6 +59,10 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
 
-    //expandable recyclerview
+    // Expandable recyclerview
     implementation 'com.thoughtbot:expandablerecyclerview:1.3'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:17.0.1'
 }
+apply plugin: 'com.google.gms.google-services'

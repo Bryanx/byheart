@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "808671785379",
+    "firebase_url": "https://byheart-f5c71.firebaseio.com",
+    "project_id": "byheart-f5c71",
+    "storage_bucket": "byheart-f5c71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808671785379:android:9e5dcf20fd2189e5",
+        "android_client_info": {
+          "package_name": "nl.bryanderidder.byheart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808671785379-74257nr4f8ueao8kif0pps2u0n796tm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQzkE_4wDs65JJnhRwoqAutK1Tx-11nfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808671785379-74257nr4f8ueao8kif0pps2u0n796tm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
