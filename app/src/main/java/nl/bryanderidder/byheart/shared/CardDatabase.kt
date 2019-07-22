@@ -47,8 +47,7 @@ abstract class CardDatabase : RoomDatabase() {
         private class CardDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
-                handleFirstStart()
-                if (Preferences.NOT_FIRST_START) return
+                if (!isFirstStart()) return
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
                         populateDatabase(database.cardDao(), database.pileDao())
@@ -58,11 +57,13 @@ abstract class CardDatabase : RoomDatabase() {
         }
 
         // Check first start
-        private fun handleFirstStart() {
+        private fun isFirstStart(): Boolean {
             if (!Preferences.NOT_FIRST_START) {
                 Preferences.write(KEY_NOT_FIRST_START, true)
                 Preferences.write(KEY_REHEARSAL_MEMORY, true)
+                return true
             }
+            return false
         }
 
         fun populateDatabase(cardDao: CardDao, pileDao: PileDao) {
