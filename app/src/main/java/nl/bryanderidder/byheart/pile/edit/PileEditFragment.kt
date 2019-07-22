@@ -169,7 +169,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         etPileName.setOnFocusChangeListener { _, hasFocus -> if (!hasFocus) checkInput() }
     }
 
-    override fun onBackPressed(): Boolean {
-        return startFragment(PileFragment()).run { true }
+    override fun onBackPressed(): Boolean = when {
+            editMode -> startFragment(CardFragment()).run { true }
+            else -> startFragment(PileFragment()).run { true }
     }
 }
