@@ -45,4 +45,5 @@
     <string name="cancel">Annuler</string>
     <string name="five_card_warning">Vous avez besoin d\'au moins 5 cartes pour cela.</string>
     <string name="ok">d\'accord</string>
+    <string name="select_card_color">Choisissez une couleur de carte</string>
 </resources>

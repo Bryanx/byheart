@@ -45,4 +45,5 @@
     <string name="cancel">Annuleren</string>
     <string name="five_card_warning">Je hebt hiervoor minimaal 5 kaarten nodig.</string>
     <string name="ok">Oke</string>
+    <string name="select_card_color">Kies een kaart kleur</string>
 </resources>

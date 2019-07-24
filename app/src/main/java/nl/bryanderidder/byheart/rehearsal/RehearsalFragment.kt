@@ -9,9 +9,7 @@ import android.os.Handler
 import android.speech.tts.TextToSpeech
 import android.view.*
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEachIndexed
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -220,7 +218,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         moveX(ivPronounce, 0F, -screenWidth)
         moveX(cardBack, 0F, -screenWidth).onAnimateEnd {
             if (cardIndex + 1 < cards.size) {
-                resetCardPosition()
+                resetCard()
                 nextCard()
                 moveX(cardFront, screenWidth, 0F)
                 moveX(ivPronounce, screenWidth, 0F)
@@ -236,7 +234,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         if (cardIndex < cards.size) updateView()
     }
 
-    private fun resetCardPosition() {
+    private fun resetCard() {
         cardFront.alpha = 1F
         cardFront.rotationY = 0F
         backOfCardIsVisible = false

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.*
-import nl.bryanderidder.byheart.shared.CardDatabase
+import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -42,5 +42,9 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()
+    }
+
+    fun getPile(pileId: Long?): Pile? {
+        return allPiles.value?.find { it.id == pileId }
     }
 }

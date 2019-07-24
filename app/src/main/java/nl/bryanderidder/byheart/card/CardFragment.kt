@@ -51,6 +51,26 @@ class CardFragment : Fragment(), IOnBackPressed {
         getBundle()
         val adapter = setUpAdapter()
         addEventHandlers(adapter)
+        changeColors()
+    }
+
+    private fun changeColors() {
+        pileVM.allPiles.observe(this, Observer {
+            val pile = it.find { pile -> pile.id == sessionVM.pileId.value }
+            val buttons = arrayOf(buttonEdit, buttonAdd, buttonPlay)
+            val color = context!!.color(pile?.color!!)
+            if (Preferences.DARK_MODE) {
+                buttons.forEach { it.setIconColor(color) }
+                btnAddCardPlaceholder.setTextColor(color)
+            } else {
+                buttons.forEach {
+                    it.setIconColor(color.setBrightness(0.15F))
+                    it.setColor(pile.color!!)
+                }
+                btnAddCardPlaceholder.setTextColor(color.setBrightness(0.15F))
+                btnAddCardPlaceholder.setBackgroundTint(color)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

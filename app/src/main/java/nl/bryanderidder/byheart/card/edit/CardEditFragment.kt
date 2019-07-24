@@ -19,7 +19,7 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.shared.*
 
 /**
- * Fragment that is showed when editing or creating a card.
+ * Fragment that is shown when editing or creating a card.
  * @author Bryan de Ridder
  */
 class CardEditFragment : Fragment(), IOnBackPressed {
@@ -29,6 +29,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     private lateinit var sessionVM: SessionViewModel
     private lateinit var layout: View
     private var editMode: Boolean = false
+    private var currentCard: Card? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
@@ -46,6 +47,11 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         cardVM.allCards.observe(this, Observer { cardsFromDb ->
             cardsFromDb?.filter { it.pileId == sessionVM.pileId.value }?.let {
                 cards = it
+                if (editMode) {
+                    currentCard = cards.find { card: Card ->
+                        sessionVM.cardId.value?.toLong() == card.id
+                    }
+                }
                 updateView()
             }
         })
@@ -55,9 +61,8 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         when {
             editMode -> {
                 btnAddAnotherCard.visibility = GONE
-                val card = getCurrentCard()
-                etCardFront.setText(card?.question.toString())
-                etCardBack.setText(card?.answer.toString())
+                etCardFront.setText(currentCard?.question.toString())
+                etCardBack.setText(currentCard?.answer.toString())
             }
             else -> {
                 btnAddAnotherCard.visibility = VISIBLE
@@ -66,7 +71,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.edit_pile_menu, menu)
+        inflater.inflate(R.menu.edit_card_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -105,7 +110,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                 isCorrect = false
             }
             q.toLowerCase() in cards.map { it.getAttr(property).toString().toLowerCase() } -> {
-                if ((editMode && q != getCurrentCard()?.getAttr(property)) || !editMode) {
+                if ((editMode && q != currentCard?.getAttr(property)) || !editMode) {
                     layout.isErrorEnabled = true
                     layout.error = "You already have a card with the same text"
                     isCorrect = false
@@ -132,10 +137,6 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         etCardBack.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) checkInput(etCardBack.string, "answer", cardBackLayout)
         }
-    }
-
-    private fun getCurrentCard(): Card? = cards.find { card: Card ->
-        sessionVM.cardId.value?.toLong() == card.id
     }
 
     override fun onBackPressed(): Boolean = startFragment(CardFragment()).run { true }

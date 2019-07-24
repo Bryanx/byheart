@@ -26,11 +26,20 @@ android {
     dataBinding {
         enabled = false
     }
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
 }
 
 kotlin {
     experimental {
         coroutines "enable"
+    }
+}
+
+kapt {
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas".toString())
     }
 }
 

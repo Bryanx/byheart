@@ -21,11 +21,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.pile.edit.ColorStateDrawable
+import java.lang.Integer.parseInt
 import java.util.*
 
 /**
@@ -85,8 +89,56 @@ fun Context.getAttr(id: Int): Int {
     return typedValue.data
 }
 
+// Darkens an int color by a certain factor
+fun Int.setBrightness(factor: Float): Int {
+    val hexWithAlpha = Integer.toHexString(this)
+    val hex = hexWithAlpha.substring(2, hexWithAlpha.length)
+    val hsl = floatArrayOf(0F,0F,0F)
+    ColorUtils.RGBToHSL(parseInt(hex.substring( 0, 2 ), 16),
+        parseInt(hex.substring( 2, 4 ), 16),
+        parseInt(hex.substring( 4, 6 ), 16),
+        hsl)
+    hsl[2] = factor
+    return ColorUtils.HSLToColor(hsl)
+}
+
+fun FloatingActionButton.setColor(color: Int) {
+    this.backgroundTintList = ColorStateList.valueOf(context.color(color))
+}
+
+fun FloatingActionButton.setPureColor(color: Int) {
+    this.backgroundTintList = ColorStateList.valueOf(color)
+}
+
 fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode) {
     this.setColorFilter(context.color(id), blendMode)
+}
+
+fun Button.setBackgroundTint(color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        this.backgroundTintList = ColorStateList.valueOf(color)
+    }
+}
+
+//Change color of drawable for imageview
+fun ImageView.setDrawableColor(drawableId: Int, color: Int) {
+    return this.setImageDrawable(
+        ColorStateDrawable(
+            arrayOf(this.context.resources.getDrawable(drawableId)),
+            color)
+    )
+}
+
+fun FloatingActionButton.setIconColor(color: Int) {
+    this.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+}
+
+fun Activity?.setStatusBarColor(ctx: Context?, color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        val window = (this as MainActivity).window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ctx!!.color(color)
+    }
 }
 
 // Returns a color

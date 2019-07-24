@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.pile
 
+import android.graphics.Color
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,4 +14,5 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @PrimaryKey(autoGenerate = true) var id: Long = 0
     @ColumnInfo(name = "languageCardFront") var languageCardFront: String = "en"
     @ColumnInfo(name = "languageCardBack") var languageCardBack: String = "en"
+    @ColumnInfo(name = "color") var color: Int? = Color.WHITE
 }

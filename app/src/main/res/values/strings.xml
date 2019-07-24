@@ -48,5 +48,9 @@
     <string name="cancel">Cancel</string>
     <string name="five_card_warning">You need at least 5 cards.</string>
     <string name="ok">Ok</string>
-    <string name="play_store_url">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description">color</string>
+    <string name="color_swatch_description_selected">Selected color</string>
+    <string name="select_card_color">Select card color</string>
 </resources>

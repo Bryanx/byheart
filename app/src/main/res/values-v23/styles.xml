@@ -30,7 +30,7 @@
         <item name="mainCard">@drawable/card_dark</item>
         <item name="mainHeaderTextColor">@color/white</item>
         <item name="mainEditTextColorHint">@color/grey_600</item>
-        <item name="mainTextColor">@color/grey_600</item>
+        <item name="mainTextColor">@color/grey_500</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:textColor">@color/white</item>
         <item name="elevation">0dp</item>

@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared
+package nl.bryanderidder.byheart.shared.database
 
 import android.content.Context
 import androidx.room.Database
@@ -12,14 +12,15 @@ import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardDao
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileDao
+import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.Preferences.KEY_NOT_FIRST_START
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 
 /**
- * Room data base class.
+ * Room database class.
  * @author Bryan de Ridder
  */
-@Database(entities = [Card::class, Pile::class], version = 1)
+@Database(entities = [Card::class, Pile::class], version = 2, exportSchema = true)
 abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
     abstract fun pileDao(): PileDao
@@ -38,6 +39,7 @@ abstract class CardDatabase : RoomDatabase() {
                 val instance = Room
                     .databaseBuilder(context.applicationContext, CardDatabase::class.java, "card")
                     .addCallback(CardDatabaseCallback(scope))
+                    .addMigrations(DatabaseMigrations.MIGRATION_1_2)
                     .build()
                 INSTANCE = instance
                 return instance

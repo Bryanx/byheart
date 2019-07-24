@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.pile.edit
 
+import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.*
@@ -24,11 +25,12 @@ import java.util.*
 
 
 /**
- * In this fragment piles are editing or created.
+ * In this fragment piles are edited or created.
  * @author Bryan de Ridder
  */
 class PileEditFragment : Fragment(), IOnBackPressed {
 
+    private var pileColor: Int = Color.WHITE
     private lateinit var piles: List<Pile>
     private lateinit var layout: View
     private lateinit var pileVM: PileViewModel
@@ -104,6 +106,14 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             activity?.hideKeyboard()
             true
         }
+        R.id.action_colorpicker -> {
+            val dialog = ColorPickerDialog.newInstance(R.string.go, null, pileColor, 4, 2)
+            dialog.show(fragmentManager!!, "picker")
+            dialog.setOnColorSelectedListener {
+                pileColor = it
+            }
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -136,6 +146,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         val pile = Pile(etPileName.string)
         pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
         pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
+        pile.color = pileColor
         if (editMode) {
             pile.id = sessionVM.pileId.value ?: NO_ID
             pileVM.update(pile)
@@ -163,6 +174,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         }
         pileVM.allPiles.observe(this, Observer {
             piles = it
+            pileColor = piles.find{it.id == sessionVM.pileId.value}?.color ?: Color.WHITE
             setUpTextToSpeech()
         })
         etPileName.addTextChangedListener { checkInput() }
@@ -170,7 +182,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onBackPressed(): Boolean = when {
-            editMode -> startFragment(CardFragment()).run { true }
-            else -> startFragment(PileFragment()).run { true }
+        editMode -> startFragment(CardFragment()).run { true }
+        else -> startFragment(PileFragment()).run { true }
     }
 }

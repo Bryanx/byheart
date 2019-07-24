@@ -34,7 +34,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
-        val adapter = PileListAdapter(layout.context)
+        val adapter = PileListAdapter(context!!)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(activity!!, 2)
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
