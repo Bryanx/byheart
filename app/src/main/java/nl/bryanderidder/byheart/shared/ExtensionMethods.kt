@@ -103,7 +103,7 @@ fun Int.setBrightness(factor: Float): Int {
 }
 
 fun FloatingActionButton.setColor(color: Int) {
-    this.backgroundTintList = ColorStateList.valueOf(context.color(color))
+    this.backgroundTintList = ColorStateList.valueOf(color)
 }
 
 fun FloatingActionButton.setPureColor(color: Int) {

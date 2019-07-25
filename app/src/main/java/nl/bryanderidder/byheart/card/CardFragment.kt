@@ -65,7 +65,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             } else {
                 buttons.forEach {
                     it.setIconColor(color.setBrightness(0.15F))
-                    it.setColor(pile.color!!)
+                    it.setColor(color)
                 }
                 btnAddCardPlaceholder.setTextColor(color.setBrightness(0.15F))
                 btnAddCardPlaceholder.setBackgroundTint(color)

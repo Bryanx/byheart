@@ -1,6 +1,5 @@
 package nl.bryanderidder.byheart.pile.edit
 
-import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.*
@@ -30,7 +29,7 @@ import java.util.*
  */
 class PileEditFragment : Fragment(), IOnBackPressed {
 
-    private var pileColor: Int = Color.WHITE
+    private var pileColor: Int = R.color.blue_200
     private lateinit var piles: List<Pile>
     private lateinit var layout: View
     private lateinit var pileVM: PileViewModel
@@ -174,7 +173,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         }
         pileVM.allPiles.observe(this, Observer {
             piles = it
-            pileColor = piles.find{it.id == sessionVM.pileId.value}?.color ?: Color.WHITE
+            pileColor = piles.find{it.id == sessionVM.pileId.value}?.color ?: R.color.blue_200
             setUpTextToSpeech()
         })
         etPileName.addTextChangedListener { checkInput() }
