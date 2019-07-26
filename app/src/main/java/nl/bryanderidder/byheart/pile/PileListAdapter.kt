@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_pile.view.*
 import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.shared.*
 
@@ -16,7 +17,10 @@ import nl.bryanderidder.byheart.shared.*
  * Adapter that contains all Piles in the main pile fragment (home page).
  * @author Bryan de Ridder
  */
-class PileListAdapter internal constructor(private val context: Context) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
+class PileListAdapter internal constructor(
+    private val context: Context,
+    private val cards: List<Card>
+) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
     private var darkMode: Boolean = false
     private lateinit var sessionVM: SessionViewModel
@@ -32,15 +36,17 @@ class PileListAdapter internal constructor(private val context: Context) : Recyc
 
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
         val current = piles[position]
-        val color = context.color(current.color!!)
-        holder.itemView.tvPileFront.text = current.name
-        holder.itemView.tvPileId.text = current.id.toString()
+        val cardCount = cards.count { it.pileId == piles[position].id }
+        val color = current.color!!
+        val item = holder.itemView
+        item.tvPileFront.text = current.name
+        item.tvPileId.text = current.id.toString()
+        item.tvCardsCount.text = context.resources.getString(R.string.card_count, cardCount)
         if (darkMode) {
-            holder.itemView.tvPileFront.setTextColor(color)
-            holder.itemView.ivPile.setDrawableColor(R.drawable.ic_card_no_shadow, context.getAttr(R.attr.mainBackgroundColorLighter))
+            item.tvPileFront.setTextColor(color)
+            item.cvPile.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
         } else {
-            holder.itemView.tvPileFront.setTextColor(color.setBrightness(0.15F))
-            holder.itemView.ivPile.setDrawableColor(R.drawable.ic_card_no_shadow, color)
+            item.tvPileFront.setTextColor(color.setBrightness(0.55F))
         }
     }
 

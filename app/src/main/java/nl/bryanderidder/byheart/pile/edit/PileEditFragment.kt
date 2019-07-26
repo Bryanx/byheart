@@ -50,12 +50,17 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRandomColor()
         getBundle()
         addToolbar(title = when {
                 editMode -> resources.getString(R.string.edit_pile)
                 else -> resources.getString(R.string.create_pile)
         })
         addEventHandlers()
+    }
+
+    private fun setRandomColor() {
+        pileColor = ResourcesUtils.getColors(context!!).random()
     }
 
     private fun setUpTextToSpeech() {
@@ -171,9 +176,12 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             if (checkInput()) addOrUpdatePile()
             return@onEnter true
         }
-        pileVM.allPiles.observe(this, Observer {
-            piles = it
-            pileColor = piles.find{it.id == sessionVM.pileId.value}?.color ?: R.color.blue_200
+        pileVM.allPiles.observe(this, Observer { listPiles ->
+            this.piles = listPiles
+            pileColor = when {
+                editMode -> piles.find { it.id == sessionVM.pileId.value }?.color!!
+                else -> ResourcesUtils.getColors(context!!).random()
+            }
             setUpTextToSpeech()
         })
         etPileName.addTextChangedListener { checkInput() }

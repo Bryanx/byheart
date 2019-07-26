@@ -46,4 +46,7 @@
     <string name="five_card_warning">Je hebt hiervoor minimaal 5 kaarten nodig.</string>
     <string name="ok">Oke</string>
     <string name="select_card_color">Kies een kaart kleur</string>
+    <string name="color_swatch_description">kleur</string>
+    <string name="color_swatch_description_selected">Gekozen kleur</string>
+    <string name="card_count">%1$d KAARTEN</string>
 </resources>

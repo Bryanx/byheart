@@ -5,10 +5,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.Preferences
+import nl.bryanderidder.byheart.shared.color
 import nl.bryanderidder.byheart.shared.getAttr
 
 /**
@@ -24,10 +24,6 @@ class CardListAdapter internal constructor(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     var cards: MutableList<Card> = mutableListOf()
 
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardItemView: TextView = itemView.findViewById(R.id.tvFront)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val itemView = inflater.inflate(R.layout.item_card, parent, false)
         return CardViewHolder(itemView)
@@ -35,28 +31,20 @@ class CardListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val current = cards[position]
-        val itemView = holder.cardItemView
-        changeCardColor(itemView)
-        itemView.text = current.question
-        itemView.setOnClickListener {
-            if (itemView.currentTextColor != Color.WHITE) {
-                itemView.text = current.answer
-                itemView.setTextColor(Color.WHITE)
-                itemView.setBackgroundResource(R.drawable.card_answer)
+        val tvFront = holder.itemView.tvFront
+        val cvCard = holder.itemView.cvCard
+        tvFront.setTextColor(context.getAttr(R.attr.mainTextColor))
+        tvFront.text = current.question
+        tvFront.setOnClickListener {
+            if (tvFront.currentTextColor != Color.WHITE) {
+                tvFront.text = current.answer
+                tvFront.setTextColor(Color.WHITE)
+                cvCard.setCardBackgroundColor(context.color(R.color.colorPrimary))
             } else {
-                itemView.text = current.question
-                changeCardColor(itemView)
+                tvFront.text = current.question
+                tvFront.setTextColor(context.getAttr(R.attr.mainTextColor))
+                cvCard.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
             }
-        }
-    }
-
-    private fun changeCardColor(itemView: TextView) {
-        val color = context.getAttr(R.attr.mainTextColor)
-        itemView.setTextColor(color)
-        if (Preferences.DARK_MODE) {
-            itemView.setBackgroundResource(R.drawable.card_dark)
-        } else {
-            itemView.setBackgroundResource(R.drawable.card_light)
         }
     }
 
@@ -78,4 +66,5 @@ class CardListAdapter internal constructor(
 
     override fun getItemCount(): Int = cards.size
 
+    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

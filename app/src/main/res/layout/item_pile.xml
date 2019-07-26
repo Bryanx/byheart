@@ -1,32 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@android:color/transparent"
-        android:layout_height="120dp"
-        android:layout_width="@dimen/pile_dimen">
+<nl.bryanderidder.byheart.shared.views.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@android:color/transparent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
-    <ImageView
-        android:id="@+id/ivPile"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
-
         android:foreground="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_card_no_shadow"/>
+        app:cardBackgroundColor="?mainBackgroundColorLighter"
+        app:cardCornerRadius="15dp"
+        app:cardElevation=".5dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvPileFront"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="erasdsdfs"
-        android:textColor="@color/grey_800"
-        android:textSize="20sp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/tvPileId"
-            android:alpha="0"
-            android:layout_height="0dp"
-            android:layout_width="0dp"/>
-</RelativeLayout>
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView2"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:foregroundGravity="right"-->
+                <!--app:layout_constraintHeight_percent=".4"-->
+                <!--app:layout_constraintWidth_percent=".4"-->
+                <!--android:src="@drawable/ic_logo"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.5"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <TextView
+                android:id="@+id/tvPileFront"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="16dp"
+                android:gravity="bottom|center"
+                android:text="French"
+                android:textColor="@color/grey_800"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCardsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="4dp"
+                android:gravity="bottom|center"
+                android:text="25 CARDS"
+                android:textColor="?cardTextColor"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPileFront" />
+
+            <TextView
+                android:id="@+id/tvPileId"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</nl.bryanderidder.byheart.shared.views.SquareRelativeLayout>

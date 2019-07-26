@@ -51,8 +51,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13-beta-3'
-    androidTestImplementation 'androidx.test:runner:1.3.0-alpha01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha01'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
     implementation 'com.google.android.material:material:1.1.0-alpha08'
 
     // Room components

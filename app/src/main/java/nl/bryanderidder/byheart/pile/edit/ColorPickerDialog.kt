@@ -5,9 +5,10 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
 import nl.bryanderidder.byheart.R
-
+import nl.bryanderidder.byheart.shared.ResourcesUtils
 
 /**
  * A dialog which takes in as input an array of palette and creates a palette allowing the user to
@@ -17,11 +18,7 @@ import nl.bryanderidder.byheart.R
 class ColorPickerDialog : AppCompatDialogFragment() {
 
     protected var title = "Pick a color"
-    protected var mColors: IntArray = intArrayOf(
-        R.color.red_200, R.color.deep_orange_200, R.color.orange_200, R.color.yellow_200,
-        R.color.lime_200, R.color.green_A200, R.color.teal_A200, R.color.cyan_A200,
-        R.color.blue_200, R.color.indigo_200, R.color.deep_purple_200, R.color.purple_200
-    )
+    protected lateinit var mColors: IntArray
     var mSelectedColor: Int = 0
     protected var mColumns: Int = 0
     protected var mSize: Int = 0
@@ -48,6 +45,10 @@ class ColorPickerDialog : AppCompatDialogFragment() {
             }
         }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -64,7 +65,8 @@ class ColorPickerDialog : AppCompatDialogFragment() {
         val view = LayoutInflater.from(activity).inflate(R.layout.color_picker_dialog, null)
         palette = view.findViewById(R.id.color_picker)
         palette.init(mSize, mColumns, this::onSelectColor)
-        if (mColors != null) showPaletteView()
+        mColors = ResourcesUtils.getColors(context!!)
+        showPaletteView()
         return AlertDialog.Builder(activity)
             .setView(view)
             .create()

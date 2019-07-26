@@ -55,20 +55,19 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun changeColors() {
-        pileVM.allPiles.observe(this, Observer {
-            val pile = it.find { pile -> pile.id == sessionVM.pileId.value }
+        pileVM.allPiles.observe(this, Observer {piles ->
+            val pile = piles.find { it.id == sessionVM.pileId.value }
             val buttons = arrayOf(buttonEdit, buttonAdd, buttonPlay)
-            val color = context!!.color(pile?.color!!)
+            val color = pile?.color!!
             if (Preferences.DARK_MODE) {
                 buttons.forEach { it.setIconColor(color) }
-                btnAddCardPlaceholder.setTextColor(color)
+                btnAddCardPlaceholder.textColor = color
             } else {
                 buttons.forEach {
-                    it.setIconColor(color.setBrightness(0.15F))
-                    it.setColor(color)
+                    it.setIconColor(color.setBrightness(.55F))
+                    it.setColor(context!!.color(R.color.grey_100))
                 }
-                btnAddCardPlaceholder.setTextColor(color.setBrightness(0.15F))
-                btnAddCardPlaceholder.setBackgroundTint(color)
+                btnAddCardPlaceholder.textColor = color.setBrightness(0.55F)
             }
         })
     }

@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="mainBackgroundColor" format="reference"/>
-    <attr name="mainBackgroundColorLighter" format="reference"/>
-    <attr name="mainBackgroundColorLight" format="reference"/>
-    <attr name="mainHeaderTextColor" format="reference"/>
-    <attr name="mainEditTextColorHint" format="reference"/>
-    <attr name="mainTextColor" format="reference"/>
-    <attr name="activeActionBarTheme" format="reference"/>
-    <attr name="mainCard" format="reference"/>
+
+    <attr name="mainBackgroundColor" format="reference" />
+    <attr name="mainBackgroundColorLighter" format="reference" />
+    <attr name="mainBackgroundColorLight" format="reference" />
+    <attr name="dialogBackgroundColor" format="reference" />
+    <attr name="mainHeaderTextColor" format="reference" />
+    <attr name="mainEditTextColorHint" format="reference" />
+    <attr name="mainTextColor" format="reference" />
+    <attr name="cardTextColor" format="reference" />
+    <attr name="activeActionBarTheme" format="reference" />
+    <attr name="mainCard" format="reference" />
+
+    <declare-styleable name="CardButton">
+        <attr name="text" />
+        <attr name="backgroundColor" />
+        <attr name="textColor" />
+    </declare-styleable>
+    <array name="swatch_colors">
+        <item>@color/red_200</item>
+        <item>@color/deep_orange_300</item>
+        <item>@color/orange_300</item>
+        <item>@color/pink_200</item>,
+        <item>@color/blue_grey_200</item>
+        <item>@color/green_200</item>
+        <item>@color/teal_200</item>
+        <item>@color/cyan_200</item>,
+        <item>@color/blue_200</item>
+        <item>@color/indigo_200</item>
+        <item>@color/deep_purple_200</item>
+        <item>@color/purple_200</item>
+    </array>
 </resources>

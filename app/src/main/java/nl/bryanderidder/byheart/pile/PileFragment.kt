@@ -1,6 +1,5 @@
 package nl.bryanderidder.byheart.pile
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.about.AboutFragment
+import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
@@ -33,25 +33,15 @@ class PileFragment : Fragment(), IOnBackPressed {
         layout = inflater.inflate(R.layout.content_piles, container, false)
         pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
-        val adapter = PileListAdapter(context!!)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(activity!!, 2)
-        recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                val itemWidth = resources.getDimensionPixelSize(R.dimen.pile_dimen)
-                val deviceWidth = getDeviceWidth(activity!!)
-                val space = (deviceWidth - itemWidth * 2) / 3
-                val halfSpace = space / 2
-                if (parent.paddingLeft != halfSpace) {
-                    parent.setPadding(halfSpace, halfSpace, halfSpace, halfSpace)
-                    parent.clipToPadding = false
-                }
-                outRect.set(halfSpace, halfSpace, halfSpace, halfSpace)
-            }
+        val cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
+        cardVM.allCards.observe(this, Observer {
+            val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
+            val adapter = PileListAdapter(context!!, it)
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = GridLayoutManager(activity!!, 2)
+            addEventHandlers(adapter)
         })
         addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))
-        addEventHandlers(adapter)
         return layout
     }
 

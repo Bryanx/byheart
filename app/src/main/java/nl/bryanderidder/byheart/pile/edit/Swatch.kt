@@ -6,11 +6,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.color
 import nl.bryanderidder.byheart.shared.setDrawableColor
 
 /**
- * Wrapper class for a swatch, containing a top image and checkmark above.
+ * Custom view for a swatch, containing a top image and checkmark above.
  * @author Bryan de Ridder
  */
 class Swatch(
@@ -35,7 +34,7 @@ class Swatch(
         else -> checkmarkImage.visibility = View.GONE
     }
 
-    private fun setColor(color: Int) = swatchImage.setDrawableColor(R.drawable.ic_circle, context.color(color))
+    private fun setColor(color: Int) = swatchImage.setDrawableColor(R.drawable.ic_circle, color)
 
     override fun onClick(v: View) = onColorSelectedListener.invoke(mColor)
 }

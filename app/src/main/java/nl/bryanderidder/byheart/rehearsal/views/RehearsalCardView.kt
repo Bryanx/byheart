@@ -21,13 +21,13 @@ class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextVi
         val darkMode = Preferences.DARK_MODE
         when {
             this.name == "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark_back, Color.WHITE)
-            this.name != "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark, Color.WHITE)
+            this.name != "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark)
             this.name == "cardBack" && !darkMode -> setBgAndTxt(R.drawable.shadow_back, Color.WHITE)
-            else -> setBgAndTxt(R.drawable.shadow, context.getAttr(R.attr.mainHeaderTextColor))
+            else -> setBgAndTxt(R.drawable.shadow)
         }
     }
 
-    private fun setBgAndTxt(id: Int, color: Int) {
+    private fun setBgAndTxt(id: Int, color: Int = context.getAttr(R.attr.mainTextColor)) {
         this.setBackgroundResource(id)
         this.setTextColor(color)
     }

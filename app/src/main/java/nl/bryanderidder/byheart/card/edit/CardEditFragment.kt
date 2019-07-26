@@ -16,6 +16,7 @@ import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
+import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
 
 /**
@@ -27,6 +28,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     private lateinit var cards: List<Card>
     private lateinit var cardVM: CardViewModel
     private lateinit var sessionVM: SessionViewModel
+    private lateinit var pileVM: PileViewModel
     private lateinit var layout: View
     private var editMode: Boolean = false
     private var currentCard: Card? = null
@@ -35,6 +37,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
+        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         addToolbar(title = resources.getString(R.string.add_card))
         return layout
     }
@@ -53,6 +56,17 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                     }
                 }
                 updateView()
+            }
+        })
+        updateColors()
+    }
+
+    private fun updateColors() {
+        pileVM.allPiles.observe(this, Observer {
+            val pile = it.find { pile -> pile.id == sessionVM.pileId.value }
+            pile?.color?.let { color ->
+                if (Preferences.DARK_MODE) btnAddAnotherCard.textColor = color
+                else btnAddAnotherCard.textColor = color.setBrightness(0.55F)
             }
         })
     }
