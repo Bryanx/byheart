@@ -178,8 +178,9 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         }
         pileVM.allPiles.observe(this, Observer { listPiles ->
             this.piles = listPiles
+            val pile = piles.find { it.id == sessionVM.pileId.value }
             pileColor = when {
-                editMode -> piles.find { it.id == sessionVM.pileId.value }?.color!!
+                editMode && pile?.color != null -> pile.color!!
                 else -> ResourcesUtils.getColors(context!!).random()
             }
             setUpTextToSpeech()

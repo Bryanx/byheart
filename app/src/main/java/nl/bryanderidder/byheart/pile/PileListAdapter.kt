@@ -37,16 +37,17 @@ class PileListAdapter internal constructor(
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
         val current = piles[position]
         val cardCount = cards.count { it.pileId == piles[position].id }
-        val color = current.color!!
         val item = holder.itemView
         item.tvPileFront.text = current.name
         item.tvPileId.text = current.id.toString()
         item.tvCardsCount.text = context.resources.getString(R.string.card_count, cardCount)
         if (darkMode) {
-            item.tvPileFront.setTextColor(color)
+            current.color?.let { item.tvPileFront.setTextColor(it) }
             item.cvPile.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
         } else {
-            item.tvPileFront.setTextColor(color.setBrightness(0.55F))
+            current.color?.let {
+                item.tvPileFront.setTextColor(it.setBrightness(0.55F))
+            }
         }
     }
 
