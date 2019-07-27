@@ -11,14 +11,14 @@
             android:gravity="center"
             android:textSize="12sp"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/rehearsal_cards"
+            app:layout_constraintBottom_toTopOf="@+id/rehearsalCard"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    <nl.bryanderidder.byheart.shared.views.AnimatingRelativeLayout
-            android:id="@+id/rehearsal_cards"
+    <nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
+            android:id="@+id/rehearsalCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
@@ -27,28 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="96dp">
-        <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
-                android:id="@+id/cardFront"
-                style="@style/rehearsal_card"/>
-
-        <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
-                android:id="@+id/cardBack"
-                android:alpha="0.0"
-                style="@style/rehearsal_card" />
-
-        <nl.bryanderidder.byheart.rehearsal.views.FlippingImageView
-                android:id="@+id/ivPronounce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_volume_up_black_24dp"
-                android:tint="@color/grey_500"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/cardBack"
-                android:layout_marginTop="-32dp"
-                android:contentDescription="@string/pronounce_text"/>
-
-    </nl.bryanderidder.byheart.shared.views.AnimatingRelativeLayout>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="96dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.content_rehearsal_memory.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.inflate
-import nl.bryanderidder.byheart.shared.string
 
 /**
  * Fragment that contains the rehearsal memory mode.
@@ -30,9 +29,9 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 buttonsAreEnabled(false)
                 if (it == cardBtnCorrect) correctSound.start()
                 else wrongSound.start()
-                if (Preferences.REHEARSAL_PRONOUNCE) speakCard(cardBack, languageCardBack)
-                if (cardFront.alpha == 1F) flipCard()
-                val delay = cardBack.string.length*150.toLong()
+                if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
+                rehearsalCard.turnToBack()
+                val delay = rehearsalCard.backText!!.length*150.toLong()
                 if (button == cardBtnCorrect) {
                     handler.postDelayed({ nextQuestionWithButtons() }, delay)
                 } else {
@@ -45,10 +44,10 @@ class RehearsalMemoryFragment : RehearsalFragment() {
             handler.removeMessages(0)
             nextQuestionWithButtons()
         }
-        cardFront.setOnClickListener {
-            if (cardFront.alpha == 1F) {
-                flipCard()
-                cardFront.isEnabled = false
+        rehearsalCard.setOnClickListener {
+            if (!rehearsalCard.backIsVisible) {
+                rehearsalCard.flipCard()
+                rehearsalCard.cardFront.isEnabled = false
             }
         }
     }
@@ -56,7 +55,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     private fun nextQuestionWithButtons() {
         btnContinue.visibility = GONE
         nextQuestion { /* on new card: */
-            cardFront.isEnabled = true
+            rehearsalCard.cardFront.isEnabled = true
             buttonsAreEnabled(true)
         }
     }
@@ -69,7 +68,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
         btnContinue.visibility = GONE
         return super.onRestart(true) {
-            cardFront.isEnabled = true
+            rehearsalCard.cardFront.isEnabled = true
             buttonsAreEnabled(true)
         }
     }

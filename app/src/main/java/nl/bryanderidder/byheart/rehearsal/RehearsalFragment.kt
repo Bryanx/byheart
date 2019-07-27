@@ -1,14 +1,9 @@
 package nl.bryanderidder.byheart.rehearsal
 
-import android.animation.AnimatorInflater
-import android.animation.AnimatorSet
-import android.graphics.PorterDuff
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
-import android.speech.tts.TextToSpeech
 import android.view.*
-import android.widget.TextView
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -21,6 +16,7 @@ import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileViewModel
+import nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
 import nl.bryanderidder.byheart.shared.*
 import java.util.*
 
@@ -31,13 +27,9 @@ import java.util.*
  */
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
-    private lateinit var textToSpeech: TextToSpeech
     private lateinit var cardVM: CardViewModel
     private lateinit var pileVM: PileViewModel
     private lateinit var sessionVM: SessionViewModel
-    private lateinit var flipIn: AnimatorSet
-    private lateinit var flipOut: AnimatorSet
-    private lateinit var languageCardFront: Locale
     protected lateinit var languageCardBack: Locale
     protected lateinit var layout: View
     protected lateinit var pile: Pile
@@ -46,7 +38,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected lateinit var correctSound: MediaPlayer
     protected lateinit var wrongSound: MediaPlayer
     protected val handler: Handler = Handler()
-    private var backOfCardIsVisible = false
     protected var cardIndex = 0
     private var pileId: Long = NO_ID
 
@@ -60,26 +51,16 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileId = sessionVM.pileId.value ?: NO_ID
         getCards()
-        loadAnimations()
         addToolbar()
-        textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {
-            if (it == TextToSpeech.SUCCESS) {
-                pileVM.allPiles.observe(this, Observer { piles ->
-                    pile = piles.first { pile -> pile.id == pileId }
-                    languageCardFront = Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront }
-                    languageCardBack = Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack }
-                    textToSpeech.language = languageCardBack
-                })
-            }
+        pileVM.allPiles.observe(this, Observer { piles ->
+            pile = piles.first { pile -> pile.id == pileId }
+            layout.findViewById<RehearsalCard>(R.id.rehearsalCard).addPronounceLocale(
+                Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront },
+                Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack })
         })
         correctSound = MediaPlayer.create(context, R.raw.correct)
         wrongSound = MediaPlayer.create(context, R.raw.incorrect)
         return layout
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        addVoiceButton()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -170,7 +151,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
         handler.removeMessages(0)
         if (startFromBeginning) cardIndex = 0
-        if (backOfCardIsVisible) flipCard()
+        rehearsalCard.turnToFront()
         if (Preferences.REHEARSAL_SHUFFLE) cards.shuffle()
         Handler().postDelayed(({
             updateView()
@@ -179,50 +160,24 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         return true
     }
 
-    private fun addVoiceButton(): Unit = ivPronounce.setOnClickListener {
-        when {
-            backOfCardIsVisible -> speakCard(cardBack, languageCardBack)
-            else -> speakCard(cardFront, languageCardFront)
-        }
-    }
-
-    private fun loadAnimations() {
-        flipIn = AnimatorInflater.loadAnimator(activity, R.animator.animate_out_flip) as AnimatorSet
-        flipOut = AnimatorInflater.loadAnimator(activity, R.animator.animate_in_flip) as AnimatorSet
-    }
-
     private fun updateView() {
         if (Preferences.REHEARSAL_REVERSE) {
-            cardFront.text = cards[cardIndex].answer
-            cardBack.text = cards[cardIndex].question
+            rehearsalCard.frontText = cards[cardIndex].answer
+            rehearsalCard.backText = cards[cardIndex].question
         } else {
-            cardFront.text = cards[cardIndex].question
-            cardBack.text = cards[cardIndex].answer
+            rehearsalCard.frontText = cards[cardIndex].question
+            rehearsalCard.backText = cards[cardIndex].answer
         }
         rehearsalCounter.text = "${cardIndex + 1}/${cards.size}"
     }
 
-    protected fun speakCard(tv: TextView, language: Locale) {
-        when {
-            !Preferences.REHEARSAL_REVERSE -> textToSpeech.language = language
-            tv == cardBack -> textToSpeech.language = languageCardFront
-            else -> textToSpeech.language = languageCardBack
-        }
-        textToSpeech.pronounce(tv.string)
-
-    }
-
     protected fun nextQuestion(doAfter: () -> Unit) {
         val screenWidth = getScreenWidth(activity?.windowManager)
-        moveX(cardFront, 0F, -screenWidth)
-        moveX(ivPronounce, 0F, -screenWidth)
-        moveX(cardBack, 0F, -screenWidth).onAnimateEnd {
+        moveX(rehearsalCard, 0F, -screenWidth).onAnimateEnd {
             if (cardIndex + 1 < cards.size) {
-                resetCard()
+                rehearsalCard.resetCard()
                 nextCard()
-                moveX(cardFront, screenWidth, 0F)
-                moveX(ivPronounce, screenWidth, 0F)
-                moveX(cardBack, screenWidth, 0F).onAnimateEnd { doAfter() }
+                moveX(rehearsalCard, screenWidth, 0F).onAnimateEnd { doAfter() }
             } else {
                 startFragment(CardFragment())
             }
@@ -232,33 +187,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     private fun nextCard() {
         cardIndex++
         if (cardIndex < cards.size) updateView()
-    }
-
-    private fun resetCard() {
-        cardFront.alpha = 1F
-        cardFront.rotationY = 0F
-        backOfCardIsVisible = false
-        cardBack.alpha = 0F
-        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 100)
-    }
-
-    protected fun flipCard() {
-        ivPronounce.flip(150L)
-        backOfCardIsVisible = if (!backOfCardIsVisible) {
-            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 100)
-            flipIn.setTarget(cardFront)
-            flipOut.setTarget(cardBack)
-            flipIn.start()
-            flipOut.start()
-            true
-        } else {
-            handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 150)
-            flipIn.setTarget(cardBack)
-            flipOut.setTarget(cardFront)
-            flipIn.start()
-            flipOut.start()
-            false
-        }
     }
 
     override fun onBackPressed(): Boolean {

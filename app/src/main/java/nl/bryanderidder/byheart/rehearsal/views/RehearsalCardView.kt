@@ -9,7 +9,10 @@ import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.name
 
-
+/**
+ * Custom TextView for making a simple card.
+ * @author Bryan de Ridder
+ */
 class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
 
     init {
@@ -36,6 +39,11 @@ class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextVi
         val distance = 8000
         val scale = resources.displayMetrics.density * distance
         this.cameraDistance = scale
+    }
+
+    //Make square based on width
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
 
 }

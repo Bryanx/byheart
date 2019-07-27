@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="96dp"
+    android:animateLayoutChanges="true"
+    android:minHeight="250dp">
+
+    <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
+        android:id="@+id/rcCardFront"
+        android:layout_width="255dp"
+        android:layout_height="255dp"
+        style="@style/rehearsal_card"
+        android:background="@drawable/shadow" />
+
+    <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
+        android:id="@+id/rcCardBack"
+        android:layout_width="255dp"
+        android:layout_height="255dp"
+        style="@style/rehearsal_card"
+        android:background="@drawable/shadow_dark_back"
+        android:alpha="0.0" />
+
+    <nl.bryanderidder.byheart.rehearsal.views.FlippingImageView
+        android:id="@+id/rcIvPronounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rcCardBack"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-32dp"
+        android:contentDescription="@string/pronounce_text"
+        android:src="@drawable/ic_volume_up_black_24dp"
+        android:tint="@color/grey_500" />
+</RelativeLayout>

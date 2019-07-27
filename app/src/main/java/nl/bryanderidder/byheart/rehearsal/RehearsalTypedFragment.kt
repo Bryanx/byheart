@@ -51,8 +51,8 @@ class RehearsalTypedFragment : RehearsalFragment() {
     private fun onEnter() {
         btnGo.text = ""
         btnGo.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_forward_white_24dp, 0, 0, 0)
-        flipCard()
-        if (etInput.string.equalsIgnoreCase(cardBack.string)) {
+        rehearsalCard.flipCard()
+        if (etInput.string.equalsIgnoreCase(rehearsalCard.backText!!)) {
             correctSound.start()
             etInput.setLineColor(R.color.green)
             handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
@@ -61,7 +61,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
             etInput.setLineColor(R.color.red)
             handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
         }
-        if (Preferences.REHEARSAL_PRONOUNCE) speakCard(cardBack, languageCardBack)
+        if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
     }
 
     private fun skipWaitingGoToNextCard() {

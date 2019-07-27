@@ -61,12 +61,12 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
     override fun addEventHandlers() {
         listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { btn: Button ->
             btn.setOnClickListener {
-                if (btn.string.equalsIgnoreCase(cardBack.string)) {
+                if (btn.string.equalsIgnoreCase(rehearsalCard.backText!!)) {
                     buttonsAreEnabled(false)
                     correctSound.start()
-                    if (Preferences.REHEARSAL_PRONOUNCE) speakCard(cardBack, languageCardBack)
+                    if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                     btn.setTxtColor(R.color.green)
-                    flipCard()
+                    rehearsalCard.turnToBack()
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
                 } else {
                     wrongSound.start()
