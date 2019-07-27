@@ -32,9 +32,9 @@ fun getScreenWidth(windowManager: WindowManager?): Float {
 }
 
 // slide the view from below itself to the current position
-fun flipY(view: View, from: Float, to: Float): ObjectAnimator {
+fun flipY(view: View, from: Float, to: Float, duration: Long): ObjectAnimator {
     val animate = ObjectAnimator.ofFloat(view, "rotationY", from, to)
-    animate.duration = 150
+    animate.duration = duration
     animate.start()
     return animate
 }

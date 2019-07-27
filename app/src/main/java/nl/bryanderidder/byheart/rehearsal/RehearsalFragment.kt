@@ -243,7 +243,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     protected fun flipCard() {
-        ivPronounce.flip()
+        ivPronounce.flip(150L)
         backOfCardIsVisible = if (!backOfCardIsVisible) {
             handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 100)
             flipIn.setTarget(cardFront)

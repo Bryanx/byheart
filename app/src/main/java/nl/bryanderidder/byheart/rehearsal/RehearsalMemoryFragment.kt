@@ -31,7 +31,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 if (it == cardBtnCorrect) correctSound.start()
                 else wrongSound.start()
                 if (Preferences.REHEARSAL_PRONOUNCE) speakCard(cardBack, languageCardBack)
-                flipCard()
+                if (cardFront.alpha == 1F) flipCard()
                 val delay = cardBack.string.length*150.toLong()
                 if (button == cardBtnCorrect) {
                     handler.postDelayed({ nextQuestionWithButtons() }, delay)
@@ -45,11 +45,20 @@ class RehearsalMemoryFragment : RehearsalFragment() {
             handler.removeMessages(0)
             nextQuestionWithButtons()
         }
+        cardFront.setOnClickListener {
+            if (cardFront.alpha == 1F) {
+                flipCard()
+                cardFront.isEnabled = false
+            }
+        }
     }
 
     private fun nextQuestionWithButtons() {
         btnContinue.visibility = GONE
-        nextQuestion { buttonsAreEnabled(true) }
+        nextQuestion { /* on new card: */
+            cardFront.isEnabled = true
+            buttonsAreEnabled(true)
+        }
     }
 
     private fun buttonsAreEnabled(bool: Boolean) {
@@ -60,6 +69,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
         btnContinue.visibility = GONE
         return super.onRestart(true) {
+            cardFront.isEnabled = true
             buttonsAreEnabled(true)
         }
     }

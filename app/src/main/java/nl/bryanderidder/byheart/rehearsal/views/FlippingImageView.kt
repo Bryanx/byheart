@@ -8,8 +8,8 @@ import nl.bryanderidder.byheart.shared.onAnimateEnd
 
 class FlippingImageView(context: Context, attrs: AttributeSet) : AppCompatImageView(context, attrs) {
 
-    fun flip() {
-        flipY(this, 0f, 90f)
-            .onAnimateEnd { flipY(this, -90f, 0f) }
+    fun flip(duration: Long) {
+        flipY(this, 0f, 90f, duration)
+            .onAnimateEnd { flipY(this, -90f, 0f, duration) }
     }
 }
