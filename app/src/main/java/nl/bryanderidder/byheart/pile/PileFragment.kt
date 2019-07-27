@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.view.*
@@ -17,6 +16,7 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
+import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 
 /**
  * Fragment that contains a list of all piles and a button to add a new pile.
@@ -38,7 +38,7 @@ class PileFragment : Fragment(), IOnBackPressed {
             val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
             val adapter = PileListAdapter(context!!, it)
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(activity!!, 2)
+            recyclerView.layoutManager = GridAutofitLayoutManager(activity!!, 500)
             addEventHandlers(adapter)
         })
         addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))

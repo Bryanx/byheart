@@ -23,6 +23,7 @@ import nl.bryanderidder.byheart.rehearsal.RehearsalTypedFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
+import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 
 /**
  * Fragment that displays all cards in a pile.
@@ -87,7 +88,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = CardListAdapter(layout.context, this)
         recyclerView.adapter = adapter
-        val layoutManager = ScrollingLinearLayoutManager(layout.context)
+        val layoutManager = GridAutofitLayoutManager(layout.context, 850)
         recyclerView.layoutManager = layoutManager
         val itemTouchHelper1 = ItemTouchHelper(SwipeLeftToDeleteCallback(adapter))
         val itemTouchHelper2 = ItemTouchHelper(SwipeRightToEditCallback(adapter))
