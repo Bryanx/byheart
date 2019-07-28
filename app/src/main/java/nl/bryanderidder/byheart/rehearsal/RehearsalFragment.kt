@@ -18,6 +18,8 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.utils.getScreenWidth
+import nl.bryanderidder.byheart.shared.utils.moveX
 import java.util.*
 
 /**

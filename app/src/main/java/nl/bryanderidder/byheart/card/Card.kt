@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import nl.bryanderidder.byheart.pile.Pile
+import nl.bryanderidder.byheart.shared.Exclude
 
 /**
  * Main card entity.
@@ -25,7 +26,7 @@ import nl.bryanderidder.byheart.pile.Pile
 data class Card(
     @ColumnInfo(name = "question") val question: String?,
     @ColumnInfo(name = "answer") val answer: String?,
-    @ColumnInfo(name = "pile_id") val pileId: Long = 1
+    @Exclude @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
-    @PrimaryKey(autoGenerate = true) var id: Long = 0
+    @Exclude @PrimaryKey(autoGenerate = true) var id: Long = 0
 }

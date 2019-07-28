@@ -20,6 +20,7 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.utils.getColors
 import java.util.*
 
 
@@ -60,7 +61,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun setRandomColor() {
-        pileColor = ResourcesUtils.getColors(context!!).random()
+        pileColor = getColors(context!!).random()
     }
 
     private fun setUpTextToSpeech() {
@@ -157,7 +158,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             sessionVM.pileName.postValue(pile.name)
             startFragment(CardFragment())
         } else {
-            sessionVM.pileId.postValue(pileVM.insert(pile))
+            pileVM.insert(pile)
             startFragment(PileFragment())
         }
     }
@@ -181,7 +182,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             val pile = piles.find { it.id == sessionVM.pileId.value }
             pileColor = when {
                 editMode && pile?.color != null -> pile.color!!
-                else -> ResourcesUtils.getColors(context!!).random()
+                else -> getColors(context!!).random()
             }
             setUpTextToSpeech()
         })

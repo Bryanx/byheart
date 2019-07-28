@@ -54,4 +54,5 @@
     <string name="color_swatch_description_selected">Selected color</string>
     <string name="select_card_color">Select card color</string>
     <string name="card_count">%1$d CARDS</string>
+    <string name="export">Export CSV</string>
 </resources>

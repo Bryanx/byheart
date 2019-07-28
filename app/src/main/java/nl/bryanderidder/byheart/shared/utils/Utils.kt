@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared
+package nl.bryanderidder.byheart.shared.utils
 
 import android.app.Activity
 import android.content.res.Resources

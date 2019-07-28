@@ -31,7 +31,7 @@ class PileFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_piles, container, false)
-        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         val cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         cardVM.allCards.observe(this, Observer {

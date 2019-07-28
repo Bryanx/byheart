@@ -4,7 +4,7 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
-import nl.bryanderidder.byheart.shared.flipY
+import nl.bryanderidder.byheart.shared.utils.flipY
 import nl.bryanderidder.byheart.shared.onAnimateEnd
 import nl.bryanderidder.byheart.shared.pronounce
 import java.util.*

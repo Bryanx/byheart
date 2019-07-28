@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.ResourcesUtils
+import nl.bryanderidder.byheart.shared.utils.getColors
 
 /**
  * A dialog which takes in as input an array of palette and creates a palette allowing the user to
@@ -65,7 +65,7 @@ class ColorPickerDialog : AppCompatDialogFragment() {
         val view = LayoutInflater.from(activity).inflate(R.layout.color_picker_dialog, null)
         palette = view.findViewById(R.id.color_picker)
         palette.init(mSize, mColumns, this::onSelectColor)
-        mColors = ResourcesUtils.getColors(context!!)
+        mColors = getColors(context!!)
         showPaletteView()
         return AlertDialog.Builder(activity)
             .setView(view)

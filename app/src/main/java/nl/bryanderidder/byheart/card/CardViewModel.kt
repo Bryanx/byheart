@@ -3,10 +3,7 @@ package nl.bryanderidder.byheart.card
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
@@ -34,6 +31,11 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
     fun insert(card: Card) = scope.launch(Dispatchers.IO) {
         repo.insert(card)
     }
+
+    fun insertAll(cards: List<Card>) = runBlocking(Dispatchers.Default) {
+        return@runBlocking repo.insertAll(cards)
+    }
+
     fun update(card: Card) = scope.launch(Dispatchers.IO) {
         repo.update(card)
     }

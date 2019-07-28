@@ -23,6 +23,9 @@ interface CardDao {
     @Insert
     fun insert(card: Card)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(card: List<Card>)
+
     @Update
     fun update(card: Card)
 

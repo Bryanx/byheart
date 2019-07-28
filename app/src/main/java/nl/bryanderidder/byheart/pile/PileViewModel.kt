@@ -43,8 +43,4 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
         super.onCleared()
         parentJob.cancel()
     }
-
-    fun getPile(pileId: Long?): Pile? {
-        return allPiles.value?.find { it.id == pileId }
-    }
 }
