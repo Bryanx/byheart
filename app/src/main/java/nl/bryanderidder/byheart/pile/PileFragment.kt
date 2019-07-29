@@ -54,6 +54,7 @@ class PileFragment : Fragment(), IOnBackPressed {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_dark_mode -> {
             Preferences.toggle(KEY_DARK_MODE)
+            activity?.intent?.action = Intent.ACTION_MAIN
             activity?.recreate()
             true
         }
