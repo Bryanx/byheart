@@ -92,7 +92,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private fun fillSpinner(spinner: AppCompatSpinner, adapter: ArrayAdapter<String>, attr: String) {
         spinner.adapter = adapter
         if (editMode) {
-            val thisPile = piles.find { it.id == sessionVM.pileId.value }
+            val thisPile = pileVM.allPiles.value?.find { it.id == sessionVM.pileId.value }
             spinner.setSelection(localeList.indexOfFirst { it.code ==  thisPile?.getAttr(attr)})
         } else {
             spinner.setSelection(localeList.indexOfFirst {
@@ -114,7 +114,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         R.id.action_colorpicker -> {
             val dialog = ColorPickerDialog.newInstance(R.string.go, null, pileColor, 4, 2)
             dialog.show(fragmentManager!!, "picker")
-            dialog.setOnColorSelectedListener {
+            dialog.listener = {
                 pileColor = it
             }
             true
@@ -131,7 +131,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                 pileNameLayout.error = "You need to enter a name"
                 isCorrect = false
             }
-            name.toLowerCase() in piles.map { it.name?.toLowerCase() } -> {
+            name.toLowerCase() in pileVM.allPiles.value!!.map { it.name?.toLowerCase() } -> {
                 if ((editMode && name != sessionVM.pileName.value) || !editMode) {
                     pileNameLayout.isErrorEnabled = true
                     pileNameLayout.error = "You already have a pile with the same name"

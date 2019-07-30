@@ -1,0 +1,103 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="">
+
+        <Preference
+            app:key="account"
+            app:icon="@drawable/ic_person_black_24dp"
+            app:summary="Coming soon."
+            app:title="Reminders"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="reminders"
+            app:icon="@drawable/ic_alarm_black_24dp"
+            app:summary="Coming soon."
+            app:title="Reminders"
+            app:layout="@layout/preference_setting"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Import and export">
+
+        <Preference
+            app:key="exportCSV"
+            app:icon="@drawable/ic_grid_on_black_24dp"
+            app:summary="Export all cards in a comma seperated file. This file can be openend in Microsoft Excel, Google Sheets, Apple Numbers, etc."
+            app:title="Export CSV"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="importCSV"
+            app:icon="@drawable/ic_grid_on_black_24dp"
+            app:summary="Import from Microsoft Excel, Google Sheets or Apple Numbers. Or use this to import your flashcards from a different app."
+            app:title="Import CSV"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="backup"
+            app:icon="@drawable/ic_file_download_black_24dp"
+            app:summary="Create a backup file of all your data. You can open this file on another device to restore your data."
+            app:title="Create backup"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="import"
+            app:icon="@drawable/ic_file_upload_black_24dp"
+            app:summary="Import a backup file. Note that only files with '.byheart' extensions are allowed."
+            app:title="Import backup"
+            app:layout="@layout/preference_setting"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Troubleshooting">
+
+        <Preference
+            app:key="bugreport"
+            app:icon="@drawable/ic_bug_report_black_24dp"
+            app:title="@string/create_a_suggestion_or_issue_on_github"
+            app:layout="@layout/preference_setting"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Support">
+
+        <Preference
+            app:key="coffeeLink"
+            app:icon="@drawable/ic_coffee_hot_cup"
+            app:title="@string/buy_me_a_cup_of_coffee"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="rate"
+            app:icon="@drawable/ic_play_circle_outline_black_24dp"
+            app:title="@string/rate_this_app"
+            app:layout="@layout/preference_setting"/>
+
+        <Preference
+            app:key="about"
+            app:icon="@drawable/ic_info_outline_black_24dp"
+            app:title="@string/about"
+            app:layout="@layout/preference_setting"/>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

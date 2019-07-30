@@ -11,6 +11,7 @@
     <attr name="cardTextColor" format="reference" />
     <attr name="activeActionBarTheme" format="reference" />
     <attr name="mainCard" format="reference" />
+    <attr name="toolbarPopupTheme" format="reference" />
 
     <declare-styleable name="CardButton">
         <attr name="text" />

@@ -55,14 +55,23 @@ class MainActivity : AppCompatActivity() {
         if (intent.action == Intent.ACTION_VIEW && (intent.scheme == ContentResolver.SCHEME_FILE
                     || intent.scheme == ContentResolver.SCHEME_CONTENT)) {
             intent.data?.let {
+                intent.action = Intent.ACTION_MAIN
                 contentResolver?.openInputStream(it)?.bufferedReader()
                     ?.use(BufferedReader::readText)?.let { data ->
                         insertPileWithCards(IoUtils.readJson(data))
                     }
             }
         } else {
-            findViewById<ProgressBar>(R.id.progressBar).visibility = GONE
-            supportFragmentManager.startFragment(PileFragment())
+            startupFragment()
+        }
+    }
+
+    private fun startupFragment() {
+        findViewById<ProgressBar>(R.id.progressBar).visibility = GONE
+        val activeFragments = supportFragmentManager.fragments
+        when {
+            activeFragments.isEmpty() -> supportFragmentManager.startFragment(PileFragment())
+            else -> supportFragmentManager.startFragment(activeFragments[0])
         }
     }
 

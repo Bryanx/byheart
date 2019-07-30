@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.pile
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
@@ -14,6 +15,7 @@ import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.about.AboutFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
+import nl.bryanderidder.byheart.settings.SettingsActivity
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
@@ -58,6 +60,7 @@ class PileFragment : Fragment(), IOnBackPressed {
             activity?.recreate()
             true
         }
+        R.id.action_settings -> startActivity(Intent(context, SettingsActivity::class.java)).run { true }
         R.id.action_about -> startFragment(AboutFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }

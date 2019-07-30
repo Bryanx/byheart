@@ -44,8 +44,9 @@ fun ViewGroup.inflate(layoutRes: Int): View {
 
 // Start fragment in pile_menu container
 fun FragmentManager.startFragment(fragment: Fragment) {
+    val tag = fragment::class.java.canonicalName
     this.beginTransaction()
-        .replace(R.id.main_container, fragment)
+        .replace(R.id.main_container, fragment, tag)
         .commit()
 }
 

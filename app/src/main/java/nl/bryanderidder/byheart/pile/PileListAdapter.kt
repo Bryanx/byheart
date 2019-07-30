@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.pile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -34,13 +35,14 @@ class PileListAdapter internal constructor(
         return PileViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
         val current = piles[position]
         val cardCount = cards.count { it.pileId == piles[position].id }
         val item = holder.itemView
         item.tvPileFront.text = current.name
         item.tvPileId.text = current.id.toString()
-        item.tvCardsCount.text = context.resources.getString(R.string.card_count, cardCount)
+        item.tvCardsCount.text = "$cardCount ${context.resources.getString(R.string.cards)}"
         if (darkMode) {
             current.color?.let { item.tvPileFront.setTextColor(it) }
             item.cvPile.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))

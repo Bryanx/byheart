@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Byheart</string>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Question</string>
     <string name="answer">Answer</string>
@@ -36,7 +36,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_card">Add card</string>
-    <string name="about_description">Thank you for using this app! I made this because all modern flashcard apps are either bloated with ads, require a subscription or contain alot of unnecessary features.</string>
+    <string name="about_description">Thank you for using this app! I made this because all modern flashcard apps are either bloated with ads, require a subscription or contain a lot of unnecessary features.</string>
     <string name="about_subtext">If you enjoy this app, consider doing the following:</string>
     <string name="rate_this_app">Rate this app</string>
     <string name="buy_me_a_cup_of_coffee">Buy me a cup of coffee!</string>
@@ -50,9 +50,9 @@
     <string name="ok">Ok</string>
     <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
     <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description">color</string>
+    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Selected color</string>
     <string name="select_card_color">Select card color</string>
-    <string name="card_count">%1$d CARDS</string>
+    <string name="cards">CARDS</string>
     <string name="export">Export CSV</string>
 </resources>
