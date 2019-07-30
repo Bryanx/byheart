@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Вопрос</string>
+    <string name="answer">Ответ</string>
+    <string name="pile_name">Название стека</string>
+    <string name="edit_pile">Редактировать стек</string>
+    <string name="delete_pile">Удалить стек</string>
+    <string name="settings">настройки</string>
+    <string name="confirm">подтвердить</string>
+    <string name="about">Около</string>
+    <string name="dark_mode">Темный режим</string>
+    <string name="card_front">Фронт карты</string>
+    <string name="card_back">Карта обратно</string>
+    <string name="light_mode">Легкий режим</string>
+    <string name="placeholder_text">Что вы узнаете дальше?</string>
+    <string name="add_a_card">Добавить карту</string>
+    <string name="reverse_cards">Обратные карты</string>
+    <string name="restart">Запустить снова</string>
+    <string name="shuffle_cards">Перемешать карты</string>
+    <string name="pronounce_cards">Произносить карты</string>
+    <string name="multiple_choice_mode">Режим множественного выбора</string>
+    <string name="typed_mode">Типизированный режим</string>
+    <string name="memory_mode">Режим памяти</string>
+    <string name="pile_image">Изображение стека</string>
+    <string name="add_another_card">Добавить другую карту</string>
+    <string name="language_cards_front">Языковые карточки спереди:</string>
+    <string name="language_cards_back">Языковые карточки обратно:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Произнести текст</string>
+    <string name="type_your_answer">Введите свой ответ</string>
+    <string name="go">ИДТИ</string>
+    <string name="string_continue">ПРОДОЛЖИТЬ</string>
+    <string name="create_pile">Создать стек</string>
+    <string name="want_to_quit">Вы уверены, что хотите выйти?</string>
+    <string name="yes">да</string>
+    <string name="no">нет</string>
+    <string name="add_card">Добавить карту</string>
+    <string name="about_description">Спасибо за использование этого приложения! Я сделал это потому, что все современные приложения с флэшкартами либо раздуты с рекламой, требуют подписки или содержат много ненужных функций.</string>
+    <string name="about_subtext">Если вам нравится это приложение, рассмотрите возможность сделать следующее:</string>
+    <string name="rate_this_app">Оцените это приложение</string>
+    <string name="buy_me_a_cup_of_coffee">Купи мне чашку кофе!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Создать предложение или вопрос на GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Вы уверены, что хотите удалить этот стек?</string>
+    <string name="delete">удалять</string>
+    <string name="cancel">отменить</string>
+    <string name="five_card_warning">Вам нужно как минимум 5 карт.</string>
+    <string name="ok">Хорошо</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Выбранный цвет</string>
+    <string name="select_card_color">Выберите цвет карты</string>
+    <string name="cards">КАРТЫ</string>
+    <string name="export">Экспорт CSV</string>
+</resources>

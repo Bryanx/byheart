@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Otázka</string>
+    <string name="answer">Odpovědět</string>
+    <string name="pile_name">Název zásobníku</string>
+    <string name="edit_pile">Upravit zásobník</string>
+    <string name="delete_pile">Smazat zásobník</string>
+    <string name="settings">Nastavení</string>
+    <string name="confirm">Potvrdit</string>
+    <string name="about">O</string>
+    <string name="dark_mode">Temný režim</string>
+    <string name="card_front">Přední strana karty</string>
+    <string name="card_back">Karta zpět</string>
+    <string name="light_mode">Světelný režim</string>
+    <string name="placeholder_text">Co se dozvíte dál?</string>
+    <string name="add_a_card">Přidat kartu</string>
+    <string name="reverse_cards">Reverzní karty</string>
+    <string name="restart">Restartujte</string>
+    <string name="shuffle_cards">Náhodné karty</string>
+    <string name="pronounce_cards">Vyjádřete karty</string>
+    <string name="multiple_choice_mode">Režim s více možnostmi výběru</string>
+    <string name="typed_mode">Typový režim</string>
+    <string name="memory_mode">Režim paměti</string>
+    <string name="pile_image">Zásobník obrázek</string>
+    <string name="add_another_card">Přidejte další kartu</string>
+    <string name="language_cards_front">Přední strana jazykových karet:</string>
+    <string name="language_cards_back">Jazykové karty zpět:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Namluvit text</string>
+    <string name="type_your_answer">Zadejte odpověď</string>
+    <string name="go">JÍT</string>
+    <string name="string_continue">POKRAČOVAT</string>
+    <string name="create_pile">Vytvořit zásobník</string>
+    <string name="want_to_quit">Jste si jisti, že chcete skončit?</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="add_card">Přidat kartu</string>
+    <string name="about_description">Děkujeme vám za použití této aplikace! Udělal jsem to proto, že všechny moderní aplikace kartových karet jsou nafouklé reklamami, vyžadují předplatné nebo obsahují mnoho zbytečných funkcí.</string>
+    <string name="about_subtext">Pokud se vám tato aplikace líbí, zvažte následující kroky:</string>
+    <string name="rate_this_app">Ohodnoťte tuto aplikaci</string>
+    <string name="buy_me_a_cup_of_coffee">Kupte mi šálek kávy!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Vytvořte návrh nebo problém na GitHubu</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Opravdu chcete tento zásobník smazat?</string>
+    <string name="delete">Odstranit</string>
+    <string name="cancel">zrušení</string>
+    <string name="five_card_warning">Potřebujete alespoň 5 karet.</string>
+    <string name="ok">OK</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Vybraná barva</string>
+    <string name="select_card_color">Vyberte barvu karty</string>
+    <string name="cards">KARTY</string>
+    <string name="export">Exportovat CSV</string>
+</resources>

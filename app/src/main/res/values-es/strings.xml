@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Pregunta</string>
+    <string name="answer">Responder</string>
+    <string name="pile_name">Nombre de pila</string>
+    <string name="edit_pile">Editar pila</string>
+    <string name="delete_pile">Eliminar pila</string>
+    <string name="settings">Configuraciones</string>
+    <string name="confirm">Confirmar</string>
+    <string name="about">Acerca de</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="card_front">Frente de la tarjeta</string>
+    <string name="card_back">Tarjeta de vuelta</string>
+    <string name="light_mode">Modo de luz</string>
+    <string name="placeholder_text">¿Qué aprenderás después?</string>
+    <string name="add_a_card">Añade una tarjeta</string>
+    <string name="reverse_cards">Cartas inversas</string>
+    <string name="restart">Reiniciar</string>
+    <string name="shuffle_cards">Barajar cartas</string>
+    <string name="pronounce_cards">Pronunciar tarjetas</string>
+    <string name="multiple_choice_mode">Modo de opción múltiple</string>
+    <string name="typed_mode">Modo mecanografiado</string>
+    <string name="memory_mode">Modo de memoria</string>
+    <string name="pile_image">Imagen de la pila</string>
+    <string name="add_another_card">Añade otra carta</string>
+    <string name="language_cards_front">Frente de tarjetas de idioma:</string>
+    <string name="language_cards_back">Tarjetas de idiomas de vuelta:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Pronunciar texto</string>
+    <string name="type_your_answer">Escribe tu respuesta</string>
+    <string name="go">IR</string>
+    <string name="string_continue">CONTINUAR</string>
+    <string name="create_pile">Crear pila</string>
+    <string name="want_to_quit">¿Seguro que quieres salir?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="add_card">Agregar tarjeta</string>
+    <string name="about_description">Gracias por usar esta aplicación! Hice esto porque todas las aplicaciones modernas de tarjetas flash están llenas de anuncios, requieren una suscripción o contienen muchas características innecesarias.</string>
+    <string name="about_subtext">Si disfruta de esta aplicación, considere hacer lo siguiente:</string>
+    <string name="rate_this_app">Califica esta aplicación</string>
+    <string name="buy_me_a_cup_of_coffee">¡Cómprame una taza de café!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Crea una sugerencia o problema en GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">¿Seguro que quieres eliminar esta pila?</string>
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="five_card_warning">Necesitas al menos 5 cartas.</string>
+    <string name="ok">Okay</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Color seleccionado</string>
+    <string name="select_card_color">Seleccionar color de tarjeta</string>
+    <string name="cards">TARJETAS</string>
+    <string name="export">Exportar CSV</string>
+</resources>

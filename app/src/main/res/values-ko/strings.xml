@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">의문</string>
+    <string name="answer">대답</string>
+    <string name="pile_name">스택 이름</string>
+    <string name="edit_pile">스택 수정</string>
+    <string name="delete_pile">스택 삭제</string>
+    <string name="settings">설정</string>
+    <string name="confirm">확인</string>
+    <string name="about">약</string>
+    <string name="dark_mode">어두운 모드</string>
+    <string name="card_front">카드 앞</string>
+    <string name="card_back">카드 뒷면</string>
+    <string name="light_mode">라이트 모드</string>
+    <string name="placeholder_text">다음에 무엇을 배울 것인가?</string>
+    <string name="add_a_card">카드 추가</string>
+    <string name="reverse_cards">카드 반전</string>
+    <string name="restart">재시작</string>
+    <string name="shuffle_cards">카드 섞기</string>
+    <string name="pronounce_cards">cards 발음</string>
+    <string name="multiple_choice_mode">다중 선택 모드</string>
+    <string name="typed_mode">입력 모드</string>
+    <string name="memory_mode">메모리 모드</string>
+    <string name="pile_image">스택 이미지</string>
+    <string name="add_another_card">다른 카드 추가</string>
+    <string name="language_cards_front">언어 카드 앞 :</string>
+    <string name="language_cards_back">언어 카드 뒷면 :</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">text을 발음하기</string>
+    <string name="type_your_answer">답을 입력하십시오.</string>
+    <string name="go">가기</string>
+    <string name="string_continue">잇다</string>
+    <string name="create_pile">스택 생성</string>
+    <string name="want_to_quit">종료 하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="no">아니</string>
+    <string name="add_card">카드 추가</string>
+    <string name="about_description">이 응용 프로그램을 사용 주셔서 감사합니다! 모든 현대 플래시 카드 앱이 광고로 부 풀리거나 구독이 필요하거나 불필요한 기능이 많이 포함되어 있기 때문에 이것을 만들었습니다.</string>
+    <string name="about_subtext">이 응용 프로그램을 즐기는 경우 다음을 수행하는 것이 좋습니다.</string>
+    <string name="rate_this_app">이 앱을 평가 해주십시오</string>
+    <string name="buy_me_a_cup_of_coffee">커피 한잔 사주세요!</string>
+    <string name="create_a_suggestion_or_issue_on_github">GitHub에서 제안 또는 문제 만들기</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">이 스택을 삭제 하시겠습니까?</string>
+    <string name="delete">지우다</string>
+    <string name="cancel">취소</string>
+    <string name="five_card_warning">최소 5 장의 카드가 필요합니다.</string>
+    <string name="ok">승인</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">선택한 색상</string>
+    <string name="select_card_color">카드 색상 선택</string>
+    <string name="cards">카드</string>
+    <string name="export">CSV 내보내기</string>
+</resources>

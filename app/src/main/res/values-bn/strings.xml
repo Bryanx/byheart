@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">প্রশ্ন</string>
+    <string name="answer">উত্তর</string>
+    <string name="pile_name">স্ট্যাকের নাম</string>
+    <string name="edit_pile">স্ট্যাক সম্পাদনা করুন</string>
+    <string name="delete_pile">স্ট্যাক মুছুন</string>
+    <string name="settings">সেটিংস</string>
+    <string name="confirm">নিশ্চিত করা</string>
+    <string name="about">সম্পর্কিত</string>
+    <string name="dark_mode">গা .় মোড</string>
+    <string name="card_front">কার্ড সামনে</string>
+    <string name="card_back">কার্ড ফিরে</string>
+    <string name="light_mode">হালকা মোড</string>
+    <string name="placeholder_text">এরপরে কী শিখবে?</string>
+    <string name="add_a_card">একটি কার্ড যুক্ত করুন</string>
+    <string name="reverse_cards">বিপরীত কার্ড</string>
+    <string name="restart">আবার শুরু</string>
+    <string name="shuffle_cards">কার্ড সাফ করুন</string>
+    <string name="pronounce_cards">কার্ড</string>
+    <string name="multiple_choice_mode">একাধিক পছন্দ মোড</string>
+    <string name="typed_mode">টাইপ মোড</string>
+    <string name="memory_mode">মেমরি মোড</string>
+    <string name="pile_image">স্ট্যাক ইমেজ</string>
+    <string name="add_another_card">অন্য কার্ড যুক্ত করুন</string>
+    <string name="language_cards_front">ভাষা কার্ড সামনে:</string>
+    <string name="language_cards_back">ভাষা কার্ডগুলি ফিরে:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">টেক্সট</string>
+    <string name="type_your_answer">আপনার উত্তরটি লিখুন</string>
+    <string name="go">গো</string>
+    <string name="string_continue">চালিয়ে</string>
+    <string name="create_pile">স্ট্যাক তৈরি করুন</string>
+    <string name="want_to_quit">আপনি কি নিশ্চিত যে আপনি পরিত্যাগ করতে চান?</string>
+    <string name="yes">হাঁ</string>
+    <string name="no">না</string>
+    <string name="add_card">কার্ড যুক্ত করুন</string>
+    <string name="about_description">এই অ্যাপ্লিকেশন ব্যবহার করার জন্য আপনাকে ধন্যবাদ! আমি এটি তৈরি করেছি কারণ সমস্ত আধুনিক ফ্ল্যাশকার্ড অ্যাপ্লিকেশন হয় বিজ্ঞাপন দিয়ে স্ফীত হয়, সাবস্ক্রিপশন প্রয়োজন বা অনেকগুলি অপ্রয়োজনীয় বৈশিষ্ট্য ধারণ করে।</string>
+    <string name="about_subtext">আপনি যদি এই অ্যাপটি উপভোগ করেন তবে নিম্নলিখিতগুলি বিবেচনা করুন:</string>
+    <string name="rate_this_app">এই অ্যাপ্লিকেশন রেট</string>
+    <string name="buy_me_a_cup_of_coffee">আমাকে এক কাপ কফি কিনে দাও!</string>
+    <string name="create_a_suggestion_or_issue_on_github">গিটহাবে একটি পরামর্শ বা ইস্যু তৈরি করুন</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">আপনি কি নিশ্চিত যে আপনি এই স্ট্যাকটি মুছতে চান?</string>
+    <string name="delete">মুছে ফেলা</string>
+    <string name="cancel">বাতিল</string>
+    <string name="five_card_warning">আপনার কমপক্ষে 5 টি কার্ডের প্রয়োজন।</string>
+    <string name="ok">ঠিক আছে</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">নির্বাচিত রঙ</string>
+    <string name="select_card_color">কার্ডের রঙ নির্বাচন করুন</string>
+    <string name="cards">তাস</string>
+    <string name="export">সিএসভি রফতানি করুন</string>
+</resources>

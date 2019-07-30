@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Soalan</string>
+    <string name="answer">Jawapan</string>
+    <string name="pile_name">Nama stack</string>
+    <string name="edit_pile">Edit tindanan</string>
+    <string name="delete_pile">Padam stack</string>
+    <string name="settings">Tetapan</string>
+    <string name="confirm">Sahkan</string>
+    <string name="about">Mengenai</string>
+    <string name="dark_mode">Mod gelap</string>
+    <string name="card_front">Hadapan kad</string>
+    <string name="card_back">Kad balik</string>
+    <string name="light_mode">Mod cahaya</string>
+    <string name="placeholder_text">Apa yang akan anda pelajari seterusnya?</string>
+    <string name="add_a_card">Tambah kad</string>
+    <string name="reverse_cards">Kad balik</string>
+    <string name="restart">Mula semula</string>
+    <string name="shuffle_cards">Kad shuffle</string>
+    <string name="pronounce_cards">Mengucapkan kad</string>
+    <string name="multiple_choice_mode">Mod pilihan pelbagai</string>
+    <string name="typed_mode">Mod ditaip</string>
+    <string name="memory_mode">Mod ingatan</string>
+    <string name="pile_image">Imej tumpukan</string>
+    <string name="add_another_card">Tambah kad lain</string>
+    <string name="language_cards_front">Kad kad bahasa:</string>
+    <string name="language_cards_back">Kad balik bahasa:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Ucapkan teks</string>
+    <string name="type_your_answer">Taip jawapan anda</string>
+    <string name="go">GO</string>
+    <string name="string_continue">SAMBUNGAN</string>
+    <string name="create_pile">Buat timbunan</string>
+    <string name="want_to_quit">Adakah anda pasti mahu berhenti?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="add_card">Tambah kad</string>
+    <string name="about_description">Terima kasih kerana menggunakan aplikasi ini! Saya membuat ini kerana semua aplikasi flashcard moden sama ada bengkak dengan iklan, memerlukan langganan atau mengandungi banyak ciri yang tidak perlu.</string>
+    <string name="about_subtext">Jika anda menikmati aplikasi ini, pertimbangkan untuk melakukan perkara berikut:</string>
+    <string name="rate_this_app">Rate aplikasi ini</string>
+    <string name="buy_me_a_cup_of_coffee">Beli saya secawan kopi!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Buat cadangan atau isu di GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Adakah anda pasti mahu memadamkan stack ini?</string>
+    <string name="delete">Padam</string>
+    <string name="cancel">Batalkan</string>
+    <string name="five_card_warning">Anda memerlukan sekurang-kurangnya 5 kad.</string>
+    <string name="ok">Okey</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Warna yang dipilih</string>
+    <string name="select_card_color">Pilih warna kad</string>
+    <string name="cards">Kad</string>
+    <string name="export">CSV Eksport</string>
+</resources>

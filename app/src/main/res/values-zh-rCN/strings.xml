@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">题</string>
+    <string name="answer">回答</string>
+    <string name="pile_name">堆栈名称</string>
+    <string name="edit_pile">编辑堆栈</string>
+    <string name="delete_pile">删除堆栈</string>
+    <string name="settings">设置</string>
+    <string name="confirm">确认</string>
+    <string name="about">关于</string>
+    <string name="dark_mode">黑暗模式</string>
+    <string name="card_front">卡片正面</string>
+    <string name="card_back">卡背</string>
+    <string name="light_mode">灯光模式</string>
+    <string name="placeholder_text">接下来你会学到什么？</string>
+    <string name="add_a_card">添加一张信用卡</string>
+    <string name="reverse_cards">反向卡</string>
+    <string name="restart">重新开始</string>
+    <string name="shuffle_cards">洗牌</string>
+    <string name="pronounce_cards">发音卡片</string>
+    <string name="multiple_choice_mode">多种选择模式</string>
+    <string name="typed_mode">键入模式</string>
+    <string name="memory_mode">记忆模式</string>
+    <string name="pile_image">堆栈图像</string>
+    <string name="add_another_card">添加另一张卡片</string>
+    <string name="language_cards_front">语言卡片正面：</string>
+    <string name="language_cards_back">语言卡回：</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">发音文字</string>
+    <string name="type_your_answer">输入你的答案</string>
+    <string name="go">走</string>
+    <string name="string_continue">继续</string>
+    <string name="create_pile">创建堆栈</string>
+    <string name="want_to_quit">你确定你要退出吗？</string>
+    <string name="yes">是</string>
+    <string name="no">没有</string>
+    <string name="add_card">添加卡片</string>
+    <string name="about_description">感谢您使用此应用程序！我之所以这样做，是因为所有现代闪卡应用都要么广告，需要订阅或者包含许多不必要的功能。</string>
+    <string name="about_subtext">如果您喜欢这个应用程序，请考虑执行以下操作：</string>
+    <string name="rate_this_app">为这个应用软件评分</string>
+    <string name="buy_me_a_cup_of_coffee">买一杯咖啡给我！</string>
+    <string name="create_a_suggestion_or_issue_on_github">在GitHub上创建建议或问题</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">您确定要删除此堆栈吗？</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="five_card_warning">你需要至少5张牌。</string>
+    <string name="ok">好</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">选择颜色</string>
+    <string name="select_card_color">选择卡片颜色</string>
+    <string name="cards">牌</string>
+    <string name="export">导出CSV</string>
+</resources>

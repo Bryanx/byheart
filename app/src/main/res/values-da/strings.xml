@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Spørgsmål</string>
+    <string name="answer">Svar</string>
+    <string name="pile_name">Stabelnavn</string>
+    <string name="edit_pile">Rediger stakken</string>
+    <string name="delete_pile">Slet stakken</string>
+    <string name="settings">Indstillinger</string>
+    <string name="confirm">Bekræfte</string>
+    <string name="about">Om</string>
+    <string name="dark_mode">Mørk tilstand</string>
+    <string name="card_front">Kort foran</string>
+    <string name="card_back">Kort tilbage</string>
+    <string name="light_mode">Lystilstand</string>
+    <string name="placeholder_text">Hvad lærer du næste?</string>
+    <string name="add_a_card">Tilføj et kort</string>
+    <string name="reverse_cards">Omvendte kort</string>
+    <string name="restart">Genstart</string>
+    <string name="shuffle_cards">Bland kort</string>
+    <string name="pronounce_cards">Udtal kort</string>
+    <string name="multiple_choice_mode">Flere valgtilstand</string>
+    <string name="typed_mode">Typetilstand</string>
+    <string name="memory_mode">Hukommelsestilstand</string>
+    <string name="pile_image">Stabelbillede</string>
+    <string name="add_another_card">Tilføj et andet kort</string>
+    <string name="language_cards_front">Sprogkort foran:</string>
+    <string name="language_cards_back">Sprogkort tilbage:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Udtal tekst</string>
+    <string name="type_your_answer">Skriv dit svar</string>
+    <string name="go">GÅ</string>
+    <string name="string_continue">BLIVE VED</string>
+    <string name="create_pile">Opret stak</string>
+    <string name="want_to_quit">Er du sikker på, at du vil stoppe?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Ingen</string>
+    <string name="add_card">Tilføj kort</string>
+    <string name="about_description">Tak for din brug af denne app! Jeg lavede dette, fordi alle moderne flashcard-apps enten er oppustet med annoncer, kræver et abonnement eller indeholder en masse unødvendige funktioner.</string>
+    <string name="about_subtext">Hvis du nyder denne app, kan du overveje at gøre følgende:</string>
+    <string name="rate_this_app">Bedøm denne app</string>
+    <string name="buy_me_a_cup_of_coffee">Køb mig en kop kaffe!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Opret et forslag eller et problem på GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Er du sikker på, at du vil slette denne stak?</string>
+    <string name="delete">Slet</string>
+    <string name="cancel">Afbestille</string>
+    <string name="five_card_warning">Du har brug for mindst 5 kort.</string>
+    <string name="ok">Okay</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Valgt farve</string>
+    <string name="select_card_color">Vælg kortfarve</string>
+    <string name="cards">KORT</string>
+    <string name="export">Eksporter CSV</string>
+</resources>

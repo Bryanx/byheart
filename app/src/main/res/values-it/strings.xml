@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Domanda</string>
+    <string name="answer">Risposta</string>
+    <string name="pile_name">Nome dello stack</string>
+    <string name="edit_pile">Modifica stack</string>
+    <string name="delete_pile">Elimina stack</string>
+    <string name="settings">impostazioni</string>
+    <string name="confirm">Confermare</string>
+    <string name="about">Di</string>
+    <string name="dark_mode">Modalità oscura</string>
+    <string name="card_front">Fronte carta</string>
+    <string name="card_back">Retro della carta</string>
+    <string name="light_mode">Modalità luce</string>
+    <string name="placeholder_text">Cosa imparerai dopo?</string>
+    <string name="add_a_card">Aggiungi una carta</string>
+    <string name="reverse_cards">Carte inverse</string>
+    <string name="restart">Ricomincia</string>
+    <string name="shuffle_cards">Carte in ordine casuale</string>
+    <string name="pronounce_cards">Pronuncia carte</string>
+    <string name="multiple_choice_mode">Modalità a scelta multipla</string>
+    <string name="typed_mode">Modalità digitata</string>
+    <string name="memory_mode">Modalità di memoria</string>
+    <string name="pile_image">Stack immagine</string>
+    <string name="add_another_card">Aggiungi un\'altra carta</string>
+    <string name="language_cards_front">Schede lingua frontali:</string>
+    <string name="language_cards_back">Schede della lingua indietro:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Pronuncia il testo</string>
+    <string name="type_your_answer">Scrivi la tua risposta</string>
+    <string name="go">PARTIRE</string>
+    <string name="string_continue">CONTINUA</string>
+    <string name="create_pile">Crea stack</string>
+    <string name="want_to_quit">Sei sicuro di voler uscire?</string>
+    <string name="yes">sì</string>
+    <string name="no">No</string>
+    <string name="add_card">Aggiungi carta</string>
+    <string name="about_description">Grazie per aver usato questa app! L\'ho fatto perché tutte le moderne app di flashcard sono gonfiate di pubblicità, richiedono un abbonamento o contengono molte funzionalità non necessarie.</string>
+    <string name="about_subtext">Se ti piace questa app, considera quanto segue:</string>
+    <string name="rate_this_app">Valuta questa applicazione</string>
+    <string name="buy_me_a_cup_of_coffee">Comprami una tazza di caffè!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Crea un suggerimento o un problema su GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Sei sicuro di voler eliminare questo stack?</string>
+    <string name="delete">Elimina</string>
+    <string name="cancel">Annulla</string>
+    <string name="five_card_warning">Hai bisogno di almeno 5 carte.</string>
+    <string name="ok">Ok</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Colore selezionato</string>
+    <string name="select_card_color">Seleziona il colore della carta</string>
+    <string name="cards">CARTE</string>
+    <string name="export">Esporta CSV</string>
+</resources>

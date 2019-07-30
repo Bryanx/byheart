@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">質問</string>
+    <string name="answer">回答</string>
+    <string name="pile_name">スタック名</string>
+    <string name="edit_pile">スタックを編集</string>
+    <string name="delete_pile">スタックを削除</string>
+    <string name="settings">設定</string>
+    <string name="confirm">確認する</string>
+    <string name="about">約</string>
+    <string name="dark_mode">ダークモード</string>
+    <string name="card_front">カード前面</string>
+    <string name="card_back">カードバック</string>
+    <string name="light_mode">ライトモード</string>
+    <string name="placeholder_text">次に何を学びますか？</string>
+    <string name="add_a_card">カードを追加</string>
+    <string name="reverse_cards">リバースカード</string>
+    <string name="restart">再起動</string>
+    <string name="shuffle_cards">シャッフルカード</string>
+    <string name="pronounce_cards">カードを発音</string>
+    <string name="multiple_choice_mode">複数選択モード</string>
+    <string name="typed_mode">入力モード</string>
+    <string name="memory_mode">メモリーモード</string>
+    <string name="pile_image">スタックイメージ</string>
+    <string name="add_another_card">別のカードを追加</string>
+    <string name="language_cards_front">言語カードの前面：</string>
+    <string name="language_cards_back">言語カードバック：</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">テキストを発音</string>
+    <string name="type_your_answer">あなたの答えを入力</string>
+    <string name="go">GO</string>
+    <string name="string_continue">持続する</string>
+    <string name="create_pile">スタックを作成する</string>
+    <string name="want_to_quit">本当にやめる気？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="add_card">カードを追加</string>
+    <string name="about_description">このアプリをご利用いただきありがとうございます。最近のフラッシュカードアプリはすべて広告で肥大化しているか、購読が必要であるか、不要な機能が多数含まれているため、これを行いました。</string>
+    <string name="about_subtext">このアプリを楽しんでいる場合は、次のことを検討してください。</string>
+    <string name="rate_this_app">このアプリを評価する</string>
+    <string name="buy_me_a_cup_of_coffee">コーヒーを一杯買ってくれ！</string>
+    <string name="create_a_suggestion_or_issue_on_github">GitHubで提案や問題を作成する</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">このスタックを削除してよろしいですか？</string>
+    <string name="delete">削除する</string>
+    <string name="cancel">キャンセル</string>
+    <string name="five_card_warning">あなたは少なくとも5枚のカードが必要です。</string>
+    <string name="ok">OK</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">選択された色</string>
+    <string name="select_card_color">カードの色を選択</string>
+    <string name="cards">カード</string>
+    <string name="export">CSVをエクスポート</string>
+</resources>

@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Kysymys</string>
+    <string name="answer">Vastaus</string>
+    <string name="pile_name">Pino nimi</string>
+    <string name="edit_pile">Muokkaa pinoa</string>
+    <string name="delete_pile">Poista pino</string>
+    <string name="settings">asetukset</string>
+    <string name="confirm">Vahvistaa</string>
+    <string name="about">Noin</string>
+    <string name="dark_mode">Pimeä tila</string>
+    <string name="card_front">Kortin etuosa</string>
+    <string name="card_back">Kortti takaisin</string>
+    <string name="light_mode">Valotila</string>
+    <string name="placeholder_text">Mitä opit seuraavaksi?</string>
+    <string name="add_a_card">Lisää kortti</string>
+    <string name="reverse_cards">Käänteiset kortit</string>
+    <string name="restart">Uudelleenkäynnistää</string>
+    <string name="shuffle_cards">Sekoita kortteja</string>
+    <string name="pronounce_cards">Äännä kortit</string>
+    <string name="multiple_choice_mode">Monivalintatila</string>
+    <string name="typed_mode">Tyypillinen tila</string>
+    <string name="memory_mode">Muistitila</string>
+    <string name="pile_image">Pino kuva</string>
+    <string name="add_another_card">Lisää toinen kortti</string>
+    <string name="language_cards_front">Kielikortit edessä:</string>
+    <string name="language_cards_back">Kielikortit takaisin:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Äännä teksti</string>
+    <string name="type_your_answer">Kirjoita vastauksesi</string>
+    <string name="go">MENNÄ</string>
+    <string name="string_continue">JATKAA</string>
+    <string name="create_pile">Luo pino</string>
+    <string name="want_to_quit">Oletko varma, että haluat lopettaa?</string>
+    <string name="yes">Joo</string>
+    <string name="no">Ei</string>
+    <string name="add_card">Lisää kortti</string>
+    <string name="about_description">Kiitos tämän sovelluksen käytöstä! Tein tämän, koska kaikki nykyaikaiset flashcard-sovellukset ovat joko täynnä mainoksia, vaativat tilauksen tai sisältävät paljon tarpeettomia ominaisuuksia.</string>
+    <string name="about_subtext">Jos pidät tästä sovelluksesta, harkitse seuraavien tekemistä:</string>
+    <string name="rate_this_app">Arvostele tämä sovellus</string>
+    <string name="buy_me_a_cup_of_coffee">Osta minulle kuppi kahvia!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Luo ehdotus tai kysymys GitHubissa</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Haluatko varmasti poistaa tämän pinon?</string>
+    <string name="delete">Poistaa</string>
+    <string name="cancel">Peruuttaa</string>
+    <string name="five_card_warning">Tarvitset vähintään 5 korttia.</string>
+    <string name="ok">kunnossa</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">color</string>
+    <string name="color_swatch_description_selected">Valittu väri</string>
+    <string name="select_card_color">Valitse kortin väri</string>
+    <string name="cards">KORTIT</string>
+    <string name="export">Vie CSV</string>
+</resources>

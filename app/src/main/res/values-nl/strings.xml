@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Byheart</string>
     <string name="about">Over</string>
     <string name="add_a_card">Voeg een kaart toe</string>
     <string name="add_another_card">Voeg nog een kaart toe</string>
@@ -37,7 +36,7 @@
     <string name="add_card">Nieuwe kaart</string>
     <string name="rate_this_app">Review deze app</string>
     <string name="buy_me_a_cup_of_coffee">Doneer een kop koffie!</string>
-    <string name="about_description">Bedankt dat je deze app gebruikt! Ik heb deze app gemaakt uit frustratie omdat alle moderne leeromgevingen een premium constructie gebruiken, vol zitten met advertenties of zeer veel overbodige features hebben.</string>
+    <string name="about_description">Bedankt dat je deze app gebruikt! Ik heb deze app gemaakt omdat er momenteel niet een toegankelijke en simpele app is om te studeren, bovendien hadden bestaande apps niet de features die ik graag wilde.</string>
     <string name="about_subtext">Als je deze app leuk vindt, kan je mij op deze manier steunen:</string>
     <string name="create_a_suggestion_or_issue_on_github">Maak een suggestie of issue op GitHub</string>
     <string name="delete_confirm_stack">Weet je zeker dat je deze stapel wilt verwijderen?</string>
@@ -48,6 +47,6 @@
     <string name="select_card_color">Kies een kaart kleur</string>
     <string name="color_swatch_description">kleur</string>
     <string name="color_swatch_description_selected">Gekozen kleur</string>
-    <string name="card_count">%1$d KAARTEN</string>
+    <string name="cards">KAARTEN</string>
     <string name="export">Export CSV</string>
 </resources>

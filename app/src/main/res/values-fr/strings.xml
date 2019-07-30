@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Byheart</string>
     <string name="about">À propos</string>
     <string name="add_a_card">Ajouter une carte</string>
     <string name="add_another_card">Ajouter une autre carte</string>
@@ -48,6 +47,6 @@
     <string name="select_card_color">Choisissez une couleur de carte</string>
     <string name="color_swatch_description">couleur</string>
     <string name="color_swatch_description_selected">Couleur choisie</string>
-    <string name="card_count">%1$d CARTES</string>
+    <string name="cards">CARTES</string>
     <string name="export">Exporter CSV</string>
 </resources>

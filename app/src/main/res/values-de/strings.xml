@@ -1,0 +1,57 @@
+<resources>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="question">Frage</string>
+    <string name="answer">Antworten</string>
+    <string name="pile_name">Stapelname</string>
+    <string name="edit_pile">Stapel bearbeiten</string>
+    <string name="delete_pile">Stapel löschen</string>
+    <string name="settings">die Einstellungen</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="about">Über</string>
+    <string name="dark_mode">Dunkler Modus</string>
+    <string name="card_front">Kartenvorderseite</string>
+    <string name="card_back">Karte zurück</string>
+    <string name="light_mode">Lichtmodus</string>
+    <string name="placeholder_text">Was wirst du als nächstes lernen?</string>
+    <string name="add_a_card">Füge eine Karte hinzu</string>
+    <string name="reverse_cards">Karten umkehren</string>
+    <string name="restart">Neustart</string>
+    <string name="shuffle_cards">Karten mischen</string>
+    <string name="pronounce_cards">Sprechen Sie die Karten aus</string>
+    <string name="multiple_choice_mode">Multiple-Choice-Modus</string>
+    <string name="typed_mode">Eingegebener Modus</string>
+    <string name="memory_mode">Speichermodus</string>
+    <string name="pile_image">Bild stapeln</string>
+    <string name="add_another_card">Füge eine weitere Karte hinzu</string>
+    <string name="language_cards_front">Sprachkarten Vorderseite:</string>
+    <string name="language_cards_back">Sprachkarten zurück:</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="pronounce_text">Sprechen Sie den Text aus</string>
+    <string name="type_your_answer">Gib deine Antwort ein</string>
+    <string name="go">GEHEN</string>
+    <string name="string_continue">FORTSETZEN</string>
+    <string name="create_pile">Stapel erstellen</string>
+    <string name="want_to_quit">Sind Sie sicher, dass Sie aufhören wollen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="add_card">Karte hinzufügen</string>
+    <string name="about_description">Danke, dass du diese App benutzt! Ich habe das gemacht, weil alle modernen Flashcard-Apps entweder voller Werbung sind, ein Abonnement erfordern oder viele unnötige Funktionen enthalten.</string>
+    <string name="about_subtext">Wenn Ihnen diese App gefällt, sollten Sie Folgendes tun:</string>
+    <string name="rate_this_app">Bewerte diese App</string>
+    <string name="buy_me_a_cup_of_coffee">Kauf mir eine Tasse Kaffee!</string>
+    <string name="create_a_suggestion_or_issue_on_github">Erstellen Sie einen Vorschlag oder ein Problem auf GitHub</string>
+    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
+    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
+    <string name="delete_confirm_stack">Möchten Sie diesen Stapel wirklich löschen?</string>
+    <string name="delete">Löschen</string>
+    <string name="cancel">Stornieren</string>
+    <string name="five_card_warning">Sie benötigen mindestens 5 Karten.</string>
+    <string name="ok">OK</string>
+    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
+    <string name="colorpicker" translatable="false">Colorpicker</string>
+    <string name="color_swatch_description" translatable="false">farbe</string>
+    <string name="color_swatch_description_selected">Ausgewählte Farbe</string>
+    <string name="select_card_color">Kartenfarbe auswählen</string>
+    <string name="cards">KARTEN</string>
+    <string name="export">CSV exportieren</string>
+</resources>
