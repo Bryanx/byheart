@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Вопрос</string>
     <string name="answer">Ответ</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Если вам нравится это приложение, рассмотрите возможность сделать следующее:</string>
     <string name="rate_this_app">Оцените это приложение</string>
     <string name="buy_me_a_cup_of_coffee">Купи мне чашку кофе!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Создать предложение или вопрос на GitHub</string>
+    <string name="create_a_bug_report">Создать отчет об ошибке</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Вы уверены, что хотите удалить этот стек?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Выбранный цвет</string>
     <string name="select_card_color">Выберите цвет карты</string>
     <string name="cards">КАРТЫ</string>
-    <string name="export">Экспорт CSV</string>
+    <string name="export_csv">Экспорт CSV</string>
+    <string name="import_csv">Импортировать CSV</string>
+    <string name="export_csv_summary">Экспортируйте все карточки в файле, разделенном запятыми. Этот файл может быть открыт в Microsoft Excel, Google Sheets, Apple Numbers и т. Д.</string>
+    <string name="import_csv_summary">Импортируйте из Microsoft Excel, Google Sheets, Apple Numbers или используйте его для импорта карточек из другого приложения.</string>
+    <string name="create_backup_summary">Создайте файл резервной копии ваших данных. Вы можете открыть этот файл на другом устройстве, чтобы восстановить ваши данные.</string>
+    <string name="import_backup_summary">Импортируйте файл резервной копии. Стеки и карточки существующего типа не будут перезаписаны резервной копией.</string>
+    <string name="coming_soon">Скоро будет.</string>
+    <string name="reminders">Напоминания</string>
+    <string name="account">учетная запись</string>
+    <string name="create_backup">Создать резервную копию</string>
+    <string name="import_backup">Импортировать резервную копию</string>
+    <string name="import_and_export">Импорт и экспорт</string>
+    <string name="support">Служба поддержки</string>
+    <string name="troubleshooting">Поиск проблемы</string>
 </resources>

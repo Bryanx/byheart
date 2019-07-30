@@ -5,9 +5,9 @@
 
     <FrameLayout
         android:id="@+id/settings"
-        android:background="?mainBackgroundColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:summary="@string/export_csv_summary"
         android:layout_marginTop="?actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 

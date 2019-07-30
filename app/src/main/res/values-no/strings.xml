@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Spørsmål</string>
     <string name="answer">Svar</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Hvis du liker denne appen, kan du vurdere å gjøre følgende:</string>
     <string name="rate_this_app">Ranger denne appen</string>
     <string name="buy_me_a_cup_of_coffee">Kjøp meg en kopp kaffe!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Lag et forslag eller problem på GitHub</string>
+    <string name="create_a_bug_report">Opprett en feilrapport</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Er du sikker på at du vil slette denne stabelen?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Valgt farge</string>
     <string name="select_card_color">Velg kortfarge</string>
     <string name="cards">KORT</string>
-    <string name="export">Eksporter CSV</string>
+    <string name="export_csv">Eksporter CSV</string>
+    <string name="import_csv">Importer CSV</string>
+    <string name="export_csv_summary">Eksporter alle kortene i en kommaseparert fil. Denne filen kan være openend i Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
+    <string name="import_csv_summary">Importer fra Microsoft Excel, Google Sheets, Apple Numbers, eller bruk dette til å importere flashcards fra en annen app.</string>
+    <string name="create_backup_summary">Lag en sikkerhetskopifil med dataene dine. Du kan åpne denne filen på en annen enhet for å gjenopprette dataene dine.</string>
+    <string name="import_backup_summary">Importer en sikkerhetskopifil. Eksisterende stabler og kort overskrives ikke av sikkerhetskopien.</string>
+    <string name="coming_soon">Kommer snart.</string>
+    <string name="reminders">påminnelser</string>
+    <string name="account">Konto</string>
+    <string name="create_backup">Lag sikkerhetskopi</string>
+    <string name="import_backup">Importer sikkerhetskopi</string>
+    <string name="import_and_export">Import og eksport</string>
+    <string name="support">Brukerstøtte</string>
+    <string name="troubleshooting">Feilsøking</string>
 </resources>

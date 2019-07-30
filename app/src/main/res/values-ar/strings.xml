@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">سؤال</string>
     <string name="answer">إجابة</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">إذا كنت تستمتع بهذا التطبيق ، فكر في القيام بما يلي:</string>
     <string name="rate_this_app">قيم هذا التطبيق</string>
     <string name="buy_me_a_cup_of_coffee">اشتر لي فنجان قهوة!</string>
-    <string name="create_a_suggestion_or_issue_on_github">إنشاء اقتراح أو مشكلة على جيثب</string>
+    <string name="create_a_bug_report">إنشاء تقرير الشوائب</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">هل أنت متأكد من أنك تريد حذف هذه المكدس؟</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">اللون المحدد</string>
     <string name="select_card_color">اختيار لون البطاقة</string>
     <string name="cards">CARDS</string>
-    <string name="export">تصدير ملف CSV</string>
+    <string name="export_csv">تصدير ملف CSV</string>
+    <string name="import_csv">استيراد ملف CSV</string>
+    <string name="export_csv_summary">تصدير جميع البطاقات في ملف مفصول بفواصل. يمكن فتح هذا الملف في Microsoft Excel و Google Sheets و Apple Numbers وما إلى ذلك.</string>
+    <string name="import_csv_summary">قم بالاستيراد من Microsoft Excel أو Google Sheets أو Apple Numbers أو استخدم هذا لاستيراد البطاقات التعليمية من تطبيق مختلف.</string>
+    <string name="create_backup_summary">إنشاء ملف النسخ الاحتياطي للبيانات الخاصة بك. يمكنك فتح هذا الملف على جهاز آخر لاستعادة البيانات الخاصة بك.</string>
+    <string name="import_backup_summary">استيراد ملف النسخ الاحتياطي. لن يتم الكتابة فوق مكدسات وبطاقات موجودة بواسطة النسخ الاحتياطي.</string>
+    <string name="coming_soon">قريبا.</string>
+    <string name="reminders">تذكير</string>
+    <string name="account">الحساب</string>
+    <string name="create_backup">انشئ نسخة احتياطية</string>
+    <string name="import_backup">استيراد النسخ الاحتياطي</string>
+    <string name="import_and_export">استيراد وتصدير</string>
+    <string name="support">الدعم</string>
+    <string name="troubleshooting">استكشاف الأخطاء وإصلاحها</string>
 </resources>

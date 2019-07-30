@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">의문</string>
     <string name="answer">대답</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">이 응용 프로그램을 즐기는 경우 다음을 수행하는 것이 좋습니다.</string>
     <string name="rate_this_app">이 앱을 평가 해주십시오</string>
     <string name="buy_me_a_cup_of_coffee">커피 한잔 사주세요!</string>
-    <string name="create_a_suggestion_or_issue_on_github">GitHub에서 제안 또는 문제 만들기</string>
+    <string name="create_a_bug_report">버그 보고서 작성</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">이 스택을 삭제 하시겠습니까?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">선택한 색상</string>
     <string name="select_card_color">카드 색상 선택</string>
     <string name="cards">카드</string>
-    <string name="export">CSV 내보내기</string>
+    <string name="export_csv">CSV 내보내기</string>
+    <string name="import_csv">CSV 가져 오기</string>
+    <string name="export_csv_summary">모든 카드를 쉼표로 구분 된 파일로 내 보냅니다. 이 파일은 Microsoft Excel, Google 스프레드 시트, Apple Numbers 등에서 열 수 있습니다.</string>
+    <string name="import_csv_summary">Microsoft Excel, Google 스프레드 시트, Apple Numbers에서 가져 오기를 실행하거나 다른 앱에서 플래시 카드를 가져 오려면이 기능을 사용하십시오.</string>
+    <string name="create_backup_summary">데이터의 백업 파일을 만듭니다. 다른 장치에서이 파일을 열어 데이터를 복원 할 수 있습니다.</string>
+    <string name="import_backup_summary">백업 파일을 가져옵니다. 기존 스택 및 카드는 백업으로 덮어 쓰지 않습니다.</string>
+    <string name="coming_soon">곧 올거야.</string>
+    <string name="reminders">알리미</string>
+    <string name="account">계정</string>
+    <string name="create_backup">백업 만들기</string>
+    <string name="import_backup">백업 가져 오기</string>
+    <string name="import_and_export">가져 오기 및 내보내기</string>
+    <string name="support">지원하다</string>
+    <string name="troubleshooting">문제 해결</string>
 </resources>

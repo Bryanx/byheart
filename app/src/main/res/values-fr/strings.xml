@@ -38,7 +38,7 @@
     <string name="buy_me_a_cup_of_coffee">Donner une café!</string>
     <string name="about_description">J\'ai fait cette application, parce que tout les applications moderne avez un construction de premium, avoir beaucoup de publicités ou avoir trop de fonctionnalités.</string>
     <string name="about_subtext">Si tu aimes cette application, vous pouvez m\'aidez avec:</string>
-    <string name="create_a_suggestion_or_issue_on_github">Créer une suggestion ou un problème sur GitHub</string>
+    <string name="create_a_bug_report">Créer une rapportage de bogue</string>
     <string name="delete_confirm_stack">Êtes-vous sûr de vouloir supprimer cette pile?</string>
     <string name="delete">Supprimer</string>
     <string name="cancel">Annuler</string>
@@ -48,5 +48,18 @@
     <string name="color_swatch_description">couleur</string>
     <string name="color_swatch_description_selected">Couleur choisie</string>
     <string name="cards">CARTES</string>
-    <string name="export">Exporter CSV</string>
+    <string name="export_csv">Exporter CSV</string>
+    <string name="import_csv">Importer CSV</string>
+    <string name="reminders">Des rappels</string>
+    <string name="account">Compte</string>
+    <string name="export_csv_summary">Exporter tout cartes dans une CSV. Cette fichier peut être ouvert dans Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
+    <string name="import_csv_summary">Importer de Microsoft Excel, Google Sheets, Apple Numbers, ou utilise cela pour importer des cartes d\'un autre applications.</string>
+    <string name="create_backup_summary">Vous pouvez ouvrir cette fichier sur un autre appareil d\'android et restorer votre données.</string>
+    <string name="import_backup_summary">Les piles et les cartes qui existantes ne sont pas écrasées par la sauvegarde.</string>
+    <string name="create_backup">Créer une sauvegarde</string>
+    <string name="import_backup">Importer une sauvegarde</string>
+    <string name="import_and_export">Importer et exporter</string>
+    <string name="support">Soutien</string>
+    <string name="troubleshooting">Dépannage</string>
+    <string name="coming_soon">Arrive bientôt.</string>
 </resources>

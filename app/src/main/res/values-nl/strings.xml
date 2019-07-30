@@ -38,7 +38,7 @@
     <string name="buy_me_a_cup_of_coffee">Doneer een kop koffie!</string>
     <string name="about_description">Bedankt dat je deze app gebruikt! Ik heb deze app gemaakt omdat er momenteel niet een toegankelijke en simpele app is om te studeren, bovendien hadden bestaande apps niet de features die ik graag wilde.</string>
     <string name="about_subtext">Als je deze app leuk vindt, kan je mij op deze manier steunen:</string>
-    <string name="create_a_suggestion_or_issue_on_github">Maak een suggestie of issue op GitHub</string>
+    <string name="create_a_bug_report">Rapporteer een bug</string>
     <string name="delete_confirm_stack">Weet je zeker dat je deze stapel wilt verwijderen?</string>
     <string name="delete">Verwijderen</string>
     <string name="cancel">Annuleren</string>
@@ -48,5 +48,18 @@
     <string name="color_swatch_description">kleur</string>
     <string name="color_swatch_description_selected">Gekozen kleur</string>
     <string name="cards">KAARTEN</string>
-    <string name="export">Export CSV</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="import_csv">Import CSV</string>
+    <string name="export_csv_summary">Exporteer alle kaarten in door komma gescheiden bestand. Dit best kan worden geopend in Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
+    <string name="import_csv_summary">Importeer van Microsoft Excel, Google Sheets, Apple Numbers, of gebruik dit om kaartjes te importeren van vergelijkbare apps.</string>
+    <string name="create_backup_summary">Maak een backup. Je kan dit bestand openen op een andere android apparaat om je data te herstellen.</string>
+    <string name="import_backup_summary">Importeer een backup bestand. Bestaande stapels en kaarten worden niet overschreven door de backup.</string>
+    <string name="coming_soon">Komt binnenkort.</string>
+    <string name="reminders">Herinneringen</string>
+    <string name="account">Account</string>
+    <string name="import_and_export">Import en export</string>
+    <string name="create_backup">Maak backup</string>
+    <string name="import_backup">Importeer backup</string>
+    <string name="support">Ondersteuning</string>
+    <string name="troubleshooting">Problemen</string>
 </resources>

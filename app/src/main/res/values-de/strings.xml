@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Frage</string>
     <string name="answer">Antworten</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Wenn Ihnen diese App gefällt, sollten Sie Folgendes tun:</string>
     <string name="rate_this_app">Bewerte diese App</string>
     <string name="buy_me_a_cup_of_coffee">Kauf mir eine Tasse Kaffee!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Erstellen Sie einen Vorschlag oder ein Problem auf GitHub</string>
+    <string name="create_a_bug_report">Erstellen Sie einen Fehlerbericht</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Möchten Sie diesen Stapel wirklich löschen?</string>
@@ -49,9 +50,22 @@
     <string name="ok">OK</string>
     <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
     <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">farbe</string>
+    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Ausgewählte Farbe</string>
     <string name="select_card_color">Kartenfarbe auswählen</string>
     <string name="cards">KARTEN</string>
-    <string name="export">CSV exportieren</string>
+    <string name="export_csv">CSV exportieren</string>
+    <string name="import_csv">CSV importieren</string>
+    <string name="export_csv_summary">Exportieren Sie alle Karten in eine durch Kommas getrennte Datei. Diese Datei kann in Microsoft Excel, Google Sheets, Apple Numbers usw. geöffnet werden.</string>
+    <string name="import_csv_summary">Importieren Sie aus Microsoft Excel, Google Sheets, Apple Numbers oder importieren Sie damit Ihre Lernkarten aus einer anderen App.</string>
+    <string name="create_backup_summary">Erstellen Sie eine Sicherungsdatei Ihrer Daten. Sie können diese Datei auf einem anderen Gerät öffnen, um Ihre Daten wiederherzustellen.</string>
+    <string name="import_backup_summary">Importieren Sie eine Sicherungsdatei. Bestehende Stapel und Karten werden von der Sicherung nicht überschrieben.</string>
+    <string name="coming_soon">Demnächst.</string>
+    <string name="reminders">Erinnerungen</string>
+    <string name="account">Konto</string>
+    <string name="create_backup">Ein Backup erstellen</string>
+    <string name="import_backup">Backup importieren</string>
+    <string name="import_and_export">Import und Export</string>
+    <string name="support">Unterstützung</string>
+    <string name="troubleshooting">Fehlerbehebung</string>
 </resources>

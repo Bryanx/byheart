@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Questão</string>
     <string name="answer">Responda</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Se você gosta deste aplicativo, considere fazer o seguinte:</string>
     <string name="rate_this_app">Avalie este aplicativo</string>
     <string name="buy_me_a_cup_of_coffee">Compre uma xícara de café!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Crie uma sugestão ou problema no GitHub</string>
+    <string name="create_a_bug_report">Crie um relatório de bug</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Tem certeza de que deseja excluir esta pilha?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Cor selecionada</string>
     <string name="select_card_color">Selecione a cor do cartão</string>
     <string name="cards">CARTÕES</string>
-    <string name="export">Exportar CSV</string>
+    <string name="export_csv">Exportar CSV</string>
+    <string name="import_csv">Importar CSV</string>
+    <string name="export_csv_summary">Exportar todos os cartões em um arquivo separado por vírgulas. Este arquivo pode ser openend no Microsoft Excel, Planilhas Google, Números Apple, etc.</string>
+    <string name="import_csv_summary">Importe do Microsoft Excel, do Planilhas Google, do Apple Numbers ou use-o para importar seus flashcards de um aplicativo diferente.</string>
+    <string name="create_backup_summary">Crie um arquivo de backup dos seus dados. Você pode abrir esse arquivo em outro dispositivo para restaurar seus dados.</string>
+    <string name="import_backup_summary">Importe um arquivo de backup. As pilhas e os cartões existentes não serão sobrescritos pelo backup.</string>
+    <string name="coming_soon">Em breve.</string>
+    <string name="reminders">Lembretes</string>
+    <string name="account">Conta</string>
+    <string name="create_backup">Criar backup</string>
+    <string name="import_backup">Importar backup</string>
+    <string name="import_and_export">Importar e exportar</string>
+    <string name="support">Apoio, suporte</string>
+    <string name="troubleshooting">Solução de problemas</string>
 </resources>

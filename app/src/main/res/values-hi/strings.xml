@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">सवाल</string>
     <string name="answer">उत्तर</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">यदि आप इस ऐप का आनंद लेते हैं, तो निम्न कार्य करने पर विचार करें:</string>
     <string name="rate_this_app">इस ऐप्लिकेशन को रेट करे</string>
     <string name="buy_me_a_cup_of_coffee">मेरे लिए एक कप कॉफ़ी खरीदें!</string>
-    <string name="create_a_suggestion_or_issue_on_github">GitHub पर एक सुझाव या समस्या बनाएँ</string>
+    <string name="create_a_bug_report">बग रिपोर्ट बनाएं</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">क्या आप वाकई इस स्टैक को हटाना चाहते हैं?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">चुना हुआ रंग</string>
     <string name="select_card_color">कार्ड का रंग चुनें</string>
     <string name="cards">पत्ते</string>
-    <string name="export">निर्यात CSV</string>
+    <string name="export_csv">निर्यात CSV</string>
+    <string name="import_csv">CSV आयात करें</string>
+    <string name="export_csv_summary">सभी कार्डों को अल्पविराम से अलग फ़ाइल में निर्यात करें। यह फाइल Microsoft Excel, Google Sheets, Apple नंबर, आदि में ओपन की जा सकती है।</string>
+    <string name="import_csv_summary">Microsoft Excel, Google Sheets, Apple नंबर से आयात करें, या किसी अन्य ऐप से अपने फ्लैशकार्ड को आयात करने के लिए इसका उपयोग करें।</string>
+    <string name="create_backup_summary">अपने डेटा की बैकअप फ़ाइल बनाएँ। आप अपने डेटा को पुनर्स्थापित करने के लिए इस फ़ाइल को किसी अन्य डिवाइस पर खोल सकते हैं।</string>
+    <string name="import_backup_summary">एक बैकअप फ़ाइल आयात करें। अस्तित्व के ढेर और कार्ड बैकअप द्वारा अधिलेखित नहीं होंगे।</string>
+    <string name="coming_soon">जल्द आ रहा है।</string>
+    <string name="reminders">अनुस्मारक</string>
+    <string name="account">लेखा</string>
+    <string name="create_backup">बैकअप बनाना</string>
+    <string name="import_backup">बैकअप आयात करें</string>
+    <string name="import_and_export">आयात और निर्यात</string>
+    <string name="support">समर्थन</string>
+    <string name="troubleshooting">समस्या निवारण</string>
 </resources>

@@ -103,7 +103,7 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="16dp"
-            android:text="@string/create_a_suggestion_or_issue_on_github"
+            android:text="@string/create_a_bug_report"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

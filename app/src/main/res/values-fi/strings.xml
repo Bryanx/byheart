@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Kysymys</string>
     <string name="answer">Vastaus</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Jos pidät tästä sovelluksesta, harkitse seuraavien tekemistä:</string>
     <string name="rate_this_app">Arvostele tämä sovellus</string>
     <string name="buy_me_a_cup_of_coffee">Osta minulle kuppi kahvia!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Luo ehdotus tai kysymys GitHubissa</string>
+    <string name="create_a_bug_report">Luo virheraportti</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Haluatko varmasti poistaa tämän pinon?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Valittu väri</string>
     <string name="select_card_color">Valitse kortin väri</string>
     <string name="cards">KORTIT</string>
-    <string name="export">Vie CSV</string>
+    <string name="export_csv">Vie CSV</string>
+    <string name="import_csv">Tuo CSV</string>
+    <string name="export_csv_summary">Vie kaikki kortit pilkuin erotetussa tiedostossa. Tämä tiedosto voidaan avata Microsoft Excel-, Google Sheets-, Apple-numeroissa jne.</string>
+    <string name="import_csv_summary">Tuo Microsoft Excel -sovelluksesta, Google Sheets -sovelluksesta, Apple-numeroista tai käytä tätä flash-korttien tuomiseen toisesta sovelluksesta.</string>
+    <string name="create_backup_summary">Luo varmuuskopiotiedostosi. Voit avata tämän tiedoston toisella laitteella tietojen palauttamiseksi.</string>
+    <string name="import_backup_summary">Tuo varmuuskopiotiedosto. Olemassa olevat pinot ja kortit eivät korvata varmuuskopioita.</string>
+    <string name="coming_soon">Tulossa pian.</string>
+    <string name="reminders">muistutuksia</string>
+    <string name="account">Tili</string>
+    <string name="create_backup">Luo varmuuskopio</string>
+    <string name="import_backup">Tuo varmuuskopio</string>
+    <string name="import_and_export">Tuonti ja vienti</string>
+    <string name="support">Tuki</string>
+    <string name="troubleshooting">Ongelmien karttoittaminen</string>
 </resources>

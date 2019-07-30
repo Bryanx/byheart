@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Domanda</string>
     <string name="answer">Risposta</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Se ti piace questa app, considera quanto segue:</string>
     <string name="rate_this_app">Valuta questa applicazione</string>
     <string name="buy_me_a_cup_of_coffee">Comprami una tazza di caffè!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Crea un suggerimento o un problema su GitHub</string>
+    <string name="create_a_bug_report">Crea una segnalazione di bug</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Sei sicuro di voler eliminare questo stack?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Colore selezionato</string>
     <string name="select_card_color">Seleziona il colore della carta</string>
     <string name="cards">CARTE</string>
-    <string name="export">Esporta CSV</string>
+    <string name="export_csv">Esporta CSV</string>
+    <string name="import_csv">Importa CSV</string>
+    <string name="export_csv_summary">Esporta tutte le carte in un file separato da virgole. Questo file può essere aperto in Microsoft Excel, Fogli Google, numeri Apple, ecc.</string>
+    <string name="import_csv_summary">Importa da Microsoft Excel, Fogli Google, Numeri di Apple o utilizzalo per importare le tue flashcard da un\'altra app.</string>
+    <string name="create_backup_summary">Crea un file di backup dei tuoi dati. È possibile aprire questo file su un altro dispositivo per ripristinare i dati.</string>
+    <string name="import_backup_summary">Importa un file di backup. Le pile e le carte esistenti non verranno sovrascritte dal backup.</string>
+    <string name="coming_soon">Prossimamente.</string>
+    <string name="reminders">promemoria</string>
+    <string name="account">account</string>
+    <string name="create_backup">Creare il backup</string>
+    <string name="import_backup">Importa backup</string>
+    <string name="import_and_export">Importazione e esportazione</string>
+    <string name="support">Supporto</string>
+    <string name="troubleshooting">Risoluzione dei problemi</string>
 </resources>

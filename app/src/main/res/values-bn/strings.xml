@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">প্রশ্ন</string>
     <string name="answer">উত্তর</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">আপনি যদি এই অ্যাপটি উপভোগ করেন তবে নিম্নলিখিতগুলি বিবেচনা করুন:</string>
     <string name="rate_this_app">এই অ্যাপ্লিকেশন রেট</string>
     <string name="buy_me_a_cup_of_coffee">আমাকে এক কাপ কফি কিনে দাও!</string>
-    <string name="create_a_suggestion_or_issue_on_github">গিটহাবে একটি পরামর্শ বা ইস্যু তৈরি করুন</string>
+    <string name="create_a_bug_report">একটি বাগ রিপোর্ট তৈরি করুন</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">আপনি কি নিশ্চিত যে আপনি এই স্ট্যাকটি মুছতে চান?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">নির্বাচিত রঙ</string>
     <string name="select_card_color">কার্ডের রঙ নির্বাচন করুন</string>
     <string name="cards">তাস</string>
-    <string name="export">সিএসভি রফতানি করুন</string>
+    <string name="export_csv">সিএসভি রফতানি করুন</string>
+    <string name="import_csv">সিএসভি আমদানি করুন</string>
+    <string name="export_csv_summary">কমা দ্বারা পৃথক করা ফাইলগুলিতে সমস্ত কার্ড রফতানি করুন। এই ফাইলটি মাইক্রোসফ্ট এক্সেল, গুগল শিটস, অ্যাপল নম্বর ইত্যাদিতে ওপেনড হতে পারে</string>
+    <string name="import_csv_summary">মাইক্রোসফ্ট এক্সেল, গুগল শিটস, অ্যাপল নম্বরগুলি থেকে আমদানি করুন বা অন্য কোনও অ্যাপ্লিকেশন থেকে আপনার ফ্ল্যাশকার্ডগুলি আমদানি করতে এটি ব্যবহার করুন।</string>
+    <string name="create_backup_summary">আপনার ডেটার একটি ব্যাকআপ ফাইল তৈরি করুন। আপনি আপনার ডেটা পুনরুদ্ধার করতে এই ফাইলটি অন্য ডিভাইসে খুলতে পারেন।</string>
+    <string name="import_backup_summary">একটি ব্যাকআপ ফাইল আমদানি করুন। বিদ্যমান স্ট্যাক এবং কার্ডগুলি ব্যাকআপের মাধ্যমে ওভাররাইট করা হবে না।</string>
+    <string name="coming_soon">শীঘ্রই আসছে.</string>
+    <string name="reminders">অনুস্মারক</string>
+    <string name="account">হিসাব</string>
+    <string name="create_backup">ব্যাকআপ তৈরি</string>
+    <string name="import_backup">ব্যাকআপ আমদানি করুন</string>
+    <string name="import_and_export">আমদানি এবং রপ্তানি</string>
+    <string name="support">সমর্থন</string>
+    <string name="troubleshooting">সমস্যা সমাধান</string>
 </resources>

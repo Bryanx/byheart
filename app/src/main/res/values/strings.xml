@@ -40,7 +40,7 @@
     <string name="about_subtext">If you enjoy this app, consider doing the following:</string>
     <string name="rate_this_app">Rate this app</string>
     <string name="buy_me_a_cup_of_coffee">Buy me a cup of coffee!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Create a suggestion or issue on GitHub</string>
+    <string name="create_a_bug_report">Create a bug report</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Are you sure you want to delete this stack?</string>
@@ -54,5 +54,18 @@
     <string name="color_swatch_description_selected">Selected color</string>
     <string name="select_card_color">Select card color</string>
     <string name="cards">CARDS</string>
-    <string name="export">Export CSV</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="import_csv">Import CSV</string>
+    <string name="export_csv_summary">Export all cards in a comma separated file. This file can be openend in Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
+    <string name="import_csv_summary">Import from Microsoft Excel, Google Sheets, Apple Numbers, or use this to import your flashcards from a different app.</string>
+    <string name="create_backup_summary">Create a backup file of your data. You can open this file on another device to restore your data.</string>
+    <string name="import_backup_summary">Import a backup file. Existings stacks and cards wont be overwritten by the backup.</string>
+    <string name="coming_soon">Coming soon.</string>
+    <string name="reminders">Reminders</string>
+    <string name="account">Account</string>
+    <string name="create_backup">Create backup</string>
+    <string name="import_backup">Import backup</string>
+    <string name="import_and_export">Import and export</string>
+    <string name="support">Support</string>
+    <string name="troubleshooting">Troubleshooting</string>
 </resources>

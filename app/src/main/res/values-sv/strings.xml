@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Fråga</string>
     <string name="answer">Svar</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Om du gillar den här appen kan du överväga att göra följande:</string>
     <string name="rate_this_app">Betygsätt denna app</string>
     <string name="buy_me_a_cup_of_coffee">Köp mig en kopp kaffe!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Skapa ett förslag eller problem på GitHub</string>
+    <string name="create_a_bug_report">Skapa en felrapport</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Är du säker på att du vill ta bort den här stacken?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Vald färg</string>
     <string name="select_card_color">Välj kortfärg</string>
     <string name="cards">CARDS</string>
-    <string name="export">Exportera CSV</string>
+    <string name="export_csv">Exportera CSV</string>
+    <string name="import_csv">Importera CSV</string>
+    <string name="export_csv_summary">Exportera alla kort i en kommaseparerad fil. Denna fil kan vara openend i Microsoft Excel, Google Sheets, Apple-nummer, etc.</string>
+    <string name="import_csv_summary">Importera från Microsoft Excel, Google Sheets, Apple-nummer eller använd det här för att importera dina flashcards från en annan app.</string>
+    <string name="create_backup_summary">Skapa en säkerhetskopia av dina data. Du kan öppna den här filen på en annan enhet för att återställa dina data.</string>
+    <string name="import_backup_summary">Importera en säkerhetskopia. Befintliga staplar och kort kommer inte att skrivas över av säkerhetskopian.</string>
+    <string name="coming_soon">Kommer snart.</string>
+    <string name="reminders">påminnelser</string>
+    <string name="account">konto</string>
+    <string name="create_backup">Skapa backup</string>
+    <string name="import_backup">Importera säkerhetskopia</string>
+    <string name="import_and_export">Import och export</string>
+    <string name="support">Stöd</string>
+    <string name="troubleshooting">Felsökning</string>
 </resources>

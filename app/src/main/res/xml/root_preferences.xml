@@ -14,89 +14,86 @@
   ~ limitations under the License.
   -->
 
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="">
+    <PreferenceCategory>
 
         <Preference
-            app:key="account"
             app:icon="@drawable/ic_person_black_24dp"
-            app:summary="Coming soon."
-            app:title="Reminders"
-            app:layout="@layout/preference_setting"/>
+            app:key="account"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/coming_soon"
+            app:title="@string/account" />
 
         <Preference
-            app:key="reminders"
             app:icon="@drawable/ic_alarm_black_24dp"
-            app:summary="Coming soon."
-            app:title="Reminders"
-            app:layout="@layout/preference_setting"/>
+            app:key="reminders"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/coming_soon"
+            app:title="@string/reminders" />
 
     </PreferenceCategory>
-    <PreferenceCategory app:title="Import and export">
+    <PreferenceCategory app:title="@string/import_and_export">
 
         <Preference
+            app:icon="@drawable/ic_grid_on_black_24dp"
             app:key="exportCSV"
-            app:icon="@drawable/ic_grid_on_black_24dp"
-            app:summary="Export all cards in a comma seperated file. This file can be openend in Microsoft Excel, Google Sheets, Apple Numbers, etc."
-            app:title="Export CSV"
-            app:layout="@layout/preference_setting"/>
+            app:layout="@layout/preference_setting"
+            app:summary="@string/export_csv_summary"
+            app:title="@string/export_csv" />
 
         <Preference
+            app:icon="@drawable/ic_grid_on_black_24dp"
             app:key="importCSV"
-            app:icon="@drawable/ic_grid_on_black_24dp"
-            app:summary="Import from Microsoft Excel, Google Sheets or Apple Numbers. Or use this to import your flashcards from a different app."
-            app:title="Import CSV"
-            app:layout="@layout/preference_setting"/>
+            app:layout="@layout/preference_setting"
+            app:summary="@string/import_csv_summary"
+            app:title="@string/import_csv" />
 
         <Preference
-            app:key="backup"
             app:icon="@drawable/ic_file_download_black_24dp"
-            app:summary="Create a backup file of all your data. You can open this file on another device to restore your data."
-            app:title="Create backup"
-            app:layout="@layout/preference_setting"/>
+            app:key="backup"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/create_backup_summary"
+            app:title="@string/create_backup" />
 
         <Preference
-            app:key="import"
             app:icon="@drawable/ic_file_upload_black_24dp"
-            app:summary="Import a backup file. Note that only files with '.byheart' extensions are allowed."
-            app:title="Import backup"
-            app:layout="@layout/preference_setting"/>
+            app:key="import"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/import_backup_summary"
+            app:title="@string/import_backup" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:title="Troubleshooting">
+    <PreferenceCategory app:title="@string/troubleshooting">
 
         <Preference
-            app:key="bugreport"
             app:icon="@drawable/ic_bug_report_black_24dp"
-            app:title="@string/create_a_suggestion_or_issue_on_github"
-            app:layout="@layout/preference_setting"/>
+            app:key="bugreport"
+            app:layout="@layout/preference_setting"
+            app:title="@string/create_a_bug_report" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:title="Support">
+    <PreferenceCategory app:title="@string/support">
 
         <Preference
-            app:key="coffeeLink"
             app:icon="@drawable/ic_coffee_hot_cup"
-            app:title="@string/buy_me_a_cup_of_coffee"
-            app:layout="@layout/preference_setting"/>
+            app:key="coffeeLink"
+            app:layout="@layout/preference_setting"
+            app:title="@string/buy_me_a_cup_of_coffee" />
 
         <Preference
-            app:key="rate"
             app:icon="@drawable/ic_play_circle_outline_black_24dp"
-            app:title="@string/rate_this_app"
-            app:layout="@layout/preference_setting"/>
+            app:key="rate"
+            app:layout="@layout/preference_setting"
+            app:title="@string/rate_this_app" />
 
         <Preference
-            app:key="about"
             app:icon="@drawable/ic_info_outline_black_24dp"
-            app:title="@string/about"
-            app:layout="@layout/preference_setting"/>
+            app:key="about"
+            app:layout="@layout/preference_setting"
+            app:title="@string/about" />
 
     </PreferenceCategory>
 

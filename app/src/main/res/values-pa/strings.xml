@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">ਪ੍ਰਸ਼ਨ</string>
     <string name="answer">ਜਵਾਬ</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">ਜੇ ਤੁਸੀਂ ਇਸ ਐਪ ਦਾ ਅਨੰਦ ਲੈਂਦੇ ਹੋ, ਹੇਠ ਲਿਖਿਆਂ ਕਰਨ \'ਤੇ ਵਿਚਾਰ ਕਰੋ:</string>
     <string name="rate_this_app">ਇਸ ਐਪ ਨੂੰ ਦਰਜਾ ਦਿਓ</string>
     <string name="buy_me_a_cup_of_coffee">ਮੈਨੂੰ ਇੱਕ ਕੱਪ ਕਾਫੀ ਖਰੀਦੋ!</string>
-    <string name="create_a_suggestion_or_issue_on_github">ਗਿੱਟਹੱਬ \'ਤੇ ਕੋਈ ਸੁਝਾਅ ਜਾਂ ਮੁੱਦਾ ਤਿਆਰ ਕਰੋ</string>
+    <string name="create_a_bug_report">ਬੱਗ ਰਿਪੋਰਟ ਬਣਾਓ</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਸ ਸਟੈਕ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">ਚੁਣਿਆ ਰੰਗ</string>
     <string name="select_card_color">ਕਾਰਡ ਦਾ ਰੰਗ ਚੁਣੋ</string>
     <string name="cards">ਕਾਰਡ</string>
-    <string name="export">CSV ਐਕਸਪੋਰਟ ਕਰੋ</string>
+    <string name="export_csv">CSV ਐਕਸਪੋਰਟ ਕਰੋ</string>
+    <string name="import_csv">ਸੀਐਸਵੀ ਇੰਪੋਰਟ ਕਰੋ</string>
+    <string name="export_csv_summary">ਇੱਕ ਕਾਮੇ ਨਾਲ ਵੱਖ ਕੀਤੀ ਫਾਈਲ ਵਿੱਚ ਸਾਰੇ ਕਾਰਡ ਐਕਸਪੋਰਟ ਕਰੋ. ਇਹ ਫਾਈਲ ਮਾਈਕਰੋਸੌਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ, ਆਦਿ ਵਿੱਚ ਖੁੱਲ੍ਹ ਸਕਦੀ ਹੈ.</string>
+    <string name="import_csv_summary">ਮਾਈਕ੍ਰੋਸਾੱਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ ਤੋਂ ਆਯਾਤ ਕਰੋ ਜਾਂ ਆਪਣੇ ਫਲੈਸ਼ ਕਾਰਡਸ ਨੂੰ ਕਿਸੇ ਵੱਖਰੇ ਐਪ ਤੋਂ ਆਯਾਤ ਕਰਨ ਲਈ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ.</string>
+    <string name="create_backup_summary">ਆਪਣੇ ਡਾਟੇ ਦੀ ਬੈਕਅਪ ਫਾਈਲ ਬਣਾਓ. ਤੁਸੀਂ ਆਪਣੇ ਫਾਈਲਾਂ ਨੂੰ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਇਸ ਫਾਈਲ ਨੂੰ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੇ ਖੋਲ੍ਹ ਸਕਦੇ ਹੋ.</string>
+    <string name="import_backup_summary">ਬੈਕਅਪ ਫਾਈਲ ਆਯਾਤ ਕਰੋ. ਮੌਜੂਦ ਸਟੈਕਾਂ ਅਤੇ ਕਾਰਡਾਂ ਨੂੰ ਬੈਕਅਪ ਦੁਆਰਾ ਓਵਰਰਾਈਟ ਨਹੀਂ ਕੀਤਾ ਜਾਵੇਗਾ.</string>
+    <string name="coming_soon">ਆਨ ਵਾਲੀ.</string>
+    <string name="reminders">ਰੀਮਾਈਂਡਰ</string>
+    <string name="account">ਖਾਤਾ</string>
+    <string name="create_backup">ਬੈਕਅਪ ਬਣਾਓ</string>
+    <string name="import_backup">ਬੈਕਅਪ ਇੰਪੋਰਟ ਕਰੋ</string>
+    <string name="import_and_export">ਆਯਾਤ ਅਤੇ ਨਿਰਯਾਤ</string>
+    <string name="support">ਸਹਾਇਤਾ</string>
+    <string name="troubleshooting">ਸਮੱਸਿਆ ਨਿਪਟਾਰਾ</string>
 </resources>

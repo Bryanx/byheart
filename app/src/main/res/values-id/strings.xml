@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Pertanyaan</string>
     <string name="answer">Menjawab</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Jika Anda menikmati aplikasi ini, pertimbangkan untuk melakukan hal berikut:</string>
     <string name="rate_this_app">Nilai aplikasi ini</string>
     <string name="buy_me_a_cup_of_coffee">Beli saya secangkir kopi!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Buat saran atau masalah di GitHub</string>
+    <string name="create_a_bug_report">Buat laporan bug</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Anda yakin ingin menghapus tumpukan ini?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Warna yang dipilih</string>
     <string name="select_card_color">Pilih warna kartu</string>
     <string name="cards">KARTU-KARTU</string>
-    <string name="export">Ekspor CSV</string>
+    <string name="export_csv">Ekspor CSV</string>
+    <string name="import_csv">Impor CSV</string>
+    <string name="export_csv_summary">Ekspor semua kartu dalam file yang dipisahkan koma. File ini dapat dibuka di Microsoft Excel, Google Sheets, Apple Numbers, dll.</string>
+    <string name="import_csv_summary">Impor dari Microsoft Excel, Google Sheets, Apple Numbers, atau gunakan ini untuk mengimpor kartu flash Anda dari aplikasi lain.</string>
+    <string name="create_backup_summary">Buat file cadangan data Anda. Anda dapat membuka file ini di perangkat lain untuk memulihkan data Anda.</string>
+    <string name="import_backup_summary">Impor file cadangan. Tumpukan dan kartu yang ada tidak akan ditimpa oleh cadangan.</string>
+    <string name="coming_soon">Segera akan datang.</string>
+    <string name="reminders">Pengingat</string>
+    <string name="account">Rekening</string>
+    <string name="create_backup">Membuat backup</string>
+    <string name="import_backup">Impor cadangan</string>
+    <string name="import_and_export">Impor dan ekspor</string>
+    <string name="support">Mendukung</string>
+    <string name="troubleshooting">Penyelesaian masalah</string>
 </resources>

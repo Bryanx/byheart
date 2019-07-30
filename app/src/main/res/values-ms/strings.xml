@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Soalan</string>
     <string name="answer">Jawapan</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Jika anda menikmati aplikasi ini, pertimbangkan untuk melakukan perkara berikut:</string>
     <string name="rate_this_app">Rate aplikasi ini</string>
     <string name="buy_me_a_cup_of_coffee">Beli saya secawan kopi!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Buat cadangan atau isu di GitHub</string>
+    <string name="create_a_bug_report">Buat laporan pepijat</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Adakah anda pasti mahu memadamkan stack ini?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Warna yang dipilih</string>
     <string name="select_card_color">Pilih warna kad</string>
     <string name="cards">Kad</string>
-    <string name="export">CSV Eksport</string>
+    <string name="export_csv">CSV Eksport</string>
+    <string name="import_csv">Import CSV</string>
+    <string name="export_csv_summary">Eksport semua kad dalam fail yang dipisahkan koma. Fail ini boleh openend dalam Microsoft Excel, Helaian Google, Nombor Apple, dan lain-lain.</string>
+    <string name="import_csv_summary">Import daripada Microsoft Excel, Helaian Google, Nombor Apple, atau gunakan ini untuk mengimport flashcards anda dari aplikasi lain.</string>
+    <string name="create_backup_summary">Buat fail sandaran data anda. Anda boleh membuka fail ini pada peranti lain untuk memulihkan data anda.</string>
+    <string name="import_backup_summary">Import fail sandaran. Susunan dan kad sedia ada tidak akan ditimpa oleh sandaran.</string>
+    <string name="coming_soon">Akan datang.</string>
+    <string name="reminders">Peringatan</string>
+    <string name="account">Akaun</string>
+    <string name="create_backup">Buat sandaran</string>
+    <string name="import_backup">Import sandaran</string>
+    <string name="import_and_export">Import dan eksport</string>
+    <string name="support">Sokongan</string>
+    <string name="troubleshooting">Penyelesaian masalah</string>
 </resources>

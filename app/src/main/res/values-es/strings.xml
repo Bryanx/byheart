@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Pregunta</string>
     <string name="answer">Responder</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Si disfruta de esta aplicación, considere hacer lo siguiente:</string>
     <string name="rate_this_app">Califica esta aplicación</string>
     <string name="buy_me_a_cup_of_coffee">¡Cómprame una taza de café!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Crea una sugerencia o problema en GitHub</string>
+    <string name="create_a_bug_report">Crear un informe de error</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">¿Seguro que quieres eliminar esta pila?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Color seleccionado</string>
     <string name="select_card_color">Seleccionar color de tarjeta</string>
     <string name="cards">TARJETAS</string>
-    <string name="export">Exportar CSV</string>
+    <string name="export_csv">Exportar CSV</string>
+    <string name="import_csv">Importar CSV</string>
+    <string name="export_csv_summary">Exporte todas las tarjetas en un archivo separado por comas. Este archivo se puede abrir en Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
+    <string name="import_csv_summary">Importe desde Microsoft Excel, Google Sheets, Apple Numbers, o use esto para importar sus tarjetas desde una aplicación diferente.</string>
+    <string name="create_backup_summary">Crea un archivo de respaldo de tus datos. Puede abrir este archivo en otro dispositivo para restaurar sus datos.</string>
+    <string name="import_backup_summary">Importar un archivo de respaldo. Las pilas y tarjetas existentes no se sobrescribirán con la copia de seguridad.</string>
+    <string name="coming_soon">Próximamente.</string>
+    <string name="reminders">Recordatorios</string>
+    <string name="account">Cuenta</string>
+    <string name="create_backup">Crear copia de seguridad</string>
+    <string name="import_backup">Importar copia de seguridad</string>
+    <string name="import_and_export">Importar y exportar</string>
+    <string name="support">Apoyo</string>
+    <string name="troubleshooting">Solución de problemas</string>
 </resources>

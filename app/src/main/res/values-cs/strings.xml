@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Otázka</string>
     <string name="answer">Odpovědět</string>
@@ -39,7 +40,7 @@
     <string name="about_subtext">Pokud se vám tato aplikace líbí, zvažte následující kroky:</string>
     <string name="rate_this_app">Ohodnoťte tuto aplikaci</string>
     <string name="buy_me_a_cup_of_coffee">Kupte mi šálek kávy!</string>
-    <string name="create_a_suggestion_or_issue_on_github">Vytvořte návrh nebo problém na GitHubu</string>
+    <string name="create_a_bug_report">Vytvořte hlášení o chybě</string>
     <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Opravdu chcete tento zásobník smazat?</string>
@@ -53,5 +54,18 @@
     <string name="color_swatch_description_selected">Vybraná barva</string>
     <string name="select_card_color">Vyberte barvu karty</string>
     <string name="cards">KARTY</string>
-    <string name="export">Exportovat CSV</string>
+    <string name="export_csv">Exportovat CSV</string>
+    <string name="import_csv">Importovat CSV</string>
+    <string name="export_csv_summary">Exportujte všechny karty do souboru odděleného čárkami. Tento soubor lze otevřít v Microsoft Excelu, Tabulkách Google, Apple Numbers atd.</string>
+    <string name="import_csv_summary">Importujte z aplikace Microsoft Excel, Tabulek Google, čísel Apple nebo použijte k importu svých karet z jiné aplikace.</string>
+    <string name="create_backup_summary">Vytvořte záložní soubor dat. Tento soubor můžete otevřít na jiném zařízení a obnovit data.</string>
+    <string name="import_backup_summary">Importujte záložní soubor. Existující zásobníky a karty nebudou zálohou přepsány.</string>
+    <string name="coming_soon">Brzy.</string>
+    <string name="reminders">Připomenutí</string>
+    <string name="account">Účet</string>
+    <string name="create_backup">Vytvořte zálohu</string>
+    <string name="import_backup">Importovat zálohu</string>
+    <string name="import_and_export">Dovoz a vývoz</string>
+    <string name="support">Podpěra, podpora</string>
+    <string name="troubleshooting">Odstraňování problémů</string>
 </resources>
