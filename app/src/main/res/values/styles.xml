@@ -37,6 +37,12 @@
         <item name="elevation">0dp</item>
     </style>
 
+    <style name="AboutTheme">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
     <style name="PreferenceThemeDark" parent="@style/AppThemeDark">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:colorForeground">@color/grey_300</item>

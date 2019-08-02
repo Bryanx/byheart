@@ -5,6 +5,7 @@ import android.view.*
 import android.view.View.GONE
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -30,7 +31,7 @@ import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
  * Fragment that displays all cards in a pile.
  * @author Bryan de Ridder
  */
-class CardFragment : BaseFragment(), IOnBackPressed {
+class CardFragment : Fragment(), IOnBackPressed {
 
     private var pile: Pile? = null
     private lateinit var adapter: CardListAdapter
@@ -158,17 +159,13 @@ class CardFragment : BaseFragment(), IOnBackPressed {
     }
 
     private fun exportAsCSV() {
-        val fileName = "Byheart-${pile?.name}.csv"
-        val contentUri = IoUtils.createCSV(context!!, adapter.cards, fileName)
-        exportData(contentUri!!)
+        IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
     }
 
     private fun share() {
         pile?.let {
             it.cards.addAll(adapter.cards)
-            val fileName = "Byheart-${pile?.name}.byheart"
-            val contentUri = IoUtils.createJson(context!!, it, fileName)
-            exportData(contentUri!!)
+            IoUtils.createJson(context!!, it, "Byheart-${pile?.name}.byheart")
         }
     }
 

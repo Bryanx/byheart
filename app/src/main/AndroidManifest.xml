@@ -15,6 +15,9 @@
             android:name=".settings.SettingsActivity"
             android:label="@string/settings"/>
         <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/about"/>
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -34,8 +37,13 @@
                 <data android:pathPattern=".*\\..*\\.byheart" />
                 <data android:pathPattern=".*\\..*\\..*\\.byheart" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.byheart" />
+                <data android:pathPattern=".*\\.csv" />
+                <data android:pathPattern=".*\\..*\\.csv" />
+                <data android:pathPattern=".*\\..*\\..*\\.csv" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.csv" />
             </intent-filter>
         </activity>
+        <activity android:name=".BaseActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

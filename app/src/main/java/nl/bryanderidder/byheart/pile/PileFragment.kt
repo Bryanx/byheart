@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.view.*
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.about.AboutFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.settings.SettingsActivity
@@ -60,8 +59,9 @@ class PileFragment : Fragment(), IOnBackPressed {
             activity?.recreate()
             true
         }
-        R.id.action_settings -> startActivity(Intent(context, SettingsActivity::class.java)).run { true }
-        R.id.action_about -> startFragment(AboutFragment()).run { true }
+        R.id.action_settings -> {
+            activity?.startActivityForResult(Intent(context, SettingsActivity::class.java), 1).run { true }
+        }
         else -> super.onOptionsItemSelected(item)
     }
 

@@ -6,6 +6,10 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
 
+/**
+ * Activity containing all settings of the application.
+ * @author Bryana de Ridder
+ */
 class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -36,11 +36,18 @@
     <PreferenceCategory app:title="@string/import_and_export">
 
         <Preference
-            app:icon="@drawable/ic_grid_on_black_24dp"
-            app:key="exportCSV"
+            app:icon="@drawable/ic_file_download_black_24dp"
+            app:key="exportBackup"
             app:layout="@layout/preference_setting"
-            app:summary="@string/export_csv_summary"
-            app:title="@string/export_csv" />
+            app:summary="@string/create_backup_summary"
+            app:title="@string/create_backup" />
+
+        <Preference
+            app:icon="@drawable/ic_file_upload_black_24dp"
+            app:key="importBackup"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/import_backup_summary"
+            app:title="@string/import_backup" />
 
         <Preference
             app:icon="@drawable/ic_grid_on_black_24dp"
@@ -48,20 +55,6 @@
             app:layout="@layout/preference_setting"
             app:summary="@string/import_csv_summary"
             app:title="@string/import_csv" />
-
-        <Preference
-            app:icon="@drawable/ic_file_download_black_24dp"
-            app:key="backup"
-            app:layout="@layout/preference_setting"
-            app:summary="@string/create_backup_summary"
-            app:title="@string/create_backup" />
-
-        <Preference
-            app:icon="@drawable/ic_file_upload_black_24dp"
-            app:key="import"
-            app:layout="@layout/preference_setting"
-            app:summary="@string/import_backup_summary"
-            app:title="@string/import_backup" />
 
     </PreferenceCategory>
 

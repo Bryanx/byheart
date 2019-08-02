@@ -29,4 +29,6 @@ data class Card(
     @Exclude @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
     @Exclude @PrimaryKey(autoGenerate = true) var id: Long = 0
+
+    constructor(q: String, a: String): this(q, a, -1)
 }

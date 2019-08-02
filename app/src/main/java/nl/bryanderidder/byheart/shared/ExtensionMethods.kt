@@ -180,6 +180,10 @@ fun String.equalsIgnoreCase(string: String): Boolean {
     return this.toLowerCase() == string.toLowerCase()
 }
 
+fun String.getExtension(): String {
+    return this.substring(this.lastIndexOf(".")+1)
+}
+
 fun EditText.setLineColor(color: Int) {
     if (Build.VERSION.SDK_INT >= 21) {
         this.backgroundTintList = ColorStateList.valueOf(context.color(color))
