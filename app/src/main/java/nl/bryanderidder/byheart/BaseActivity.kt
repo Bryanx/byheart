@@ -43,7 +43,10 @@ open class BaseActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intent)
         println("requestCode = $requestCode, resultCode= $resultCode")
         when (resultCode) {
-            RESULT_CANCELED -> startFragment(PileFragment())
+            RESULT_CANCELED -> {
+                startFragment(PileFragment())
+                return
+            }
             RESULT_CSV -> this.resultCode = RESULT_CSV
             RESULT_JSON -> this.resultCode = RESULT_JSON
         }
