@@ -29,4 +29,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun setupTheme() {
         if (Preferences.DARK_MODE) setTheme(R.style.PreferenceThemeDark)
     }
+
+    override fun onBackPressed() {
+        setResult(RESULT_CANCELED)
+        super.onBackPressed()
+    }
 }

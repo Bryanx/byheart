@@ -40,21 +40,21 @@ object IoUtils {
         writer.close()
     }
 
-    fun createJson(context: Context, pile: Pile, name: String) {
+    fun createJson(context: Context, piles: Array<Pile>, name: String) {
         val gson = GsonBuilder().addSerializationExclusionStrategy(JsonExclusionStrategy).setPrettyPrinting().create()
         val file = File(context.cacheDir, name)
         val writer = FileWriter(file.path)
-        writer.write(gson.toJson(pile))
+        writer.write(gson.toJson(piles))
         writer.close()
         val contentUri = FileProvider.getUriForFile(context, "nl.bryanderidder.byheart", file)
         file.deleteOnExit()
         exportData(context as Activity, contentUri)
     }
 
-    fun readJson(data: InputStream?): Pile {
+    fun readJson(data: InputStream?): Array<Pile> {
         return data?.bufferedReader()?.use(BufferedReader::readText)?.let {
             val gson = GsonBuilder().addDeserializationExclusionStrategy(JsonExclusionStrategy).create()
-            return gson.fromJson(it, Pile::class.java)
+            return gson.fromJson(it, arrayOf<Pile>()::class.java)
         }!!
     }
 
@@ -69,7 +69,7 @@ object IoUtils {
         activity?.startActivity(intent)
     }
 
-    fun readCSV(content: InputStream?) : List<Card> {
+    fun readCSV(content: InputStream?) : MutableList<Card> {
         val cards = mutableListOf<Card>()
         content?.bufferedReader()?.useLines { it.forEachIndexed { i, line ->
             if (i!=0 && line.contains(",")) {

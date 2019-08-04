@@ -165,7 +165,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private fun share() {
         pile?.let {
             it.cards.addAll(adapter.cards)
-            IoUtils.createJson(context!!, it, "Byheart-${pile?.name}.byheart")
+            IoUtils.createJson(context!!, arrayOf(it), "Byheart-${pile?.name}.byheart")
         }
     }
 

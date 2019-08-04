@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.view.*
+import nl.bryanderidder.byheart.BaseActivity.Companion.REQUEST_PICK_FILE
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
@@ -60,7 +61,7 @@ class PileFragment : Fragment(), IOnBackPressed {
             true
         }
         R.id.action_settings -> {
-            activity?.startActivityForResult(Intent(context, SettingsActivity::class.java), 1).run { true }
+            activity?.startActivityForResult(Intent(context, SettingsActivity::class.java), REQUEST_PICK_FILE).run { true }
         }
         else -> super.onOptionsItemSelected(item)
     }

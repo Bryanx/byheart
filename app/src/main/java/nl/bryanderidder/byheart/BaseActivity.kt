@@ -7,6 +7,8 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.card.Card
@@ -18,6 +20,7 @@ import nl.bryanderidder.byheart.shared.IoUtils
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.getExtension
 import nl.bryanderidder.byheart.shared.startFragment
+import java.util.logging.Logger
 
 /**
  * Basefragment contains basic functionally of all activities.
@@ -34,12 +37,20 @@ open class BaseActivity : AppCompatActivity() {
     private val pileVM: PileViewModel by lazy {
         ViewModelProviders.of(this).get(PileViewModel::class.java)
     }
+    private var resultCode = 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-        when {
-            requestCode == REQUEST_FILE -> openDocumentPicker()
-            requestCode == OPEN_FILE -> handleFileOpening(intent?.data)
+        println("requestCode = $requestCode, resultCode= $resultCode")
+        when (resultCode) {
+            RESULT_CANCELED -> startFragment(PileFragment())
+            RESULT_CSV -> this.resultCode = RESULT_CSV
+            RESULT_JSON -> this.resultCode = RESULT_JSON
+        }
+        when (requestCode) {
+            REQUEST_OPEN_FILE -> handleFileOpening(intent?.data)
+            REQUEST_PICK_FILE -> openDocumentPicker()
+            else -> startFragment(PileFragment())
         }
     }
 
@@ -49,33 +60,41 @@ open class BaseActivity : AppCompatActivity() {
             type = "*/*"
         }
         val intent = Intent.createChooser(chooseFile, "Choose a file")
-        startActivityForResult(intent, OPEN_FILE)
+        startActivityForResult(intent, REQUEST_OPEN_FILE)
     }
 
-    fun handleFileOpening(uri: Uri?, isImport: Boolean = false) {
+    fun handleFileOpening(uri: Uri?, viaShare: Boolean = false) {
         if (uri == null) return
-        when (uri.toString().getExtension()) {
-            "csv" -> {
+        when {
+            uri.toString().getExtension() == "csv" || resultCode == RESULT_CSV -> {
                 val pile = Pile("CSV import")
-                insertPileWithCards(pile, IoUtils.readCSV(contentResolver?.openInputStream(uri)), isImport)
+                pile.cards = IoUtils.readCSV(contentResolver?.openInputStream(uri))
+                insertPileWithCards(listOf(pile), viaShare)
             }
-            else -> {
-                val pile = IoUtils.readJson(contentResolver?.openInputStream(uri))
-                insertPileWithCards(pile, pile.cards.map { Card(it.question, it.answer) }, isImport)
+            else -> try {
+                val piles = IoUtils.readJson(contentResolver?.openInputStream(uri))
+                insertPileWithCards(piles.toList(), viaShare)
+            } catch (e: JsonSyntaxException) {
+                //TODO: Add snackbar...
+//                Snackbar.make(currentFocus!!, "File could not be read.", Snackbar.LENGTH_SHORT)
+                e.printStackTrace()
             }
         }
     }
 
-    private fun insertPileWithCards(pile: Pile, cards: List<Card>, isImport: Boolean) = GlobalScope.launch {
-        val id = pileVM.insert(pile)
-        val newCards = cards.map { Card(it.question, it.answer, id) }
-        cardVM.insertAll(newCards)
-        sessionVm.pileId.postValue(id)
-        sessionVm.pileName.postValue(pile.name)
+    private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = GlobalScope.launch {
+        piles.forEach {pile ->
+            val id = pileVM.insert(pile)
+            val newCards = pile.cards.map { Card(it.question, it.answer, id) }
+            pile.cards.clear()
+            cardVM.insertAll(newCards)
+            sessionVm.pileId.postValue(id)
+            sessionVm.pileName.postValue(pile.name)
+        }
         runOnUiThread {
             val bar = findViewById<ProgressBar>(R.id.progressBar)
             bar.visibility = View.GONE
-            if (isImport) startFragment(PileFragment())
+            if (viaShare) startFragment(PileFragment())
         }
     }
 
@@ -89,7 +108,9 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val REQUEST_FILE = 1
-        const val OPEN_FILE = 2
+        const val RESULT_CSV = 1
+        const val RESULT_JSON = 2
+        const val REQUEST_OPEN_FILE = 3
+        const val REQUEST_PICK_FILE = 4
     }
 }
