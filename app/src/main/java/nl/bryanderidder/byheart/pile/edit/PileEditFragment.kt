@@ -35,7 +35,6 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private lateinit var layout: View
     private lateinit var pileVM: PileViewModel
     private lateinit var sessionVM: SessionViewModel
-    private lateinit var textToSpeech: TextToSpeech
     private lateinit var adapter: ArrayAdapter<String>
     private var localeList: MutableList<Locale> = mutableListOf()
     private var countries: MutableList<String> = mutableListOf()
@@ -65,28 +64,21 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun setUpTextToSpeech() {
-        textToSpeech = TextToSpeech(activity?.applicationContext, TextToSpeech.OnInitListener {
-            if (it == TextToSpeech.SUCCESS) {
-                for (locale in locales) {
-                    val res = textToSpeech.isLanguageAvailable(locale)
-                    if (res == TextToSpeech.LANG_COUNTRY_AVAILABLE) {
-                        if (!countries.contains(locale.displayName)) {
-                            localeList.add(locale)
-                            countries.add(locale.displayName)
-                        }
-                    }
-                }
-                if (Preferences.DARK_MODE) {
-                    adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
-                    adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
-                } else {
-                    adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, countries)
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                }
-                fillSpinner(spinnerCardFront, adapter, "languageCardFront")
-                fillSpinner(spinnerCardBack, adapter, "languageCardBack")
+        context!!.resources.getStringArray(R.array.languages).forEach {code ->
+            locales.find { it.code == code }?.let {locale ->
+                localeList.add(locale)
+                countries.add(locale.displayName)
             }
-        })
+        }
+        if (Preferences.DARK_MODE) {
+            adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
+            adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
+        } else {
+            adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, countries)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        fillSpinner(spinnerCardFront, adapter, "languageCardFront")
+        fillSpinner(spinnerCardBack, adapter, "languageCardBack")
     }
 
     private fun fillSpinner(spinner: AppCompatSpinner, adapter: ArrayAdapter<String>, attr: String) {
@@ -173,6 +165,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addEventHandlers() {
+        if (!editMode) setUpTextToSpeech()
         etPileName.onEnter {
             if (checkInput()) addOrUpdatePile()
             return@onEnter true
@@ -184,7 +177,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                 editMode && pile?.color != null -> pile.color!!
                 else -> getColors(context!!).random()
             }
-            setUpTextToSpeech()
+            if (editMode) setUpTextToSpeech()
         })
         etPileName.addTextChangedListener { checkInput() }
         etPileName.setOnFocusChangeListener { _, hasFocus -> if (!hasFocus) checkInput() }

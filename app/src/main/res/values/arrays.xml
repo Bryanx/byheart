@@ -1,12 +1,62 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
-    </string-array>
-
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <array name="swatch_colors">
+        <item>@color/red_200</item>
+        <item>@color/deep_orange_300</item>
+        <item>@color/orange_300</item>
+        <item>@color/pink_200</item>,
+        <item>@color/blue_grey_200</item>
+        <item>@color/green_200</item>
+        <item>@color/teal_200</item>
+        <item>@color/cyan_200</item>,
+        <item>@color/blue_200</item>
+        <item>@color/indigo_200</item>
+        <item>@color/deep_purple_200</item>
+        <item>@color/purple_200</item>
+    </array>
+    <string-array name="languages">
+        <item>bn-BD</item>
+        <item>bn-IN</item>
+        <item>yue-HK</item>
+        <item>zh-CN</item>
+        <item>zh-TW</item>
+        <item>cs-CZ</item>
+        <item>da-DK</item>
+        <item>nl-NL</item>
+        <item>en-AU</item>
+        <item>en-IN</item>
+        <item>en-GB</item>
+        <item>en-US</item>
+        <item>en-US</item>
+        <item>et-EE</item>
+        <item>fil-PH</item>
+        <item>fi-FI</item>
+        <item>fr-CA</item>
+        <item>fr-FR</item>
+        <item>de-DE</item>
+        <item>el-GR</item>
+        <item>hi-IN</item>
+        <item>hu-HU</item>
+        <item>in-ID</item>
+        <item>it-IT</item>
+        <item>ja-JP</item>
+        <item>jv-ID</item>
+        <item>km-KH</item>
+        <item>ko-KR</item>
+        <item>ne-NP</item>
+        <item>nb-NO</item>
+        <item>pl-PL</item>
+        <item>pt-BR</item>
+        <item>pt-PT</item>
+        <item>ro-RO</item>
+        <item>ru-RU</item>
+        <item>si-LK</item>
+        <item>sk-SK</item>
+        <item>es-ES</item>
+        <item>es-US</item>
+        <item>sv-SE</item>
+        <item>th-TH</item>
+        <item>tr-TR</item>
+        <item>uk-UA</item>
+        <item>vi-VN</item>
     </string-array>
 </resources>

@@ -18,18 +18,4 @@
         <attr name="backgroundColor" />
         <attr name="textColor" />
     </declare-styleable>
-    <array name="swatch_colors">
-        <item>@color/red_200</item>
-        <item>@color/deep_orange_300</item>
-        <item>@color/orange_300</item>
-        <item>@color/pink_200</item>,
-        <item>@color/blue_grey_200</item>
-        <item>@color/green_200</item>
-        <item>@color/teal_200</item>
-        <item>@color/cyan_200</item>,
-        <item>@color/blue_200</item>
-        <item>@color/indigo_200</item>
-        <item>@color/deep_purple_200</item>
-        <item>@color/purple_200</item>
-    </array>
 </resources>
