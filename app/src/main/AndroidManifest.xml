@@ -12,23 +12,18 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".settings.SettingsActivity"
-            android:label="@string/settings"/>
-        <activity
-            android:name=".about.AboutActivity"
-            android:label="@string/about"/>
-        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Create file association -->
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Create file association -->
                 <data android:scheme="file" />
                 <data android:scheme="content" />
                 <data android:mimeType="*/*" />
@@ -43,6 +38,12 @@
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.csv" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings"/>
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/about"/>
         <activity android:name=".BaseActivity" />
 
         <provider
