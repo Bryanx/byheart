@@ -28,15 +28,33 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     suspend fun insert(pile: Pile): Long = withContext(Dispatchers.Default) {
+        pile.listIndex = allPiles.value!!.map { it.listIndex }.max()!!.toInt() + 1
         repo.insert(pile)
     }
 
     fun update(pile: Pile) = scope.launch(Dispatchers.IO) {
-        repo.update(pile)
+        allPiles.value!!.find { it.id == pile.id }?.let {
+            it.name = pile.name
+            it.color = pile.color
+            it.languageCardFront = pile.languageCardFront
+            it.languageCardBack = pile.languageCardBack
+            it.listIndex = pile.listIndex
+            repo.update(it)
+        }
     }
 
-    fun delete(pile: Pile) = scope.launch(Dispatchers.IO) {
-        repo.delete(pile)
+    fun updateAll(piles: List<Pile>) = scope.launch(Dispatchers.IO) {
+        repo.updateAll(piles)
+    }
+
+    fun delete(id: Long?) = scope.launch(Dispatchers.IO) {
+        allPiles.value!!.find { it.id == id }?.let { pileToRemove ->
+            allPiles.value!!.filter { it.listIndex > pileToRemove.listIndex }.forEach {
+                it.listIndex -= 1
+                repo.update(it)
+            }
+            repo.delete(pileToRemove)
+        }
     }
 
     override fun onCleared() {

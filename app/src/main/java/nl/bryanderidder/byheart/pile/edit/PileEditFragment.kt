@@ -1,7 +1,6 @@
 package nl.bryanderidder.byheart.pile.edit
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
@@ -84,8 +83,10 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private fun fillSpinner(spinner: AppCompatSpinner, adapter: ArrayAdapter<String>, attr: String) {
         spinner.adapter = adapter
         if (editMode) {
-            val thisPile = pileVM.allPiles.value?.find { it.id == sessionVM.pileId.value }
-            spinner.setSelection(localeList.indexOfFirst { it.code ==  thisPile?.getAttr(attr)})
+            pileVM.allPiles.observe(this, Observer {
+                val thisPile = it.find { pile -> pile.id == sessionVM.pileId.value }
+                spinner.setSelection(localeList.indexOfFirst { loc -> loc.code ==  thisPile?.getAttr(attr)})
+            })
         } else {
             spinner.setSelection(localeList.indexOfFirst {
                     it.code == "en-GB"
@@ -140,16 +141,20 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     private fun addOrUpdatePile() = GlobalScope.launch(Dispatchers.Main) {
         etPileName.clearFocus()
-        val pile = Pile(etPileName.string)
-        pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
-        pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
-        pile.color = pileColor
         if (editMode) {
-            pile.id = sessionVM.pileId.value ?: NO_ID
-            pileVM.update(pile)
-            sessionVM.pileName.postValue(pile.name)
+            val pile = pileVM.allPiles.value?.find { it.id == sessionVM.pileId.value ?: NO_ID }
+            pile?.name = etPileName.string
+            pile?.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
+            pile?.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
+            pile?.color = pileColor
+            pile?.let { pileVM.update(it) }
+            sessionVM.pileName.postValue(pile?.name)
             startFragment(CardFragment())
         } else {
+            val pile = Pile(etPileName.string)
+            pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
+            pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
+            pile.color = pileColor
             pileVM.insert(pile)
             startFragment(PileFragment())
         }

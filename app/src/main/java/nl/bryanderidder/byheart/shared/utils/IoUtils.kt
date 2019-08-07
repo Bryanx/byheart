@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared
+package nl.bryanderidder.byheart.shared.utils
 
 import android.app.Activity
 import android.content.Context
@@ -9,6 +9,8 @@ import com.google.gson.GsonBuilder
 import com.opencsv.CSVWriter
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.pile.Pile
+import nl.bryanderidder.byheart.shared.JsonExclusionStrategy
+import nl.bryanderidder.byheart.shared.getExtension
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileWriter

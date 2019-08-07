@@ -24,6 +24,7 @@ import nl.bryanderidder.byheart.rehearsal.RehearsalTypedFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
+import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 
 
@@ -95,10 +96,8 @@ class CardFragment : Fragment(), IOnBackPressed {
         recyclerView.adapter = adapter
         val layoutManager = GridAutofitLayoutManager(layout.context, 850)
         recyclerView.layoutManager = layoutManager
-        val itemTouchHelper1 = ItemTouchHelper(SwipeLeftToDeleteCallback(adapter))
-        val itemTouchHelper2 = ItemTouchHelper(SwipeRightToEditCallback(adapter))
-        itemTouchHelper1.attachToRecyclerView(recyclerView)
-        itemTouchHelper2.attachToRecyclerView(recyclerView)
+        ItemTouchHelper(SwipeLeftToDeleteCallback(adapter)).attachToRecyclerView(recyclerView)
+        ItemTouchHelper(SwipeRightToEditCallback(adapter)).attachToRecyclerView(recyclerView)
     }
 
     private fun getBundle() {
@@ -148,9 +147,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             .setMessage(getString(R.string.delete_confirm_stack))
             .setCancelable(false)
             .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                val pile = Pile(sessionVM.pileName.value)
-                pile.id = pileId
-                pileVM.delete(pile)
+                pileVM.delete(sessionVM.pileId.value)
                 startFragment(PileFragment())
             }
             .setNegativeButton(getString(R.string.cancel), null)

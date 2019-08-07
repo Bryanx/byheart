@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.max
 
-
+/**
+ * GridLayoutManager that automatically fits on all screen sizes.
+ * The amount of columns is based on the amount of screen space.
+ * @author Bryan de Ridder
+ */
 class GridAutofitLayoutManager/* Initially set spanCount to 1, will be changed automatically later. */(
     context: Context,
     columnWidth: Int

@@ -17,6 +17,7 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @ColumnInfo(name = "languageCardFront") var languageCardFront: String = "en"
     @ColumnInfo(name = "languageCardBack") var languageCardBack: String = "en"
     @ColumnInfo(name = "color") var color: Int? = -7288071
+    @ColumnInfo(name = "listIndex") var listIndex: Int = -1
 
     // List for making json
     @Ignore var cards: MutableList<Card> = mutableListOf()

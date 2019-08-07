@@ -23,6 +23,11 @@ class PileRepository(private val pileDao: PileDao) {
     }
 
     @WorkerThread
+    fun updateAll(piles: List<Pile>) {
+        pileDao.updateAll(piles)
+    }
+
+    @WorkerThread
     fun delete(pile: Pile) {
         pileDao.delete(pile)
     }

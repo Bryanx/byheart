@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_pile.view.*
 import nl.bryanderidder.byheart.MainActivity
@@ -20,45 +19,47 @@ import nl.bryanderidder.byheart.shared.*
  */
 class PileListAdapter internal constructor(
     private val context: Context,
-    private val cards: List<Card>
+    val cards: MutableList<Card>,
+    var sessionVM: SessionViewModel,
+    var pileVM: PileViewModel
 ) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
     private var darkMode: Boolean = false
-    private lateinit var sessionVM: SessionViewModel
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var piles = emptyList<Pile>() // Cached copy
+    var piles: MutableList<Pile> = mutableListOf() // Cached copy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PileViewHolder {
         val itemView = inflater.inflate(R.layout.item_pile, parent, false)
-        sessionVM = ViewModelProviders.of(context as MainActivity).get(SessionViewModel::class.java)
         darkMode = Preferences.DARK_MODE
         return PileViewHolder(itemView)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
-        val current = piles[position]
-        val cardCount = cards.count { it.pileId == piles[position].id }
+        val current = piles.find { it.listIndex == position }
+        val cardCount = cards.count { it.pileId == current?.id }
         val item = holder.itemView
-        item.tvPileFront.text = current.name
-        item.tvPileId.text = current.id.toString()
+        item.tvPileFront.text = current?.name
+        item.tvPileId.text = current?.id.toString()
         item.tvCardsCount.text = "$cardCount ${context.resources.getString(R.string.cards)}"
         if (darkMode) {
-            current.color?.let { item.tvPileFront.setTextColor(it) }
+            current?.color?.let { item.tvPileFront.setTextColor(it) }
             item.cvPile.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
         } else {
-            current.color?.let {
+            current?.color?.let {
                 item.tvPileFront.setTextColor(it.setBrightness(0.55F))
             }
         }
     }
 
-    internal fun setPiles(piles: List<Pile>) {
+    internal fun setPiles(piles: MutableList<Pile>) {
         this.piles = piles
         notifyDataSetChanged()
     }
 
     override fun getItemCount() = piles.size
+
+    fun doAfterMovingPiles() = pileVM.updateAll(piles)
 
     inner class PileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

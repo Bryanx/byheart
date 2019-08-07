@@ -13,7 +13,7 @@ import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.about.AboutActivity
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
-import nl.bryanderidder.byheart.shared.IoUtils
+import nl.bryanderidder.byheart.shared.utils.IoUtils
 
 
 /**

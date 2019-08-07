@@ -22,7 +22,7 @@ import nl.bryanderidder.byheart.shared.color
  * Room database class.
  * @author Bryan de Ridder
  */
-@Database(entities = [Card::class, Pile::class], version = 2, exportSchema = true)
+@Database(entities = [Card::class, Pile::class], version = 3, exportSchema = true)
 abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
     abstract fun pileDao(): PileDao
@@ -42,6 +42,7 @@ abstract class CardDatabase : RoomDatabase() {
                     .databaseBuilder(context.applicationContext, CardDatabase::class.java, "card")
                     .addCallback(CardDatabaseCallback(scope, context))
                     .addMigrations(DatabaseMigrations.MIGRATION_1_2)
+                    .addMigrations(DatabaseMigrations.MIGRATION_2_3)
                     .build()
                 INSTANCE = instance
                 return instance
@@ -71,11 +72,7 @@ abstract class CardDatabase : RoomDatabase() {
             return false
         }
 
-        fun populateDatabase(
-            cardDao: CardDao,
-            pileDao: PileDao,
-            context: Context
-        ) {
+        fun populateDatabase(cardDao: CardDao, pileDao: PileDao, context: Context) {
             cardDao.deleteAll()
             pileDao.deleteAll()
 
@@ -87,6 +84,7 @@ abstract class CardDatabase : RoomDatabase() {
             pile.languageCardFront = english
             pile.languageCardBack = "fr-FR"
             pile.color = context.color(R.color.blue_200)
+            pile.listIndex = 0
             pileDao.insert(pile)
             cardDao.insert(Card("Hello", "Bonjour", 1))
             cardDao.insert(Card("Have", "Avoir", 1))
@@ -101,6 +99,7 @@ abstract class CardDatabase : RoomDatabase() {
             pile2.languageCardFront = english
             pile2.languageCardBack = english
             pile2.color = context.color(R.color.orange_300)
+            pile2.listIndex = 1
             pileDao.insert(pile2)
             cardDao.insert(Card("France", "Paris", 2))
             cardDao.insert(Card("Germany", "Berlin", 2))
@@ -118,6 +117,7 @@ abstract class CardDatabase : RoomDatabase() {
             pile3.languageCardFront = english
             pile3.languageCardBack = english
             pile3.color = context.color(R.color.teal_200)
+            pile3.listIndex = 2
             pileDao.insert(pile3)
             cardDao.insert(Card("1st Planet", "Mercury", 3))
             cardDao.insert(Card("2nd Planet", "Venus", 3))
@@ -135,6 +135,7 @@ abstract class CardDatabase : RoomDatabase() {
             pile4.languageCardFront = english
             pile4.languageCardBack = english
             pile4.color = context.color(R.color.purple_200)
+            pile4.listIndex = 3
             pileDao.insert(pile4)
             cardDao.insert(Card("H", "Hydrogen", 4))
             cardDao.insert(Card("He", "Helium", 4))

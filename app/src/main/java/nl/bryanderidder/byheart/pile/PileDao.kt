@@ -20,6 +20,9 @@ interface PileDao {
     @Update
     fun update(pile: Pile)
 
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateAll(pile: List<Pile>)
+
     @Delete
     fun delete(pile: Pile)
 

@@ -10,7 +10,11 @@ import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.string
 
-class CardButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attrs) {
+/**
+ * Custom button with rounded corners.
+ * @author Bryan de Ridder
+ */
+class ThemedButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attrs) {
 
     private var defaultTextColor: Int = context.getAttr(R.attr.mainTextColor)
     private val defaultBg: Int = context.getAttr(R.attr.mainBackgroundColorLighter)
@@ -33,13 +37,13 @@ class CardButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attrs)
     }
 
     private fun handleStyledAttributes(attrs: AttributeSet) {
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.CardButton)
-        setCardBackgroundColor(styledAttrs.getInt(R.styleable.CardButton_backgroundColor, defaultBg))
-        this.textColor = styledAttrs.getInt(R.styleable.CardButton_textColor, defaultTextColor)
-        val text = styledAttrs.getString(R.styleable.CardButton_text)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ThemedButton)
+        setCardBackgroundColor(styledAttrs.getInt(R.styleable.ThemedButton_backgroundColor, defaultBg))
+        this.textColor = styledAttrs.getInt(R.styleable.ThemedButton_textColor, defaultTextColor)
+        val text = styledAttrs.getString(R.styleable.ThemedButton_text)
         text?.let { this.text = it }
         styledAttrs.recycle()
     }
 
-    fun setCardBackgroundColor(color: Int) = cbCardView.setCardBackgroundColor(color)
+    private fun setCardBackgroundColor(color: Int) = cbCardView.setCardBackgroundColor(color)
 }

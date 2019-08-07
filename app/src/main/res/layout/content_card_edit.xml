@@ -62,7 +62,7 @@
                 android:ems="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <nl.bryanderidder.byheart.shared.views.CardButton
+    <nl.bryanderidder.byheart.shared.views.ThemedButton
         android:id="@+id/btnAddAnotherCard"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
