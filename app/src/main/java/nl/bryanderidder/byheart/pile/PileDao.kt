@@ -28,4 +28,7 @@ interface PileDao {
 
     @Query("DELETE FROM pile")
     fun deleteAll()
+
+    @Query("SELECT COUNT(*) FROM pile")
+    fun getCount(): Int
 }

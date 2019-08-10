@@ -14,24 +14,24 @@ interface CardDao {
     @Query("SELECT * FROM card")
     fun getAll(): LiveData<List<Card>>
 
-    @Query("SELECT * FROM card WHERE id IN (:cardIds)")
-    fun loadAllByIds(cardIds: IntArray): LiveData<List<Card>>
-
-    @Query("SELECT * FROM card WHERE question LIKE :question LIMIT 1")
-    fun findByQuestion(question: String): Card
-
     @Insert
     fun insert(card: Card)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(card: List<Card>)
+    fun insertAll(cards: List<Card>)
 
     @Update
     fun update(card: Card)
+
+    @Update
+    fun updateAll(cards: List<Card>)
 
     @Delete
     fun delete(card: Card)
 
     @Query("DELETE FROM card")
     fun deleteAll()
+
+    @Query("SELECT COUNT(*) FROM card WHERE pile_id = :pileId")
+    fun getCount(pileId: Long): Int
 }

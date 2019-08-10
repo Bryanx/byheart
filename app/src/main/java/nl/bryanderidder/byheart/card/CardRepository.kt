@@ -2,6 +2,8 @@ package nl.bryanderidder.byheart.card
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Manages queries and allows you to use multiple backend's.
@@ -19,8 +21,18 @@ class CardRepository(private val cardDao: CardDao) {
     fun insertAll(cards: List<Card>) = cardDao.insertAll(cards)
 
     @WorkerThread
-    fun delete(card: Card) = cardDao.delete(card)
+    suspend fun delete(card: Card) = withContext(Dispatchers.Default){
+        cardDao.delete(card)
+    }
 
     @WorkerThread
     fun update(card: Card) = cardDao.update(card)
+
+    @WorkerThread
+    fun getCount(pileId: Long) = cardDao.getCount(pileId)
+
+    @WorkerThread
+    suspend fun updateAll(cards: List<Card>) = withContext(Dispatchers.Default){
+        cardDao.updateAll(cards)
+    }
 }

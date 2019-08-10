@@ -20,6 +20,7 @@ import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.getColors
+import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import java.util.*
 
 
@@ -143,19 +144,24 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         etPileName.clearFocus()
         if (editMode) {
             val pile = pileVM.allPiles.value?.find { it.id == sessionVM.pileId.value ?: NO_ID }
-            pile?.name = etPileName.string
-            pile?.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
-            pile?.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
-            pile?.color = pileColor
-            pile?.let { pileVM.update(it) }
-            sessionVM.pileName.postValue(pile?.name)
-            startFragment(CardFragment())
+            pile?.apply {
+                name = etPileName.string
+                languageCardFront = getLocaleFromSpinner(spinnerCardFront)
+                languageCardBack = getLocaleFromSpinner(spinnerCardBack)
+                color = pileColor
+            }
+            pile?.let { pileVM.update(pile).invokeOnCompletion {
+                sessionVM.pileName.postValue(pile.name)
+                showSnackBar(activity!!, getString(R.string.updated_stack))
+                startFragment(CardFragment())
+            } }
         } else {
             val pile = Pile(etPileName.string)
             pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
             pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
             pile.color = pileColor
             pileVM.insert(pile)
+            sessionVM.message.value=getString(R.string.created_stack)
             startFragment(PileFragment())
         }
     }

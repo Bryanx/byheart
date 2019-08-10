@@ -6,6 +6,7 @@ import android.view.View
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.TranslateAnimation
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Contains all functions related to animations.
@@ -38,3 +39,13 @@ fun flipY(view: View, from: Float, to: Float, duration: Long): ObjectAnimator {
     animate.start()
     return animate
 }
+
+fun RecyclerView.doAfterAnimations(callback: (RecyclerView) -> Unit) = post(object : Runnable {
+        override fun run() {
+            if (isAnimating) {
+                itemAnimator!!.isRunning { post(this) }
+            } else {
+                callback(this@doAfterAnimations)
+            }
+        }
+    })

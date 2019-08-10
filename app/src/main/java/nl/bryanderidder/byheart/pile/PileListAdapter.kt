@@ -21,7 +21,8 @@ class PileListAdapter internal constructor(
     private val context: Context,
     val cards: MutableList<Card>,
     var sessionVM: SessionViewModel,
-    var pileVM: PileViewModel
+    var pileVM: PileViewModel,
+    var fragment: PileFragment
 ) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
     private var darkMode: Boolean = false
@@ -59,7 +60,9 @@ class PileListAdapter internal constructor(
 
     override fun getItemCount() = piles.size
 
-    fun doAfterMovingPiles() = pileVM.updateAll(piles)
+    fun doAfterMovingPiles() = pileVM.updateAll(piles).invokeOnCompletion {
+        fragment.showMessage(context.getString(R.string.reordered_cards))
+    }
 
     inner class PileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

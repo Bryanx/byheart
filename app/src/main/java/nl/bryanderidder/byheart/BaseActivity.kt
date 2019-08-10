@@ -84,7 +84,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = GlobalScope.launch {
-        piles.forEach {pile ->
+        piles.forEach { pile ->
             val id = pileVM.insert(pile)
             val newCards = pile.cards.map { Card(it.question, it.answer, id) }
             pile.cards.clear()

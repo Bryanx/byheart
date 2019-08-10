@@ -20,6 +20,8 @@ class SwipeLeftToDeleteCallback(
     private val background: ColorDrawable = ColorDrawable(adapter.getContext().color(R.color.red_300))
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
+    var isEnabled: Boolean = true
+
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -67,4 +69,5 @@ class SwipeLeftToDeleteCallback(
         icon.draw(c)
     }
 
+    override fun isItemViewSwipeEnabled(): Boolean = isEnabled
 }

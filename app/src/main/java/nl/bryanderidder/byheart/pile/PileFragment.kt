@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
+import kotlinx.android.synthetic.main.content_piles.*
 import kotlinx.android.synthetic.main.content_piles.view.*
 import nl.bryanderidder.byheart.BaseActivity.Companion.REQUEST_PICK_FILE
 import nl.bryanderidder.byheart.R
@@ -17,6 +18,8 @@ import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.settings.SettingsActivity
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
+import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
+import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 
 /**
@@ -36,7 +39,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         val cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         cardVM.allCards.observe(this, Observer {
             val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
-            val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM)
+            val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM, this)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = GridAutofitLayoutManager(activity!!, 500)
             ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerView)
@@ -46,10 +49,21 @@ class PileFragment : Fragment(), IOnBackPressed {
         return layout
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sessionVM.findMessage()?.let {
+            showSnackBar(rootView, it)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
-        if (Preferences.DARK_MODE)
-            menu.findItem(R.id.action_dark_mode).title = resources.getString(R.string.light_mode)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.action_dark_mode).isChecked = Preferences.DARK_MODE
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -67,8 +81,11 @@ class PileFragment : Fragment(), IOnBackPressed {
 
     private fun addEventHandlers(adapter: PileListAdapter) {
         pileVM.allPiles.observe(this, Observer { piles ->
-            // Update the cached copy of the words in the adapter.
-            piles?.let { adapter.setPiles(it.toMutableList()) }
+            piles?.let {
+                recyclerview_piles.doAfterAnimations {
+                    adapter.setPiles(piles.toMutableList())
+                }
+            }
         })
         layout.addPileBtn.setOnClickListener {
             sessionVM.pileId.postValue(NO_ID)
@@ -76,8 +93,11 @@ class PileFragment : Fragment(), IOnBackPressed {
         }
     }
 
+    fun showMessage(msg: String) = rootView?.let { showSnackBar(rootView, msg) }
+
     override fun onBackPressed(): Boolean {
         activity?.finish()
         return true
     }
+
 }

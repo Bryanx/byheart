@@ -28,7 +28,7 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     suspend fun insert(pile: Pile): Long = withContext(Dispatchers.Default) {
-        pile.listIndex = allPiles.value!!.map { it.listIndex }.max()!!.toInt() + 1
+        pile.listIndex = repo.getCount()
         repo.insert(pile)
     }
 

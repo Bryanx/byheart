@@ -24,11 +24,12 @@ import nl.bryanderidder.byheart.shared.Exclude
     )]
 )
 data class Card(
-    @ColumnInfo(name = "question") val question: String?,
-    @ColumnInfo(name = "answer") val answer: String?,
+    @ColumnInfo(name = "question") var question: String?,
+    @ColumnInfo(name = "answer") var answer: String?,
     @Exclude @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
     @Exclude @PrimaryKey(autoGenerate = true) var id: Long = 0
+    @ColumnInfo(name = "listIndex") var listIndex: Int = -1
 
     constructor(q: String, a: String): this(q, a, -1)
 }

@@ -29,20 +29,33 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insert(card: Card) = scope.launch(Dispatchers.IO) {
+        card.listIndex = repo.getCount(card.pileId)
         repo.insert(card)
     }
 
     fun insertAll(cards: List<Card>) = runBlocking(Dispatchers.Default) {
+        cards.forEachIndexed { i, card -> card.listIndex = i }
         return@runBlocking repo.insertAll(cards)
     }
 
     fun update(card: Card) = scope.launch(Dispatchers.IO) {
+        getCards(card.pileId).find { it.id == card.id }?.let {
+            it.answer = card.answer
+            it.question = card.question
+            it.listIndex = card.listIndex
+            repo.update(it)
+        }
         repo.update(card)
     }
 
-    fun delete(card: Card) = scope.launch(Dispatchers.IO) {
+    suspend fun delete(card: Card) = withContext(Dispatchers.Default) {
         repo.delete(card)
+        val cardsToUpdate = getCards(card.pileId).filter { it.listIndex > card.listIndex }
+        cardsToUpdate.forEach { it.listIndex -= 1 }
+        repo.updateAll(cardsToUpdate)
     }
+
+    fun getCards(pileId: Long): List<Card> = allCards.value!!.filter { it.pileId == pileId }
 
     override fun onCleared() {
         super.onCleared()

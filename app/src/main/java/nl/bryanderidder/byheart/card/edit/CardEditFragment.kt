@@ -18,6 +18,7 @@ import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.utils.showSnackBar
 
 /**
  * Fragment that is shown when editing or creating a card.
@@ -105,14 +106,23 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         if (frontCorrect && backCorrect) {
             etCardFront.clearFocus()
             etCardBack.clearFocus()
-            val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
             if (editMode) {
-                cardVM.update(card.apply { id = sessionVM.cardId.value!! })
+                val card = cardVM.getCards(sessionVM.pileId.value ?: NO_ID).find { it.id == sessionVM.cardId.value }
+                card?.question = q
+                card?.answer = a
+                cardVM.update(card!!)
+                showMessage(getString(R.string.updated_card))
             } else {
+                val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
                 cardVM.insert(card)
+                showMessage(getString(R.string.created_card))
             }
         }
         return frontCorrect && backCorrect
+    }
+
+    private fun showMessage(msg: String) {
+        activity?.let { showSnackBar(it, msg) }
     }
 
     private fun checkInput(q: String, property: String, layout: TextInputLayout): Boolean {

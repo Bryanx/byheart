@@ -5,6 +5,7 @@
         android:id="@+id/action_dark_mode"
         android:orderInCategory="100"
         android:title="@string/dark_mode"
+        android:checkable="true"
         app:showAsAction="never" />
     <item android:id="@+id/action_settings"
         android:title="@string/settings"

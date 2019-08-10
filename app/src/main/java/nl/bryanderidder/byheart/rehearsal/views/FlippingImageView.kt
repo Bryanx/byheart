@@ -4,9 +4,9 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
-import nl.bryanderidder.byheart.shared.utils.flipY
 import nl.bryanderidder.byheart.shared.onAnimateEnd
 import nl.bryanderidder.byheart.shared.pronounce
+import nl.bryanderidder.byheart.shared.utils.flipY
 import java.util.*
 
 class FlippingImageView(context: Context, attrs: AttributeSet) : AppCompatImageView(context, attrs) {
@@ -34,5 +34,10 @@ class FlippingImageView(context: Context, attrs: AttributeSet) : AppCompatImageV
 
     fun pronounce(text: String) {
         textToSpeech.pronounce(text)
+    }
+
+    override fun onDetachedFromWindow() {
+        textToSpeech.shutdown()
+        super.onDetachedFromWindow()
     }
 }

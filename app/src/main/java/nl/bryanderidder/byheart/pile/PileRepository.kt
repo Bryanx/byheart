@@ -31,4 +31,9 @@ class PileRepository(private val pileDao: PileDao) {
     fun delete(pile: Pile) {
         pileDao.delete(pile)
     }
+
+    @WorkerThread
+    fun getCount(): Int {
+        return pileDao.getCount()
+    }
 }

@@ -9,9 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
 import nl.bryanderidder.byheart.pile.Pile
@@ -25,8 +26,9 @@ import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
 import nl.bryanderidder.byheart.shared.utils.IoUtils
+import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
+import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
-
 
 /**
  * Fragment that displays all cards in a pile.
@@ -34,6 +36,8 @@ import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
  */
 class CardFragment : Fragment(), IOnBackPressed {
 
+    private lateinit var swipeLeftToDelete: SwipeLeftToDeleteCallback
+    private lateinit var swipeRightToEdit: SwipeRightToEditCallback
     private var pile: Pile? = null
     private lateinit var adapter: CardListAdapter
     private lateinit var cardVM: CardViewModel
@@ -91,13 +95,14 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun setUpAdapter() {
-        val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview)
         adapter = CardListAdapter(layout.context, this)
-        recyclerView.adapter = adapter
+        recyclerview.adapter = adapter
         val layoutManager = GridAutofitLayoutManager(layout.context, 850)
-        recyclerView.layoutManager = layoutManager
-        ItemTouchHelper(SwipeLeftToDeleteCallback(adapter)).attachToRecyclerView(recyclerView)
-        ItemTouchHelper(SwipeRightToEditCallback(adapter)).attachToRecyclerView(recyclerView)
+        recyclerview.layoutManager = layoutManager
+        swipeLeftToDelete = SwipeLeftToDeleteCallback(adapter)
+        swipeRightToEdit = SwipeRightToEditCallback(adapter)
+        ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
+        ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
     }
 
     private fun getBundle() {
@@ -112,14 +117,14 @@ class CardFragment : Fragment(), IOnBackPressed {
         buttonShare.setOnClickListener { share() }
         cardVM.allCards.observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
-            cards?.filter {
-                it.pileId == pileId
-            }?.let {
+            cards?.filter { it.pileId == pileId }?.let { newCards ->
                 clProgressBar.visibility = GONE
-                adapter.setCards(it)
-                if (it.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
+                recyclerview.doAfterAnimations {
+                    adapter.setCards(newCards)
+                }
+                if (newCards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
                 else placeholderNoCards.visibility = GONE
-                buttonPlay.isEnabled = it.isNotEmpty()
+                buttonPlay.isEnabled = newCards.isNotEmpty()
             }
         })
         buttonPlay.setOnClickListener {
@@ -148,6 +153,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             .setCancelable(false)
             .setPositiveButton(getString(R.string.delete)) { _, _ ->
                 pileVM.delete(sessionVM.pileId.value)
+                sessionVM.message.value = getString(R.string.deleted_stack)
                 startFragment(PileFragment())
             }
             .setNegativeButton(getString(R.string.cancel), null)
@@ -166,7 +172,16 @@ class CardFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    fun removeCard(card: Card) = cardVM.delete(card)
+    fun removeCard(card: Card) = GlobalScope.launch {
+        swipeLeftToDelete.isEnabled = false
+        activity?.runOnUiThread {
+            adapter.cards.removeAt(card.listIndex)
+            adapter.notifyItemRemoved(card.listIndex)
+        }
+        cardVM.delete(card)
+        showSnackBar(activity!!, getString(R.string.removed_card))
+        swipeLeftToDelete.isEnabled = true
+    }
 
     /**
      * This method is called by the MainActivity.
