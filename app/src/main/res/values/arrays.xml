@@ -15,22 +15,17 @@
     </array>
     <string-array name="languages">
         <item>bn-BD</item>
-        <item>bn-IN</item>
         <item>yue-HK</item>
         <item>zh-CN</item>
         <item>zh-TW</item>
         <item>cs-CZ</item>
         <item>da-DK</item>
         <item>nl-NL</item>
-        <item>en-AU</item>
-        <item>en-IN</item>
         <item>en-GB</item>
-        <item>en-US</item>
         <item>en-US</item>
         <item>et-EE</item>
         <item>fil-PH</item>
         <item>fi-FI</item>
-        <item>fr-CA</item>
         <item>fr-FR</item>
         <item>de-DE</item>
         <item>el-GR</item>
