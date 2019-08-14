@@ -63,13 +63,13 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
             btn.setOnClickListener {
                 if (btn.string.equalsIgnoreCase(rehearsalCard.backText!!)) {
                     buttonsAreEnabled(false)
-                    correctSound.start()
+                    super.onCorrect()
                     if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                     btn.setTxtColor(R.color.green)
                     rehearsalCard.turnToBack()
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
                 } else {
-                    wrongSound.start()
+                    super.onFalse()
                     btn.setTxtColor(R.color.red)
                     btn.isEnabled = false
                 }

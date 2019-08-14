@@ -30,7 +30,7 @@
                 android:paddingBottom="24dp"
                 android:text="@string/select_card_color"
                 android:textColor="?mainTextColor"
-                android:textSize="20sp"
+                android:textSize="@dimen/medium_font"
                 app:layout_constraintBottom_toTopOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

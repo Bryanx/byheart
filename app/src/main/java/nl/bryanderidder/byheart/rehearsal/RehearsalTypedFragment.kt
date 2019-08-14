@@ -52,16 +52,21 @@ class RehearsalTypedFragment : RehearsalFragment() {
         btnGo.text = ""
         btnGo.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_forward_white_24dp, 0, 0, 0)
         rehearsalCard.flipCard()
-        if (etInput.string.equalsIgnoreCase(rehearsalCard.backText!!)) {
-            correctSound.start()
-            etInput.setLineColor(R.color.green)
-            handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
-        } else {
-            wrongSound.start()
-            etInput.setLineColor(R.color.red)
-            handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
-        }
+        if (etInput.string.equalsIgnoreCase(rehearsalCard.backText!!)) onCorrect()
+        else onFalse()
         if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
+    }
+
+    override fun onCorrect() {
+        super.onCorrect()
+        etInput.setLineColor(R.color.green)
+        handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
+    }
+
+    override fun onFalse() {
+        super.onFalse()
+        etInput.setLineColor(R.color.red)
+        handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
     }
 
     private fun skipWaitingGoToNextCard() {

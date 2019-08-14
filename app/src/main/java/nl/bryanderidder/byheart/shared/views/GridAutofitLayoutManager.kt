@@ -25,6 +25,11 @@ class GridAutofitLayoutManager/* Initially set spanCount to 1, will be changed a
         setColumnWidth(checkedColumnWidth(context, columnWidth))
     }
 
+    override fun canScrollVertically(): Boolean = when {
+        this.childCount <= 3 -> false
+        else -> super.canScrollVertically()
+    }
+
     private fun checkedColumnWidth(context: Context, columnWidth: Int): Int {
         var columnWidth = columnWidth
         if (columnWidth <= 0) {

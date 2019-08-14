@@ -1,15 +1,14 @@
 package nl.bryanderidder.byheart.card
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.color
 import nl.bryanderidder.byheart.shared.getAttr
+
 
 /**
  * Adapter that contains all cards in a pile.
@@ -17,7 +16,7 @@ import nl.bryanderidder.byheart.shared.getAttr
  */
 class CardListAdapter internal constructor(
     private val context: Context,
-    private val cardFragment: CardFragment
+    val cardFragment: CardFragment
 ) :
     RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
 
@@ -30,22 +29,28 @@ class CardListAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val current = cards.find { it.listIndex == position }
-        val tvFront = holder.itemView.tvFront
-        val cvCard = holder.itemView.cvCard
-        tvFront.setTextColor(context.getAttr(R.attr.mainTextColor))
-        tvFront.text = current?.question
-        tvFront.setOnClickListener {
-            if (tvFront.currentTextColor != Color.WHITE) {
-                tvFront.text = current?.answer
-                tvFront.setTextColor(Color.WHITE)
-                cvCard.setCardBackgroundColor(context.color(R.color.colorPrimary))
-            } else {
-                tvFront.text = current?.question
-                tvFront.setTextColor(context.getAttr(R.attr.mainTextColor))
-                cvCard.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
-            }
+        val card = cards.find { it.listIndex == position }
+        holder.itemView.tvFront.text = card?.question
+        holder.itemView.tvBack.text = card?.answer
+        holder.itemView.tvCorrectPercentage.text = "${card?.getCorrectPercentage()}%"
+        holder.itemView.cvCard.setOnClickListener {
+            card?.let { cardFragment.startEditFragment(it.id) }
         }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    inline fun <reified T : Comparable<T>> sort(property: String) {
+        val newCards = cards.toMutableList()
+        if (T::class != Int::class) newCards.sortBy { it.getAttr(property) as T }
+        else newCards.sortByDescending { it.getAttr(property) as T }
+        cards.sortBy { it.listIndex }
+        newCards.forEachIndexed { j, newCard ->
+            newCard.listIndex = j
+            val i = cards.indexOfFirst { it.id == newCard.id }
+            cards.add(j, cards.removeAt(i))
+            notifyItemMoved(i, j)
+        }
+        cardFragment.updateReorderedCards(newCards)
     }
 
     internal fun setCards(cards: List<Card>) {

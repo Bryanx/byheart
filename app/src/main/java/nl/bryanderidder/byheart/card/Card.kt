@@ -27,9 +27,19 @@ data class Card(
     @ColumnInfo(name = "question") var question: String?,
     @ColumnInfo(name = "answer") var answer: String?,
     @Exclude @ColumnInfo(name = "pile_id") val pileId: Long = 1
-) {
-    @Exclude @PrimaryKey(autoGenerate = true) var id: Long = 0
+) : DataObject {
+    @Exclude @PrimaryKey(autoGenerate = true) override var id: Long = 0
     @ColumnInfo(name = "listIndex") var listIndex: Int = -1
+    @ColumnInfo(name = "amountCorrect") var amountCorrect: Int = 0
+    @ColumnInfo(name = "amountFalse") var amountFalse: Int = 0
 
     constructor(q: String, a: String): this(q, a, -1)
+
+    fun getCorrectPercentage(): Int {
+        val correct = amountCorrect
+        if (correct == 0) return 0
+        val wrong = amountFalse
+        val percentage = correct / (wrong + correct).toFloat() * 100
+        return percentage.toInt()
+    }
 }

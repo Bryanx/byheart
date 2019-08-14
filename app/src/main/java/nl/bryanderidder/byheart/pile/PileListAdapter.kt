@@ -60,9 +60,7 @@ class PileListAdapter internal constructor(
 
     override fun getItemCount() = piles.size
 
-    fun doAfterMovingPiles() = pileVM.updateAll(piles).invokeOnCompletion {
-        fragment.showMessage(context.getString(R.string.reordered_cards))
-    }
+    fun doAfterMovingPiles() = pileVM.updateAll(piles)
 
     inner class PileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

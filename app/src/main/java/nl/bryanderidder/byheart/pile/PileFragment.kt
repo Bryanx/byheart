@@ -93,8 +93,6 @@ class PileFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    fun showMessage(msg: String) = rootView?.let { showSnackBar(rootView, msg) }
-
     override fun onBackPressed(): Boolean {
         activity?.finish()
         return true

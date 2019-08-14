@@ -36,6 +36,7 @@ import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
  */
 class CardFragment : Fragment(), IOnBackPressed {
 
+    private lateinit var layoutManager: GridAutofitLayoutManager
     private lateinit var swipeLeftToDelete: SwipeLeftToDeleteCallback
     private lateinit var swipeRightToEdit: SwipeRightToEditCallback
     private var pile: Pile? = null
@@ -51,7 +52,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         layout = inflater.inflate(R.layout.content_card, container, false)
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         addToolbar()
         return layout
     }
@@ -85,24 +86,30 @@ class CardFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.pile_menu, menu)
+        val sort = menu.findItem(R.id.action_sort)
+        inflater.inflate(R.menu.sort_submenu, sort.subMenu)
+        return super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_edit_pile -> startFragment(PileEditFragment()).run { true }
         R.id.action_delete_pile -> startDeleteDialog().run { true }
         R.id.action_export -> exportAsCSV().run { true }
+        R.id.action_sort_front -> adapter.sort<String>("question").run { true }
+        R.id.action_sort_back -> adapter.sort<String>("answer").run { true }
+        R.id.action_sort_score -> adapter.sort<Int>("CorrectPercentage").run { true }
         else -> super.onOptionsItemSelected(item)
     }
 
     private fun setUpAdapter() {
         adapter = CardListAdapter(layout.context, this)
         recyclerview.adapter = adapter
-        val layoutManager = GridAutofitLayoutManager(layout.context, 850)
+        layoutManager = GridAutofitLayoutManager(layout.context, 850)
         recyclerview.layoutManager = layoutManager
         swipeLeftToDelete = SwipeLeftToDeleteCallback(adapter)
         swipeRightToEdit = SwipeRightToEditCallback(adapter)
         ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
-        ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
+        ItemTouchHelper(swipeRightToEdit).attachToRecyclerView(recyclerview)
     }
 
     private fun getBundle() {
@@ -172,6 +179,11 @@ class CardFragment : Fragment(), IOnBackPressed {
         }
     }
 
+    fun updateReorderedCards(cards: List<Card>) {
+        cardVM.updateAll(cards)
+        layoutManager.scrollToPosition(0)
+    }
+
     fun removeCard(card: Card) = GlobalScope.launch {
         swipeLeftToDelete.isEnabled = false
         activity?.runOnUiThread {
@@ -183,10 +195,6 @@ class CardFragment : Fragment(), IOnBackPressed {
         swipeLeftToDelete.isEnabled = true
     }
 
-    /**
-     * This method is called by the MainActivity.
-     */
-    override fun onBackPressed(): Boolean {
-        return startFragment(PileFragment()).run { true }
-    }
+    // This method is called by the MainActivity.
+    override fun onBackPressed(): Boolean = startFragment(PileFragment()).run { true }
 }

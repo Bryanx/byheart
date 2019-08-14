@@ -27,8 +27,8 @@ class RehearsalMemoryFragment : RehearsalFragment() {
         listOf(cardBtnFalse, cardBtnCorrect).forEach { button ->
             button.setOnClickListener {
                 buttonsAreEnabled(false)
-                if (it == cardBtnCorrect) correctSound.start()
-                else wrongSound.start()
+                if (it == cardBtnCorrect) super.onCorrect()
+                else super.onFalse()
                 if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                 rehearsalCard.turnToBack()
                 val delay = rehearsalCard.backText!!.length*150.toLong()

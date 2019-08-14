@@ -8,4 +8,7 @@
     <dimen name="color_swatch_large">45dp</dimen>
     <dimen name="color_swatch_margins_large">8dp</dimen>
     <dimen name="standard_margin">8dp</dimen>
+    <dimen name="large_font">26sp</dimen>
+    <dimen name="medium_font">20sp</dimen>
+    <dimen name="small_font">12sp</dimen>
 </resources>

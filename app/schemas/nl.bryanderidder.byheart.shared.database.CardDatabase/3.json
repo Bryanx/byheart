@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "a47f9030e606ea9093d1f38d3d09536c",
+    "identityHash": "559f09bbbd55761418a9f71c85cc1d4a",
     "entities": [
       {
         "tableName": "card",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `listIndex` INTEGER NOT NULL, `question` TEXT, `answer` TEXT, `pile_id` INTEGER NOT NULL, FOREIGN KEY(`pile_id`) REFERENCES `Pile`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `listIndex` INTEGER NOT NULL, `amountCorrect` INTEGER NOT NULL, `amountFalse` INTEGER NOT NULL, `question` TEXT, `answer` TEXT, `pile_id` INTEGER NOT NULL, FOREIGN KEY(`pile_id`) REFERENCES `Pile`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -17,6 +17,18 @@
           {
             "fieldPath": "listIndex",
             "columnName": "listIndex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amountCorrect",
+            "columnName": "amountCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amountFalse",
+            "columnName": "amountFalse",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -113,7 +125,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a47f9030e606ea9093d1f38d3d09536c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"559f09bbbd55761418a9f71c85cc1d4a\")"
     ]
   }
 }

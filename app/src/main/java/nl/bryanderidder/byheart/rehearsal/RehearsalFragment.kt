@@ -48,8 +48,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        cardVM = ViewModelProviders.of(this).get(CardViewModel::class.java)
-        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
+        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileId = sessionVM.pileId.value ?: NO_ID
         getCards()
@@ -189,6 +189,18 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     private fun nextCard() {
         cardIndex++
         if (cardIndex < cards.size) updateView()
+    }
+
+    open fun onCorrect() {
+        correctSound.start()
+        cards[cardIndex].amountCorrect++
+        cardVM.update(cards[cardIndex])
+    }
+
+    open fun onFalse() {
+        wrongSound.start()
+        cards[cardIndex].amountFalse++
+        cardVM.update(cards[cardIndex])
     }
 
     override fun onBackPressed(): Boolean {

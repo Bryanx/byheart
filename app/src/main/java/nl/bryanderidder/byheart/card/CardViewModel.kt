@@ -43,9 +43,15 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
             it.answer = card.answer
             it.question = card.question
             it.listIndex = card.listIndex
+            it.amountCorrect = card.amountCorrect
+            it.amountFalse = card.amountFalse
             repo.update(it)
         }
         repo.update(card)
+    }
+
+    fun updateAll(cards: List<Card>) = scope.launch(Dispatchers.IO) {
+        repo.updateAll(cards)
     }
 
     suspend fun delete(card: Card) = withContext(Dispatchers.Default) {

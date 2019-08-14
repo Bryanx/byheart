@@ -43,7 +43,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = container!!.inflate(R.layout.content_pile_edit)
-        pileVM = ViewModelProviders.of(this).get(PileViewModel::class.java)
+        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         return layout
     }

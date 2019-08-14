@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardListAdapter
 
@@ -22,12 +23,28 @@ class SwipeLeftToDeleteCallback(
 
     var isEnabled: Boolean = true
 
+    override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        val swipeFlags = if (isItemViewSwipeEnabled) ItemTouchHelper.START or ItemTouchHelper.END else 0
+        return ItemTouchHelper.Callback.makeMovementFlags(dragFlags, swipeFlags)
+    }
+
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        return false
+        if (viewHolder.itemViewType != target.itemViewType) return false
+        val from = viewHolder.adapterPosition
+        val to = target.adapterPosition
+        val pile = adapter.cards.find { it.listIndex == from }
+        adapter.cards.filter { it.listIndex in from..to || it.listIndex in to..from }.forEach {
+            if (from > to) it.listIndex++
+            else it.listIndex--
+        }
+        pile?.listIndex = to
+        adapter.notifyItemMoved(from, to)
+        return true
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -45,28 +62,35 @@ class SwipeLeftToDeleteCallback(
         isCurrentlyActive: Boolean
     ) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-        val itemView = viewHolder.itemView
-        val backgroundCornerOffset = 20 //so background is behind the rounded corners of itemView
+        if (isCurrentlyActive) {
+            if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
+                viewHolder.itemView.cvCard.cardElevation = 15F
+            } else {
+                val itemView = viewHolder.itemView
+                val backgroundCornerOffset = 20 //so background is behind the rounded corners of itemView
 
-        val iconMargin = (itemView.height - icon!!.intrinsicHeight) / 2
-        val iconTop = itemView.top + (itemView.height - icon.intrinsicHeight) / 2
-        val iconBottom = iconTop + icon.intrinsicHeight
+                val iconMargin = (itemView.height - icon!!.intrinsicHeight) / 2
+                val iconTop = itemView.top + (itemView.height - icon.intrinsicHeight) / 2
+                val iconBottom = iconTop + icon.intrinsicHeight
 
-        if (dX < 0) { // Swiping to the left
-            val iconLeft = itemView.right - iconMargin - icon.intrinsicWidth
-            val iconRight = itemView.right - iconMargin
-            icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                if (dX < 0) { // Swiping to the left
+                    val iconLeft = itemView.right - iconMargin - icon.intrinsicWidth
+                    val iconRight = itemView.right - iconMargin
+                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
-            background.setBounds(
-                itemView.right + dX.toInt() - backgroundCornerOffset,
-                itemView.top, itemView.right, itemView.bottom
-            )
-        } else { // view is unSwiped
-            background.setBounds(0, 0, 0, 0)
+                    background.setBounds(
+                        itemView.right + dX.toInt() - backgroundCornerOffset,
+                        itemView.top, itemView.right, itemView.bottom
+                    )
+                } else { // view is unSwiped
+                    background.setBounds(0, 0, 0, 0)
+                }
+
+                background.draw(c)
+                icon.draw(c)
+            }
         }
-
-        background.draw(c)
-        icon.draw(c)
+        viewHolder.itemView.cvCard.cardElevation = 2F
     }
 
     override fun isItemViewSwipeEnabled(): Boolean = isEnabled
