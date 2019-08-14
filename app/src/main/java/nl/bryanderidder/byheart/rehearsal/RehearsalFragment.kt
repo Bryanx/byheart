@@ -143,6 +143,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             cardsFromDb?.filter { it.pileId == pileId }?.let {
                 val tempCards = it.toMutableList()
                 if (Preferences.REHEARSAL_SHUFFLE) tempCards.shuffle()
+                else tempCards.sortBy { card -> card.listIndex }
                 cards = tempCards
                 doAfterGetData()
             }
