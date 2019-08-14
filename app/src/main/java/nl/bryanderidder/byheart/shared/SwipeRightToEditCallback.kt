@@ -28,6 +28,12 @@ class SwipeRightToEditCallback(
         return false
     }
 
+    override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+        val dragFlags = ItemTouchHelper.RIGHT
+        val swipeFlags = if (isItemViewSwipeEnabled) ItemTouchHelper.END else 0
+        return ItemTouchHelper.Callback.makeMovementFlags(dragFlags, swipeFlags)
+    }
+
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
         adapter.editItem(position)

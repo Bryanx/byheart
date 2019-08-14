@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">सवाल</string>
     <string name="answer">उत्तर</string>
     <string name="pile_name">ढेर का नाम</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">एक कार्ड और जोड़ो</string>
     <string name="language_cards_front">भाषा कार्ड सामने:</string>
     <string name="language_cards_back">भाषा कार्ड वापस:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">पाठ का उच्चारण करें</string>
     <string name="type_your_answer">अपना उत्तर लिखें</string>
     <string name="go">चले जाओ</string>
@@ -37,20 +34,15 @@
     <string name="no">नहीं</string>
     <string name="add_card">कार्ड जोड़ें</string>
     <string name="about_description">इस एप्लिकेशन का उपयोग करने के लिए धन्यवाद! मैंने इसे बनाया क्योंकि सभी आधुनिक फ्लैशकार्ड ऐप या तो विज्ञापनों से फूला हुआ है, सदस्यता की आवश्यकता है या इसमें बहुत सारी अनावश्यक विशेषताएं हैं।</string>
-    <string name="about_subtext">यदि आप इस ऐप का आनंद लेते हैं, तो निम्न कार्य करने पर विचार करें:</string>
+    <string name="about_subtext">यदि आप इस एप्लिकेशन का आनंद लेते हैं, तो निम्न कार्य करने पर विचार करें:</string>
     <string name="rate_this_app">इस ऐप्लिकेशन को रेट करे</string>
     <string name="buy_me_a_cup_of_coffee">मेरे लिए एक कप कॉफ़ी खरीदें!</string>
     <string name="create_a_bug_report">बग रिपोर्ट बनाएं</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">क्या आप वाकई इस स्टैक को हटाना चाहते हैं?</string>
     <string name="delete">हटाना</string>
     <string name="cancel">रद्द करना</string>
     <string name="five_card_warning">आपको कम से कम 5 कार्ड की आवश्यकता है।</string>
     <string name="ok">ठीक</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">चुना हुआ रंग</string>
     <string name="select_card_color">कार्ड का रंग चुनें</string>
     <string name="cards">पत्ते</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">आयात और निर्यात</string>
     <string name="support">समर्थन</string>
     <string name="troubleshooting">समस्या निवारण</string>
+    <string name="removed_card">कार्ड निकाला गया</string>
+    <string name="reordered_cards">पुन: व्यवस्थित कार्ड</string>
+    <string name="created_stack">स्टैक बनाया गया</string>
+    <string name="updated_stack">अपडेट किया गया स्टैक</string>
+    <string name="deleted_stack">हटाए गए ढेर</string>
+    <string name="updated_card">अपडेटेड कार्ड</string>
+    <string name="created_card">कार्ड बनाया</string>
 </resources>

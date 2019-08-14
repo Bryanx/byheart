@@ -180,8 +180,12 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     fun updateReorderedCards(cards: List<Card>) {
-        cardVM.updateAll(cards)
+        updateAllCards(cards)
         layoutManager.scrollToPosition(0)
+    }
+
+    fun updateAllCards(cards: List<Card>) {
+        cardVM.updateAll(cards)
     }
 
     fun removeCard(card: Card) = GlobalScope.launch {

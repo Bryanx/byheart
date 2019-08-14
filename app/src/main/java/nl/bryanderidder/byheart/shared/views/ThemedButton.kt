@@ -27,7 +27,9 @@ class ThemedButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attr
 
     var text: String
         get() = tvText.string
-        set(text) = tvText.setText(text)
+        set(text) {
+            tvText.text = text
+        }
 
     init {
         LayoutInflater.from(context).inflate(R.layout.card_button, this)

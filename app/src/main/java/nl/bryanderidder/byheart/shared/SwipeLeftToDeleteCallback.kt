@@ -24,8 +24,8 @@ class SwipeLeftToDeleteCallback(
     var isEnabled: Boolean = true
 
     override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        val swipeFlags = if (isItemViewSwipeEnabled) ItemTouchHelper.START or ItemTouchHelper.END else 0
+        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        val swipeFlags = if (isItemViewSwipeEnabled) ItemTouchHelper.START else 0
         return ItemTouchHelper.Callback.makeMovementFlags(dragFlags, swipeFlags)
     }
 
@@ -45,6 +45,11 @@ class SwipeLeftToDeleteCallback(
         pile?.listIndex = to
         adapter.notifyItemMoved(from, to)
         return true
+    }
+
+    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+        super.clearView(recyclerView, viewHolder)
+        adapter.doAfterMovingPiles()
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {

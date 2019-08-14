@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">سؤال</string>
     <string name="answer">إجابة</string>
     <string name="pile_name">اسم المكدس</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">إضافة بطاقة أخرى</string>
     <string name="language_cards_front">بطاقات اللغة الأمامية:</string>
     <string name="language_cards_back">بطاقات اللغة مرة أخرى:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">انطق النص</string>
     <string name="type_your_answer">أكتب أجابتك</string>
     <string name="go">اذهب</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">قيم هذا التطبيق</string>
     <string name="buy_me_a_cup_of_coffee">اشتر لي فنجان قهوة!</string>
     <string name="create_a_bug_report">إنشاء تقرير الشوائب</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">هل أنت متأكد من أنك تريد حذف هذه المكدس؟</string>
     <string name="delete">حذف</string>
     <string name="cancel">إلغاء</string>
     <string name="five_card_warning">تحتاج إلى 5 بطاقات على الأقل.</string>
     <string name="ok">حسنا</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">اللون المحدد</string>
     <string name="select_card_color">اختيار لون البطاقة</string>
     <string name="cards">CARDS</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">استيراد وتصدير</string>
     <string name="support">الدعم</string>
     <string name="troubleshooting">استكشاف الأخطاء وإصلاحها</string>
+    <string name="removed_card">بطاقة إزالتها</string>
+    <string name="reordered_cards">بطاقات إعادة ترتيبها</string>
+    <string name="created_stack">خلق كومة</string>
+    <string name="updated_stack">تحديث المكدس</string>
+    <string name="deleted_stack">كومة المحذوفة</string>
+    <string name="updated_card">بطاقة محدثة</string>
+    <string name="created_card">بطاقة تم إنشاؤها</string>
 </resources>

@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Spørgsmål</string>
     <string name="answer">Svar</string>
     <string name="pile_name">Stabelnavn</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Tilføj et andet kort</string>
     <string name="language_cards_front">Sprogkort foran:</string>
     <string name="language_cards_back">Sprogkort tilbage:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Udtal tekst</string>
     <string name="type_your_answer">Skriv dit svar</string>
     <string name="go">GÅ</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Bedøm denne app</string>
     <string name="buy_me_a_cup_of_coffee">Køb mig en kop kaffe!</string>
     <string name="create_a_bug_report">Opret en fejlrapport</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Er du sikker på, at du vil slette denne stak?</string>
     <string name="delete">Slet</string>
     <string name="cancel">Afbestille</string>
     <string name="five_card_warning">Du har brug for mindst 5 kort.</string>
     <string name="ok">Okay</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Valgt farve</string>
     <string name="select_card_color">Vælg kortfarve</string>
     <string name="cards">KORT</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Import og eksport</string>
     <string name="support">Support</string>
     <string name="troubleshooting">Fejlfinding</string>
+    <string name="removed_card">Fjernet kort</string>
+    <string name="reordered_cards">Ombestilte kort</string>
+    <string name="created_stack">Oprettet stak</string>
+    <string name="updated_stack">Opdateret stak</string>
+    <string name="deleted_stack">Slettet stak</string>
+    <string name="updated_card">Opdateret kort</string>
+    <string name="created_card">Oprettet kort</string>
 </resources>

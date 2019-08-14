@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Pregunta</string>
     <string name="answer">Responder</string>
     <string name="pile_name">Nombre de pila</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Añade otra carta</string>
     <string name="language_cards_front">Frente de tarjetas de idioma:</string>
     <string name="language_cards_back">Tarjetas de idiomas de vuelta:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Pronunciar texto</string>
     <string name="type_your_answer">Escribe tu respuesta</string>
     <string name="go">IR</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Califica esta aplicación</string>
     <string name="buy_me_a_cup_of_coffee">¡Cómprame una taza de café!</string>
     <string name="create_a_bug_report">Crear un informe de error</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">¿Seguro que quieres eliminar esta pila?</string>
     <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
     <string name="five_card_warning">Necesitas al menos 5 cartas.</string>
     <string name="ok">Okay</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Color seleccionado</string>
     <string name="select_card_color">Seleccionar color de tarjeta</string>
     <string name="cards">TARJETAS</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Importar y exportar</string>
     <string name="support">Apoyo</string>
     <string name="troubleshooting">Solución de problemas</string>
+    <string name="removed_card">Tarjeta eliminada</string>
+    <string name="reordered_cards">Tarjetas reordenadas</string>
+    <string name="created_stack">Pila creada</string>
+    <string name="updated_stack">Pila actualizada</string>
+    <string name="deleted_stack">Pila eliminada</string>
+    <string name="updated_card">Tarjeta actualizada</string>
+    <string name="created_card">Tarjeta creada</string>
 </resources>

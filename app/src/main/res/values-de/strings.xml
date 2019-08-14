@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Frage</string>
     <string name="answer">Antworten</string>
     <string name="pile_name">Stapelname</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Füge eine weitere Karte hinzu</string>
     <string name="language_cards_front">Sprachkarten Vorderseite:</string>
     <string name="language_cards_back">Sprachkarten zurück:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Sprechen Sie den Text aus</string>
     <string name="type_your_answer">Gib deine Antwort ein</string>
     <string name="go">GEHEN</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Bewerte diese App</string>
     <string name="buy_me_a_cup_of_coffee">Kauf mir eine Tasse Kaffee!</string>
     <string name="create_a_bug_report">Erstellen Sie einen Fehlerbericht</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Möchten Sie diesen Stapel wirklich löschen?</string>
     <string name="delete">Löschen</string>
     <string name="cancel">Stornieren</string>
     <string name="five_card_warning">Sie benötigen mindestens 5 Karten.</string>
     <string name="ok">OK</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Ausgewählte Farbe</string>
     <string name="select_card_color">Kartenfarbe auswählen</string>
     <string name="cards">KARTEN</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Import und Export</string>
     <string name="support">Unterstützung</string>
     <string name="troubleshooting">Fehlerbehebung</string>
+    <string name="removed_card">Karte entfernt</string>
+    <string name="reordered_cards">Nachbestellte Karten</string>
+    <string name="created_stack">Stapel erstellt</string>
+    <string name="updated_stack">Aktualisierter Stack</string>
+    <string name="deleted_stack">Stapel gelöscht</string>
+    <string name="updated_card">Aktualisierte Karte</string>
+    <string name="created_card">Erstellte Karte</string>
 </resources>

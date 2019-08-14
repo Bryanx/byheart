@@ -71,5 +71,7 @@ class CardListAdapter internal constructor(
 
     override fun getItemCount(): Int = cards.size
 
+    fun doAfterMovingPiles() = cardFragment.updateAllCards(cards)
+
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

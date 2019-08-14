@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Soalan</string>
     <string name="answer">Jawapan</string>
     <string name="pile_name">Nama stack</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Tambah kad lain</string>
     <string name="language_cards_front">Kad kad bahasa:</string>
     <string name="language_cards_back">Kad balik bahasa:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Ucapkan teks</string>
     <string name="type_your_answer">Taip jawapan anda</string>
     <string name="go">GO</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Rate aplikasi ini</string>
     <string name="buy_me_a_cup_of_coffee">Beli saya secawan kopi!</string>
     <string name="create_a_bug_report">Buat laporan pepijat</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Adakah anda pasti mahu memadamkan stack ini?</string>
     <string name="delete">Padam</string>
     <string name="cancel">Batalkan</string>
     <string name="five_card_warning">Anda memerlukan sekurang-kurangnya 5 kad.</string>
     <string name="ok">Okey</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Warna yang dipilih</string>
     <string name="select_card_color">Pilih warna kad</string>
     <string name="cards">Kad</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Import dan eksport</string>
     <string name="support">Sokongan</string>
     <string name="troubleshooting">Penyelesaian masalah</string>
+    <string name="removed_card">Kad yang dikeluarkan</string>
+    <string name="reordered_cards">Kad yang disusun semula</string>
+    <string name="created_stack">Timbunan yang dibuat</string>
+    <string name="updated_stack">Timbunan yang dikemas kini</string>
+    <string name="deleted_stack">Tumpukan yang dibuang</string>
+    <string name="updated_card">Kad dikemas kini</string>
+    <string name="created_card">Kad dicipta</string>
 </resources>

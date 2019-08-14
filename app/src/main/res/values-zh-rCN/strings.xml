@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">题</string>
     <string name="answer">回答</string>
     <string name="pile_name">堆栈名称</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">添加另一张卡片</string>
     <string name="language_cards_front">语言卡片正面：</string>
     <string name="language_cards_back">语言卡回：</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">发音文字</string>
     <string name="type_your_answer">输入你的答案</string>
     <string name="go">走</string>
@@ -36,28 +33,23 @@
     <string name="yes">是</string>
     <string name="no">没有</string>
     <string name="add_card">添加卡片</string>
-    <string name="about_description">感谢您使用此应用程序！我之所以这样做，是因为所有现代闪卡应用都要么广告，需要订阅或者包含许多不必要的功能。</string>
+    <string name="about_description">感谢您使用此应用程序！我之所以这样做，是因为所有现代闪卡应用程序要么广告，需要订阅，要么包含许多不必要的功能。</string>
     <string name="about_subtext">如果您喜欢这个应用程序，请考虑执行以下操作：</string>
     <string name="rate_this_app">为这个应用软件评分</string>
     <string name="buy_me_a_cup_of_coffee">买一杯咖啡给我！</string>
     <string name="create_a_bug_report">创建错误报告</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">您确定要删除此堆栈吗？</string>
     <string name="delete">删除</string>
     <string name="cancel">取消</string>
     <string name="five_card_warning">你需要至少5张牌。</string>
     <string name="ok">好</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">选择颜色</string>
     <string name="select_card_color">选择卡片颜色</string>
     <string name="cards">牌</string>
     <string name="export_csv">导出CSV</string>
     <string name="import_csv">导入CSV</string>
     <string name="export_csv_summary">将所有卡导出为逗号分隔文件。此文件可以在Microsoft Excel，Google表格，Apple Numbers等中打开。</string>
-    <string name="import_csv_summary">从Microsoft Excel，Google表格，Apple Numbers导入，或使用它从其他应用程序导入您的闪存卡。</string>
+    <string name="import_csv_summary">从Microsoft Excel，Google表格，Apple Numbers导入，或使用此功能从其他应用程序导入您的闪存卡。</string>
     <string name="create_backup_summary">创建数据的备份文件。您可以在其他设备上打开此文件以恢复数据。</string>
     <string name="import_backup_summary">导入备份文件。备份堆栈和卡片不会被备份覆盖。</string>
     <string name="coming_soon">快来了。</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">进出口</string>
     <string name="support">支持</string>
     <string name="troubleshooting">故障排除</string>
+    <string name="removed_card">删除卡</string>
+    <string name="reordered_cards">重新排序的卡片</string>
+    <string name="created_stack">创建堆栈</string>
+    <string name="updated_stack">更新了堆栈</string>
+    <string name="deleted_stack">删除堆栈</string>
+    <string name="updated_card">更新了卡片</string>
+    <string name="created_card">创建卡</string>
 </resources>

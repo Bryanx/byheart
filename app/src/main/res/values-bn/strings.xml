@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">প্রশ্ন</string>
     <string name="answer">উত্তর</string>
     <string name="pile_name">স্ট্যাকের নাম</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">অন্য কার্ড যুক্ত করুন</string>
     <string name="language_cards_front">ভাষা কার্ড সামনে:</string>
     <string name="language_cards_back">ভাষা কার্ডগুলি ফিরে:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">টেক্সট</string>
     <string name="type_your_answer">আপনার উত্তরটি লিখুন</string>
     <string name="go">গো</string>
@@ -36,28 +33,23 @@
     <string name="yes">হাঁ</string>
     <string name="no">না</string>
     <string name="add_card">কার্ড যুক্ত করুন</string>
-    <string name="about_description">এই অ্যাপ্লিকেশন ব্যবহার করার জন্য আপনাকে ধন্যবাদ! আমি এটি তৈরি করেছি কারণ সমস্ত আধুনিক ফ্ল্যাশকার্ড অ্যাপ্লিকেশন হয় বিজ্ঞাপন দিয়ে স্ফীত হয়, সাবস্ক্রিপশন প্রয়োজন বা অনেকগুলি অপ্রয়োজনীয় বৈশিষ্ট্য ধারণ করে।</string>
+    <string name="about_description">এই অ্যাপ্লিকেশন ব্যবহার করার জন্য আপনাকে ধন্যবাদ! আমি এটি তৈরি করেছি কারণ সমস্ত আধুনিক ফ্ল্যাশকার্ড অ্যাপ্লিকেশন হয় বিজ্ঞাপন দিয়ে স্ফীত, সাবস্ক্রিপশন প্রয়োজন বা অনেকগুলি অপ্রয়োজনীয় বৈশিষ্ট্যযুক্ত।</string>
     <string name="about_subtext">আপনি যদি এই অ্যাপটি উপভোগ করেন তবে নিম্নলিখিতগুলি বিবেচনা করুন:</string>
     <string name="rate_this_app">এই অ্যাপ্লিকেশন রেট</string>
     <string name="buy_me_a_cup_of_coffee">আমাকে এক কাপ কফি কিনে দাও!</string>
     <string name="create_a_bug_report">একটি বাগ রিপোর্ট তৈরি করুন</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">আপনি কি নিশ্চিত যে আপনি এই স্ট্যাকটি মুছতে চান?</string>
     <string name="delete">মুছে ফেলা</string>
     <string name="cancel">বাতিল</string>
     <string name="five_card_warning">আপনার কমপক্ষে 5 টি কার্ডের প্রয়োজন।</string>
     <string name="ok">ঠিক আছে</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">নির্বাচিত রঙ</string>
     <string name="select_card_color">কার্ডের রঙ নির্বাচন করুন</string>
     <string name="cards">তাস</string>
     <string name="export_csv">সিএসভি রফতানি করুন</string>
     <string name="import_csv">সিএসভি আমদানি করুন</string>
     <string name="export_csv_summary">কমা দ্বারা পৃথক করা ফাইলগুলিতে সমস্ত কার্ড রফতানি করুন। এই ফাইলটি মাইক্রোসফ্ট এক্সেল, গুগল শিটস, অ্যাপল নম্বর ইত্যাদিতে ওপেনড হতে পারে</string>
-    <string name="import_csv_summary">মাইক্রোসফ্ট এক্সেল, গুগল শিটস, অ্যাপল নম্বরগুলি থেকে আমদানি করুন বা অন্য কোনও অ্যাপ্লিকেশন থেকে আপনার ফ্ল্যাশকার্ডগুলি আমদানি করতে এটি ব্যবহার করুন।</string>
+    <string name="import_csv_summary">মাইক্রোসফ্ট এক্সেল, গুগল শিটস, অ্যাপল নাম্বার থেকে আমদানি করুন বা অন্য কোনও অ্যাপ্লিকেশন থেকে আপনার ফ্ল্যাশকার্ডগুলি আমদানি করতে এটি ব্যবহার করুন।</string>
     <string name="create_backup_summary">আপনার ডেটার একটি ব্যাকআপ ফাইল তৈরি করুন। আপনি আপনার ডেটা পুনরুদ্ধার করতে এই ফাইলটি অন্য ডিভাইসে খুলতে পারেন।</string>
     <string name="import_backup_summary">একটি ব্যাকআপ ফাইল আমদানি করুন। বিদ্যমান স্ট্যাক এবং কার্ডগুলি ব্যাকআপের মাধ্যমে ওভাররাইট করা হবে না।</string>
     <string name="coming_soon">শীঘ্রই আসছে.</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">আমদানি এবং রপ্তানি</string>
     <string name="support">সমর্থন</string>
     <string name="troubleshooting">সমস্যা সমাধান</string>
+    <string name="removed_card">কার্ড সরানো হয়েছে</string>
+    <string name="reordered_cards">পুনরায় সাজানো কার্ড</string>
+    <string name="created_stack">স্ট্যাক তৈরি করা হয়েছে</string>
+    <string name="updated_stack">আপডেট স্ট্যাক</string>
+    <string name="deleted_stack">মোছা স্ট্যাক</string>
+    <string name="updated_card">আপডেট কার্ড</string>
+    <string name="created_card">কার্ড তৈরি করা হয়েছে</string>
 </resources>

@@ -26,24 +26,6 @@ class ColorPickerDialog : AppCompatDialogFragment() {
     internal lateinit var palette: ColorPickerPalette
     lateinit var listener: (color: Int) -> Unit
 
-    var colors: IntArray
-        get() = mColors
-        set(colors) {
-            if (mColors != colors) {
-                mColors = colors
-                refreshPalette()
-            }
-        }
-
-    var selectedColor: Int
-        get() = mSelectedColor
-        set(color) {
-            if (mSelectedColor != color) {
-                mSelectedColor = color
-                refreshPalette()
-            }
-        }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -116,7 +98,7 @@ class ColorPickerDialog : AppCompatDialogFragment() {
         protected const val KEY_SELECTED_COLOR = "selected_color"
         protected const val KEY_COLUMNS = "columns"
         protected const val KEY_SIZE = "size"
-        protected const val KEY_LISTENER = "listener"
+        private const val KEY_LISTENER = "listener"
 
         fun newInstance(
             titleResId: Int, colors: IntArray?, selectedColor: Int,

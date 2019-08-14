@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Otázka</string>
     <string name="answer">Odpovědět</string>
     <string name="pile_name">Název zásobníku</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Přidejte další kartu</string>
     <string name="language_cards_front">Přední strana jazykových karet:</string>
     <string name="language_cards_back">Jazykové karty zpět:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Namluvit text</string>
     <string name="type_your_answer">Zadejte odpověď</string>
     <string name="go">JÍT</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Ohodnoťte tuto aplikaci</string>
     <string name="buy_me_a_cup_of_coffee">Kupte mi šálek kávy!</string>
     <string name="create_a_bug_report">Vytvořte hlášení o chybě</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Opravdu chcete tento zásobník smazat?</string>
     <string name="delete">Odstranit</string>
     <string name="cancel">zrušení</string>
     <string name="five_card_warning">Potřebujete alespoň 5 karet.</string>
     <string name="ok">OK</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Vybraná barva</string>
     <string name="select_card_color">Vyberte barvu karty</string>
     <string name="cards">KARTY</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Dovoz a vývoz</string>
     <string name="support">Podpěra, podpora</string>
     <string name="troubleshooting">Odstraňování problémů</string>
+    <string name="removed_card">Odstraněná karta</string>
+    <string name="reordered_cards">Změna pořadí karet</string>
+    <string name="created_stack">Vytvořen zásobník</string>
+    <string name="updated_stack">Aktualizovaný zásobník</string>
+    <string name="deleted_stack">Smazaný zásobník</string>
+    <string name="updated_card">Aktualizovaná karta</string>
+    <string name="created_card">Vytvořená karta</string>
 </resources>

@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">ਪ੍ਰਸ਼ਨ</string>
     <string name="answer">ਜਵਾਬ</string>
     <string name="pile_name">ਸਟੈਕ ਦਾ ਨਾਮ</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">ਹੋਰ ਕਾਰਡ ਸ਼ਾਮਲ ਕਰੋ</string>
     <string name="language_cards_front">ਭਾਸ਼ਾ ਕਾਰਡ ਸਾਹਮਣੇ:</string>
     <string name="language_cards_back">ਭਾਸ਼ਾ ਕਾਰਡ ਵਾਪਸ:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">ਪਾਠ ਨੂੰ</string>
     <string name="type_your_answer">ਆਪਣਾ ਜਵਾਬ ਲਿਖੋ</string>
     <string name="go">ਜਾਣਾ</string>
@@ -41,21 +38,16 @@
     <string name="rate_this_app">ਇਸ ਐਪ ਨੂੰ ਦਰਜਾ ਦਿਓ</string>
     <string name="buy_me_a_cup_of_coffee">ਮੈਨੂੰ ਇੱਕ ਕੱਪ ਕਾਫੀ ਖਰੀਦੋ!</string>
     <string name="create_a_bug_report">ਬੱਗ ਰਿਪੋਰਟ ਬਣਾਓ</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਸ ਸਟੈਕ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
     <string name="delete">ਮਿਟਾਓ</string>
     <string name="cancel">ਰੱਦ ਕਰੋ</string>
     <string name="five_card_warning">ਤੁਹਾਨੂੰ ਘੱਟੋ ਘੱਟ 5 ਕਾਰਡਾਂ ਦੀ ਜ਼ਰੂਰਤ ਹੈ.</string>
     <string name="ok">ਠੀਕ ਹੈ</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">ਚੁਣਿਆ ਰੰਗ</string>
     <string name="select_card_color">ਕਾਰਡ ਦਾ ਰੰਗ ਚੁਣੋ</string>
     <string name="cards">ਕਾਰਡ</string>
-    <string name="export_csv">CSV ਐਕਸਪੋਰਟ ਕਰੋ</string>
-    <string name="import_csv">ਸੀਐਸਵੀ ਇੰਪੋਰਟ ਕਰੋ</string>
+    <string name="export_csv">CSV ਨਿਰਯਾਤ ਕਰੋ</string>
+    <string name="import_csv">ਸੀਐਸਵੀ ਆਯਾਤ ਕਰੋ</string>
     <string name="export_csv_summary">ਇੱਕ ਕਾਮੇ ਨਾਲ ਵੱਖ ਕੀਤੀ ਫਾਈਲ ਵਿੱਚ ਸਾਰੇ ਕਾਰਡ ਐਕਸਪੋਰਟ ਕਰੋ. ਇਹ ਫਾਈਲ ਮਾਈਕਰੋਸੌਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ, ਆਦਿ ਵਿੱਚ ਖੁੱਲ੍ਹ ਸਕਦੀ ਹੈ.</string>
     <string name="import_csv_summary">ਮਾਈਕ੍ਰੋਸਾੱਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ ਤੋਂ ਆਯਾਤ ਕਰੋ ਜਾਂ ਆਪਣੇ ਫਲੈਸ਼ ਕਾਰਡਸ ਨੂੰ ਕਿਸੇ ਵੱਖਰੇ ਐਪ ਤੋਂ ਆਯਾਤ ਕਰਨ ਲਈ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ.</string>
     <string name="create_backup_summary">ਆਪਣੇ ਡਾਟੇ ਦੀ ਬੈਕਅਪ ਫਾਈਲ ਬਣਾਓ. ਤੁਸੀਂ ਆਪਣੇ ਫਾਈਲਾਂ ਨੂੰ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਇਸ ਫਾਈਲ ਨੂੰ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੇ ਖੋਲ੍ਹ ਸਕਦੇ ਹੋ.</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">ਆਯਾਤ ਅਤੇ ਨਿਰਯਾਤ</string>
     <string name="support">ਸਹਾਇਤਾ</string>
     <string name="troubleshooting">ਸਮੱਸਿਆ ਨਿਪਟਾਰਾ</string>
+    <string name="removed_card">ਕਾਰਡ ਹਟਾ ਦਿੱਤਾ ਗਿਆ</string>
+    <string name="reordered_cards">ਕ੍ਰਮਵਾਰ ਕਾਰਡ</string>
+    <string name="created_stack">ਸਟੈਕ ਬਣਾਇਆ</string>
+    <string name="updated_stack">ਅਪਡੇਟ ਕੀਤਾ ਸਟੈਕ</string>
+    <string name="deleted_stack">ਹਟਾਇਆ ਸਟੈਕ</string>
+    <string name="updated_card">ਅਪਡੇਟ ਕੀਤਾ ਕਾਰਡ</string>
+    <string name="created_card">ਬਣਾਇਆ ਕਾਰਡ</string>
 </resources>

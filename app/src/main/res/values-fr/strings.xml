@@ -62,4 +62,11 @@
     <string name="support">Soutien</string>
     <string name="troubleshooting">Dépannage</string>
     <string name="coming_soon">Arrive bientôt.</string>
+    <string name="removed_card">Carte supprimée</string>
+    <string name="reordered_cards">Carte réordonnée</string>
+    <string name="created_stack">Pile créée</string>
+    <string name="updated_stack">Pile mise à jour</string>
+    <string name="deleted_stack">Pile supprimée</string>
+    <string name="updated_card">Carte mise à jour</string>
+    <string name="created_card">Carte créée</string>
 </resources>

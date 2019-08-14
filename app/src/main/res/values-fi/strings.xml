@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Kysymys</string>
     <string name="answer">Vastaus</string>
     <string name="pile_name">Pino nimi</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Lisää toinen kortti</string>
     <string name="language_cards_front">Kielikortit edessä:</string>
     <string name="language_cards_back">Kielikortit takaisin:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Äännä teksti</string>
     <string name="type_your_answer">Kirjoita vastauksesi</string>
     <string name="go">MENNÄ</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Arvostele tämä sovellus</string>
     <string name="buy_me_a_cup_of_coffee">Osta minulle kuppi kahvia!</string>
     <string name="create_a_bug_report">Luo virheraportti</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Haluatko varmasti poistaa tämän pinon?</string>
     <string name="delete">Poistaa</string>
     <string name="cancel">Peruuttaa</string>
     <string name="five_card_warning">Tarvitset vähintään 5 korttia.</string>
     <string name="ok">kunnossa</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Valittu väri</string>
     <string name="select_card_color">Valitse kortin väri</string>
     <string name="cards">KORTIT</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Tuonti ja vienti</string>
     <string name="support">Tuki</string>
     <string name="troubleshooting">Ongelmien karttoittaminen</string>
+    <string name="removed_card">Poistettu kortti</string>
+    <string name="reordered_cards">Tilatut kortit</string>
+    <string name="created_stack">Luotu pino</string>
+    <string name="updated_stack">Päivitetty pino</string>
+    <string name="deleted_stack">Poistettu pino</string>
+    <string name="updated_card">Päivitetty kortti</string>
+    <string name="created_card">Luotu kortti</string>
 </resources>

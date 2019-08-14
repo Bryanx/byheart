@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Byheart</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="question">Fråga</string>
     <string name="answer">Svar</string>
     <string name="pile_name">Stapla namn</string>
@@ -26,7 +24,6 @@
     <string name="add_another_card">Lägg till ett annat kort</string>
     <string name="language_cards_front">Språkkort fram:</string>
     <string name="language_cards_back">Språkkort tillbaka:</string>
-    <string name="slash" translatable="false">/</string>
     <string name="pronounce_text">Uttala text</string>
     <string name="type_your_answer">Skriv ditt svar</string>
     <string name="go">GÅ</string>
@@ -41,16 +38,11 @@
     <string name="rate_this_app">Betygsätt denna app</string>
     <string name="buy_me_a_cup_of_coffee">Köp mig en kopp kaffe!</string>
     <string name="create_a_bug_report">Skapa en felrapport</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
-    <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="delete_confirm_stack">Är du säker på att du vill ta bort den här stacken?</string>
     <string name="delete">Radera</string>
     <string name="cancel">Annullera</string>
     <string name="five_card_warning">Du behöver minst 5 kort.</string>
     <string name="ok">Ok</string>
-    <string name="play_store_url" translatable="false">https://play.google.com/store/apps/details?id=nl.bryanderidder.byheart</string>
-    <string name="colorpicker" translatable="false">Colorpicker</string>
-    <string name="color_swatch_description" translatable="false">color</string>
     <string name="color_swatch_description_selected">Vald färg</string>
     <string name="select_card_color">Välj kortfärg</string>
     <string name="cards">CARDS</string>
@@ -68,4 +60,11 @@
     <string name="import_and_export">Import och export</string>
     <string name="support">Stöd</string>
     <string name="troubleshooting">Felsökning</string>
+    <string name="removed_card">Borttagen kort</string>
+    <string name="reordered_cards">Omordnade kort</string>
+    <string name="created_stack">Skapad stack</string>
+    <string name="updated_stack">Uppdaterad stack</string>
+    <string name="deleted_stack">Raderad stack</string>
+    <string name="updated_card">Uppdaterat kort</string>
+    <string name="created_card">Skapat kort</string>
 </resources>

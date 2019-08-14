@@ -68,7 +68,7 @@
     <string name="import_and_export">Import and export</string>
     <string name="support">Support</string>
     <string name="troubleshooting">Troubleshooting</string>
-    <string name="removed_card">Removed card</string>
+    <string name="removed_card">Deleted card</string>
     <string name="reordered_cards">Reordered cards</string>
     <string name="created_stack">Created stack</string>
     <string name="updated_stack">Updated stack</string>
