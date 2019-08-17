@@ -127,7 +127,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             cards?.filter { it.pileId == pileId }?.let { newCards ->
                 clProgressBar.visibility = GONE
                 recyclerview.doAfterAnimations {
-                    adapter.setCards(newCards)
+                    adapter.setCards(newCards.toMutableList())
                 }
                 if (newCards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
                 else placeholderNoCards.visibility = GONE

@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.card
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,7 @@ class CardListAdapter internal constructor(
         return CardViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val card = cards.find { it.listIndex == position }
         holder.itemView.tvFront.text = card?.question
@@ -39,7 +41,7 @@ class CardListAdapter internal constructor(
     }
 
     @Suppress("UNCHECKED_CAST")
-    inline fun <reified T : Comparable<T>> sort(property: String) {
+    inline fun <reified T : Comparable<T>> sort(property: String, cards: MutableList<Card> = this.cards) {
         val newCards = cards.toMutableList()
         if (T::class != Int::class) newCards.sortBy { it.getAttr(property) as T }
         else newCards.sortByDescending { it.getAttr(property) as T }
@@ -53,7 +55,10 @@ class CardListAdapter internal constructor(
         cardFragment.updateReorderedCards(newCards)
     }
 
-    internal fun setCards(cards: List<Card>) {
+    internal fun setCards(cards: MutableList<Card>) {
+        cards.sortBy { it.listIndex }
+        val testCards = cards.filterIndexed { i, c -> c.listIndex == i }
+        if (testCards.size != cards.size) sort<String>("question", cards)
         this.cards.clear()
         this.cards.addAll(cards)
         notifyDataSetChanged()
