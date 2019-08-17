@@ -15,9 +15,9 @@ Byheart is an Android app for learning and memorizing words or phrases with flas
 - Import and export to CSV format.
 - Manually or automatically sort cards.
 
+## Screenshots
+<img src="./demo/screen_one.png"> <img src="./demo/screen_two.png"><img src="./demo/screen_three.png">
+
 ## Privacy policy
 
 <a href="https://docs.google.com/document/d/1aqIOj_3VO_oDcVl7VROD7y5E813pKJTZp7JZKljl0F0/edit?usp=drivesdk" rel="privacy policy">Read it here.</a>
-
-## Screenshots
-<img src="./demo/screen_one.png"> <img src="./demo/screen_two.png"><img src="./demo/screen_three.png">
