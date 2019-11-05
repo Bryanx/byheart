@@ -28,6 +28,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
     }
 
     override fun doAfterGetData() {
+        if (this::buttons.isInitialized) return
         buttons = mutableListOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4)
         resetViews()
         addEventHandlers()
