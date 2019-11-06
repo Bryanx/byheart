@@ -55,4 +55,9 @@
         <item name="android:textSize">@dimen/edit_text_size</item>
         <item name="android:background">@drawable/shadow</item>
     </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
 </resources>
