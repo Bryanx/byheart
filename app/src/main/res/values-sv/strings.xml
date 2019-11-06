@@ -33,6 +33,7 @@
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="add_card">Lägg till kort</string>
+    <string name="edit_card">Redigera kort</string>
     <string name="about_description">Tack för att du använder den här appen! Jag gjorde det eftersom alla moderna flashcard-appar antingen är uppblåsta av annonser, kräver prenumeration eller innehåller många onödiga funktioner.</string>
     <string name="about_subtext">Om du gillar den här appen kan du överväga att göra följande:</string>
     <string name="rate_this_app">Betygsätt denna app</string>
@@ -40,7 +41,7 @@
     <string name="create_a_bug_report">Skapa en felrapport</string>
     <string name="delete_confirm_stack">Är du säker på att du vill ta bort den här stacken?</string>
     <string name="delete">Radera</string>
-    <string name="cancel">Annullera</string>
+    <string name="cancel">Avbryt</string>
     <string name="five_card_warning">Du behöver minst 5 kort.</string>
     <string name="ok">Ok</string>
     <string name="color_swatch_description_selected">Vald färg</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">Import och export</string>
     <string name="support">Stöd</string>
     <string name="troubleshooting">Felsökning</string>
-    <string name="removed_card">Borttagen kort</string>
+    <string name="removed_card">Raderat kort</string>
     <string name="reordered_cards">Omordnade kort</string>
     <string name="created_stack">Skapad stack</string>
     <string name="updated_stack">Uppdaterad stack</string>

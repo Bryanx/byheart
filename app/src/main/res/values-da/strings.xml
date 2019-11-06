@@ -33,6 +33,7 @@
     <string name="yes">Ja</string>
     <string name="no">Ingen</string>
     <string name="add_card">Tilføj kort</string>
+    <string name="edit_card">Rediger kort</string>
     <string name="about_description">Tak for din brug af denne app! Jeg lavede dette, fordi alle moderne flashcard-apps enten er oppustet med annoncer, kræver et abonnement eller indeholder en masse unødvendige funktioner.</string>
     <string name="about_subtext">Hvis du nyder denne app, kan du overveje at gøre følgende:</string>
     <string name="rate_this_app">Bedøm denne app</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">Import og eksport</string>
     <string name="support">Support</string>
     <string name="troubleshooting">Fejlfinding</string>
-    <string name="removed_card">Fjernet kort</string>
+    <string name="removed_card">Slettet kort</string>
     <string name="reordered_cards">Ombestilte kort</string>
     <string name="created_stack">Oprettet stak</string>
     <string name="updated_stack">Opdateret stak</string>

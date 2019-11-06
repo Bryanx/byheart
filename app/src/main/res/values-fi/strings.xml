@@ -33,6 +33,7 @@
     <string name="yes">Joo</string>
     <string name="no">Ei</string>
     <string name="add_card">Lisää kortti</string>
+    <string name="edit_card">Muokkaa korttia</string>
     <string name="about_description">Kiitos tämän sovelluksen käytöstä! Tein tämän, koska kaikki nykyaikaiset flashcard-sovellukset ovat joko täynnä mainoksia, vaativat tilauksen tai sisältävät paljon tarpeettomia ominaisuuksia.</string>
     <string name="about_subtext">Jos pidät tästä sovelluksesta, harkitse seuraavien tekemistä:</string>
     <string name="rate_this_app">Arvostele tämä sovellus</string>

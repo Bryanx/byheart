@@ -6,7 +6,7 @@
     <string name="delete_pile">Slett bunken</string>
     <string name="settings">innstillinger</string>
     <string name="confirm">Bekrefte</string>
-    <string name="about">Handle om</string>
+    <string name="about">Om</string>
     <string name="dark_mode">Mørk modus</string>
     <string name="card_front">Kort foran</string>
     <string name="card_back">Kort tilbake</string>
@@ -33,9 +33,10 @@
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="add_card">Legg til kort</string>
+    <string name="edit_card">Rediger kort</string>
     <string name="about_description">Takk for at du bruker denne appen! Jeg laget dette fordi alle moderne flashcard-apper enten er oppsvulmet av annonser, krever abonnement eller inneholder mange unødvendige funksjoner.</string>
     <string name="about_subtext">Hvis du liker denne appen, kan du vurdere å gjøre følgende:</string>
-    <string name="rate_this_app">Ranger denne appen</string>
+    <string name="rate_this_app">Bedøm denne appen</string>
     <string name="buy_me_a_cup_of_coffee">Kjøp meg en kopp kaffe!</string>
     <string name="create_a_bug_report">Opprett en feilrapport</string>
     <string name="delete_confirm_stack">Er du sikker på at du vil slette denne stabelen?</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">Import og eksport</string>
     <string name="support">Brukerstøtte</string>
     <string name="troubleshooting">Feilsøking</string>
-    <string name="removed_card">Fjernet kort</string>
+    <string name="removed_card">Slettet kort</string>
     <string name="reordered_cards">Ombestilte kort</string>
     <string name="created_stack">Laget stabel</string>
     <string name="updated_stack">Oppdatert stabel</string>

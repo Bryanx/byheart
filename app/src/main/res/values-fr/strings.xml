@@ -4,6 +4,7 @@
     <string name="add_a_card">Ajouter une carte</string>
     <string name="add_another_card">Ajouter une autre carte</string>
     <string name="add_card">Nouvelle carte</string>
+    <string name="edit_card">Modifier la carte</string>
     <string name="answer">Répondre</string>
     <string name="card_back">Le dos</string>
     <string name="card_front">Le devant</string>

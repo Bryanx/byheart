@@ -30,9 +30,10 @@
     <string name="string_continue">استمر</string>
     <string name="create_pile">خلق كومة</string>
     <string name="want_to_quit">هل أنت متأكد من أنك تريد الخروج؟</string>
-    <string name="yes">نعم فعلا</string>
+    <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="add_card">إضافة بطاقة</string>
+    <string name="edit_card">تحرير البطاقة</string>
     <string name="about_description">شكرا لك لاستخدام هذا التطبيق! لقد صنعت هذا لأن جميع تطبيقات البطاقات التعليمية الحديثة إما متضخمة مع الإعلانات أو تتطلب اشتراكًا أو تحتوي على الكثير من الميزات غير الضرورية.</string>
     <string name="about_subtext">إذا كنت تستمتع بهذا التطبيق ، فكر في القيام بما يلي:</string>
     <string name="rate_this_app">قيم هذا التطبيق</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">استيراد وتصدير</string>
     <string name="support">الدعم</string>
     <string name="troubleshooting">استكشاف الأخطاء وإصلاحها</string>
-    <string name="removed_card">بطاقة إزالتها</string>
+    <string name="removed_card">بطاقة محذوفة</string>
     <string name="reordered_cards">بطاقات إعادة ترتيبها</string>
     <string name="created_stack">خلق كومة</string>
     <string name="updated_stack">تحديث المكدس</string>

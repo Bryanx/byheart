@@ -7,7 +7,7 @@
     <string name="settings">impostazioni</string>
     <string name="confirm">Confermare</string>
     <string name="about">Di</string>
-    <string name="dark_mode">Modalità oscura</string>
+    <string name="dark_mode">Modalità scura</string>
     <string name="card_front">Fronte carta</string>
     <string name="card_back">Retro della carta</string>
     <string name="light_mode">Modalità luce</string>
@@ -33,6 +33,7 @@
     <string name="yes">sì</string>
     <string name="no">No</string>
     <string name="add_card">Aggiungi carta</string>
+    <string name="edit_card">Modifica carta</string>
     <string name="about_description">Grazie per aver usato questa app! L\'ho fatto perché tutte le moderne app di flashcard sono gonfiate di pubblicità, richiedono un abbonamento o contengono molte funzionalità non necessarie.</string>
     <string name="about_subtext">Se ti piace questa app, considera quanto segue:</string>
     <string name="rate_this_app">Valuta questa applicazione</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">Importazione e esportazione</string>
     <string name="support">Supporto</string>
     <string name="troubleshooting">Risoluzione dei problemi</string>
-    <string name="removed_card">Carta rimossa</string>
+    <string name="removed_card">Carta cancellata</string>
     <string name="reordered_cards">Carte riordinate</string>
     <string name="created_stack">Stack creato</string>
     <string name="updated_stack">Stack aggiornato</string>

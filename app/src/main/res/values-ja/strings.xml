@@ -31,10 +31,11 @@
     <string name="create_pile">スタックを作成</string>
     <string name="want_to_quit">本当にやめる気？</string>
     <string name="yes">はい</string>
-    <string name="no">いや</string>
+    <string name="no">番号</string>
     <string name="add_card">カードを追加</string>
-    <string name="about_description">このアプリをご利用いただきありがとうございます！最新のフラッシュカードアプリはすべて、広告が肥大化している、サブスクリプションを必要とする、または多くの不要な機能が含まれているためです。</string>
-    <string name="about_subtext">このアプリを楽しんでいる場合は、次のことを検討してください。</string>
+    <string name="edit_card">カードを編集</string>
+    <string name="about_description">このアプリをご利用いただきありがとうございます！最新のフラッシュカードアプリはすべて、広告が肥大化しているか、サブスクリプションが必要であるか、不要な機能が多く含まれているため、これを作成しました。</string>
+    <string name="about_subtext">このアプリを楽しむ場合は、次のことを検討してください。</string>
     <string name="rate_this_app">このアプリを評価する</string>
     <string name="buy_me_a_cup_of_coffee">コーヒーを一杯買って！</string>
     <string name="create_a_bug_report">バグレポートを作成する</string>

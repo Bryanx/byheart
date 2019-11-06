@@ -33,6 +33,7 @@
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="add_card">Přidat kartu</string>
+    <string name="edit_card">Upravit kartu</string>
     <string name="about_description">Děkujeme vám za použití této aplikace! Udělal jsem to proto, že všechny moderní aplikace kartových karet jsou nafouklé reklamami, vyžadují předplatné nebo obsahují mnoho zbytečných funkcí.</string>
     <string name="about_subtext">Pokud se vám tato aplikace líbí, zvažte následující kroky:</string>
     <string name="rate_this_app">Ohodnoťte tuto aplikaci</string>

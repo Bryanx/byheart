@@ -39,7 +39,6 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
-        addToolbar(title = resources.getString(R.string.add_card))
         return layout
     }
 
@@ -60,6 +59,8 @@ class CardEditFragment : Fragment(), IOnBackPressed {
             }
         })
         updateColors()
+        if (editMode) addToolbar(title = resources.getString(R.string.edit_card))
+        else addToolbar(title = resources.getString(R.string.add_card))
     }
 
     private fun updateColors() {

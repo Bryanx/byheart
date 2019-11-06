@@ -36,6 +36,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_card">Add card</string>
+    <string name="edit_card">Edit card</string>
     <string name="about_description">Thank you for using this app! I made this because all modern flashcard apps are either bloated with ads, require a subscription or contain a lot of unnecessary features.</string>
     <string name="about_subtext">If you enjoy this app, consider doing the following:</string>
     <string name="rate_this_app">Rate this app</string>

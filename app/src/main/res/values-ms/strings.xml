@@ -33,6 +33,7 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="add_card">Tambah kad</string>
+    <string name="edit_card">Edit kad</string>
     <string name="about_description">Terima kasih kerana menggunakan aplikasi ini! Saya membuat ini kerana semua aplikasi flashcard moden sama ada bengkak dengan iklan, memerlukan langganan atau mengandungi banyak ciri yang tidak perlu.</string>
     <string name="about_subtext">Jika anda menikmati aplikasi ini, pertimbangkan untuk melakukan perkara berikut:</string>
     <string name="rate_this_app">Rate aplikasi ini</string>
@@ -60,7 +61,7 @@
     <string name="import_and_export">Import dan eksport</string>
     <string name="support">Sokongan</string>
     <string name="troubleshooting">Penyelesaian masalah</string>
-    <string name="removed_card">Kad yang dikeluarkan</string>
+    <string name="removed_card">Kad dipadamkan</string>
     <string name="reordered_cards">Kad yang disusun semula</string>
     <string name="created_stack">Timbunan yang dibuat</string>
     <string name="updated_stack">Timbunan yang dikemas kini</string>
