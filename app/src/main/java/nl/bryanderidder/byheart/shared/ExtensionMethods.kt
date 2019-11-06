@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.MainActivity
@@ -46,6 +47,7 @@ fun ViewGroup.inflate(layoutRes: Int): View {
 fun FragmentManager.startFragment(fragment: Fragment) {
     val tag = fragment::class.java.canonicalName
     this.beginTransaction()
+        .setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN )
         .replace(R.id.main_container, fragment, tag)
         .commit()
 }
@@ -53,6 +55,7 @@ fun FragmentManager.startFragment(fragment: Fragment) {
 // Start fragment in pile_menu container
 fun Fragment.startFragment(fragment: Fragment) {
     this.fragmentManager?.beginTransaction()
+        ?.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN )
         ?.replace(R.id.main_container, fragment)
         ?.commit()
 }
