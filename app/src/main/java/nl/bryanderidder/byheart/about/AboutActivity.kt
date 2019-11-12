@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.content_about.*
+import kotlinx.android.synthetic.main.activity_about.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.color
 import nl.bryanderidder.byheart.shared.getAttr
@@ -20,7 +20,7 @@ class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AboutTheme)
-        setContentView(R.layout.content_about)
+        setContentView(R.layout.activity_about)
         setSupportActionBar(aboutToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
