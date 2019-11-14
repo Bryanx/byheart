@@ -70,4 +70,5 @@
     <string name="deleted_stack">Stapel verwijderd</string>
     <string name="updated_card">Kaart bijgewerkt</string>
     <string name="created_card">Kaart aangemaakt</string>
+    <string name="field_may_not_be_blank">Dit veld is verplicht.</string>
 </resources>

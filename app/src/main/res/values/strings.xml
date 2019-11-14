@@ -19,7 +19,7 @@
     <string name="restart">Restart</string>
     <string name="shuffle_cards">Shuffle cards</string>
     <string name="pronounce_cards">Pronounce cards</string>
-    <string name="multiple_choice_mode">Multiple choice mode</string>
+    <string name="multiple_choice_mode">Multiple choice</string>
     <string name="typed_mode">Typed mode</string>
     <string name="memory_mode">Memory mode</string>
     <string name="pile_image">Stack image</string>
@@ -76,4 +76,5 @@
     <string name="deleted_stack">Deleted stack</string>
     <string name="updated_card">Updated card</string>
     <string name="created_card">Created card</string>
+    <string name="field_may_not_be_blank">Field may not be blank</string>
 </resources>
