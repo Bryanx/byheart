@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -96,9 +97,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-            <nl.bryanderidder.byheart.shared.views.PlaceholderImageView
+            <nl.bryanderidder.byheart.shared.views.DayNightImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
+                    app:nightSrc="@drawable/ic_study_dark"
+                    app:daySrc="@drawable/ic_placeholder_light"
                     app:layout_constraintStart_toStartOf="parent"
                     android:id="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent"
