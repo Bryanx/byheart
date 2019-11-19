@@ -15,7 +15,7 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileDao
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.Preferences.KEY_NOT_FIRST_START
-import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_TYPED
 import nl.bryanderidder.byheart.shared.color
 
 /**
@@ -66,7 +66,7 @@ abstract class CardDatabase : RoomDatabase() {
         private fun isFirstStart(): Boolean {
             if (!Preferences.NOT_FIRST_START) {
                 Preferences.write(KEY_NOT_FIRST_START, true)
-                Preferences.write(KEY_REHEARSAL_MEMORY, true)
+                Preferences.write(KEY_REHEARSAL_TYPED, true)
                 return true
             }
             return false
