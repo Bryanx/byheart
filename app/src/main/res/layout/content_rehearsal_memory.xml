@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,6 +34,7 @@
             android:id="@+id/cardBtnCorrect"
             android:layout_width="@dimen/fab_size"
             android:layout_height="@dimen/fab_size"
+            android:visibility="gone"
             app:elevation="0dp"
             android:src="@drawable/ic_done_black_24dp"
             app:backgroundTint="?mainBackgroundColorLighter"
@@ -45,6 +47,7 @@
             android:id="@+id/cardBtnFalse"
             android:layout_width="@dimen/fab_size"
             android:layout_height="@dimen/fab_size"
+            android:visibility="gone"
             app:elevation="0dp"
             android:src="@drawable/ic_close_black_24dp"
             app:backgroundTint="?mainBackgroundColorLighter"
@@ -59,17 +62,5 @@
             android:layout_height="wrap_content"
             app:layout_constraintGuide_percent=".5"
             android:id="@+id/guideline"/>
-
-    <TextView
-            android:id="@+id/btnContinue"
-            android:text="@string/string_continue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?mainTextColor"
-            android:visibility="gone" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@+id/cardBtnCorrect"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

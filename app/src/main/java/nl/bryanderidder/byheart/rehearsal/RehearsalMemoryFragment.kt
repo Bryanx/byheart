@@ -32,32 +32,23 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                 rehearsalCard.turnToBack()
                 val delay = rehearsalCard.backText!!.length*150.toLong()
-                if (button == cardBtnCorrect) {
-                    handler.postDelayed({ nextQuestionWithButtons() }, delay)
-                } else {
-                    btnContinue.visibility = VISIBLE
-                    handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
-                }
+                handler.postDelayed({ nextQuestionWithButtons() }, delay)
             }
-        }
-        btnContinue.setOnClickListener {
-            handler.removeMessages(0)
-            nextQuestionWithButtons()
         }
         rehearsalCard.setOnClickListener {
-            if (!rehearsalCard.backIsVisible) {
-                rehearsalCard.flipCard()
-                rehearsalCard.cardFront.isEnabled = false
-            }
+            rehearsalCard.flipCard()
+            setButtonsVisibility(VISIBLE)
         }
     }
 
-    private fun nextQuestionWithButtons() {
-        btnContinue.visibility = GONE
-        nextQuestion { /* on new card: */
-            rehearsalCard.cardFront.isEnabled = true
-            buttonsAreEnabled(true)
-        }
+    private fun nextQuestionWithButtons() = nextQuestion { /* on new card: */
+        buttonsAreEnabled(true)
+        setButtonsVisibility(GONE)
+    }
+
+    private fun setButtonsVisibility(visibility: Int) {
+        cardBtnCorrect.visibility = visibility
+        cardBtnFalse.visibility = visibility
     }
 
     private fun buttonsAreEnabled(bool: Boolean) {
@@ -66,9 +57,7 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     }
 
     override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
-        btnContinue.visibility = GONE
         return super.onRestart(true) {
-            rehearsalCard.cardFront.isEnabled = true
             buttonsAreEnabled(true)
         }
     }

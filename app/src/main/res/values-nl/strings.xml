@@ -73,7 +73,7 @@
     <string name="field_may_not_be_blank">Dit veld is verplicht.</string>
     <string name="multiple_choice_mode_description">Kies het juiste antwoord uit 4 verschillende kaarten. Je hebt minimaal 5 kaarten nodig.</string>
     <string name="typed_mode_description">Type voor iedere kaart het juiste antwoord en controleer of je de antwoorden kan spellen.</string>
-    <string name="memory_mode_description">Overhoor jezelf in gedachten. Vink aan of je in gedachten het antwoord goed of fout had.</string>
+    <string name="memory_mode_description">Overhoor jezelf. Vink aan of je in gedachten het antwoord goed of fout had.</string>
     <string name="start_rehearsal">Begin een overhoring</string>
     <string name="start">Start</string>
     <string name="pile_same_name">Je hebt al een stapel met dezelfde naam</string>
