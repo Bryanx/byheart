@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.getAttr
+import nl.bryanderidder.byheart.shared.setBrightness
 
 
 /**
@@ -38,6 +40,8 @@ class CardListAdapter internal constructor(
         holder.itemView.cvCard.setOnClickListener {
             card?.let { cardFragment.startEditFragment(it.id) }
         }
+        if (Preferences.DARK_MODE) holder.itemView.tvFront.setTextColor(cardFragment.pileColor)
+        else holder.itemView.tvFront.setTextColor(cardFragment.pileColor.setBrightness(0.55F))
     }
 
     @Suppress("UNCHECKED_CAST")

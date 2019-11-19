@@ -152,6 +152,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             }
             pile?.let { pileVM.update(pile).invokeOnCompletion {
                 sessionVM.pileName.postValue(pile.name)
+                sessionVM.pileColor.postValue(pile.color)
                 showSnackBar(activity!!, getString(R.string.updated_stack))
                 startFragment(CardFragment())
             } }

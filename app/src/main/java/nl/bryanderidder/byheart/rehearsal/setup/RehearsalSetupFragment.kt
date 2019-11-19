@@ -49,7 +49,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         btnTyped.isSelected = Preferences.REHEARSAL_TYPED
         btnMemory.isSelected = Preferences.REHEARSAL_MEMORY
         moreThanFiveCards = sessionVM.cardCount.value ?: 0 > 5
-        pileColor = sessionVM.cardColor.value ?: context!!.color(R.color.colorPrimary)
+        pileColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
         setColors()
         updateModeDescription()
         addEventHandlers()
@@ -124,7 +124,8 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         }
         if (Preferences.read(KEY_REHEARSAL_MULTIPLE_CHOICE) && !moreThanFiveCards)
             crsModeDescription.setTextColor(context!!.color(R.color.red))
-        else crsModeDescription.setTextColor(pileColor)
+        else if (Preferences.DARK_MODE) crsModeDescription.setTextColor(pileColor)
+        else crsModeDescription.setTextColor(pileColor.setBrightness(0.55F))
     }
 
 }

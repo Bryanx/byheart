@@ -37,17 +37,17 @@ class PileListAdapter internal constructor(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
-        val current = piles.find { it.listIndex == position }
-        val cardCount = cards.count { it.pileId == current?.id }
+        val pile = piles.find { it.listIndex == position }
+        val cardCount = cards.count { it.pileId == pile?.id }
         val item = holder.itemView
-        item.tvPileFront.text = current?.name
-        item.tvPileId.text = current?.id.toString()
+        item.tvPileFront.text = pile?.name
+        item.tvPileId.text = pile?.id.toString()
         item.tvCardsCount.text = "$cardCount ${context.resources.getString(R.string.cards)}"
         if (darkMode) {
-            current?.color?.let { item.tvPileFront.setTextColor(it) }
+            pile?.color?.let { item.tvPileFront.setTextColor(it) }
             item.cvPile.setCardBackgroundColor(context.getAttr(R.attr.mainBackgroundColorLighter))
         } else {
-            current?.color?.let {
+            pile?.color?.let {
                 item.tvPileFront.setTextColor(it.setBrightness(0.55F))
             }
         }
@@ -67,6 +67,7 @@ class PileListAdapter internal constructor(
             itemView.setOnClickListener {
                 sessionVM.pileId.postValue(itemView.tvPileId.long)
                 sessionVM.pileName.postValue(itemView.tvPileFront.string)
+                sessionVM.pileColor.postValue(piles.first { it.id == itemView.tvPileId.long }.color)
                 (it.context as MainActivity).supportFragmentManager.startFragment(CardFragment())
             }
         }

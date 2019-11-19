@@ -40,6 +40,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private lateinit var pileVM: PileViewModel
     private lateinit var layout: View
     private var pileId: Long = NO_ID
+    var pileColor: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card, container, false)
@@ -106,9 +107,9 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getBundle() {
-        val pileName = sessionVM.pileName.value
         pileId = sessionVM.pileId.value ?: NO_ID
-        content_card_title.text = pileName
+        pileColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
+        content_card_title.text = sessionVM.pileName.value
     }
 
     private fun addEventHandlers() {
@@ -130,7 +131,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         buttonPlay.setOnClickListener {
             sessionVM.pileId.value = pileId
             sessionVM.cardCount.value = adapter.cards.size
-            sessionVM.cardColor.value = pile?.color
+            sessionVM.pileColor.value = pile?.color
             RehearsalSetupFragment().also {
                 it.show(activity!!.supportFragmentManager, it.tag)
             }
