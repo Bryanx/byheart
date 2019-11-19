@@ -78,9 +78,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
         }
     }
 
-    private fun nextQuestionWithButtons() {
-        nextQuestion { resetViews() }
-    }
+    private fun nextQuestionWithButtons() = nextQuestion { resetViews() }
 
     private fun buttonsAreEnabled(bool: Boolean) {
         listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { it.isEnabled = bool }

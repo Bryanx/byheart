@@ -195,16 +195,16 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     open fun onCorrect() {
         correctSound.start()
         cards[cardIndex].amountCorrect++
-        cardVM.update(cards[cardIndex])
     }
 
     open fun onFalse() {
         wrongSound.start()
         cards[cardIndex].amountFalse++
-        cardVM.update(cards[cardIndex])
     }
 
     override fun onBackPressed(): Boolean {
+        //update amount false/corect
+        cardVM.updateAll(cards.subList(0, cardIndex))
         handler.removeMessages(0) // clear timers
         startFragment(CardFragment())
         return true

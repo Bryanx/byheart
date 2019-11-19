@@ -154,9 +154,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             .show()
     }
 
-    private fun exportAsCSV() {
-        IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
-    }
+    private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
 
     private fun share() {
         pile?.let {
