@@ -129,6 +129,8 @@ class CardFragment : Fragment(), IOnBackPressed {
         })
         buttonPlay.setOnClickListener {
             sessionVM.pileId.value = pileId
+            sessionVM.cardCount.value = adapter.cards.size
+            sessionVM.cardColor.value = pile?.color
             RehearsalSetupFragment().also {
                 it.show(activity!!.supportFragmentManager, it.tag)
             }
