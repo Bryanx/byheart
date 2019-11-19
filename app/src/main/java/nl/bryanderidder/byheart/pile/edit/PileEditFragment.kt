@@ -122,13 +122,13 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         when {
             name.isEmpty() -> {
                 pileNameLayout.isErrorEnabled = true
-                pileNameLayout.error = "You need to enter a name"
+                pileNameLayout.error = resources.getString(R.string.field_may_not_be_blank)
                 isCorrect = false
             }
             name.toLowerCase() in pileVM.allPiles.value!!.map { it.name?.toLowerCase() } -> {
                 if ((editMode && name != sessionVM.pileName.value) || !editMode) {
                     pileNameLayout.isErrorEnabled = true
-                    pileNameLayout.error = "You already have a pile with the same name"
+                    pileNameLayout.error = getString(R.string.pile_same_name)
                     isCorrect = false
                 }
             }

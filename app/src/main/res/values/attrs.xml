@@ -5,6 +5,8 @@
     <attr name="mainBackgroundColorLighter" format="reference" />
     <attr name="mainBackgroundColorLight" format="reference" />
     <attr name="dialogBackgroundColor" format="reference" />
+    <attr name="dialogBackgroundButton" format="reference" />
+    <attr name="dialogButtonIconColor" format="reference" />
     <attr name="mainHeaderTextColor" format="reference" />
     <attr name="mainEditTextColorHint" format="reference" />
     <attr name="mainTextColor" format="reference" />
@@ -17,5 +19,13 @@
         <attr name="text" />
         <attr name="backgroundColor" />
         <attr name="textColor" />
+        <attr name="btnCornerRadius" />
+        <attr name="icon" format="reference" />
+        <attr name="iconColor" />
+    </declare-styleable>
+
+    <declare-styleable name="DayNightImageView">
+        <attr name="daySrc" format="reference" />
+        <attr name="nightSrc" format="reference" />
     </declare-styleable>
 </resources>

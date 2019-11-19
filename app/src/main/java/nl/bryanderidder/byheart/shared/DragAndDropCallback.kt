@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_pile.view.*
 import nl.bryanderidder.byheart.pile.PileListAdapter
 
-
+/**
+ * Contains logic for dragging and dropping recycler items to required new index.
+ * @author Bryan de Ridder
+ */
 class DragAndDropCallback(private val adapter: PileListAdapter) : ItemTouchHelper.Callback() {
     override fun isLongPressDragEnabled() = true
     override fun isItemViewSwipeEnabled() = false

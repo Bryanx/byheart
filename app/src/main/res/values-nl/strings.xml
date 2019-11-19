@@ -25,12 +25,12 @@
     <string name="pronounce_text">Spreek tekst</string>
     <string name="question">Vraag</string>
     <string name="restart">Begin opnieuw</string>
-    <string name="reverse_cards">Draai kaarten om</string>
+    <string name="reverse_cards">Voor- en achterkant omdraaien</string>
     <string name="settings">Instellingen</string>
     <string name="shuffle_cards">Schud kaarten</string>
     <string name="string_continue">DOORGAAN</string>
     <string name="type_your_answer">Type je antwoord</string>
-    <string name="typed_mode">Type modus</string>
+    <string name="typed_mode">Spelling controle</string>
     <string name="want_to_quit">Weet je zeker dat je wilt stoppen?</string>
     <string name="yes">Ja</string>
     <string name="add_card">Nieuwe kaart</string>
@@ -71,4 +71,10 @@
     <string name="updated_card">Kaart bijgewerkt</string>
     <string name="created_card">Kaart aangemaakt</string>
     <string name="field_may_not_be_blank">Dit veld is verplicht.</string>
+    <string name="multiple_choice_mode_description">Kies het juiste antwoord uit 4 verschillende kaarten. Je hebt minimaal 5 kaarten nodig.</string>
+    <string name="typed_mode_description">Type voor iedere kaart het juiste antwoord en controleer of je de antwoorden kan spellen.</string>
+    <string name="memory_mode_description">Overhoor jezelf in gedachten. Vink aan of je in gedachten het antwoord goed of fout had.</string>
+    <string name="start_rehearsal">Begin een overhoring</string>
+    <string name="start">Start</string>
+    <string name="pile_same_name">Je hebt al een stapel met dezelfde naam</string>
 </resources>

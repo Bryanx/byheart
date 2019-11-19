@@ -21,7 +21,7 @@ class Swatch(
     private val checkmarkImage: ImageView
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.swatch, this)
+        LayoutInflater.from(context).inflate(R.layout.view_swatch, this)
         swatchImage = findViewById<View>(R.id.color_picker_swatch) as ImageView
         checkmarkImage = findViewById<View>(R.id.color_picker_checkmark) as ImageView
         setColor(mColor)

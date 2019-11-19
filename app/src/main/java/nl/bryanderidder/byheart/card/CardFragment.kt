@@ -3,8 +3,6 @@ package nl.bryanderidder.byheart.card
 import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -19,12 +17,8 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
-import nl.bryanderidder.byheart.rehearsal.RehearsalMemoryFragment
-import nl.bryanderidder.byheart.rehearsal.RehearsalMultipleChoiceFragment
-import nl.bryanderidder.byheart.rehearsal.RehearsalTypedFragment
+import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
-import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
 import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
@@ -48,7 +42,6 @@ class CardFragment : Fragment(), IOnBackPressed {
     private var pileId: Long = NO_ID
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        activity?.findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent))
         layout = inflater.inflate(R.layout.content_card, container, false)
         cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
@@ -135,17 +128,10 @@ class CardFragment : Fragment(), IOnBackPressed {
             }
         })
         buttonPlay.setOnClickListener {
-            // If the user has MP as a preference but less than 5 cards, overwrite preference.
-            if (adapter.cards.size < 5 && Preferences.REHEARSAL_MULTIPLE_CHOICE) {
-                Preferences.write(KEY_REHEARSAL_MULTIPLE_CHOICE, false)
-                Preferences.write(KEY_REHEARSAL_MEMORY, true)
-            }
             sessionVM.pileId.value = pileId
-            startFragment(when {
-                Preferences.REHEARSAL_MEMORY -> RehearsalMemoryFragment()
-                Preferences.REHEARSAL_TYPED -> RehearsalTypedFragment()
-                else -> RehearsalMultipleChoiceFragment()
-            })
+            RehearsalSetupFragment().also {
+                it.show(activity!!.supportFragmentManager, it.tag)
+            }
         }
     }
 

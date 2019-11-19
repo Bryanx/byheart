@@ -131,7 +131,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         when {
             q.isEmpty() -> {
                 layout.isErrorEnabled = true
-                layout.error = "Field may not be blank"
+                layout.error = resources.getString(R.string.field_may_not_be_blank)
                 isCorrect = false
             }
             q.toLowerCase() in cards.map { it.getAttr(property).toString().toLowerCase() } -> {

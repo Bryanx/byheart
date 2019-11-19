@@ -4,7 +4,6 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.animation.LayoutTransition
 import android.content.Context
-import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
@@ -44,7 +43,7 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         }
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.rehearsal_card, this)
+        LayoutInflater.from(context).inflate(R.layout.view_rehearsal_card, this)
         this.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         cardFront = findViewById(R.id.rcCardFront)
         cardBack = findViewById(R.id.rcCardBack)
@@ -60,14 +59,14 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     fun flipCard() {
         ivPronounce.flip(150L)
         backIsVisible = if (!backIsVisible) {
-            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark, PorterDuff.Mode.SRC_IN) }, 100)
+            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark) }, 100)
             flipIn.setTarget(cardFront)
             flipOut.setTarget(cardBack)
             flipIn.start()
             flipOut.start()
             true
         } else {
-            handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 150)
+            handler.postDelayed({ ivPronounce.setTint(R.color.grey_500) }, 150)
             flipIn.setTarget(cardBack)
             flipOut.setTarget(cardFront)
             flipIn.start()
@@ -81,7 +80,7 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         cardFront.rotationY = 0F
         backIsVisible = false
         cardBack.alpha = 0F
-        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500, PorterDuff.Mode.SRC_IN) }, 100)
+        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500) }, 100)
     }
 
     fun addPronounceLocale(frontLocale: Locale, backLocale: Locale) {

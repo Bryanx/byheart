@@ -10,10 +10,10 @@ import android.content.SharedPreferences
  */
 object Preferences {
     private var pref: SharedPreferences? = null
-    private const val KEY_REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
-    private const val KEY_REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"
-    private const val KEY_REHEARSAL_TYPED = "REHEARSAL_TYPED"
-    private const val KEY_REHEARSAL_PRONOUNCE = "REHEARSAL_PRONOUNCE"
+    const val KEY_REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
+    const val KEY_REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"
+    const val KEY_REHEARSAL_PRONOUNCE = "REHEARSAL_PRONOUNCE"
+    const val KEY_REHEARSAL_TYPED = "REHEARSAL_TYPED"
     const val KEY_NOT_FIRST_START = "NOT_FIRST_START"
     const val KEY_DARK_MODE = "DARK_MODE"
     const val KEY_REHEARSAL_MULTIPLE_CHOICE = "REHEARSAL_MULTIPLE_CHOICE"

@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
@@ -106,6 +107,9 @@ fun Int.setBrightness(factor: Float): Int {
     return ColorUtils.HSLToColor(hsl)
 }
 
+// Darkens an int color by a certain factor
+fun Int.setAlpha(factor: Float): Int = ColorUtils.setAlphaComponent(this, (factor * 255).toInt())
+
 fun FloatingActionButton.setColor(color: Int) {
     this.backgroundTintList = ColorStateList.valueOf(color)
 }
@@ -114,8 +118,13 @@ fun FloatingActionButton.setPureColor(color: Int) {
     this.backgroundTintList = ColorStateList.valueOf(color)
 }
 
-fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode) {
+fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN) {
     this.setColorFilter(context.color(id), blendMode)
+}
+
+
+fun ImageView.setTintColor(color: Int, blendMode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN) {
+    this.setColorFilter(color, blendMode)
 }
 
 fun Button.setBackgroundTint(color: Int) {
@@ -137,11 +146,11 @@ fun FloatingActionButton.setIconColor(color: Int) {
     this.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
 }
 
-fun Activity?.setStatusBarColor(ctx: Context?, color: Int) {
+fun Activity?.setStatusBarColor(color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         val window = (this as MainActivity).window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ctx!!.color(color)
+        window.statusBarColor = this.color(color)
     }
 }
 
@@ -234,3 +243,22 @@ val TextView.long: Long get() = this.text.toString().toLong()
 val ImageView.tint: ColorFilter get() = this.colorFilter
 
 val Locale.code: String get() = this.language + "-" + this.country
+
+var SwitchMaterial.checkedColor: Int
+    get() = thumbTintList!!.defaultColor
+    set(color) {
+        if (isChecked) {
+            thumbTintList = ColorStateList.valueOf(color)
+            trackTintList = ColorStateList.valueOf(color.setAlpha(0.15F))
+        }
+    }
+
+var SwitchMaterial.unCheckedColor: Int
+    get() = thumbTintList!!.defaultColor
+    set(color) {
+        if (!isChecked) {
+            thumbTintList = ColorStateList.valueOf(color)
+            if (Preferences.DARK_MODE) trackTintList = ColorStateList.valueOf(color.setAlpha(0.15F))
+            else trackTintList = ColorStateList.valueOf(color.setAlpha(0.35F))
+        }
+    }

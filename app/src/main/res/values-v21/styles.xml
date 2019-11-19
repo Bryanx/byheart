@@ -6,10 +6,13 @@
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="mainBackgroundColor">@color/white</item>
         <item name="mainBackgroundColorLighter">@color/grey_100</item>
         <item name="mainBackgroundColorLight">@color/grey_200</item>
         <item name="dialogBackgroundColor">@color/white</item>
+        <item name="dialogBackgroundButton">@color/grey_100</item>
+        <item name="dialogButtonIconColor">@color/colorPrimary</item>
         <item name="mainCard">@drawable/card_light</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="mainHeaderTextColor">@color/black</item>
@@ -29,6 +32,8 @@
         <item name="mainBackgroundColorLighter">@color/grey_900</item>
         <item name="mainBackgroundColorLight">@color/grey_800</item>
         <item name="dialogBackgroundColor">@color/grey_900</item>
+        <item name="dialogBackgroundButton">@color/grey_800</item>
+        <item name="dialogButtonIconColor">@color/white</item>
         <item name="mainCard">@drawable/card_dark</item>
         <item name="mainHeaderTextColor">@color/white</item>
         <item name="mainEditTextColorHint">@color/grey_600</item>
