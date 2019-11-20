@@ -27,7 +27,7 @@
     <string name="restart">Begin opnieuw</string>
     <string name="reverse_cards">Voor- en achterkant omdraaien</string>
     <string name="settings">Instellingen</string>
-    <string name="shuffle_cards">Schud kaarten</string>
+    <string name="shuffle_cards">Schudt kaarten</string>
     <string name="string_continue">DOORGAAN</string>
     <string name="type_your_answer">Type je antwoord</string>
     <string name="typed_mode">Spelling controle</string>
@@ -53,7 +53,7 @@
     <string name="import_csv">Import CSV</string>
     <string name="export_csv_summary">Exporteer alle kaarten in door komma gescheiden bestand. Dit best kan worden geopend in Microsoft Excel, Google Sheets, Apple Numbers, etc.</string>
     <string name="import_csv_summary">Importeer van Microsoft Excel, Google Sheets, Apple Numbers, of gebruik dit om kaartjes te importeren van vergelijkbare apps.</string>
-    <string name="create_backup_summary">Maak een backup. Je kan dit bestand openen op een andere android apparaat om je data te herstellen.</string>
+    <string name="create_backup_summary">Maak een backup. Je kan dit bestand openen op een ander Android apparaat om je data te herstellen.</string>
     <string name="import_backup_summary">Importeer een backup bestand. Bestaande stapels en kaarten worden niet overschreven door de backup.</string>
     <string name="coming_soon">Komt binnenkort.</string>
     <string name="reminders">Herinneringen</string>
