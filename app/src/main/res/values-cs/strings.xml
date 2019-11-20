@@ -50,7 +50,7 @@
     <string name="export_csv">Exportovat CSV</string>
     <string name="import_csv">Importovat CSV</string>
     <string name="export_csv_summary">Exportujte všechny karty do souboru odděleného čárkami. Tento soubor lze otevřít v Microsoft Excelu, Tabulkách Google, Apple Numbers atd.</string>
-    <string name="import_csv_summary">Importujte z aplikace Microsoft Excel, Tabulek Google, čísel Apple nebo použijte k importu svých karet z jiné aplikace.</string>
+    <string name="import_csv_summary">Importujte z aplikace Microsoft Excel, Tabulek Google, čísel Apple, nebo použijte k importu svých karet z jiné aplikace.</string>
     <string name="create_backup_summary">Vytvořte záložní soubor dat. Tento soubor můžete otevřít na jiném zařízení a obnovit data.</string>
     <string name="import_backup_summary">Importujte záložní soubor. Existující zásobníky a karty nebudou zálohou přepsány.</string>
     <string name="coming_soon">Brzy.</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">Smazaný zásobník</string>
     <string name="updated_card">Aktualizovaná karta</string>
     <string name="created_card">Vytvořená karta</string>
+    <string name="field_may_not_be_blank">Pole nesmí být prázdné</string>
+    <string name="memory_mode_description">Cvičte sami. Zkontrolujte, zda jste mysleli na správnou odpověď.</string>
+    <string name="multiple_choice_mode_description">Vyberte správnou odpověď ze čtyř různých karet.</string>
+    <string name="typed_mode_description">Zadejte správnou odpověď pro každou kartu.</string>
+    <string name="start_rehearsal">Začněte cvičit</string>
+    <string name="start">Start</string>
+    <string name="pile_same_name">Už máte hromadu se stejným názvem.</string>
 </resources>

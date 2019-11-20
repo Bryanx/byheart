@@ -27,10 +27,10 @@
     <string name="pronounce_text">Pronunciar texto</string>
     <string name="type_your_answer">Escribe tu respuesta</string>
     <string name="go">IR</string>
-    <string name="string_continue">HACER CONTINUACIÓN</string>
+    <string name="string_continue">CONTINUAR</string>
     <string name="create_pile">Crear pila</string>
     <string name="want_to_quit">¿Seguro que quieres salir?</string>
-    <string name="yes">si</string>
+    <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="add_card">Agregar tarjeta</string>
     <string name="edit_card">Editar tarjeta</string>
@@ -40,7 +40,7 @@
     <string name="buy_me_a_cup_of_coffee">¡Cómprame una taza de café!</string>
     <string name="create_a_bug_report">Crear un informe de error</string>
     <string name="delete_confirm_stack">¿Seguro que quieres eliminar esta pila?</string>
-    <string name="delete">Eliminar</string>
+    <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
     <string name="five_card_warning">Necesitas al menos 5 cartas.</string>
     <string name="ok">Okay</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">Pila eliminada</string>
     <string name="updated_card">Tarjeta actualizada</string>
     <string name="created_card">Tarjeta creada</string>
+    <string name="field_may_not_be_blank">El campo no puede estar en blanco</string>
+    <string name="memory_mode_description">Practica por ti mismo. Comprueba si estabas pensando en la respuesta correcta.</string>
+    <string name="multiple_choice_mode_description">Elija la respuesta correcta de cuatro cartas diferentes.</string>
+    <string name="typed_mode_description">Escriba la respuesta correcta para cada tarjeta.</string>
+    <string name="start_rehearsal">Empieza a practicar</string>
+    <string name="start">comienzo</string>
+    <string name="pile_same_name">Ya tienes un montón con el mismo nombre.</string>
 </resources>

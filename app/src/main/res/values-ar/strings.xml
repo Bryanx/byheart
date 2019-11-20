@@ -30,7 +30,7 @@
     <string name="string_continue">استمر</string>
     <string name="create_pile">خلق كومة</string>
     <string name="want_to_quit">هل أنت متأكد من أنك تريد الخروج؟</string>
-    <string name="yes">نعم</string>
+    <string name="yes">نعم فعلا</string>
     <string name="no">لا</string>
     <string name="add_card">إضافة بطاقة</string>
     <string name="edit_card">تحرير البطاقة</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">كومة المحذوفة</string>
     <string name="updated_card">بطاقة محدثة</string>
     <string name="created_card">بطاقة تم إنشاؤها</string>
+    <string name="field_may_not_be_blank">قد لا يكون الحقل فارغًا</string>
+    <string name="memory_mode_description">مارس نفسك. تحقق ما إذا كنت تفكر في الإجابة الصحيحة.</string>
+    <string name="multiple_choice_mode_description">اختر الإجابة الصحيحة من بين أربع بطاقات مختلفة.</string>
+    <string name="typed_mode_description">اكتب الإجابة الصحيحة لكل بطاقة.</string>
+    <string name="start_rehearsal">البدء في ممارسة</string>
+    <string name="start">بداية</string>
+    <string name="pile_same_name">لديك بالفعل كومة بنفس الاسم.</string>
 </resources>

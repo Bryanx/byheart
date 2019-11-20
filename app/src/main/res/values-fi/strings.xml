@@ -62,10 +62,17 @@
     <string name="support">Tuki</string>
     <string name="troubleshooting">Ongelmien karttoittaminen</string>
     <string name="removed_card">Poistettu kortti</string>
-    <string name="reordered_cards">Tilatut kortit</string>
+    <string name="reordered_cards">Uudet kortit</string>
     <string name="created_stack">Luotu pino</string>
     <string name="updated_stack">Päivitetty pino</string>
     <string name="deleted_stack">Poistettu pino</string>
     <string name="updated_card">Päivitetty kortti</string>
     <string name="created_card">Luotu kortti</string>
+    <string name="field_may_not_be_blank">Kenttä ei saa olla tyhjä</string>
+    <string name="memory_mode_description">Harjoittele itse. Tarkista, ajatelitko oikeaa vastausta.</string>
+    <string name="multiple_choice_mode_description">Valitse oikea vastaus neljästä eri kortista.</string>
+    <string name="typed_mode_description">Kirjoita oikea vastaus jokaiselle kortille.</string>
+    <string name="start_rehearsal">Aloita harjoittelu</string>
+    <string name="start">alkaa</string>
+    <string name="pile_same_name">Sinulla on jo saman niminen kasa.</string>
 </resources>

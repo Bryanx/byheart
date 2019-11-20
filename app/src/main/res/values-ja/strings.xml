@@ -31,10 +31,10 @@
     <string name="create_pile">スタックを作成</string>
     <string name="want_to_quit">本当にやめる気？</string>
     <string name="yes">はい</string>
-    <string name="no">番号</string>
+    <string name="no">いや</string>
     <string name="add_card">カードを追加</string>
     <string name="edit_card">カードを編集</string>
-    <string name="about_description">このアプリをご利用いただきありがとうございます！最新のフラッシュカードアプリはすべて、広告が肥大化しているか、サブスクリプションが必要であるか、不要な機能が多く含まれているため、これを作成しました。</string>
+    <string name="about_description">このアプリをご利用いただきありがとうございます！最新のフラッシュカードアプリはすべて、広告が肥大化している、サブスクリプションが必要、または多くの不要な機能が含まれているため、これを作成しました。</string>
     <string name="about_subtext">このアプリを楽しむ場合は、次のことを検討してください。</string>
     <string name="rate_this_app">このアプリを評価する</string>
     <string name="buy_me_a_cup_of_coffee">コーヒーを一杯買って！</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">スタックを削除しました</string>
     <string name="updated_card">更新されたカード</string>
     <string name="created_card">作成されたカード</string>
+    <string name="field_may_not_be_blank">フィールドは空白にできません</string>
+    <string name="memory_mode_description">自分で練習してください。正しい答えを考えていたかどうかを確認してください。</string>
+    <string name="multiple_choice_mode_description">4種類のカードから正しい答えを選びます。</string>
+    <string name="typed_mode_description">各カードの正しい答えを入力します。</string>
+    <string name="start_rehearsal">練習を始める</string>
+    <string name="start">開始</string>
+    <string name="pile_same_name">同じ名前のパイルがすでにあります。</string>
 </resources>

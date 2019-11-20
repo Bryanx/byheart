@@ -12,7 +12,7 @@
     <string name="card_back">卡背</string>
     <string name="light_mode">燈光模式</string>
     <string name="placeholder_text">接下來您會學什麼？</string>
-    <string name="add_a_card">添加卡</string>
+    <string name="add_a_card">添加一張信用卡</string>
     <string name="reverse_cards">反向卡</string>
     <string name="restart">重新開始</string>
     <string name="shuffle_cards">隨機洗牌</string>
@@ -34,10 +34,10 @@
     <string name="no">沒有</string>
     <string name="add_card">新增卡</string>
     <string name="edit_card">編輯卡</string>
-    <string name="about_description">感謝您使用此應用程序！我這樣做是因為所有現代抽認卡應用要么充斥著廣告，要么需要訂閱，要么包含許多不必要的功能。</string>
+    <string name="about_description">感謝您使用此應用程序！我之所以這樣做，是因為所有現代抽認卡應用要么充斥著廣告，要么需要訂閱，要么包含許多不必要的功能。</string>
     <string name="about_subtext">如果您喜歡此應用，請考慮執行以下操作：</string>
     <string name="rate_this_app">為這個應用軟件評分</string>
-    <string name="buy_me_a_cup_of_coffee">給我買一杯咖啡！</string>
+    <string name="buy_me_a_cup_of_coffee">買一杯咖啡給我！</string>
     <string name="create_a_bug_report">創建一個錯誤報告</string>
     <string name="delete_confirm_stack">您確定要刪除此堆棧嗎？</string>
     <string name="delete">刪除</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">刪除堆棧</string>
     <string name="updated_card">更新卡</string>
     <string name="created_card">創建的卡</string>
+    <string name="field_may_not_be_blank">欄位不能空白</string>
+    <string name="memory_mode_description">自己練習。檢查您是否在考慮正確的答案。</string>
+    <string name="multiple_choice_mode_description">從四張不同的卡片中選擇正確的答案。</string>
+    <string name="typed_mode_description">為每張卡鍵入正確的答案。</string>
+    <string name="start_rehearsal">開始練習</string>
+    <string name="start">開始</string>
+    <string name="pile_same_name">您已經有一個同名的樁。</string>
 </resources>

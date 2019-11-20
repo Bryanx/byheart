@@ -5,7 +5,7 @@
     <string name="edit_pile">Edit tumpukan</string>
     <string name="delete_pile">Hapus tumpukan</string>
     <string name="settings">Pengaturan</string>
-    <string name="confirm">Konfirmasi</string>
+    <string name="confirm">Memastikan</string>
     <string name="about">Tentang</string>
     <string name="dark_mode">Mode gelap</string>
     <string name="card_front">Depan kartu</string>
@@ -30,7 +30,7 @@
     <string name="string_continue">TERUS</string>
     <string name="create_pile">Buat tumpukan</string>
     <string name="want_to_quit">Anda yakin ingin berhenti?</string>
-    <string name="yes">Iya</string>
+    <string name="yes">iya nih</string>
     <string name="no">Tidak</string>
     <string name="add_card">Tambahkan kartu</string>
     <string name="edit_card">Edit kartu</string>
@@ -55,11 +55,11 @@
     <string name="import_backup_summary">Impor file cadangan. Tumpukan dan kartu yang ada tidak akan ditimpa oleh cadangan.</string>
     <string name="coming_soon">Segera akan datang.</string>
     <string name="reminders">Pengingat</string>
-    <string name="account">Akun</string>
+    <string name="account">Rekening</string>
     <string name="create_backup">Membuat backup</string>
     <string name="import_backup">Impor cadangan</string>
     <string name="import_and_export">Impor dan ekspor</string>
-    <string name="support">Dukung</string>
+    <string name="support">Mendukung</string>
     <string name="troubleshooting">Penyelesaian masalah</string>
     <string name="removed_card">Kartu yang dihapus</string>
     <string name="reordered_cards">Kartu yang disusun ulang</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">Stack yang dihapus</string>
     <string name="updated_card">Kartu diperbarui</string>
     <string name="created_card">Kartu yang dibuat</string>
+    <string name="field_may_not_be_blank">Bidang mungkin tidak kosong</string>
+    <string name="memory_mode_description">Berlatihlah sendiri. Periksa apakah Anda memikirkan jawaban yang benar.</string>
+    <string name="multiple_choice_mode_description">Pilih jawaban yang benar dari empat kartu yang berbeda.</string>
+    <string name="typed_mode_description">Ketikkan jawaban yang benar untuk setiap kartu.</string>
+    <string name="start_rehearsal">Mulai berlatih</string>
+    <string name="start">Mulai</string>
+    <string name="pile_same_name">Anda sudah memiliki tumpukan dengan nama yang sama.</string>
 </resources>

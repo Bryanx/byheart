@@ -47,8 +47,8 @@
     <string name="color_swatch_description_selected">ਚੁਣਿਆ ਰੰਗ</string>
     <string name="select_card_color">ਕਾਰਡ ਦਾ ਰੰਗ ਚੁਣੋ</string>
     <string name="cards">ਕਾਰਡ</string>
-    <string name="export_csv">CSV ਐਕਸਪੋਰਟ ਕਰੋ</string>
-    <string name="import_csv">ਸੀਐਸਵੀ ਇੰਪੋਰਟ ਕਰੋ</string>
+    <string name="export_csv">CSV ਨਿਰਯਾਤ ਕਰੋ</string>
+    <string name="import_csv">ਸੀਐਸਵੀ ਆਯਾਤ ਕਰੋ</string>
     <string name="export_csv_summary">ਇੱਕ ਕਾਮੇ ਨਾਲ ਵੱਖ ਕੀਤੀ ਫਾਈਲ ਵਿੱਚ ਸਾਰੇ ਕਾਰਡ ਐਕਸਪੋਰਟ ਕਰੋ. ਇਹ ਫਾਈਲ ਮਾਈਕਰੋਸੌਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ, ਆਦਿ ਵਿੱਚ ਖੁੱਲ੍ਹ ਸਕਦੀ ਹੈ.</string>
     <string name="import_csv_summary">ਮਾਈਕ੍ਰੋਸਾੱਫਟ ਐਕਸਲ, ਗੂਗਲ ਸ਼ੀਟਸ, ਐਪਲ ਨੰਬਰਾਂ ਤੋਂ ਆਯਾਤ ਕਰੋ ਜਾਂ ਆਪਣੇ ਫਲੈਸ਼ ਕਾਰਡਸ ਨੂੰ ਕਿਸੇ ਵੱਖਰੇ ਐਪ ਤੋਂ ਆਯਾਤ ਕਰਨ ਲਈ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ.</string>
     <string name="create_backup_summary">ਆਪਣੇ ਡਾਟੇ ਦੀ ਬੈਕਅਪ ਫਾਈਲ ਬਣਾਓ. ਤੁਸੀਂ ਆਪਣੇ ਫਾਈਲਾਂ ਨੂੰ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਇਸ ਫਾਈਲ ਨੂੰ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੇ ਖੋਲ੍ਹ ਸਕਦੇ ਹੋ.</string>
@@ -68,4 +68,11 @@
     <string name="deleted_stack">ਹਟਾਇਆ ਸਟੈਕ</string>
     <string name="updated_card">ਅਪਡੇਟ ਕੀਤਾ ਕਾਰਡ</string>
     <string name="created_card">ਬਣਾਇਆ ਕਾਰਡ</string>
+    <string name="field_may_not_be_blank">ਖੇਤਰ ਖਾਲੀ ਨਹੀਂ ਹੋ ਸਕਦਾ</string>
+    <string name="memory_mode_description">ਅਭਿਆਸ ਆਪਣੇ ਆਪ ਕਰੋ. ਜਾਂਚ ਕਰੋ ਕਿ ਕੀ ਤੁਸੀਂ ਸਹੀ ਜਵਾਬ ਬਾਰੇ ਸੋਚ ਰਹੇ ਸੀ.</string>
+    <string name="multiple_choice_mode_description">ਚਾਰ ਵੱਖੋ ਵੱਖਰੇ ਕਾਰਡਾਂ ਵਿੱਚੋਂ ਸਹੀ ਉੱਤਰ ਚੁਣੋ.</string>
+    <string name="typed_mode_description">ਹਰ ਕਾਰਡ ਲਈ ਸਹੀ ਜਵਾਬ ਟਾਈਪ ਕਰੋ.</string>
+    <string name="start_rehearsal">ਅਭਿਆਸ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="start">ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="pile_same_name">ਤੁਹਾਡੇ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਉਸੇ ਨਾਮ ਦਾ aੇਰ ਹੈ.</string>
 </resources>

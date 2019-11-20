@@ -70,4 +70,11 @@
     <string name="deleted_stack">Pile supprimée</string>
     <string name="updated_card">Carte mise à jour</string>
     <string name="created_card">Carte créée</string>
+    <string name="field_may_not_be_blank">Field may not be blank</string>
+    <string name="memory_mode_description">Pratique par vous-même. Vérifiez si vous pensiez à la bonne réponse.</string>
+    <string name="multiple_choice_mode_description">Choisissez la bonne réponse sur quatre cartes différentes.</string>
+    <string name="typed_mode_description">Tapez la bonne réponse pour chaque carte.</string>
+    <string name="start_rehearsal">Commencer à pratiquer</string>
+    <string name="start">Commencer</string>
+    <string name="pile_same_name">Vous avez déjà une pile avec le même nom.</string>
 </resources>
