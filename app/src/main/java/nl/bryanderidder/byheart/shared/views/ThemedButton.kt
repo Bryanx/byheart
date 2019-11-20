@@ -26,9 +26,9 @@ import nl.bryanderidder.byheart.shared.utils.px
  */
 class ThemedButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attrs) {
 
-    val defaultTextColor: Int = context.getAttr(R.attr.mainTextColor)
-    val defaultBg: Int = context.getAttr(R.attr.mainBackgroundColorLighter)
-    val defaultCornerRadius: Int = 22
+    private val defaultTextColor: Int = context.getAttr(R.attr.mainTextColor)
+    private val defaultBg: Int = context.getAttr(R.attr.mainBackgroundColorLighter)
+    private val defaultCornerRadius: Int = 22
     private var tvText: TextView
     private var cardView: CardView
     private var ivIcon: ImageView

@@ -37,8 +37,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected lateinit var pile: Pile
     protected lateinit var cards: MutableList<Card>
     protected lateinit var menu: Menu
-    protected lateinit var correctSound: MediaPlayer
-    protected lateinit var wrongSound: MediaPlayer
+    private lateinit var correctSound: MediaPlayer
+    private lateinit var wrongSound: MediaPlayer
     protected val handler: Handler = Handler()
     protected var cardIndex = 0
     private var pileId: Long = NO_ID

@@ -258,7 +258,7 @@ var SwitchMaterial.unCheckedColor: Int
     set(color) {
         if (!isChecked) {
             thumbTintList = ColorStateList.valueOf(color)
-            if (Preferences.DARK_MODE) trackTintList = ColorStateList.valueOf(color.setAlpha(0.15F))
-            else trackTintList = ColorStateList.valueOf(color.setAlpha(0.35F))
+            trackTintList = if (Preferences.DARK_MODE) ColorStateList.valueOf(color.setAlpha(0.15F))
+            else ColorStateList.valueOf(color.setAlpha(0.35F))
         }
     }

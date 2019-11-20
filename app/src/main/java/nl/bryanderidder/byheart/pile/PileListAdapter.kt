@@ -21,7 +21,7 @@ class PileListAdapter internal constructor(
     private val context: Context,
     val cards: MutableList<Card>,
     var sessionVM: SessionViewModel,
-    var pileVM: PileViewModel,
+    private var pileVM: PileViewModel,
     var fragment: PileFragment
 ) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 

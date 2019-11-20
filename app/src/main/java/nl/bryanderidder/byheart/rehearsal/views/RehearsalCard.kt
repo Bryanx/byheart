@@ -25,10 +25,10 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     private lateinit var languageCardFront: Locale
     private lateinit var flipOut: AnimatorSet
     private lateinit var flipIn: AnimatorSet
-    var cardFront: RehearsalCardView
-    var cardBack: RehearsalCardView
+    private var cardFront: RehearsalCardView
+    private var cardBack: RehearsalCardView
     private var ivPronounce: FlippingImageView
-    var backIsVisible = false
+    private var backIsVisible = false
 
     var frontText: String?
         get() = cardFront.string

@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_color_lens_black_24dp"
         app:iconTint="?mainTextColor"
         android:orderInCategory="100"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_confirm_edit_pile"
           android:title="@string/confirm"
           android:icon="@drawable/ic_done_black_24dp"

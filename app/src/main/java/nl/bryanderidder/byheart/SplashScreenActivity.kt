@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart;
+package nl.bryanderidder.byheart
 
 import android.content.Intent
 import android.os.Build

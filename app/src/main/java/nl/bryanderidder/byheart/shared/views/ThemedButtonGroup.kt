@@ -15,7 +15,7 @@ import nl.bryanderidder.byheart.shared.utils.px
  * Group of buttons, only allowed to select one at a time.
  * @author Bryan de Ridder
  */
-class ThemedButtonGroup(private var ctx: Context, attrs: AttributeSet) : LinearLayout(ctx, attrs) {
+class ThemedButtonGroup(ctx: Context, attrs: AttributeSet) : LinearLayout(ctx, attrs) {
 
     private var btns = mutableListOf<ThemedButton>()
     var highlightBgColor: Int = ctx.color(R.color.colorPrimary)

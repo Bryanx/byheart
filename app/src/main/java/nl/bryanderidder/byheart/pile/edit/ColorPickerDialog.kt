@@ -20,10 +20,10 @@ class ColorPickerDialog : AppCompatDialogFragment() {
 
     protected var title = "Pick a color"
     protected lateinit var mColors: IntArray
-    var mSelectedColor: Int = 0
+    private var mSelectedColor: Int = 0
     protected var mColumns: Int = 0
     protected var mSize: Int = 0
-    internal lateinit var palette: ColorPickerPalette
+    private lateinit var palette: ColorPickerPalette
     lateinit var listener: (color: Int) -> Unit
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
