@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
+import android.view.animation.Animation
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,6 +43,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected val handler: Handler = Handler()
     protected var cardIndex = 0
     private var pileId: Long = NO_ID
+    private val animations: MutableList<Animation> = mutableListOf()
 
     open fun doAfterGetData(): Unit = addEventHandlers()
 
@@ -176,11 +178,18 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     protected fun nextQuestion(doAfter: () -> Unit) {
         val screenWidth = getScreenWidth(activity?.windowManager)
-        moveX(rehearsalCard, 0F, -screenWidth).onAnimateEnd {
+        val moveX = moveX(rehearsalCard, 0F, -screenWidth)
+        animations.add(moveX)
+        moveX.onAnimateEnd {
             if (cardIndex + 1 < cards.size) {
                 rehearsalCard.resetCard()
                 nextCard()
-                moveX(rehearsalCard, screenWidth, 0F).onAnimateEnd { doAfter() }
+                val move2 = moveX(rehearsalCard, screenWidth, 0F)
+                animations.add(move2)
+                move2.onAnimateEnd {
+                    doAfter()
+                    animations.clear()
+                }
             } else {
                 startFragment(CardFragment())
             }
@@ -204,6 +213,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         //update amount false/corect
+        animations.forEach { it.cancel() }
         cardVM.updateAll(cards.subList(0, cardIndex))
         handler.removeMessages(0) // clear timers
         startFragment(CardFragment())
