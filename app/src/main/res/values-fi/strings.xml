@@ -75,4 +75,5 @@
     <string name="start_rehearsal">Aloita harjoittelu</string>
     <string name="start">alkaa</string>
     <string name="pile_same_name">Sinulla on jo saman niminen kasa.</string>
+    <string name="correct">Oikea</string>
 </resources>

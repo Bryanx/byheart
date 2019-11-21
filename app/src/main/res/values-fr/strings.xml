@@ -77,4 +77,5 @@
     <string name="start_rehearsal">Commencer à pratiquer</string>
     <string name="start">Commencer</string>
     <string name="pile_same_name">Vous avez déjà une pile avec le même nom.</string>
+    <string name="correct">Correcte</string>
 </resources>

@@ -83,4 +83,5 @@
     <string name="start_rehearsal">Start practicing</string>
     <string name="start">Start</string>
     <string name="pile_same_name">You already have a pile with the same name.</string>
+    <string name="correct">Correct</string>
 </resources>

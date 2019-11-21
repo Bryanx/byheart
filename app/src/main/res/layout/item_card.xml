@@ -28,7 +28,6 @@
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
             android:textColor="?mainTextColor"
-            android:text="Hello"
             android:textSize="@dimen/medium_font" />
 
         <TextView
@@ -41,10 +40,7 @@
             android:paddingBottom="14dp"
             android:gravity="bottom"
             android:textColor="?mainTextColor"
-            android:text="Bonjour"
             android:textSize="@dimen/small_font" />
-
-
 
         <TextView
             android:id="@+id/tvCorrectPercentage"
@@ -56,7 +52,6 @@
             android:paddingBottom="14dp"
             android:gravity="end"
             android:textColor="?mainTextColor"
-            android:text="85%"
             android:textSize="@dimen/medium_font" />
 
         <TextView
@@ -68,7 +63,7 @@
             android:paddingBottom="14dp"
             android:gravity="bottom|end"
             android:textColor="?mainTextColor"
-            android:text="Correct"
+            android:text="@string/correct"
             android:textSize="@dimen/small_font" />
     </androidx.cardview.widget.CardView>
 </LinearLayout>

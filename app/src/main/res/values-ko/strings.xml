@@ -75,4 +75,5 @@
     <string name="start_rehearsal">연습 시작</string>
     <string name="start">스타트</string>
     <string name="pile_same_name">이름이 같은 더미가 이미 있습니다.</string>
+    <string name="correct">옳은</string>
 </resources>

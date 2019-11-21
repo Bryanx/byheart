@@ -75,4 +75,5 @@
     <string name="start_rehearsal">練習を始める</string>
     <string name="start">開始</string>
     <string name="pile_same_name">同じ名前のパイルがすでにあります。</string>
+    <string name="correct">正しい</string>
 </resources>
