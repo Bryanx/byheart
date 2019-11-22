@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/action_sort_front"
-          android:title="By front text"
+          android:title="@string/by_front_text"
           android:orderInCategory="100"
           app:showAsAction="never"/>
     <item android:id="@+id/action_sort_back"
-        android:title="By back text"
+        android:title="@string/by_back_text"
         android:orderInCategory="100"
         app:showAsAction="never"/>
     <item android:id="@+id/action_sort_score"
-          android:title="By score"
+          android:title="@string/by_score"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 </menu>

@@ -84,4 +84,8 @@
     <string name="start">Start</string>
     <string name="pile_same_name">You already have a pile with the same name.</string>
     <string name="correct">Correct</string>
+    <string name="sort">Sort</string>
+    <string name="by_front_text">By front text</string>
+    <string name="by_back_text">By back text</string>
+    <string name="by_score">By score</string>
 </resources>

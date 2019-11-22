@@ -78,4 +78,8 @@
     <string name="start">Start</string>
     <string name="pile_same_name">Je hebt al een stapel met dezelfde naam</string>
     <string name="correct">Goed</string>
+    <string name="by_back_text">Op achterkant</string>
+    <string name="by_front_text">Op voorkant</string>
+    <string name="by_score">Op score</string>
+    <string name="sort">Sorteren</string>
 </resources>

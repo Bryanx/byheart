@@ -78,4 +78,8 @@
     <string name="start">Commencer</string>
     <string name="pile_same_name">Vous avez déjà une pile avec le même nom.</string>
     <string name="correct">Correcte</string>
+    <string name="sort">Trier</string>
+    <string name="by_score">Par score</string>
+    <string name="by_back_text">Par l\'arrière</string>
+    <string name="by_front_text">Par devant</string>
 </resources>
