@@ -56,7 +56,7 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     suspend fun delete(card: Card) = withContext(Dispatchers.Default) {
         repo.delete(card)
-        val cardsToUpdate = getCards(card.pileId).filter { it.listIndex > card.listIndex }
+        val cardsToUpdate = getCards(card.pileId).filter { it != card && it.listIndex > card.listIndex }
         cardsToUpdate.forEach { it.listIndex -= 1 }
         repo.updateAll(cardsToUpdate)
     }

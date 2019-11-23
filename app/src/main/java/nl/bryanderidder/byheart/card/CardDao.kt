@@ -23,7 +23,7 @@ interface CardDao {
     @Update
     fun update(card: Card)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateAll(cards: List<Card>)
 
     @Delete
