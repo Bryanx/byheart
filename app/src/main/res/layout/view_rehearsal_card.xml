@@ -10,16 +10,28 @@
         android:id="@+id/rcCardFront"
         android:layout_width="255dp"
         android:layout_height="255dp"
-        style="@style/rehearsal_card"
-        android:background="@drawable/shadow" />
+        style="@style/rehearsal_card">
+        <TextView
+            android:id="@+id/tvCardFront"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/rehearsal_card"
+            android:layout_gravity="center" />
+    </nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView>
 
     <nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView
         android:id="@+id/rcCardBack"
         android:layout_width="255dp"
         android:layout_height="255dp"
         style="@style/rehearsal_card"
-        android:background="@drawable/shadow_dark_back"
-        android:alpha="0.0" />
+        android:alpha="0.0">
+        <TextView
+            android:id="@+id/tvCardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/rehearsal_card"
+            android:layout_gravity="center" />
+    </nl.bryanderidder.byheart.rehearsal.views.RehearsalCardView>
 
     <nl.bryanderidder.byheart.rehearsal.views.FlippingImageView
         android:id="@+id/rcIvPronounce"

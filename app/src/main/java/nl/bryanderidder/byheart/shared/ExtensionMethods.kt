@@ -119,7 +119,7 @@ fun FloatingActionButton.setPureColor(color: Int) {
 }
 
 fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN) {
-    this.setColorFilter(context.color(id), blendMode)
+    this.setColorFilter(id, blendMode)
 }
 
 
@@ -197,9 +197,7 @@ fun String.getExtension(): String {
 }
 
 fun EditText.setLineColor(color: Int) {
-    if (Build.VERSION.SDK_INT >= 21) {
-        this.backgroundTintList = ColorStateList.valueOf(context.color(color))
-    }
+    if (Build.VERSION.SDK_INT >= 21) this.backgroundTintList = ColorStateList.valueOf(color)
 }
 
 fun Button.setTxtColor(color: Int) {

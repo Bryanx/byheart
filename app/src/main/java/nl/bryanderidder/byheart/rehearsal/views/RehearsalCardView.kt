@@ -1,38 +1,33 @@
 package nl.bryanderidder.byheart.rehearsal.views
 
 import android.content.Context
-import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatTextView
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.getAttr
-import nl.bryanderidder.byheart.shared.name
+import nl.bryanderidder.byheart.shared.utils.px
 
 /**
  * Custom TextView for making a simple card.
  * @author Bryan de Ridder
  */
-class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
+class RehearsalCardView(context: Context, attrs: AttributeSet) : CardView(context, attrs) {
+
+    lateinit var textView: TextView
+
+    var bgColor: Int
+        get() = cardBackgroundColor.defaultColor
+        set(color) = setCardBackgroundColor(color)
 
     init {
+        radius = 15.px.toFloat()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = 0F
         changeCameraDistance()
-        changeCardColor()
-    }
-
-    private fun changeCardColor() {
-        val darkMode = Preferences.DARK_MODE
-        when {
-            this.name == "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark_back, Color.WHITE)
-            this.name != "cardBack" && darkMode -> setBgAndTxt(R.drawable.shadow_dark)
-            this.name == "cardBack" && !darkMode -> setBgAndTxt(R.drawable.shadow_back, Color.WHITE)
-            else -> setBgAndTxt(R.drawable.shadow)
-        }
-    }
-
-    private fun setBgAndTxt(id: Int, color: Int = context.getAttr(R.attr.mainTextColor)) {
-        this.setBackgroundResource(id)
-        this.setTextColor(color)
+        bgColor = context.getAttr(R.attr.mainBackgroundColorLight)
     }
 
     private fun changeCameraDistance() {
@@ -42,8 +37,15 @@ class RehearsalCardView(context: Context, attrs: AttributeSet) : AppCompatTextVi
     }
 
     //Make square based on width
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) =
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
+
+    override fun addView(child: View?, params: ViewGroup.LayoutParams?) {
+        super.addView(child, params)
+        if (child != null && child is TextView) {
+            this.textView = child
+            this.textView.setTextColor(context.getAttr(R.attr.mainTextColor))
+        }
     }
 
 }

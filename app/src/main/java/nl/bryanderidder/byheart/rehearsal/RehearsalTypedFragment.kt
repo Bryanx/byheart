@@ -24,6 +24,12 @@ class RehearsalTypedFragment : RehearsalFragment() {
         return layout
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btnGo.setBackgroundTint(pileColor)
+        etInput.setLineColor(pileColor)
+    }
+
     override fun addEventHandlers() {
         etInput.onEnter {
             return@onEnter when {
@@ -59,13 +65,15 @@ class RehearsalTypedFragment : RehearsalFragment() {
 
     override fun onCorrect() {
         super.onCorrect()
-        etInput.setLineColor(R.color.green)
+        etInput.setLineColor(context!!.color(R.color.green))
+        btnGo.setBackgroundTint(context!!.color(R.color.green))
         handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
     }
 
     override fun onFalse() {
         super.onFalse()
-        etInput.setLineColor(R.color.red)
+        etInput.setLineColor(context!!.color(R.color.red))
+        btnGo.setBackgroundTint(context!!.color(R.color.red))
         handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
     }
 
@@ -90,7 +98,8 @@ class RehearsalTypedFragment : RehearsalFragment() {
         btnGo.text = resources.getString(R.string.go)
         btnGo.setCompoundDrawablesWithIntrinsicBounds( 0, 0, 0, 0)
         etInput.text = null
-        etInput.setLineColor(R.color.colorPrimary)
+        etInput.setLineColor(pileColor)
+        btnGo.setBackgroundTint(pileColor)
         enterCounter = 0
     }
 

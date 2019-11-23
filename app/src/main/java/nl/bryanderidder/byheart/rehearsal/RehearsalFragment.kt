@@ -44,6 +44,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected var cardIndex = 0
     private var pileId: Long = NO_ID
     private val animations: MutableList<Animation> = mutableListOf()
+    protected var pileColor: Int = R.color.colorPrimary
 
     open fun doAfterGetData(): Unit = addEventHandlers()
 
@@ -54,11 +55,14 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileId = sessionVM.pileId.value ?: NO_ID
+        pileColor = sessionVM.pileColor.value ?: R.color.colorPrimary
         getCards()
         addToolbar()
         pileVM.allPiles.observe(this, Observer { piles ->
             pile = piles.first { pile -> pile.id == pileId }
-            layout.findViewById<RehearsalCard>(R.id.rehearsalCard).addPronounceLocale(
+            val rehearsalCard = layout.findViewById<RehearsalCard>(R.id.rehearsalCard)
+            rehearsalCard.setBackColor(pileColor)
+            rehearsalCard.addPronounceLocale(
                 Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront },
                 Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack })
         })
@@ -79,9 +83,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.rehearsal_restart -> onRestart(true, null)
-            R.id.rehearsal_pronounce -> {
-                toggleMenuItem(item, item.getName(resources)).run { true }
-            }
+            R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getName(resources)).run { true }
             R.id.rehearsal_shuffle -> {
                 toggleMenuItem(item, item.getName(resources))
                 shuffleCards(item.isChecked)

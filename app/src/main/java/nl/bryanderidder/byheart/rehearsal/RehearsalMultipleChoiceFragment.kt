@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
 
 
 /**
@@ -19,7 +19,7 @@ import nl.bryanderidder.byheart.shared.*
  */
 class RehearsalMultipleChoiceFragment : RehearsalFragment() {
 
-    private lateinit var buttons: MutableList<Button>
+    private lateinit var buttons: MutableList<MultipleChoiceAnswer>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = container!!.inflate(R.layout.content_rehearsal_multiple_choice)
@@ -47,31 +47,34 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
         resetButtons()
     }
 
-    private fun addAnswerToButton(i: Int, btn: Button, tempCards: List<Card>) {
-        if (Preferences.REHEARSAL_REVERSE) btn.text = tempCards[i].question
-        else btn.text = tempCards[i].answer
+    private fun addAnswerToButton(i: Int, btn: MultipleChoiceAnswer, tempCards: List<Card>) {
+        if (Preferences.REHEARSAL_REVERSE) btn.text = tempCards[i].question!!
+        else btn.text = tempCards[i].answer!!
     }
 
     private fun resetButtons() {
         buttonsAreEnabled(true)
         buttons.forEach {
-            it.setTextColor(context?.getAttr(R.attr.mainTextColor)!!)
+            it.textColor = context?.getAttr(R.attr.mainTextColor)!!
+            it.bgColor = context?.getAttr(R.attr.mainBackgroundColorLight)!!
         }
     }
 
     override fun addEventHandlers() {
-        listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { btn: Button ->
+        listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { btn: MultipleChoiceAnswer ->
             btn.setOnClickListener {
-                if (btn.string.equalsIgnoreCase(rehearsalCard.backText!!)) {
+                if (btn.text.equalsIgnoreCase(rehearsalCard.backText!!)) {
                     buttonsAreEnabled(false)
                     super.onCorrect()
                     if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
-                    btn.setTxtColor(R.color.green)
+                    btn.textColor = context!!.color(R.color.white)
+                    btn.bgColor = context!!.getAttr(R.attr.colorGreen)
                     rehearsalCard.turnToBack()
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
                 } else {
                     super.onFalse()
-                    btn.setTxtColor(R.color.red)
+                    btn.textColor = context!!.color(R.color.white)
+                    btn.bgColor = context!!.color(R.color.red)
                     btn.isEnabled = false
                 }
             }
@@ -81,7 +84,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
     private fun nextQuestionWithButtons() = nextQuestion { resetViews() }
 
     private fun buttonsAreEnabled(bool: Boolean) {
-        listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { it.isEnabled = bool }
+        listOf(btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4).forEach { it?.let { it.isEnabled = bool } }
     }
 
     override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {

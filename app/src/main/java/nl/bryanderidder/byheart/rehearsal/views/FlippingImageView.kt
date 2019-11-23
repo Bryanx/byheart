@@ -32,9 +32,7 @@ class FlippingImageView(context: Context, attrs: AttributeSet) : AppCompatImageV
             .onAnimateEnd { flipY(this, -90f, 0f, duration) }
     }
 
-    fun pronounce(text: String) {
-        textToSpeech.pronounce(text)
-    }
+    fun pronounce(text: String) = textToSpeech.pronounce(text)
 
     override fun onDetachedFromWindow() {
         textToSpeech.shutdown()

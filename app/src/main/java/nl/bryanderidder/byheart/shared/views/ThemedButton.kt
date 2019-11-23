@@ -19,7 +19,6 @@ import nl.bryanderidder.byheart.shared.setTintColor
 import nl.bryanderidder.byheart.shared.string
 import nl.bryanderidder.byheart.shared.utils.px
 
-
 /**
  * Custom button with rounded corners.
  * @author Bryan de Ridder
@@ -73,9 +72,7 @@ class ThemedButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attr
 
     var btnBackgroundColor: Int
         get() = cardView.cardBackgroundColor.defaultColor
-        set(btnBackgroundColor) {
-            cardView.setCardBackgroundColor(btnBackgroundColor)
-        }
+        set(btnBackgroundColor) = cardView.setCardBackgroundColor(btnBackgroundColor)
 
     var icon: Drawable
         get() = ivIcon.background

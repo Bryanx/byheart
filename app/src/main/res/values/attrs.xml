@@ -4,6 +4,7 @@
     <attr name="mainBackgroundColor" format="reference" />
     <attr name="mainBackgroundColorLighter" format="reference" />
     <attr name="mainBackgroundColorLight" format="reference" />
+    <attr name="colorGreen" format="reference" />
     <attr name="dialogBackgroundColor" format="reference" />
     <attr name="dialogBackgroundButton" format="reference" />
     <attr name="dialogButtonIconColor" format="reference" />

@@ -5,6 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorGreen">@color/green</item>
         <item name="mainBackgroundColor">@color/white</item>
         <item name="mainBackgroundColorLighter">@color/grey_100</item>
         <item name="mainBackgroundColorLight">@color/grey_200</item>
@@ -26,6 +27,7 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppThemeDark" parent="AppTheme">
+        <item name="colorGreen">@color/greenDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="activeActionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="android:statusBarColor">@color/black</item>
@@ -53,6 +55,5 @@
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/edit_text_size</item>
-        <item name="android:background">@drawable/shadow</item>
     </style>
 </resources>

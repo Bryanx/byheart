@@ -3,5 +3,6 @@
     <color name="colorPrimary">#5C6BC0</color>
     <color name="colorPrimaryDark">#3F51B5</color>
     <color name="green">#00E676</color>
+    <color name="greenDark">#00BC61</color>
     <color name="red">#F50057</color>
 </resources>

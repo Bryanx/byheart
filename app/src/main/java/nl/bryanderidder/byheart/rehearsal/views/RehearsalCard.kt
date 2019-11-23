@@ -9,9 +9,7 @@ import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import android.widget.TextView
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.setTint
-import nl.bryanderidder.byheart.shared.string
+import nl.bryanderidder.byheart.shared.*
 import java.util.*
 
 /**
@@ -21,6 +19,7 @@ import java.util.*
  */
 class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs) {
 
+    private var backColor: Int = R.color.colorPrimaryDark
     private lateinit var languageCardBack: Locale
     private lateinit var languageCardFront: Locale
     private lateinit var flipOut: AnimatorSet
@@ -31,15 +30,15 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     private var backIsVisible = false
 
     var frontText: String?
-        get() = cardFront.string
+        get() = cardFront.textView.string
         set(text) {
-            cardFront.text = text
+            cardFront.textView.text = text
         }
 
     var backText: String?
-        get() = cardBack.string
+        get() = cardBack.textView.string
         set(text) {
-            cardBack.text = text
+            cardBack.textView.text = text
         }
 
     init {
@@ -59,14 +58,14 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     fun flipCard() {
         ivPronounce.flip(150L)
         backIsVisible = if (!backIsVisible) {
-            handler.postDelayed({ ivPronounce.setTint(R.color.colorPrimaryDark) }, 100)
+            handler.postDelayed({ ivPronounce.setTint(backColor.setBrightness(0.2F)) }, 100)
             flipIn.setTarget(cardFront)
             flipOut.setTarget(cardBack)
             flipIn.start()
             flipOut.start()
             true
         } else {
-            handler.postDelayed({ ivPronounce.setTint(R.color.grey_500) }, 150)
+            handler.postDelayed({ ivPronounce.setTint(context.color(R.color.grey_500)) }, 150)
             flipIn.setTarget(cardBack)
             flipOut.setTarget(cardFront)
             flipIn.start()
@@ -80,22 +79,22 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         cardFront.rotationY = 0F
         backIsVisible = false
         cardBack.alpha = 0F
-        handler.postDelayed({ ivPronounce.setTint(R.color.grey_500) }, 100)
+        handler.postDelayed({ ivPronounce.setTint(context.color(R.color.grey_500)) }, 100)
     }
 
     fun addPronounceLocale(frontLocale: Locale, backLocale: Locale) {
         languageCardFront = frontLocale
         languageCardBack = backLocale
         ivPronounce.setOnClickListener {
-            if (backIsVisible) speakCard(cardBack, backLocale)
-            else speakCard(cardFront, frontLocale)
+            if (backIsVisible) speakCard(cardBack.textView, backLocale)
+            else speakCard(cardFront.textView, frontLocale)
         }
     }
 
     private fun speakCard(tv: TextView, language: Locale) {
         when {
             !Preferences.REHEARSAL_REVERSE -> ivPronounce.language = language
-            tv == cardBack -> ivPronounce.language = languageCardFront
+            tv == cardBack.textView -> ivPronounce.language = languageCardFront
             else -> ivPronounce.language = languageCardBack
         }
         ivPronounce.pronounce(tv.string)
@@ -109,5 +108,12 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         if (!backIsVisible) flipCard()
     }
 
-    fun sayBackCard() = speakCard(cardBack, languageCardBack)
+    fun sayBackCard() = speakCard(cardBack.textView, languageCardBack)
+
+    fun setBackColor(color: Int) {
+        this.backColor = color
+        cardFront.textView.setTextColor(color.setBrightness(0.55F))
+        cardBack.bgColor = color
+        cardBack.textView.setTextColor(context.color(R.color.white))
+    }
 }
