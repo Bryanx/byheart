@@ -15,7 +15,6 @@
     </array>
     <string-array name="languages">
         <item>bn-BD</item>
-        <item>yue-HK</item>
         <item>zh-CN</item>
         <item>zh-TW</item>
         <item>cs-CZ</item>
@@ -23,7 +22,6 @@
         <item>nl-NL</item>
         <item>en-GB</item>
         <item>en-US</item>
-        <item>et-EE</item>
         <item>fil-PH</item>
         <item>fi-FI</item>
         <item>fr-FR</item>
@@ -47,11 +45,9 @@
         <item>si-LK</item>
         <item>sk-SK</item>
         <item>es-ES</item>
-        <item>es-US</item>
         <item>sv-SE</item>
         <item>th-TH</item>
         <item>tr-TR</item>
         <item>uk-UA</item>
-        <item>vi-VN</item>
     </string-array>
 </resources>

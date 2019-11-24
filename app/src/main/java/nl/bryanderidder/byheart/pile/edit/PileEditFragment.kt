@@ -69,6 +69,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                 countries.add(locale.displayName)
             }
         }
+        countries.sort()
         if (Preferences.DARK_MODE) {
             adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
             adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
