@@ -4,7 +4,7 @@
     <dimen name="pile_dimen">150dp</dimen>
     <dimen name="collapsible_app_bar_height">198dp</dimen>
     <dimen name="fab_size">55dp</dimen>
-    <dimen name="edit_text_size">24sp</dimen>
+    <dimen name="edit_text_size">30sp</dimen>
     <dimen name="color_swatch_large">45dp</dimen>
     <dimen name="color_swatch_margins_large">8dp</dimen>
     <dimen name="standard_margin">8dp</dimen>
