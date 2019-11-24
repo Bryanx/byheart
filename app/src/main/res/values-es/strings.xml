@@ -81,4 +81,5 @@
 	<string name="by_front_text">Por delante de texto</string>
 	<string name="by_back_text">Por el texto de nuevo</string>
 	<string name="by_score">por puntuación</string>
+	<string name="you_dont_have_any_cards_yet">Usted don \ 't tiene ningún tarjetas todavía.</string>
 </resources>

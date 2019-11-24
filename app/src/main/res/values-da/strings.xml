@@ -81,4 +81,5 @@
 	<string name="by_front_text">Ved fronten tekst</string>
 	<string name="by_back_text">Ved tilbage tekst</string>
 	<string name="by_score">ved score</string>
+	<string name="you_dont_have_any_cards_yet">Du don \ 't har nogen kort endnu.</string>
 </resources>

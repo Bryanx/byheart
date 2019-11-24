@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.res.Resources
 import android.graphics.Color
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -24,6 +25,15 @@ fun showSnackBar(activity: Activity, message: String) {
     val rootView = activity.window.decorView.findViewById<View>(android.R.id.content)
     Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT)
         .setTextColor(Color.WHITE)
+        .show()
+}
+
+fun Fragment.showSnackBar(message: String, actionMessage: String, actionColor: Int, onClick: () -> Unit) {
+    val rootView = activity!!.window.decorView.findViewById<View>(android.R.id.content)
+    Snackbar.make(rootView, message, Snackbar.LENGTH_LONG)
+        .setTextColor(Color.WHITE)
+        .setActionTextColor(actionColor)
+        .setAction(actionMessage) { onClick() }
         .show()
 }
 

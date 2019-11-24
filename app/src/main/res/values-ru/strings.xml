@@ -81,4 +81,5 @@
 	<string name="by_front_text">С помощью передней текста</string>
 	<string name="by_back_text">По спине текста</string>
 	<string name="by_score">По счету</string>
+	<string name="you_dont_have_any_cards_yet">Вы не \ 'т есть какие-либо карты еще.</string>
 </resources>

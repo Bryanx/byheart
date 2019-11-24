@@ -81,4 +81,5 @@
 	<string name="by_front_text">전면 텍스트로</string>
 	<string name="by_back_text">다시 텍스트로</string>
 	<string name="by_score">평가 점수에 의해</string>
+	<string name="you_dont_have_any_cards_yet">당신은 \ 't 가지고있는 카드를 아직 돈.</string>
 </resources>

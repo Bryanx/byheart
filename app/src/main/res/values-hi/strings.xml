@@ -81,4 +81,5 @@
 	<string name="by_front_text">सामने पाठ करके</string>
 	<string name="by_back_text">वापस पाठ करके</string>
 	<string name="by_score">तक स्कोर</string>
+	<string name="you_dont_have_any_cards_yet">आप \ 'टी किसी भी कार्ड में अभी तक डॉन।</string>
 </resources>

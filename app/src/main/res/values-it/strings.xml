@@ -81,4 +81,5 @@
 	<string name="by_front_text">Di fronte il testo</string>
 	<string name="by_back_text">Con il testo indietro</string>
 	<string name="by_score">Con il punteggio</string>
+	<string name="you_dont_have_any_cards_yet">È don \ 't ha ancora nessun carte.</string>
 </resources>

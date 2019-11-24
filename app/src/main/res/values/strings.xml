@@ -88,4 +88,5 @@
     <string name="by_front_text">By front text</string>
     <string name="by_back_text">By back text</string>
     <string name="by_score">By score</string>
+    <string name="you_dont_have_any_cards_yet">You don\'t have any cards yet.</string>
 </resources>

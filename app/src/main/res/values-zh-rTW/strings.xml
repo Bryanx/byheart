@@ -81,4 +81,5 @@
 	<string name="by_front_text">通過前文</string>
 	<string name="by_back_text">通過背面的文本</string>
 	<string name="by_score">通過分數</string>
+	<string name="you_dont_have_any_cards_yet">你不\'噸有任何卡呢。</string>
 </resources>

@@ -81,4 +81,5 @@
 	<string name="by_front_text">حسب النص الأمامي</string>
 	<string name="by_back_text">حسب النص الخلفي</string>
 	<string name="by_score">قبل النتيجة</string>
+	<string name="you_dont_have_any_cards_yet">كنت دون \ 'ر لها أي بطاقات حتى الان.</string>
 </resources>

@@ -81,4 +81,5 @@
 	<string name="by_front_text">সামনের টেক্সট দ্বারা</string>
 	<string name="by_back_text">ফিরে টেক্সট দ্বারা</string>
 	<string name="by_score">দ্বারা স্কোর</string>
+	<string name="you_dont_have_any_cards_yet">আপনি \ 'টি কোনো কার্ড এখনও ডন।</string>
 </resources>

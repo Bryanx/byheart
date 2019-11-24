@@ -125,15 +125,19 @@ class CardFragment : Fragment(), IOnBackPressed {
                 }
                 if (newCards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
                 else placeholderNoCards.visibility = GONE
-                buttonPlay.isEnabled = newCards.isNotEmpty()
             }
         })
         buttonPlay.setOnClickListener {
-            sessionVM.pileId.value = pileId
-            sessionVM.cardCount.value = adapter.cards.size
-            sessionVM.pileColor.value = pile?.color
-            RehearsalSetupFragment().also {
-                it.show(activity!!.supportFragmentManager, it.tag)
+            if (adapter.cards.isEmpty()) {
+                showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
+            } else {
+                sessionVM.pileId.value = pileId
+                sessionVM.cardCount.value = adapter.cards.size
+                sessionVM.pileColor.value = pile?.color
+                RehearsalSetupFragment().also {
+                    it.show(activity!!.supportFragmentManager, it.tag)
+                }
+
             }
         }
     }
