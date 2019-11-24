@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
-    <string name="question">Question</string>
-    <string name="answer">Answer</string>
     <string name="pile_name">Stack name</string>
     <string name="edit_pile">Edit stack</string>
     <string name="delete_pile">Delete stack</string>
@@ -30,7 +28,6 @@
     <string name="pronounce_text">Pronounce text</string>
     <string name="type_your_answer">Type your answer</string>
     <string name="go">GO</string>
-    <string name="string_continue">CONTINUE</string>
     <string name="create_pile">Create stack</string>
     <string name="want_to_quit">Are you sure you want to quit?</string>
     <string name="yes">Yes</string>
@@ -88,5 +85,10 @@
     <string name="by_front_text">By front text</string>
     <string name="by_back_text">By back text</string>
     <string name="by_score">By score</string>
-    <string name="you_dont_have_any_cards_yet">You don\'t have any cards yet.</string>
+    <string name="you_dont_have_any_cards_yet">You have no cards yet.</string>
+    <string name="flip_icon" translatable="false">Flip icon</string>
+    <string name="pronounce_icon" translatable="false">Pronounce icon</string>
+    <string name="shuffle_icon" translatable="false">Shuffle icon</string>
+    <string name="repeat_icon" translatable="false">Repeat icon</string>
+    <string name="repeat_wrong_answers">Repeat wrong answers</string>
 </resources>

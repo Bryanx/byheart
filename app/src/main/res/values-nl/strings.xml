@@ -3,7 +3,6 @@
     <string name="about">Over</string>
     <string name="add_a_card">Voeg een kaart toe</string>
     <string name="add_another_card">Voeg nog een kaart toe</string>
-    <string name="answer">Antwoord</string>
     <string name="card_back">Achterkant</string>
     <string name="card_front">Voorkant</string>
     <string name="confirm">Bevestigen</string>
@@ -23,12 +22,10 @@
     <string name="placeholder_text">Wat wil je leren?</string>
     <string name="pronounce_cards">Spreek kaarten uit</string>
     <string name="pronounce_text">Spreek tekst</string>
-    <string name="question">Vraag</string>
     <string name="restart">Begin opnieuw</string>
     <string name="reverse_cards">Voor- en achterkant omdraaien</string>
     <string name="settings">Instellingen</string>
     <string name="shuffle_cards">Schudt kaarten</string>
-    <string name="string_continue">DOORGAAN</string>
     <string name="type_your_answer">Type je antwoord</string>
     <string name="typed_mode">Spelling controle</string>
     <string name="want_to_quit">Weet je zeker dat je wilt stoppen?</string>
@@ -83,4 +80,5 @@
     <string name="by_score">Op score</string>
     <string name="sort">Sorteren</string>
     <string name="you_dont_have_any_cards_yet">Je hebt nog geen kaarten.</string>
+    <string name="repeat_wrong_answers">Herhaal foute antwoorden</string>
 </resources>
