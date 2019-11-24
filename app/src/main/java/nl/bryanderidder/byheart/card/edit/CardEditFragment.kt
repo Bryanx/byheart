@@ -61,6 +61,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         updateColors()
         if (editMode) addToolbar(title = resources.getString(R.string.edit_card))
         else addToolbar(title = resources.getString(R.string.add_card))
+        etCardFront.showKeyboard()
     }
 
     private fun updateColors() {

@@ -52,10 +52,9 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         setRandomColor()
         getBundle()
-        addToolbar(title = when {
-                editMode -> resources.getString(R.string.edit_pile)
-                else -> resources.getString(R.string.create_pile)
-        })
+        if (editMode) addToolbar(title = resources.getString(R.string.edit_pile))
+        else addToolbar(title = resources.getString(R.string.create_pile))
+        etPileName.showKeyboard()
         addEventHandlers()
     }
 

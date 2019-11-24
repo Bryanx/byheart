@@ -20,8 +20,10 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -200,10 +202,6 @@ fun EditText.setLineColor(color: Int) {
     if (Build.VERSION.SDK_INT >= 21) this.backgroundTintList = ColorStateList.valueOf(color)
 }
 
-fun Button.setTxtColor(color: Int) {
-    this.setTextColor(context.color(color))
-}
-
 fun Activity?.hideKeyboard() {
     val inputManager = this?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
@@ -218,6 +216,28 @@ fun EditText.onEnter(action: () -> Boolean) {
             return false
         }
     })
+}
+
+fun EditText.showKeyboard() {
+    post {
+        requestFocus()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    }
+}
+
+fun EditText.setCaretColor(color: Int) {
+    try {
+        // Change cursor color
+        val unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.cursor)
+        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+        DrawableCompat.setTint(wrappedDrawable, color)
+        // Get the cursor resource id
+        val field = TextView::class.java.getDeclaredField("mCursorDrawableRes")
+        field.isAccessible = true
+        field.set(this, R.drawable.cursor)
+    } catch (e: Exception) {
+    }
 }
 
 fun Any.getAttr(name: String): Any? {
