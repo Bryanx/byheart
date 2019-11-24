@@ -171,10 +171,6 @@ class CardFragment : Fragment(), IOnBackPressed {
         layoutManager.scrollToPosition(0)
     }
 
-    fun updateAllCards(cards: List<Card>) {
-        cardVM.updateAll(cards)
-    }
-
     fun removeCard(card: Card) = GlobalScope.launch {
         swipeLeftToDelete.isEnabled = false
         activity?.runOnUiThread {
@@ -185,6 +181,8 @@ class CardFragment : Fragment(), IOnBackPressed {
         showSnackBar(activity!!, getString(R.string.removed_card))
         swipeLeftToDelete.isEnabled = true
     }
+
+    fun updateAllCards(cards: List<Card>) = cardVM.updateAll(cards)
 
     // This method is called by the MainActivity.
     override fun onBackPressed(): Boolean = startFragment(PileFragment()).run { true }

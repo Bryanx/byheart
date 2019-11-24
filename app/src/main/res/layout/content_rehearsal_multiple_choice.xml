@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rehearsalCard">
 
-        <nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
+        <nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer
             android:id="@+id/btnAnswer1"
             style="@style/ButtonMultipleChoice"
             android:layout_marginEnd="4dp"
@@ -59,9 +59,9 @@
                 android:layout_gravity="center"
                 android:textColor="@color/pink_300"
                 android:textAlignment="center"/>
-        </nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer>
+        </nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer>
 
-        <nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
+        <nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer
             android:id="@+id/btnAnswer2"
             style="@style/ButtonMultipleChoice"
             android:layout_marginStart="4dp"
@@ -76,9 +76,9 @@
                 android:layout_gravity="center"
                 android:textColor="@color/pink_300"
                 android:textAlignment="center"/>
-        </nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer>
+        </nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer>
 
-        <nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
+        <nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer
             android:id="@+id/btnAnswer3"
             style="@style/ButtonMultipleChoice"
             app:cardCornerRadius="14dp"
@@ -94,9 +94,9 @@
                 android:layout_gravity="center"
                 android:textColor="@color/pink_300"
                 android:textAlignment="center"/>
-        </nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer>
+        </nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer>
 
-        <nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
+        <nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer
             android:id="@+id/btnAnswer4"
             style="@style/ButtonMultipleChoice"
             android:layout_marginStart="8dp"
@@ -112,7 +112,7 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/pink_300" />
-        </nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer>
+        </nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"

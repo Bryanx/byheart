@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared.views
+package nl.bryanderidder.byheart.rehearsal.views
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator

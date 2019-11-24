@@ -112,8 +112,10 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
 
     fun setBackColor(color: Int) {
         this.backColor = color
-        cardFront.textView.setTextColor(color.setBrightness(0.55F))
-        cardBack.bgColor = color
+        if (Preferences.DARK_MODE) cardFront.textView.setTextColor(color)
+        else cardFront.textView.setTextColor(color.setBrightness(0.55F))
+        if (Preferences.DARK_MODE) cardBack.bgColor = color.setBrightness(0.65F)
+        else cardBack.bgColor = color
         cardBack.textView.setTextColor(context.color(R.color.white))
     }
 }

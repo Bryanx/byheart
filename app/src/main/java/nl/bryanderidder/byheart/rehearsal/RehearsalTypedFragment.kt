@@ -26,8 +26,7 @@ class RehearsalTypedFragment : RehearsalFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnGo.setBackgroundTint(pileColor)
-        etInput.setLineColor(pileColor)
+        resetViews()
     }
 
     override fun addEventHandlers() {

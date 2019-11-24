@@ -27,7 +27,7 @@ class RehearsalCardView(context: Context, attrs: AttributeSet) : CardView(contex
         radius = 15.px.toFloat()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = 0F
         changeCameraDistance()
-        bgColor = context.getAttr(R.attr.mainBackgroundColorLight)
+        bgColor = context.getAttr(R.attr.mainBackgroundColorLighter)
     }
 
     private fun changeCameraDistance() {

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.content_rehearsal_multiple_choice.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
+import nl.bryanderidder.byheart.rehearsal.views.MultipleChoiceAnswer
 import nl.bryanderidder.byheart.shared.*
-import nl.bryanderidder.byheart.shared.views.MultipleChoiceAnswer
 
 
 /**
@@ -56,7 +56,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
         buttonsAreEnabled(true)
         buttons.forEach {
             it.textColor = context?.getAttr(R.attr.mainTextColor)!!
-            it.bgColor = context?.getAttr(R.attr.mainBackgroundColorLight)!!
+            it.bgColor = context?.getAttr(R.attr.mainBackgroundColorLighter)!!
         }
     }
 
