@@ -4,7 +4,6 @@
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:paddingEnd="?android:attr/scrollbarSize"
-    android:theme="@android:style/ThemeOverlay.Material.Dark"
     android:foreground="?android:attr/selectableItemBackground" >
     <ImageView
         android:id="@android:id/icon"
