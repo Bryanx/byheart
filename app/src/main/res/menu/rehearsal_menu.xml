@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
->
-    <item android:id="@+id/rehearsal_restart"
-          android:title="@string/restart"
-          android:icon="@drawable/ic_replay_black_24dp"
-          app:iconTint="?mainHeaderTextColor"
-          app:showAsAction="ifRoom"/>
-    <item android:id="@+id/rehearsal_reverse"
-          android:title="@string/reverse_cards"
-          android:checkable="true"
-          app:showAsAction="never"/>
-    <item android:id="@+id/rehearsal_shuffle"
-          android:title="@string/shuffle_cards"
-          android:checkable="true"
-          app:showAsAction="never"/>
-    <item android:id="@+id/rehearsal_pronounce"
-          android:title="@string/pronounce_cards"
-          android:checkable="true"
-          app:showAsAction="never"/>
-    <item android:id="@+id/rehearsal_multiple_choice"
-          android:title="@string/multiple_choice_mode"
-          android:checkable="true"
-          app:showAsAction="never"/>
-    <item android:id="@+id/rehearsal_typed"
-          android:title="@string/typed_mode"
-          android:checkable="true"
-          app:showAsAction="never"/>
-    <item android:id="@+id/rehearsal_memory"
-          android:title="@string/memory_mode"
-          android:checkable="true"
-          app:showAsAction="never"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/rehearsal_restart"
+        android:icon="@drawable/ic_replay_black_24dp"
+        android:title="@string/restart"
+        app:iconTint="?mainHeaderTextColor"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/rehearsal_reverse"
+        android:checkable="true"
+        android:title="@string/reverse_cards"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_pronounce"
+        android:checkable="true"
+        android:title="@string/pronounce_cards"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_shuffle"
+        android:checkable="true"
+        android:title="@string/shuffle_cards"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_repeat_wrong"
+        android:checkable="true"
+        android:title="@string/repeat_wrong_answers"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_multiple_choice"
+        android:checkable="true"
+        android:title="@string/multiple_choice_mode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_typed"
+        android:checkable="true"
+        android:title="@string/typed_mode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_memory"
+        android:checkable="true"
+        android:title="@string/memory_mode"
+        app:showAsAction="never" />
 </menu>

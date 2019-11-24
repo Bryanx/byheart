@@ -23,6 +23,7 @@ import nl.bryanderidder.byheart.shared.utils.getScreenWidth
 import nl.bryanderidder.byheart.shared.utils.moveX
 import java.util.*
 
+
 /**
  * Abstract class that contains the base of a rehearsal fragment.
  * Each Rehearsal Fragment should extend this class.
@@ -38,8 +39,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected lateinit var pile: Pile
     protected lateinit var cards: MutableList<Card>
     protected lateinit var menu: Menu
-    private lateinit var correctSound: MediaPlayer
-    private lateinit var wrongSound: MediaPlayer
+    protected lateinit var correctSound: MediaPlayer
+    protected lateinit var wrongSound: MediaPlayer
     protected val handler: Handler = Handler()
     protected var cardIndex = 0
     private var pileId: Long = NO_ID
@@ -75,23 +76,28 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         inflater.inflate(R.menu.rehearsal_menu, menu)
         this.menu = menu
         menu.forEachIndexed { _, item ->
-            item.isChecked = Preferences.read(item.getName(resources))
+            item.isChecked = Preferences.read(item.getId(resources))
             if (item.isChecked) hideOtherViews(item)
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.rehearsal_restart -> onRestart(true, null)
-            R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getName(resources)).run { true }
+            R.id.rehearsal_restart -> onRestart(true)
+            R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getId(resources)).run { true }
+            R.id.rehearsal_repeat_wrong -> {
+                toggleMenuItem(item, item.getId(resources)).run { true }
+                getCards()
+                onRestart(false)
+            }
             R.id.rehearsal_shuffle -> {
-                toggleMenuItem(item, item.getName(resources))
+                toggleMenuItem(item, item.getId(resources))
                 shuffleCards(item.isChecked)
-                onRestart(false, null)
+                onRestart(false)
             }
             R.id.rehearsal_reverse -> {
-                toggleMenuItem(item, item.getName(resources))
-                onRestart(false, null)
+                toggleMenuItem(item, item.getId(resources))
+                onRestart(false)
             }
             R.id.rehearsal_typed -> {
                 hideOtherViews(item)
@@ -123,10 +129,10 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         handler.removeMessages(0)
         listOf(R.id.rehearsal_typed, R.id.rehearsal_multiple_choice, R.id.rehearsal_memory).forEach { id ->
             if (id == item.itemId) {
-                if (!item.isChecked) toggleMenuItem(item, item.getName(resources))
+                if (!item.isChecked) toggleMenuItem(item, item.getId(resources))
             } else {
                 val otherItem = menu.findItem(id)
-                if (otherItem.isChecked) toggleMenuItem(otherItem, otherItem.getName(resources))
+                if (otherItem.isChecked) toggleMenuItem(otherItem, otherItem.getId(resources))
             }
         }
         return true
@@ -155,7 +161,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         })
     }
 
-    open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
+    open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)? = null): Boolean {
         handler.removeMessages(0)
         if (startFromBeginning) cardIndex = 0
         rehearsalCard.turnToFront()
@@ -211,6 +217,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     open fun onFalse() {
         wrongSound.start()
         cards[cardIndex].amountFalse++
+        if (Preferences.REHEARSAL_REPEAT_WRONG) cards.add(cards[cardIndex])
     }
 
     override fun onBackPressed(): Boolean {

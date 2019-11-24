@@ -21,6 +21,7 @@ import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_PRONOUNCE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REVERSE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_SHUFFLE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_TYPED
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REPEAT_WRONG
 
 @SuppressLint("ResourceAsColor")
 class RehearsalSetupFragment : BaseBottomSheet() {
@@ -45,6 +46,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         crsShuffle.isChecked = Preferences.REHEARSAL_SHUFFLE
         crsPronounce.isChecked = Preferences.REHEARSAL_PRONOUNCE
         crsReverse.isChecked = Preferences.REHEARSAL_REVERSE
+        crsRepeatWrong.isChecked = Preferences.REHEARSAL_REPEAT_WRONG
         btnMultipleChoice.isSelected = Preferences.REHEARSAL_MULTIPLE_CHOICE
         btnTyped.isSelected = Preferences.REHEARSAL_TYPED
         btnMemory.isSelected = Preferences.REHEARSAL_MEMORY
@@ -73,6 +75,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         crsShuffle.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_SHUFFLE, checked) }
         crsPronounce.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_PRONOUNCE, checked) }
         crsReverse.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_REVERSE, checked) }
+        crsRepeatWrong.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_REPEAT_WRONG, checked) }
         btnMultipleChoice.setOnClickListener { selectMode(KEY_REHEARSAL_MULTIPLE_CHOICE) }
         btnTyped.setOnClickListener { selectMode(KEY_REHEARSAL_TYPED) }
         btnMemory.setOnClickListener { selectMode(KEY_REHEARSAL_MEMORY) }
@@ -95,7 +98,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
     }
 
     private fun updateSwitchColors() {
-        listOf(crsShuffle, crsPronounce, crsReverse).forEach {
+        listOf(crsShuffle, crsPronounce, crsReverse, crsRepeatWrong).forEach {
             if (!Preferences.DARK_MODE) {
                 it.checkedColor = pileColor
                 it.unCheckedColor = context!!.color(R.color.grey_300)
@@ -108,18 +111,17 @@ class RehearsalSetupFragment : BaseBottomSheet() {
 
     private fun selectMode(key: String) {
         listOf(KEY_REHEARSAL_MULTIPLE_CHOICE, KEY_REHEARSAL_TYPED, KEY_REHEARSAL_MEMORY).forEach {
-            if (key == it) Preferences.write(it, true)
-            else Preferences.write(it, false)
+            Preferences.write(it, key == it)
         }
         updateModeDescription()
     }
 
     private fun updateModeDescription() {
         crsModeDescription.text = when {
-            Preferences.read(KEY_REHEARSAL_MULTIPLE_CHOICE) && moreThanFiveCards -> resources.getString(R.string.multiple_choice_mode_description)
-            Preferences.read(KEY_REHEARSAL_MULTIPLE_CHOICE) && !moreThanFiveCards -> resources.getString(R.string.five_card_warning)
-            Preferences.read(KEY_REHEARSAL_TYPED) -> resources.getString(R.string.typed_mode_description)
-            Preferences.read(KEY_REHEARSAL_MEMORY) -> resources.getString(R.string.memory_mode_description)
+            Preferences.REHEARSAL_MULTIPLE_CHOICE && moreThanFiveCards -> resources.getString(R.string.multiple_choice_mode_description)
+            Preferences.REHEARSAL_MULTIPLE_CHOICE && !moreThanFiveCards -> resources.getString(R.string.five_card_warning)
+            Preferences.REHEARSAL_TYPED -> resources.getString(R.string.typed_mode_description)
+            Preferences.REHEARSAL_MEMORY -> resources.getString(R.string.memory_mode_description)
             else -> "Choose a mode to continue."
         }
         if (Preferences.read(KEY_REHEARSAL_MULTIPLE_CHOICE) && !moreThanFiveCards)

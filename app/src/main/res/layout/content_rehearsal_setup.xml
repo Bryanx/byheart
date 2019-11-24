@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/switch2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/flip_icon"
             android:src="@drawable/ic_flip_24dp"
             android:tint="?mainTextColor" />
 
@@ -60,7 +60,7 @@
         android:id="@+id/switch2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/switch3"
         app:layout_constraintEnd_toEndOf="@+id/switch1"
@@ -71,7 +71,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/pronounce_icon"
             android:src="@drawable/ic_volume_up_black_24dp"
             android:tint="?mainTextColor" />
 
@@ -90,6 +90,36 @@
         android:id="@+id/switch3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/switch4"
+        app:layout_constraintEnd_toEndOf="@+id/switch1"
+        app:layout_constraintStart_toStartOf="@+id/switch1">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/shuffle_icon"
+            android:src="@drawable/ic_random_24dp"
+            android:tint="?mainTextColor" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/crsShuffle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/shuffle_cards"
+            android:textColor="?mainTextColor"
+            android:theme="@style/AppTheme" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/switch4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/toggleGroup"
@@ -101,16 +131,16 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:contentDescription="TODO"
-            android:src="@drawable/ic_random_24dp"
+            android:contentDescription="@string/repeat_icon"
+            android:src="@drawable/ic_replay_black_24dp"
             android:tint="?mainTextColor" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/crsShuffle"
+            android:id="@+id/crsRepeatWrong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/shuffle_cards"
+            android:text="@string/repeat_wrong_answers"
             android:textColor="?mainTextColor"
             android:theme="@style/AppTheme" />
 

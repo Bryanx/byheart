@@ -19,6 +19,7 @@ import nl.bryanderidder.byheart.shared.*
  */
 class RehearsalMultipleChoiceFragment : RehearsalFragment() {
 
+    private var falseAnswer: Boolean = false
     private lateinit var buttons: MutableList<MultipleChoiceAnswer>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,6 +36,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
     }
 
     private fun resetViews() {
+        falseAnswer = false
         val tempCards = cards.toMutableList()
         tempCards.removeAt(cardIndex) // remove answer from custom list
         tempCards.shuffle()
@@ -72,7 +74,8 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                     rehearsalCard.turnToBack()
                     handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
                 } else {
-                    super.onFalse()
+                    if (!falseAnswer) super.onFalse().also { falseAnswer = true }
+                    else wrongSound.start() // don't count each consecutive wrong answer
                     btn.textColor = context!!.color(R.color.white)
                     btn.bgColor = context!!.color(R.color.red)
                     btn.isEnabled = false

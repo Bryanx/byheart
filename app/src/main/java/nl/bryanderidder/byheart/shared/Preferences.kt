@@ -13,6 +13,7 @@ object Preferences {
     const val KEY_REHEARSAL_REVERSE = "REHEARSAL_REVERSE"
     const val KEY_REHEARSAL_SHUFFLE = "REHEARSAL_SHUFFLE"
     const val KEY_REHEARSAL_PRONOUNCE = "REHEARSAL_PRONOUNCE"
+    const val KEY_REHEARSAL_REPEAT_WRONG = "REHEARSAL_REPEAT_WRONG"
     const val KEY_REHEARSAL_TYPED = "REHEARSAL_TYPED"
     const val KEY_NOT_FIRST_START = "NOT_FIRST_START"
     const val KEY_DARK_MODE = "DARK_MODE"
@@ -22,6 +23,7 @@ object Preferences {
     val REHEARSAL_REVERSE: Boolean get() = this.read(KEY_REHEARSAL_REVERSE)
     val REHEARSAL_MULTIPLE_CHOICE: Boolean get() = this.read(KEY_REHEARSAL_MULTIPLE_CHOICE)
     val REHEARSAL_SHUFFLE: Boolean get() = this.read(KEY_REHEARSAL_SHUFFLE)
+    val REHEARSAL_REPEAT_WRONG: Boolean get() = this.read(KEY_REHEARSAL_REPEAT_WRONG)
     val REHEARSAL_TYPED: Boolean get() = this.read(KEY_REHEARSAL_TYPED)
     val REHEARSAL_MEMORY: Boolean get() = this.read(KEY_REHEARSAL_MEMORY)
     val REHEARSAL_PRONOUNCE: Boolean get() = this.read(KEY_REHEARSAL_PRONOUNCE)

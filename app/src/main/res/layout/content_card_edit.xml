@@ -16,7 +16,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
-            android:hint="@string/question"
             app:errorEnabled="false"
             app:hintEnabled="false"
             android:textColorHint="?mainEditTextColorHint"
@@ -35,12 +34,10 @@
                 android:ems="10" android:layout_alignStart="@+id/cardFrontLayout"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/cardBackLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/answer"
             app:errorEnabled="false"
             app:hintEnabled="false"
             android:textColorHint="?mainEditTextColorHint"

@@ -176,9 +176,9 @@ fun AlertDialog.Builder.setAnimation(styleId: Int): AlertDialog {
 fun TextToSpeech.pronounce(text: String?) = this.speak(text, TextToSpeech.QUEUE_FLUSH, null)
 
 // get menu item name
-fun MenuItem.getName(res: Resources): String =
+fun MenuItem.getId(res: Resources): String =
     if (this.itemId == -0x1) "no-id"
-    else res.getResourceEntryName(itemId) ?: "error-getting-name"
+    else res.getResourceEntryName(itemId) ?: "error-getting-id"
 
 
 fun ObjectAnimator.onAnimateEnd(args: () -> Unit) {
