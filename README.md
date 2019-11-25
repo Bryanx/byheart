@@ -16,7 +16,7 @@ Byheart is an Android app for learning and memorizing words or phrases with flas
 - Manually or automatically sort cards.
 
 ## Contributing
-You can help translate the app here https://poeditor.com/join/project/eNl0uqATZQ. You can also help by creating an issue or a PR.
+You can help translate the app <a href="https://poeditor.com/join/project/eNl0uqATZQ">here</a>. You can also help by creating an issue or a PR.
 
 ## Screenshots
 <img src="./demo/screen_one.png"> <img src="./demo/screen_two.png"><img src="./demo/screen_three.png">
