@@ -12,6 +12,7 @@ Byheart is an Android app for learning and memorizing words or phrases with flas
 - Shuffling cards. Shuffle the order of your flashcards.
 - Reversing cards.
 - Backup all cards.
+- Repeat incorrect cards.
 - Import and export to CSV format.
 - Manually or automatically sort cards.
 
