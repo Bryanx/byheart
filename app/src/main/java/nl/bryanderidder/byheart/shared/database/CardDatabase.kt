@@ -29,7 +29,7 @@ abstract class CardDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: CardDatabase? = null
+        var INSTANCE: CardDatabase? = null
 
         //Singleton
         fun getDatabase(context: Context, scope: CoroutineScope): CardDatabase {

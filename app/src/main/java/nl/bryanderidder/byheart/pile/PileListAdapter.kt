@@ -62,6 +62,16 @@ class PileListAdapter internal constructor(
 
     fun doAfterMovingPiles() = pileVM.updateAll(piles)
 
+    fun movePile(from: Int, to: Int) {
+        val pile = piles.find { it.listIndex == from }
+        piles.filter { it.listIndex in from..to || it.listIndex in to..from }.forEach {
+            if (from > to) it.listIndex++
+            else it.listIndex--
+        }
+        pile?.listIndex = to
+        notifyItemMoved(from, to)
+    }
+
     inner class PileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.setOnClickListener {

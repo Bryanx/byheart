@@ -48,13 +48,7 @@ class DragAndDropCallback(private val adapter: PileListAdapter) : ItemTouchHelpe
             return false
         val from = viewHolder.adapterPosition
         val to = target.adapterPosition
-        val pile = adapter.piles.find { it.listIndex == from }
-        adapter.piles.filter { it.listIndex in from..to || it.listIndex in to..from }.forEach {
-            if (from > to) it.listIndex++
-            else it.listIndex--
-        }
-        pile?.listIndex = to
-        adapter.notifyItemMoved(from, to)
+        adapter.movePile(from, to)
         return true
     }
 

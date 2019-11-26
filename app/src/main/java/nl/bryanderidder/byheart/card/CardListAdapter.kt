@@ -20,8 +20,7 @@ import nl.bryanderidder.byheart.shared.setBrightness
 class CardListAdapter internal constructor(
     private val context: Context,
     val cardFragment: CardFragment
-) :
-    RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
+) : RecyclerView.Adapter<CardListAdapter.CardViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     var cards: MutableList<Card> = mutableListOf()
