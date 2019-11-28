@@ -8,22 +8,23 @@ import androidx.lifecycle.LiveData
  * Decides whether to fetch data from a network or use results cached in a local database.
  * @author Bryan de Ridder
  */
-class PileRepository(private val pileDao: PileDao) {
+class PileRepository(private val dataSource: DataSource) {
 
-    val allPiles: LiveData<List<Pile>> = pileDao.getAll()
-
-    @WorkerThread
-    fun insert(pile: Pile): Long = pileDao.insert(pile)
+    val allPiles: LiveData<List<Pile>> = dataSource.getAll()
 
     @WorkerThread
-    fun update(pile: Pile) = pileDao.update(pile)
+    fun insert(pile: Pile): Long = dataSource.insert(pile)
 
     @WorkerThread
-    fun updateAll(piles: List<Pile>) = pileDao.updateAll(piles)
+    fun update(pile: Pile) = dataSource.update(pile)
 
     @WorkerThread
-    fun delete(pile: Pile) = pileDao.delete(pile)
+    fun updateAll(piles: List<Pile>) = dataSource.updateAll(piles)
 
     @WorkerThread
-    fun getCount(): Int = pileDao.getCount()
+    fun delete(pile: Pile) = dataSource.delete(pile)
+
+    @WorkerThread
+    fun getCount(): Int = dataSource.getCount()
+
 }

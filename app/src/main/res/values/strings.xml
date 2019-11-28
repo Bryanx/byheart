@@ -91,4 +91,5 @@
     <string name="shuffle_icon" translatable="false">Shuffle icon</string>
     <string name="repeat_icon" translatable="false">Repeat icon</string>
     <string name="repeat_wrong_answers">Repeat wrong answers</string>
+    <string name="store">Store</string>
 </resources>

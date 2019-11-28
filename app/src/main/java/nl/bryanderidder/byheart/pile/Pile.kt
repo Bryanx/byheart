@@ -19,6 +19,8 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @ColumnInfo(name = "color") var color: Int? = -7288071
     @ColumnInfo(name = "listIndex") var listIndex: Int = -1
 
+    constructor() : this("")
+
     // List for making json
     @Ignore var cards: MutableList<Card> = mutableListOf()
 }

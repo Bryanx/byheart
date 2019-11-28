@@ -21,6 +21,7 @@ import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
+import nl.bryanderidder.byheart.store.StoreFragment
 
 /**
  * Fragment that contains a list of all piles and a button to add a new pile.
@@ -76,6 +77,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         R.id.action_settings -> {
             activity?.startActivityForResult(Intent(context, SettingsActivity::class.java), REQUEST_PICK_FILE).run { true }
         }
+        R.id.action_store -> startFragment(StoreFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
 

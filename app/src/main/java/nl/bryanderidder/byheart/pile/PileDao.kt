@@ -9,26 +9,26 @@ import androidx.room.*
  * @author Bryan de Ridder
  */
 @Dao
-interface PileDao {
+interface PileDao : DataSource {
 
     @Query("SELECT * FROM pile")
-    fun getAll(): LiveData<List<Pile>>
+    override fun getAll(): LiveData<List<Pile>>
 
     @Insert
-    fun insert(pile: Pile): Long
+    override fun insert(pile: Pile): Long
 
     @Update
-    fun update(pile: Pile)
+    override fun update(pile: Pile)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateAll(pile: List<Pile>)
+    override fun updateAll(pile: List<Pile>)
 
     @Delete
-    fun delete(pile: Pile)
+    override fun delete(pile: Pile)
 
     @Query("DELETE FROM pile")
-    fun deleteAll()
+    override fun deleteAll()
 
     @Query("SELECT COUNT(*) FROM pile")
-    fun getCount(): Int
+    override fun getCount(): Int
 }
