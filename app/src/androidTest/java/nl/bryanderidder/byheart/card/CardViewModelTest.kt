@@ -45,7 +45,7 @@ class CardViewModelTest {
     fun tearDown() = db.close()
 
     @Test
-    fun getAllById() {
+    fun getByPileId() {
         val londonCard = Card("United Kindom", "London", 1)
         val lisbonCard = Card("Portugal", "Lisbon", 1)
         db.cardDao().insert(londonCard)
@@ -57,6 +57,20 @@ class CardViewModelTest {
         val cards = cardVM.getByPileId(id).getOrAwaitValue()
 
         assertThat(cards).containsExactly(londonCard, lisbonCard)
+    }
+
+    @Test
+    fun insert() {
+        val londonCard = Card("United Kindom", "London", 1)
+        cardVM.insert(londonCard).invokeOnCompletion {
+            val card = cardVM.allCards.getOrAwaitValue()[0]
+            assertThat(card).isEqualTo(londonCard)
+            assertThat(card.listIndex).isEqualTo(0)
+        }
+        val lisbonCard = Card("Portugal", "Lisbon", 1)
+        cardVM.insert(lisbonCard).invokeOnCompletion {
+            assertThat(cardVM.allCards.getOrAwaitValue()[1].listIndex).isEqualTo(1)
+        }
     }
 
     @Test
