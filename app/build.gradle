@@ -57,8 +57,8 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // Room components
-    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
-    kapt "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
     // Lifecycle components
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"

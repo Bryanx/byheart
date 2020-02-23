@@ -47,16 +47,16 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         llCardEdit.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         editMode = sessionVM.cardId.value != NO_ID
         addEventHandlers()
-        cardVM.allCards.observe(this, Observer { cardsFromDb ->
-            cardsFromDb?.filter { it.pileId == sessionVM.pileId.value }?.let {
-                cards = it
+        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
+//            cardsFromDb?.filter { it.pileId == sessionVM.pileId.value }?.let {
+//                cards = it
                 if (editMode) {
                     currentCard = cards.find { card: Card ->
                         sessionVM.cardId.value?.toLong() == card.id
                     }
                 }
                 updateView()
-            }
+//            }
         })
         updateColors()
         if (editMode) addToolbar(title = resources.getString(R.string.edit_card))

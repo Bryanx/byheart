@@ -3,7 +3,10 @@ package nl.bryanderidder.byheart.card
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import kotlinx.coroutines.*
+import nl.bryanderidder.byheart.shared.CoroutineProvider
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
@@ -15,9 +18,10 @@ import kotlin.coroutines.CoroutineContext
  */
 class CardViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var parentJob = Job()
+    var coroutineProvider: CoroutineProvider = CoroutineProvider()
+    private var parentJob: Job = Job()
     private val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.Main
+        get() = parentJob + coroutineProvider.Main
     private val scope = CoroutineScope(coroutineContext)
     private val repo: CardRepository
     val allCards: LiveData<List<Card>>
@@ -26,6 +30,10 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
         val qaDao = CardDatabase.getDatabase(application, scope).cardDao()
         repo = CardRepository(qaDao)
         allCards = repo.allCards
+    }
+
+    fun getByPileId(id: MutableLiveData<Long>): LiveData<List<Card>> {
+        return Transformations.map(allCards) { it.filter { card -> card.pileId == id.value } }
     }
 
     fun insert(card: Card) = scope.launch(Dispatchers.IO) {

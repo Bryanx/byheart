@@ -1,8 +1,11 @@
-package nl.bryanderidder.byheart.pile
+package nl.bryanderidder.byheart.card
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.util.CoroutineTestRule
 import nl.bryanderidder.byheart.util.TestUtil
@@ -14,10 +17,11 @@ import org.junit.Test
 import java.io.IOException
 
 @ExperimentalCoroutinesApi
-class PileViewModelTest {
+class CardViewModelTest {
 
+    private lateinit var context: Application
     private lateinit var db: CardDatabase
-    private lateinit var pileVM: PileViewModel
+    private lateinit var cardViewModel: CardViewModel
 
     // Run tasks synchronously
     @Rule
@@ -31,23 +35,28 @@ class PileViewModelTest {
     @Before
     fun setUp() {
         db = TestUtil.createDb()
-        pileVM = TestUtil.getPileViewModel();
-        db.pileDao().insert(Pile("test1").apply { this.id = 1; this.listIndex = 0 })
-        db.pileDao().insert(Pile("test2").apply { this.id = 2; this.listIndex = 1 })
-        db.pileDao().insert(Pile("test3").apply { this.id = 3; this.listIndex = 2 })
+        cardViewModel = TestUtil.getCardViewModel()
+        db.pileDao().insert(Pile("testPile1"))
+        db.pileDao().insert(Pile("testPile2"))
     }
 
     @After
     @Throws(IOException::class)
     fun tearDown() = db.close()
 
-    @Test // Test if after removing a pile the listIndex remains correctly ordered.
-    fun delete() {
-        val firstPile = pileVM.allPiles.getOrAwaitValue()[0]
-        pileVM.delete(firstPile.id).invokeOnCompletion {
-            val piles = pileVM.allPiles.getOrAwaitValue()
-            assertThat(piles).doesNotContain(firstPile)
-            assertThat(piles.map { it.listIndex }).containsExactly(0, 1)
-        }
+    @Test
+    fun getAllById() {
+        val londonCard = Card("United Kindom", "London", 1)
+        val lisbonCard = Card("Portugal", "Lisbon", 1)
+        db.cardDao().insert(londonCard)
+        db.cardDao().insert(lisbonCard)
+        val parisCard = Card("France", "Paris", 2)
+        db.cardDao().insert(parisCard)
+
+        val id = MutableLiveData<Long>().apply { this.value = 1 }
+        val cards = cardViewModel.getByPileId(id).getOrAwaitValue()
+
+        assertThat(cards).containsExactly(londonCard, lisbonCard)
     }
+
 }

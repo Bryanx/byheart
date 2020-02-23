@@ -21,7 +21,7 @@ buildscript {
 }
 
 ext {
-    roomVersion = '1.1.1'
+    roomVersion = '2.2.4'
     archLifecycleVersion = '1.1.1'
     coroutines = '1.2.1'
 }

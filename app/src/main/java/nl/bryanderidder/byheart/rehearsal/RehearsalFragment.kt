@@ -149,14 +149,12 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getCards() {
-        cardVM.allCards.observe(this, Observer { cardsFromDb ->
-            cardsFromDb?.filter { it.pileId == pileId }?.let {
-                val tempCards = it.toMutableList()
-                if (Preferences.REHEARSAL_SHUFFLE) tempCards.shuffle()
-                else tempCards.sortBy { card -> card.listIndex }
-                cards = tempCards
-                doAfterGetData()
-            }
+        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer {
+            val tempCards = it.toMutableList()
+            if (Preferences.REHEARSAL_SHUFFLE) tempCards.shuffle()
+            else tempCards.sortBy { card -> card.listIndex }
+            cards = tempCards
+            doAfterGetData()
             updateView()
         })
     }

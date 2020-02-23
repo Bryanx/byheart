@@ -116,16 +116,14 @@ class CardFragment : Fragment(), IOnBackPressed {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
         buttonShare.setOnClickListener { share() }
-        cardVM.allCards.observe(this, Observer { cards ->
+        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
-            cards?.filter { it.pileId == pileId }?.let { newCards ->
-                clProgressBar.visibility = GONE
-                recyclerview.doAfterAnimations {
-                    adapter.setCards(newCards.toMutableList())
-                }
-                if (newCards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
-                else placeholderNoCards.visibility = GONE
+            clProgressBar.visibility = GONE
+            recyclerview.doAfterAnimations {
+                adapter.setCards(cards.toMutableList())
             }
+            if (cards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
+            else placeholderNoCards.visibility = GONE
         })
         buttonPlay.setOnClickListener {
             if (adapter.cards.isEmpty()) {

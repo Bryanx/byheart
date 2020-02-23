@@ -1,7 +1,15 @@
 package nl.bryanderidder.byheart.util
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
+import nl.bryanderidder.byheart.card.CardViewModel
+import nl.bryanderidder.byheart.pile.Pile
+import nl.bryanderidder.byheart.pile.PileViewModel
+import nl.bryanderidder.byheart.shared.database.CardDatabase
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
@@ -55,5 +63,28 @@ fun <T> LiveData<T>.observeForTesting(block: () -> Unit) {
         block()
     } finally {
         removeObserver(observer)
+    }
+}
+
+object TestUtil {
+    fun createDb(): CardDatabase {
+        val context = ApplicationProvider.getApplicationContext<Context>() as Application
+        val db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
+        CardDatabase.INSTANCE = db
+        return db
+    }
+
+    fun getCardViewModel(): CardViewModel {
+        val context = ApplicationProvider.getApplicationContext<Context>() as Application
+        val cardVM = CardViewModel(context)
+        cardVM.coroutineProvider = CoroutineTestProvider()
+        return cardVM
+    }
+
+    fun getPileViewModel(): PileViewModel {
+        val context = ApplicationProvider.getApplicationContext<Context>() as Application
+        val pileVM = PileViewModel(context)
+        pileVM.coroutineProvider = CoroutineTestProvider()
+        return pileVM
     }
 }

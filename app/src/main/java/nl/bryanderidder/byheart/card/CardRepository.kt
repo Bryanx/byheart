@@ -21,7 +21,7 @@ class CardRepository(private val cardDao: CardDao) {
     fun insertAll(cards: List<Card>) = cardDao.insertAll(cards)
 
     @WorkerThread
-    suspend fun delete(card: Card) = withContext(Dispatchers.Default){
+    suspend fun delete(card: Card) = withContext(Dispatchers.Default) {
         cardDao.delete(card)
     }
 
@@ -32,7 +32,7 @@ class CardRepository(private val cardDao: CardDao) {
     fun getCount(pileId: Long) = cardDao.getCount(pileId)
 
     @WorkerThread
-    suspend fun updateAll(cards: List<Card>) = withContext(Dispatchers.Default){
+    suspend fun updateAll(cards: List<Card>) = withContext(Dispatchers.Default) {
         cardDao.updateAll(cards)
     }
 }
