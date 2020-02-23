@@ -74,6 +74,15 @@ class CardViewModelTest {
     }
 
     @Test
+    fun insertAll() {
+        val londonCard = Card("United Kindom", "London", 1)
+        val lisbonCard = Card("Portugal", "Lisbon", 1)
+        cardVM.insertAll(listOf(londonCard, lisbonCard))
+        assertThat(cardVM.allCards.getOrAwaitValue()[0]).isEqualTo(londonCard)
+        assertThat(cardVM.allCards.getOrAwaitValue()[1]).isEqualTo(lisbonCard)
+    }
+
+    @Test
     fun update() {
         val londonCard = Card("United Kindom", "London", 1)
         db.cardDao().insert(londonCard)
