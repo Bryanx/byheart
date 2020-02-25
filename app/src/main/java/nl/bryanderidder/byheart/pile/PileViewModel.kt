@@ -53,13 +53,11 @@ class PileViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun delete(id: Long?) = scope.launch(coroutineProvider.IO) {
-        allPiles.value!!.find { it.id == id }?.let { pileToRemove ->
-            allPiles.value!!.filter { it.listIndex > pileToRemove.listIndex }.forEach {
-                it.listIndex -= 1
-                repo.update(it)
-            }
-            repo.delete(pileToRemove)
-        }
+        val pile = allPiles.value!!.find { it.id == id };
+        pile?.let { repo.delete(it) }
+        val pilesToUpdate = allPiles.value!!.filter { it != pile && it.listIndex > pile?.listIndex!! }
+        pilesToUpdate.forEach { it.listIndex -= 1 }
+        repo.updateAll(pilesToUpdate)
     }
 
     override fun onCleared() {
