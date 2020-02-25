@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: macos
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Run tests
       uses: ReactiveCircus/android-emulator-runner@v2.4.0
       with:
