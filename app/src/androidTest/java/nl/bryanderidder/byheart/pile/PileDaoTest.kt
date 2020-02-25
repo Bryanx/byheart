@@ -81,7 +81,6 @@ class PileDaoTest {
     fun getCount() {
         pileDao.deleteAll()
         pileDao.insert(Pile("test1"))
-        pileDao.insert(Pile("test2"))
-        assertThat(pileDao.getCount()).isEqualTo(2)
+        assertThat(pileDao.getCount()).isEqualTo(1)
     }
 }
