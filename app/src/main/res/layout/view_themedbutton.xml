@@ -11,8 +11,7 @@
         android:padding="0dp"
         android:layout_margin="0dp"
         app:cardUseCompatPadding="true"
-        app:cardElevation=".5dp"
-        app:cardBackgroundColor="?mainBackgroundColorLighter">
+        app:cardElevation=".5dp">
 
         <ImageView
             android:id="@+id/cbIcon"

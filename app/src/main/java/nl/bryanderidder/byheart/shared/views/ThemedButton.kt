@@ -111,7 +111,7 @@ class ThemedButton(ctx: Context, attrs: AttributeSet) : RelativeLayout(ctx, attr
                 x.toInt(),
                 y.toInt(),
                 0.toFloat(),
-                (cardView.height).toFloat()
+                (cardView.width.coerceAtLeast(cardView.height)).toFloat()
             )
             reveal.interpolator = AccelerateDecelerateInterpolator()
             reveal.duration = 400

@@ -17,17 +17,17 @@ import nl.bryanderidder.byheart.shared.utils.px
  */
 class ThemedButtonGroup(ctx: Context, attrs: AttributeSet) : LinearLayout(ctx, attrs) {
 
-    private var btns = mutableListOf<ThemedButton>()
+    private var buttons = listOf<ThemedButton>()
+    private var highLightText: Int = ctx.color(R.color.white)
+    private var normalBgColor: Int = ctx.getAttr(R.attr.dialogBackgroundButton)
+    private var normalText: Int = context.getAttr(R.attr.mainTextColor)
     var highlightBgColor: Int = ctx.color(R.color.colorPrimary)
-    var highLightText: Int = ctx.color(R.color.white)
-    var normalBgColor: Int = ctx.getAttr(R.attr.dialogBackgroundButton)
-    var normalText: Int = context.getAttr(R.attr.mainTextColor)
 
     private fun addListener(btn: ThemedButton) {
         btn.setOnTouchListener { _, event ->
             if (!btn.isSelected) btn.animateBg(highlightBgColor, event.x, event.y)
             styleSelected(btn)
-            btns.filter { it != btn }.forEach { styleDeselected(it) }
+            buttons.filter { it != btn }.forEach { styleDeselected(it) }
             if (event.action == MotionEvent.ACTION_DOWN) btn.performClick()
             event.action == MotionEvent.ACTION_DOWN
         }
@@ -40,7 +40,7 @@ class ThemedButtonGroup(ctx: Context, attrs: AttributeSet) : LinearLayout(ctx, a
             child.btnHeight = 155.px
             child.btnWidth = ViewGroup.LayoutParams.MATCH_PARENT
             child.paddingHorizontal = 4.px
-            btns.add(child)
+            buttons += child
             addListener(child)
         }
     }
@@ -59,5 +59,5 @@ class ThemedButtonGroup(ctx: Context, attrs: AttributeSet) : LinearLayout(ctx, a
         btn.btnBackgroundColor = highlightBgColor
     }
 
-    fun styleButtons() = btns.filter { it.isSelected }.forEach { styleSelected(it) }
+    fun styleButtons() = buttons.filter { it.isSelected }.forEach { styleSelected(it) }
 }

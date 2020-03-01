@@ -151,13 +151,10 @@
         android:id="@+id/toggleGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/crsModeDescription">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25" />
 
         <nl.bryanderidder.byheart.shared.views.ThemedButton
             android:id="@+id/btnMultipleChoice"
@@ -188,11 +185,6 @@
             app:elevation="0dp"
             app:icon="@drawable/ic_brain"
             app:text="@string/memory_mode" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25" />
 
     </nl.bryanderidder.byheart.shared.views.ThemedButtonGroup>
 
