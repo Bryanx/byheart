@@ -1,11 +1,13 @@
 package nl.bryanderidder.byheart.pile
 
+import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import nl.bryanderidder.byheart.shared.database.CardDatabase
-import nl.bryanderidder.byheart.util.TestUtil
 import nl.bryanderidder.byheart.util.getOrAwaitValue
 import org.junit.After
 import org.junit.Before
@@ -17,7 +19,6 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class PileDaoTest {
 
-    private lateinit var context: Context
     private lateinit var pileDao: PileDao
     private lateinit var db: CardDatabase
     private lateinit var testPile: Pile
@@ -29,7 +30,9 @@ class PileDaoTest {
 
     @Before
     fun setUp() {
-        db = TestUtil.createDb()
+        val context = ApplicationProvider.getApplicationContext<Context>() as Application
+        db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
+        CardDatabase.INSTANCE = db
         pileDao = db.pileDao()
         testPile = Pile("test")
         testPile.id = 1

@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.*
 import kotlinx.android.synthetic.main.content_piles.view.*
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseActivity.Companion.REQUEST_PICK_FILE
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardViewModel
@@ -28,15 +28,13 @@ import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
  */
 class PileFragment : Fragment(), IOnBackPressed {
 
-    private lateinit var pileVM: PileViewModel
-    private lateinit var sessionVM: SessionViewModel
+    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
     private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_piles, container, false)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        val cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         cardVM.allCards.observe(this, Observer {
             val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
             val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM, this)

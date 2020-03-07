@@ -26,13 +26,13 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
  */
 open class BaseActivity : AppCompatActivity() {
 
-    private val sessionVm: SessionViewModel by lazy {
+    val sessionVm: SessionViewModel by lazy {
         ViewModelProviders.of(this).get(SessionViewModel::class.java)
     }
-    private val cardVM: CardViewModel by lazy {
+    val cardVM: CardViewModel by lazy {
         ViewModelProviders.of(this).get(CardViewModel::class.java)
     }
-    private val pileVM: PileViewModel by lazy {
+    val pileVM: PileViewModel by lazy {
         ViewModelProviders.of(this).get(PileViewModel::class.java)
     }
     private var resultCode = 0

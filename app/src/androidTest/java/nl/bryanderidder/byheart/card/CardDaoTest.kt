@@ -1,12 +1,14 @@
 package nl.bryanderidder.byheart.card
 
+import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.CardDatabase
-import nl.bryanderidder.byheart.util.TestUtil
 import nl.bryanderidder.byheart.util.getOrAwaitValue
 import org.junit.After
 import org.junit.Before
@@ -19,7 +21,6 @@ import java.io.IOException
 class CardDaoTest {
 
     private lateinit var testCard: Card
-    private lateinit var context: Context
     private lateinit var cardDao: CardDao
     private lateinit var db: CardDatabase
 
@@ -30,7 +31,9 @@ class CardDaoTest {
 
     @Before
     fun setUp() {
-        db = TestUtil.createDb()
+        val context = ApplicationProvider.getApplicationContext<Context>() as Application
+        db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
+        CardDatabase.INSTANCE = db
         db.pileDao().insert(Pile("testPile").apply { this.id = 1 })
         cardDao = db.cardDao()
         testCard = Card("test_front", "test_back", 1)

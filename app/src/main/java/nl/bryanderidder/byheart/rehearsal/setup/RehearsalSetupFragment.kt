@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.content_rehearsal_setup.*
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseBottomSheet
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.card.CardViewModel
-import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.rehearsal.RehearsalMemoryFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalMultipleChoiceFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalTypedFragment
@@ -18,26 +16,21 @@ import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MEMORY
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_MULTIPLE_CHOICE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_PRONOUNCE
+import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REPEAT_WRONG
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REVERSE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_SHUFFLE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_TYPED
-import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REPEAT_WRONG
 
 @SuppressLint("ResourceAsColor")
 class RehearsalSetupFragment : BaseBottomSheet() {
 
     private var pileColor: Int = R.color.colorPrimary
     private var moreThanFiveCards: Boolean = false
-    private lateinit var cardVM: CardViewModel
-    private lateinit var sessionVM: SessionViewModel
-    private lateinit var pileVM: PileViewModel
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
     private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_rehearsal_setup, container, false)
-        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         return layout
     }
 

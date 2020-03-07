@@ -8,9 +8,9 @@ import android.view.animation.Animation
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_rehearsal.*
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
@@ -31,9 +31,9 @@ import java.util.*
  */
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
-    private lateinit var cardVM: CardViewModel
-    private lateinit var pileVM: PileViewModel
-    private lateinit var sessionVM: SessionViewModel
+    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
     protected lateinit var languageCardBack: Locale
     protected lateinit var layout: View
     protected lateinit var pile: Pile
@@ -52,9 +52,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         pileId = sessionVM.pileId.value ?: NO_ID
         pileColor = sessionVM.pileColor.value ?: R.color.colorPrimary
         getCards()

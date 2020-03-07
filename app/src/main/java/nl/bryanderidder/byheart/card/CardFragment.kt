@@ -5,12 +5,12 @@ import android.view.*
 import android.view.View.GONE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
 import nl.bryanderidder.byheart.pile.Pile
@@ -35,18 +35,15 @@ class CardFragment : Fragment(), IOnBackPressed {
     private lateinit var swipeRightToEdit: SwipeRightToEditCallback
     private var pile: Pile? = null
     private lateinit var adapter: CardListAdapter
-    private lateinit var cardVM: CardViewModel
-    private lateinit var sessionVM: SessionViewModel
-    private lateinit var pileVM: PileViewModel
+    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card, container, false)
-        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         addToolbar()
         return layout
     }

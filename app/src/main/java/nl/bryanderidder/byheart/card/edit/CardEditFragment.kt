@@ -8,10 +8,10 @@ import android.view.View.VISIBLE
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
@@ -27,18 +27,15 @@ import nl.bryanderidder.byheart.shared.utils.showSnackBar
 class CardEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cards: List<Card>
-    private lateinit var cardVM: CardViewModel
-    private lateinit var sessionVM: SessionViewModel
-    private lateinit var pileVM: PileViewModel
+    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
     private lateinit var layout: View
     private var editMode: Boolean = false
     private var currentCard: Card? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = inflater.inflate(R.layout.content_card_edit, container, false)
-        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
         return layout
     }
 

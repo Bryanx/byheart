@@ -36,18 +36,19 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
         return Transformations.map(allCards) { it.filter { card -> card.pileId == id.value } }
     }
 
-    fun insert(card: Card) = scope.launch(Dispatchers.IO) {
+    fun insert(card: Card) = scope.launch(coroutineProvider.Default) {
         card.listIndex = repo.getCount(card.pileId)
         repo.insert(card)
     }
 
-    fun insertAll(cards: List<Card>) = runBlocking(Dispatchers.Default) {
+    fun insertAll(cards: List<Card>) = runBlocking(coroutineProvider.Default) {
         cards.forEachIndexed { i, card -> card.listIndex = i }
         return@runBlocking repo.insertAll(cards)
     }
 
-    fun update(card: Card) = scope.launch(Dispatchers.IO) {
-        getCards(card.pileId).find { it.id == card.id }?.let {
+    fun update(card: Card) = scope.launch(coroutineProvider.IO) {
+        val cards = withContext(coroutineProvider.Default) { allCards }
+        cards.value!!.find { it.id == card.id }?.let {
             it.answer = card.answer
             it.question = card.question
             it.listIndex = card.listIndex
@@ -58,15 +59,18 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
         repo.update(card)
     }
 
-    fun updateAll(cards: List<Card>) = scope.launch(Dispatchers.IO) {
+    fun updateAll(cards: List<Card>) = scope.launch(coroutineProvider.IO) {
         repo.updateAll(cards)
     }
 
     fun delete(card: Card) = scope.launch(coroutineProvider.IO) {
         repo.delete(card)
-        val cardsToUpdate = getCards(card.pileId).filter { it != card && it.listIndex > card.listIndex }
-        cardsToUpdate.forEach { it.listIndex -= 1 }
-        repo.updateAll(cardsToUpdate)
+        val cards = withContext(coroutineProvider.Default) { repo.allCards }.value!!
+        cards.filter { it.pileId == card.pileId }
+            .filter { it != card }
+            .filter { it.listIndex > card.listIndex }
+            .onEach { it.listIndex -= 1 }
+            .also { repo.updateAll(it) }
     }
 
     fun getCards(pileId: Long): List<Card> = allCards.value!!.filter { it.pileId == pileId }

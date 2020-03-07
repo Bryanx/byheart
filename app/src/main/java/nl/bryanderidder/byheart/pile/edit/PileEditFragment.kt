@@ -7,12 +7,12 @@ import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.pile.Pile
@@ -33,8 +33,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private var pileColor: Int = R.color.blue_200
     private lateinit var piles: List<Pile>
     private lateinit var layout: View
-    private lateinit var pileVM: PileViewModel
-    private lateinit var sessionVM: SessionViewModel
+    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
     private lateinit var adapter: ArrayAdapter<String>
     private var localeList: MutableList<Locale> = mutableListOf()
     private var countries: MutableList<String> = mutableListOf()
@@ -43,8 +43,6 @@ class PileEditFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layout = container!!.inflate(R.layout.content_pile_edit)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
-        sessionVM = ViewModelProviders.of(activity!!).get(SessionViewModel::class.java)
         return layout
     }
 

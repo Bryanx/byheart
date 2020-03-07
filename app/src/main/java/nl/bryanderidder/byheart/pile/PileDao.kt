@@ -17,6 +17,9 @@ interface PileDao {
     @Insert
     fun insert(pile: Pile): Long
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(piles: List<Pile>)
+
     @Update
     fun update(pile: Pile)
 
