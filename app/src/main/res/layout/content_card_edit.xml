@@ -59,13 +59,16 @@
                 android:ems="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <nl.bryanderidder.byheart.shared.views.ThemedButton
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
         android:id="@+id/btnAddAnotherCard"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:visibility="visible"
         android:layout_marginTop="16dp"
-        app:text="@string/add_another_card"
+        app:toggle_text="@string/add_another_card"
+        app:toggle_textPaddingVertical="12dp"
+        app:toggle_textPaddingHorizontal="25dp"
+        app:toggle_backgroundColor="?mainBackgroundColorLighter"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent" />

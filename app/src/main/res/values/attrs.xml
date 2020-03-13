@@ -16,15 +16,6 @@
     <attr name="mainCard" format="reference" />
     <attr name="toolbarPopupTheme" format="reference" />
 
-    <declare-styleable name="ThemedButton">
-        <attr name="text" />
-        <attr name="backgroundColor" />
-        <attr name="textColor" />
-        <attr name="btnCornerRadius" />
-        <attr name="icon" format="reference" />
-        <attr name="iconColor" />
-    </declare-styleable>
-
     <declare-styleable name="DayNightImageView">
         <attr name="daySrc" format="reference" />
         <attr name="nightSrc" format="reference" />

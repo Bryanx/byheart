@@ -39,7 +39,6 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-        println("requestCode = $requestCode, resultCode= $resultCode")
         when (resultCode) {
             RESULT_CANCELED -> {
                 startFragment(PileFragment())

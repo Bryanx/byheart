@@ -63,13 +63,13 @@ class CardFragment : Fragment(), IOnBackPressed {
             pile?.color?.let { color ->
                 if (Preferences.DARK_MODE) {
                     buttons.forEach { it.setIconColor(color) }
-                    btnAddCardPlaceholder.textColor = color
+                    btnAddCardPlaceholder.tvText.setTextColor(color)
                 } else {
                     buttons.forEach {
                         it.setIconColor(color.setBrightness(.55F))
                         it.setColor(context!!.color(R.color.grey_100))
                     }
-                    btnAddCardPlaceholder.textColor = color.setBrightness(0.55F)
+                    btnAddCardPlaceholder.tvText.setTextColor(color.setBrightness(0.55F))
                 }
             }
         })

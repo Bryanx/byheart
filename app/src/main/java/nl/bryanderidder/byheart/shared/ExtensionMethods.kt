@@ -240,6 +240,10 @@ fun EditText.setCaretColor(color: Int) {
     }
 }
 
+operator fun Any?.get(name: String): Any? {
+    return this?.javaClass?.getMethod("get${name.capitalize()}")?.invoke(this)
+}
+
 fun Any.getAttr(name: String): Any? {
     return this.javaClass.getMethod("get${name.initCaps()}").invoke(this)
 }

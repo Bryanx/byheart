@@ -147,46 +147,63 @@
     </LinearLayout>
 
 
-    <nl.bryanderidder.byheart.shared.views.ThemedButtonGroup
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
         android:id="@+id/toggleGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="155dp"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
         android:layout_marginBottom="16dp"
+        app:alignItems="center"
+        app:justifyContent="center"
         app:layout_constraintBottom_toTopOf="@+id/crsModeDescription">
 
-        <nl.bryanderidder.byheart.shared.views.ThemedButton
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/btnMultipleChoice"
             android:layout_width="0dp"
-            android:layout_height="155dp"
-            android:layout_weight="1"
-            app:backgroundColor="?dialogBackgroundButton"
-            app:elevation="0dp"
-            app:icon="@drawable/ic_check_circle_outline_24px"
-            app:text="@string/multiple_choice_mode" />
+            android:layout_height="145dp"
+            app:layout_flexGrow="1"
+            app:toggle_iconPadding="20dp"
+            app:toggle_padding="10dp"
+            app:toggle_textPaddingVertical="13dp"
+            app:toggle_textColor="?mainTextColor"
+            app:toggle_backgroundColor="?dialogBackgroundButton"
+            app:toggle_icon="@drawable/ic_check_circle_outline_24px"
+            app:toggle_iconGravity="top|center"
+            app:toggle_textGravity="bottom|center"
+            app:toggle_text="@string/multiple_choice_mode" />
 
-        <nl.bryanderidder.byheart.shared.views.ThemedButton
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/btnTyped"
             android:layout_width="0dp"
-            android:layout_height="155dp"
-            android:layout_weight="1"
-            app:backgroundColor="?dialogBackgroundButton"
-            app:elevation="0dp"
-            app:icon="@drawable/ic_spellcheck_24px"
-            app:text="@string/typed_mode" />
+            android:layout_height="145dp"
+            app:layout_flexGrow="1"
+            app:toggle_iconPadding="20dp"
+            app:toggle_padding="10dp"
+            app:toggle_textPaddingVertical="13dp"
+            app:toggle_textColor="?mainTextColor"
+            app:toggle_backgroundColor="?dialogBackgroundButton"
+            app:toggle_icon="@drawable/ic_spellcheck_24px"
+            app:toggle_iconGravity="top|center"
+            app:toggle_textGravity="bottom|center"
+            app:toggle_text="@string/typed_mode" />
 
-        <nl.bryanderidder.byheart.shared.views.ThemedButton
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/btnMemory"
             android:layout_width="0dp"
-            android:layout_height="155dp"
-            android:layout_weight="1"
-            app:backgroundColor="?dialogBackgroundButton"
-            app:elevation="0dp"
-            app:icon="@drawable/ic_brain"
-            app:text="@string/memory_mode" />
+            android:layout_height="145dp"
+            app:layout_flexGrow="1"
+            app:toggle_iconPadding="20dp"
+            app:toggle_padding="10dp"
+            app:toggle_textPaddingVertical="13dp"
+            app:toggle_textColor="?mainTextColor"
+            app:toggle_backgroundColor="?dialogBackgroundButton"
+            app:toggle_icon="@drawable/ic_brain"
+            app:toggle_iconGravity="top|center"
+            app:toggle_textGravity="bottom|center"
+            app:toggle_text="@string/memory_mode" />
 
-    </nl.bryanderidder.byheart.shared.views.ThemedButtonGroup>
+    </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
 
     <TextView
         android:id="@+id/crsModeDescription"
@@ -201,17 +218,19 @@
         app:layout_constraintEnd_toEndOf="@+id/switch1"
         app:layout_constraintStart_toStartOf="@+id/switch1" />
 
-    <nl.bryanderidder.byheart.shared.views.ThemedButton
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
         android:id="@+id/crsStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        app:backgroundColor="?dialogBackgroundButton"
-        app:elevation="0dp"
-        app:text="@string/start"
-        app:textColor="?dialogButtonIconColor"
+        app:toggle_circularCornerRadius="true"
+        app:toggle_textPaddingHorizontal="15dp"
+        app:toggle_textPaddingVertical="10dp"
+        app:toggle_backgroundColor="?dialogBackgroundButton"
+        app:toggle_text="@string/start"
+        app:toggle_textColor="?dialogButtonIconColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -84,7 +84,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         if (editMode) {
             pileVM.allPiles.observe(this, Observer {
                 val thisPile = it.find { pile -> pile.id == sessionVM.pileId.value }
-                spinner.setSelection(localeList.indexOfFirst { loc -> loc.code ==  thisPile?.getAttr(attr)})
+                spinner.setSelection(localeList.indexOfFirst { loc -> loc.code == thisPile[attr]})
             })
         } else {
             spinner.setSelection(localeList.indexOfFirst {

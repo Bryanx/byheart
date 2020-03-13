@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
+import nl.bryanderidder.byheart.shared.get
 import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.setBrightness
 
@@ -46,8 +47,8 @@ class CardListAdapter internal constructor(
     @Suppress("UNCHECKED_CAST")
     inline fun <reified T : Comparable<T>> sort(property: String, cards: MutableList<Card> = this.cards) {
         val newCards = cards.toMutableList()
-        if (T::class != Int::class) newCards.sortBy { it.getAttr(property) as T }
-        else newCards.sortByDescending { it.getAttr(property) as T }
+        if (T::class != Int::class) newCards.sortBy { it[property] as T }
+        else newCards.sortByDescending { it[property] as T }
         cards.sortBy { it.listIndex }
         newCards.forEachIndexed { j, newCard ->
             newCard.listIndex = j

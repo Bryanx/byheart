@@ -55,6 +55,8 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0-rc01'
     implementation 'com.google.android.material:material:1.1.0-alpha08'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.github.Bryanx:themed-toggle-button-group:0.2.0'
+    implementation 'com.google.android:flexbox:2.0.1'
 
     // Room components
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"

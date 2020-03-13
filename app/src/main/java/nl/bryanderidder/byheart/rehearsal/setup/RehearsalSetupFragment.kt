@@ -3,8 +3,12 @@ package nl.bryanderidder.byheart.rehearsal.setup
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.OvershootInterpolator
+import android.view.animation.ScaleAnimation
 import kotlinx.android.synthetic.main.content_rehearsal_setup.*
 import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseBottomSheet
@@ -52,16 +56,15 @@ class RehearsalSetupFragment : BaseBottomSheet() {
 
     private fun setColors() {
         if (!Preferences.DARK_MODE) {
-            toggleGroup.highlightBgColor = pileColor
+            toggleGroup.buttons.forEach { it.selectedBgColor = pileColor }
             crsModeDescription.setTextColor(pileColor.setBrightness(0.55F))
             crsStart.textColor = pileColor.setBrightness(0.55F)
         } else {
-            toggleGroup.highlightBgColor = pileColor.setBrightness(0.65F)
+            toggleGroup.buttons.forEach { it.selectedBgColor = pileColor.setBrightness(0.65F) }
             crsModeDescription.setTextColor(pileColor)
             crsStart.textColor = pileColor
         }
         updateSwitchColors()
-        toggleGroup.styleButtons()
     }
 
     private fun addEventHandlers() {

@@ -63,8 +63,8 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         pileVM.allPiles.observe(this, Observer {
             val pile = it.find { pile -> pile.id == sessionVM.pileId.value }
             pile?.color?.let { color ->
-                if (Preferences.DARK_MODE) btnAddAnotherCard.textColor = color
-                else btnAddAnotherCard.textColor = color.setBrightness(0.55F)
+                if (Preferences.DARK_MODE) btnAddAnotherCard.tvText.setTextColor(color)
+                else btnAddAnotherCard.tvText.setTextColor(color.setBrightness(0.55F))
             }
         })
     }
@@ -130,8 +130,8 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                 layout.error = resources.getString(R.string.field_may_not_be_blank)
                 isCorrect = false
             }
-            q.toLowerCase() in cards.map { it.getAttr(property).toString().toLowerCase() } -> {
-                if ((editMode && q != currentCard?.getAttr(property)) || !editMode) {
+            q.toLowerCase() in cards.map { it[property].toString().toLowerCase() } -> {
+                if ((editMode && q != currentCard[property]) || !editMode) {
                     layout.isErrorEnabled = true
                     layout.error = "You already have a card with the same text"
                     isCorrect = false
