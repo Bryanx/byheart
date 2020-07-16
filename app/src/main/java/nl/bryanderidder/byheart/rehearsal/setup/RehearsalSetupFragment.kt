@@ -44,9 +44,9 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         crsPronounce.isChecked = Preferences.REHEARSAL_PRONOUNCE
         crsReverse.isChecked = Preferences.REHEARSAL_REVERSE
         crsRepeatWrong.isChecked = Preferences.REHEARSAL_REPEAT_WRONG
-        btnMultipleChoice.isSelected = Preferences.REHEARSAL_MULTIPLE_CHOICE
-        btnTyped.isSelected = Preferences.REHEARSAL_TYPED
-        btnMemory.isSelected = Preferences.REHEARSAL_MEMORY
+        if (Preferences.REHEARSAL_MULTIPLE_CHOICE) toggleGroup.selectButton(btnMultipleChoice)
+        if (Preferences.REHEARSAL_TYPED) toggleGroup.selectButton(btnTyped)
+        if (Preferences.REHEARSAL_MEMORY) toggleGroup.selectButton(btnMemory)
         moreThanFiveCards = sessionVM.cardCount.value ?: 0 > 5
         pileColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
         setColors()
