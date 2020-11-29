@@ -21,6 +21,7 @@ import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
  * Fragment that contains a list of all piles and a button to add a new pile.
@@ -28,9 +29,9 @@ import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
  */
 class PileFragment : Fragment(), IOnBackPressed {
 
-    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
-    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
+    private val cardVM: CardViewModel by sharedViewModel()
+    private val sessionVM: SessionViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
     private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

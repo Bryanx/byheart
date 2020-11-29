@@ -21,6 +21,7 @@ import nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.getScreenWidth
 import nl.bryanderidder.byheart.shared.utils.moveX
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 
@@ -31,9 +32,9 @@ import java.util.*
  */
 abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
-    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
-    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
+    private val cardVM: CardViewModel by sharedViewModel()
+    private val sessionVM: SessionViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
     protected lateinit var languageCardBack: Locale
     protected lateinit var layout: View
     protected lateinit var pile: Pile

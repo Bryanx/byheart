@@ -5,8 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
@@ -32,15 +31,15 @@ abstract class CardDatabase : RoomDatabase() {
         var INSTANCE: CardDatabase? = null
 
         //Singleton
-        fun getDatabase(context: Context, scope: CoroutineScope): CardDatabase {
+        fun getDatabase(context: Context): CardDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
             synchronized(this) {
                 val instance = Room
-                    .databaseBuilder(context.applicationContext, CardDatabase::class.java, "card")
-                    .addCallback(CardDatabaseCallback(scope, context))
+                    .databaseBuilder(context, CardDatabase::class.java, "card")
+                    .addCallback(CardDatabaseCallback(context))
                     .addMigrations(DatabaseMigrations.MIGRATION_1_2)
                     .addMigrations(DatabaseMigrations.MIGRATION_2_3)
                     .build()
@@ -49,13 +48,12 @@ abstract class CardDatabase : RoomDatabase() {
             }
         }
 
-        private class CardDatabaseCallback(private val scope: CoroutineScope, private val context: Context) :
-            RoomDatabase.Callback() {
+        private class CardDatabaseCallback(private val context: Context) : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
                 if (!isFirstStart()) return
                 INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) {
+                    GlobalScope.launch {
                         populateDatabase(database.cardDao(), database.pileDao(), context)
                     }
                 }

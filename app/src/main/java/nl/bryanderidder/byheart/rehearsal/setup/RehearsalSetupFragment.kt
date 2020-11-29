@@ -24,13 +24,14 @@ import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REPEAT_WRONG
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_REVERSE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_SHUFFLE
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_TYPED
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 @SuppressLint("ResourceAsColor")
 class RehearsalSetupFragment : BaseBottomSheet() {
 
     private var pileColor: Int = R.color.colorPrimary
     private var moreThanFiveCards: Boolean = false
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
+    private val sessionVM: SessionViewModel by sharedViewModel()
     private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

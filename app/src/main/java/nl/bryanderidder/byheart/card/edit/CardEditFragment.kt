@@ -19,6 +19,7 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
  * Fragment that is shown when editing or creating a card.
@@ -27,9 +28,9 @@ import nl.bryanderidder.byheart.shared.utils.showSnackBar
 class CardEditFragment : Fragment(), IOnBackPressed {
 
     private lateinit var cards: List<Card>
-    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
-    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
+    private val cardVM: CardViewModel by sharedViewModel()
+    private val sessionVM: SessionViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
     private lateinit var layout: View
     private var editMode: Boolean = false
     private var currentCard: Card? = null

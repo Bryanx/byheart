@@ -23,6 +23,7 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
  * Fragment that displays all cards in a pile.
@@ -35,9 +36,9 @@ class CardFragment : Fragment(), IOnBackPressed {
     private lateinit var swipeRightToEdit: SwipeRightToEditCallback
     private var pile: Pile? = null
     private lateinit var adapter: CardListAdapter
-    private val cardVM: CardViewModel by lazy { (activity!! as BaseActivity).cardVM }
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
-    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
+    private val cardVM: CardViewModel by sharedViewModel()
+    private val sessionVM: SessionViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0

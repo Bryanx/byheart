@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import nl.bryanderidder.byheart.BaseActivity.Companion.RESULT_CSV
@@ -14,6 +13,7 @@ import nl.bryanderidder.byheart.about.AboutActivity
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.utils.IoUtils
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
 /**
@@ -22,13 +22,11 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
  */
 class SettingsFragment : PreferenceFragmentCompat() {
 
-    private lateinit var pileVM: PileViewModel
-    private lateinit var cardVM: CardViewModel
+    private val cardVM: CardViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        pileVM = ViewModelProviders.of(activity!!).get(PileViewModel::class.java)
-        cardVM = ViewModelProviders.of(activity!!).get(CardViewModel::class.java)
         addEventHandlers()
     }
 

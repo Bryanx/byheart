@@ -15,12 +15,14 @@ import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
+import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.getColors
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 
@@ -33,8 +35,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private var pileColor: Int = R.color.blue_200
     private lateinit var piles: List<Pile>
     private lateinit var layout: View
-    private val sessionVM: SessionViewModel by lazy { (activity!! as BaseActivity).sessionVm }
-    private val pileVM: PileViewModel by lazy { (activity!! as BaseActivity).pileVM }
+    private val sessionVM: SessionViewModel by sharedViewModel()
+    private val pileVM: PileViewModel by sharedViewModel()
     private lateinit var adapter: ArrayAdapter<String>
     private var localeList: MutableList<Locale> = mutableListOf()
     private var countries: MutableList<String> = mutableListOf()

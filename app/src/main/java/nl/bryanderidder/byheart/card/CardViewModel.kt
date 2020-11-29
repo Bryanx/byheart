@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.shared.CoroutineProvider
-import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -16,21 +15,14 @@ import kotlin.coroutines.CoroutineContext
  * In the card viewmodel this property is updated by changes in the database or in the fragment.
  * @author Bryan de Ridder
  */
-class CardViewModel(application: Application) : AndroidViewModel(application) {
+class CardViewModel(application: Application, private val repo: CardRepository) : AndroidViewModel(application) {
 
     var coroutineProvider: CoroutineProvider = CoroutineProvider()
     private var parentJob: Job = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + coroutineProvider.Main
     private val scope = CoroutineScope(coroutineContext)
-    private val repo: CardRepository
-    val allCards: LiveData<List<Card>>
-
-    init {
-        val qaDao = CardDatabase.getDatabase(application, scope).cardDao()
-        repo = CardRepository(qaDao)
-        allCards = repo.allCards
-    }
+    val allCards: LiveData<List<Card>> = repo.allCards
 
     fun getByPileId(id: MutableLiveData<Long>): LiveData<List<Card>> {
         return Transformations.map(allCards) { it.filter { card -> card.pileId == id.value } }

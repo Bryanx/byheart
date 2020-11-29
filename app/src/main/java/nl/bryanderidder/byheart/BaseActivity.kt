@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,6 +18,7 @@ import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.getExtension
 import nl.bryanderidder.byheart.shared.startFragment
 import nl.bryanderidder.byheart.shared.utils.IoUtils
+import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * Basefragment contains basic functionally of all activities.
@@ -26,15 +26,9 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
  */
 open class BaseActivity : AppCompatActivity() {
 
-    val sessionVm: SessionViewModel by lazy {
-        ViewModelProviders.of(this).get(SessionViewModel::class.java)
-    }
-    val cardVM: CardViewModel by lazy {
-        ViewModelProviders.of(this).get(CardViewModel::class.java)
-    }
-    val pileVM: PileViewModel by lazy {
-        ViewModelProviders.of(this).get(PileViewModel::class.java)
-    }
+    private val sessionVM: SessionViewModel by viewModel()
+    private val cardVM: CardViewModel by viewModel()
+    private val pileVM: PileViewModel by viewModel()
     private var resultCode = 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
@@ -88,8 +82,8 @@ open class BaseActivity : AppCompatActivity() {
             val newCards = pile.cards.map { Card(it.question, it.answer, id) }
             pile.cards.clear()
             cardVM.insertAll(newCards)
-            sessionVm.pileId.postValue(id)
-            sessionVm.pileName.postValue(pile.name)
+            sessionVM.pileId.postValue(id)
+            sessionVM.pileName.postValue(pile.name)
         }
         runOnUiThread {
             val bar = findViewById<ProgressBar>(R.id.progressBar)

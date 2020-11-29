@@ -16,21 +16,14 @@ import kotlin.coroutines.CoroutineContext
  * The object is updating on backend or frontend changes.
  * @author Bryan de Ridder
  */
-class PileViewModel(application: Application) : AndroidViewModel(application) {
+class PileViewModel(application: Application, private val repo: PileRepository) : AndroidViewModel(application) {
 
     var coroutineProvider: CoroutineProvider = CoroutineProvider()
     private var parentJob: Job = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + coroutineProvider.Main
     private val scope: CoroutineScope = CoroutineScope(coroutineContext)
-    private val repo: PileRepository
-    val allPiles: LiveData<List<Pile>>
-
-    init {
-        val pileDao = CardDatabase.getDatabase(application, scope).pileDao()
-        repo = PileRepository(pileDao)
-        allPiles = repo.allPiles
-    }
+    val allPiles: LiveData<List<Pile>> = repo.allPiles
 
     suspend fun insert(pile: Pile): Long = withContext(coroutineProvider.Default) {
         pile.listIndex = repo.getCount()
