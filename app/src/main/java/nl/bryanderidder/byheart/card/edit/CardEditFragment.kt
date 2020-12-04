@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
@@ -76,6 +76,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                 btnAddAnotherCard.visibility = GONE
                 etCardFront.setText(currentCard?.question.toString())
                 etCardBack.setText(currentCard?.answer.toString())
+                etCardFront.setSelection(etCardFront.text?.length ?: 0)
             }
             else -> {
                 btnAddAnotherCard.visibility = VISIBLE
@@ -131,13 +132,6 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                 layout.error = resources.getString(R.string.field_may_not_be_blank)
                 isCorrect = false
             }
-            q.toLowerCase() in cards.map { it[property].toString().toLowerCase() } -> {
-                if ((editMode && q != currentCard[property]) || !editMode) {
-                    layout.isErrorEnabled = true
-                    layout.error = "You already have a card with the same text"
-                    isCorrect = false
-                }
-            }
             else -> layout.isErrorEnabled = false
         }
         return isCorrect
@@ -158,6 +152,18 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         }
         etCardBack.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) checkInput(etCardBack.string, "answer", cardBackLayout)
+        }
+        etCardBack.setOnEditorActionListener{_, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE)
+                if (addOrUpdateCard()) startFragment(CardFragment())
+            false
+        }
+        etCardFront.setOnEditorActionListener{_, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                etCardBack.requestFocus()
+                etCardBack.setSelection(etCardBack.text?.length ?: 0)
+            }
+            true
         }
     }
 

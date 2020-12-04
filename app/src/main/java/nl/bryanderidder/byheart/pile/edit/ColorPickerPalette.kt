@@ -34,7 +34,7 @@ class ColorPickerPalette : TableLayout {
      * Initialize the size, columns, and listener.  Size should be a pre-defined size (SIZE_LARGE
      * or SIZE_SMALL) from ColorPickerDialogFragment.
      */
-    fun init(size: Int, columns: Int, onColorSelect: (color: Int) -> Unit) {
+    fun init(columns: Int, onColorSelect: (color: Int) -> Unit) {
         amountOfColumns = columns
         swatchLength = resources.getDimensionPixelSize(R.dimen.color_swatch_large)
         swatchMargin = resources.getDimensionPixelSize(R.dimen.color_swatch_margins_large)

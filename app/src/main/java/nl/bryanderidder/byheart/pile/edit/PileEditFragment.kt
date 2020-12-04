@@ -106,7 +106,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             true
         }
         R.id.action_colorpicker -> {
-            val dialog = ColorPickerDialog.newInstance(R.string.go, null, pileColor, 4, 2)
+            val dialog = ColorPickerDialog.newInstance(R.string.go, pileColor, 4, 2)
             dialog.show(fragmentManager!!, "picker")
             dialog.listener = {
                 pileColor = it

@@ -46,7 +46,7 @@ class ColorPickerDialog : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(activity).inflate(R.layout.color_picker_dialog, null)
         palette = view.findViewById(R.id.color_picker)
-        palette.init(mSize, mColumns, this::onSelectColor)
+        palette.init(mColumns, this::onSelectColor)
         mColors = getColors(context!!)
         showPaletteView()
         return AlertDialog.Builder(activity)
@@ -54,7 +54,7 @@ class ColorPickerDialog : AppCompatDialogFragment() {
             .create()
     }
 
-    fun initialize(titleResId: Int, colors: IntArray? = null, selectedColor: Int, columns: Int, size: Int) {
+    fun initialize(titleResId: Int, selectedColor: Int, columns: Int, size: Int) {
         setArguments(titleResId, columns, size)
         mSelectedColor = selectedColor
     }
@@ -101,11 +101,11 @@ class ColorPickerDialog : AppCompatDialogFragment() {
         private const val KEY_LISTENER = "listener"
 
         fun newInstance(
-            titleResId: Int, colors: IntArray?, selectedColor: Int,
+            titleResId: Int, selectedColor: Int,
             columns: Int, size: Int
         ): ColorPickerDialog {
             val ret = ColorPickerDialog()
-            ret.initialize(titleResId, null, selectedColor, columns, size)
+            ret.initialize(titleResId, selectedColor, columns, size)
             return ret
         }
     }
