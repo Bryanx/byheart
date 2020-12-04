@@ -5,7 +5,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -13,9 +13,9 @@ android {
     defaultConfig {
         applicationId "nl.bryanderidder.byheart"
         minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 16
-        versionName "2.2.0"
+        targetSdkVersion 29
+        versionCode 17
+        versionName "2.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -30,6 +30,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude 'classes.dex'
     }
 }
 
