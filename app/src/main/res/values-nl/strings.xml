@@ -81,4 +81,6 @@
     <string name="sort">Sorteren</string>
     <string name="you_dont_have_any_cards_yet">Je hebt nog geen kaarten.</string>
     <string name="repeat_wrong_answers">Herhaal foute antwoorden</string>
+    <string name="where_do_you_want_to_move_this_card">Waar wil je deze kaart naartoe verplaatsen?</string>
+    <string name="move">Verplaatsen</string>
 </resources>

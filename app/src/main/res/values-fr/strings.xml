@@ -81,4 +81,6 @@
     <string name="by_front_text">Par devant</string>
     <string name="you_dont_have_any_cards_yet">Vous n\'avez pas encore de cartes.</string>
     <string name="repeat_wrong_answers">Répète les mauvaises réponses</string>
+    <string name="where_do_you_want_to_move_this_card">Où voulez-vous déplacer ce carte?</string>
+    <string name="move">Déplacer</string>
 </resources>

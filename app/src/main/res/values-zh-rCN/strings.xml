@@ -31,25 +31,25 @@
     <string name="no">没有</string>
     <string name="add_card">新增卡</string>
     <string name="edit_card">编辑卡</string>
-    <string name="about_description">感谢您使用此应用程序！我之所以这样做，是因为所有现代抽认卡应用要么充斥着广告，要么需要订阅，要么包含许多不必要的功能。</string>
+    <string name="about_description">感谢您使用此应用程序！我这么做是因为所有现代抽认卡应用要么充斥着广告，要么需要订阅，要么包含许多不必要的功能。</string>
     <string name="about_subtext">如果您喜欢此应用，请考虑执行以下操作：</string>
     <string name="rate_this_app">为这个应用软件评分</string>
-    <string name="buy_me_a_cup_of_coffee">买一杯咖啡给我！</string>
+    <string name="buy_me_a_cup_of_coffee">给我买一杯咖啡！</string>
     <string name="create_a_bug_report">创建一个错误报告</string>
     <string name="delete_confirm_stack">您确定要删除此堆栈吗？</string>
     <string name="delete">删除</string>
     <string name="cancel">取消</string>
     <string name="five_card_warning">您至少需要5张卡片。</string>
     <string name="ok">好</string>
-    <string name="color_swatch_description_selected">选择的颜色</string>
+    <string name="color_swatch_description_selected">所选颜色</string>
     <string name="select_card_color">选择卡片颜色</string>
     <string name="cards">牌</string>
     <string name="export_csv">导出CSV</string>
     <string name="import_csv">汇入CSV</string>
     <string name="export_csv_summary">将所有卡导出为逗号分隔的文件。该文件可以在Microsoft Excel，Google表格，Apple Numbers等中打开。</string>
-    <string name="import_csv_summary">从Microsoft Excel，Google表格，Apple Numbers导入，或使用它从其他应用程序导入您的抽认卡。</string>
+    <string name="import_csv_summary">从Microsoft Excel，Google表格，Apple Numbers导入，或使用它从其他应用程序导入抽认卡。</string>
     <string name="create_backup_summary">创建数据的备份文件。您可以在另一台设备上打开该文件以恢复数据。</string>
-    <string name="import_backup_summary">导入备份文件。备份不会覆盖现有堆栈和卡。</string>
+    <string name="import_backup_summary">导入备份文件。备份不会覆盖现有的堆栈和卡。</string>
     <string name="coming_soon">快来了。</string>
     <string name="reminders">提醒事项</string>
     <string name="account">帐户</string>
@@ -79,4 +79,6 @@
     <string name="by_score">按分数</string>
     <string name="you_dont_have_any_cards_yet">您还没有卡。</string>
     <string name="repeat_wrong_answers">重复错误答案</string>
+    <string name="where_do_you_want_to_move_this_card">您要将卡片移到哪里？</string>
+    <string name="move">移动</string>
 </resources>

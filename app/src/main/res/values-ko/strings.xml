@@ -79,4 +79,6 @@
     <string name="by_score">점수로</string>
     <string name="you_dont_have_any_cards_yet">아직 카드가 없습니다.</string>
     <string name="repeat_wrong_answers">오답을 반복하십시오</string>
+    <string name="where_do_you_want_to_move_this_card">이 카드를 어디로 옮기시겠습니까?</string>
+    <string name="move">움직임</string>
 </resources>

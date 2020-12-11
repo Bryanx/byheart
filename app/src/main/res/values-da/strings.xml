@@ -79,4 +79,6 @@
     <string name="by_score">Efter score</string>
     <string name="you_dont_have_any_cards_yet">Du har endnu ingen kort.</string>
     <string name="repeat_wrong_answers">Gentag forkerte svar</string>
+    <string name="where_do_you_want_to_move_this_card">Hvor vil du flytte dette kort?</string>
+    <string name="move">Bevæge sig</string>
 </resources>

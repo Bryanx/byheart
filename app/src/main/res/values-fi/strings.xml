@@ -79,4 +79,6 @@
     <string name="by_score">Pisteet</string>
     <string name="you_dont_have_any_cards_yet">Sinulla ei ole vielä kortteja.</string>
     <string name="repeat_wrong_answers">Toista väärät vastaukset</string>
+    <string name="move">liikkua</string>
+    <string name="where_do_you_want_to_move_this_card">Minne haluat siirtää tämän kortin?</string>
 </resources>

@@ -79,4 +79,6 @@
     <string name="by_score">Por pontuação</string>
     <string name="you_dont_have_any_cards_yet">Você ainda não tem cartões.</string>
     <string name="repeat_wrong_answers">Repita respostas erradas</string>
+    <string name="where_do_you_want_to_move_this_card">Para onde você deseja mover este cartão?</string>
+    <string name="move">Mover</string>
 </resources>

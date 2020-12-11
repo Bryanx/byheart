@@ -31,10 +31,10 @@
     <string name="no">沒有</string>
     <string name="add_card">新增卡</string>
     <string name="edit_card">編輯卡</string>
-    <string name="about_description">感謝您使用此應用程序！我這樣做是因為所有現代抽認卡應用要么充斥著廣告，要么需要訂閱，要么包含許多不必要的功能。</string>
+    <string name="about_description">感謝您使用此應用程序！我之所以這樣做，是因為所有現代抽認卡應用要么充斥著廣告，要么需要訂閱，要么包含許多不必要的功能。</string>
     <string name="about_subtext">如果您喜歡此應用，請考慮執行以下操作：</string>
     <string name="rate_this_app">為這個應用軟件評分</string>
-    <string name="buy_me_a_cup_of_coffee">買一杯咖啡給我！</string>
+    <string name="buy_me_a_cup_of_coffee">給我買一杯咖啡！</string>
     <string name="create_a_bug_report">創建一個錯誤報告</string>
     <string name="delete_confirm_stack">您確定要刪除此堆棧嗎？</string>
     <string name="delete">刪除</string>
@@ -49,7 +49,7 @@
     <string name="export_csv_summary">將所有卡導出為逗號分隔的文件。該文件可以在Microsoft Excel，Google表格，Apple Numbers等中打開。</string>
     <string name="import_csv_summary">從Microsoft Excel，Google表格，Apple Numbers導入，或使用它從其他應用程序導入抽認卡。</string>
     <string name="create_backup_summary">創建數據的備份文件。您可以在另一台設備上打開該文件以恢復數據。</string>
-    <string name="import_backup_summary">導入備份文件。備份不會覆蓋現有堆棧和卡。</string>
+    <string name="import_backup_summary">導入備份文件。備份不會覆蓋現有的堆棧和卡。</string>
     <string name="coming_soon">快來了。</string>
     <string name="reminders">提醒事項</string>
     <string name="account">帳戶</string>
@@ -79,4 +79,6 @@
     <string name="by_score">按分數</string>
     <string name="you_dont_have_any_cards_yet">您還沒有卡。</string>
     <string name="repeat_wrong_answers">重複錯誤答案</string>
+    <string name="where_do_you_want_to_move_this_card">您要將卡片移到哪裡？</string>
+    <string name="move">移動</string>
 </resources>

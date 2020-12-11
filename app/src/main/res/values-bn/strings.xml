@@ -79,4 +79,6 @@
     <string name="by_score">স্কোর দ্বারা</string>
     <string name="you_dont_have_any_cards_yet">আপনার কাছে এখনও কোনও কার্ড নেই।</string>
     <string name="repeat_wrong_answers">ভুল উত্তর পুনরাবৃত্তি</string>
+    <string name="move">" সরান"</string>
+    <string name="where_do_you_want_to_move_this_card">আপনি এই কার্ডটি কোথায় স্থানান্তর করতে চান?</string>
 </resources>

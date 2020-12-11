@@ -79,4 +79,6 @@
     <string name="by_score">ਸਕੋਰ ਦੁਆਰਾ</string>
     <string name="you_dont_have_any_cards_yet">ਤੁਹਾਡੇ ਕੋਲ ਅਜੇ ਕੋਈ ਕਾਰਡ ਨਹੀਂ ਹੈ.</string>
     <string name="repeat_wrong_answers">ਗਲਤ ਜਵਾਬ ਦੁਹਰਾਓ</string>
+    <string name="where_do_you_want_to_move_this_card">ਤੁਸੀਂ ਇਸ ਕਾਰਡ ਨੂੰ ਕਿੱਥੇ ਲਿਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+    <string name="move">ਮੂਵ</string>
 </resources>

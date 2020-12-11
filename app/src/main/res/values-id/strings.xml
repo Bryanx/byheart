@@ -79,4 +79,6 @@
     <string name="by_score">Berdasarkan skor</string>
     <string name="you_dont_have_any_cards_yet">Anda belum punya kartu.</string>
     <string name="repeat_wrong_answers">Ulangi jawaban yang salah</string>
+    <string name="where_do_you_want_to_move_this_card">Ke mana Anda ingin memindahkan kartu ini?</string>
+    <string name="move">Pindah</string>
 </resources>

@@ -79,4 +79,6 @@
     <string name="by_score">スコア別</string>
     <string name="you_dont_have_any_cards_yet">まだカードがありません。</string>
     <string name="repeat_wrong_answers">間違った答えを繰り返します</string>
+    <string name="where_do_you_want_to_move_this_card">このカードをどこに移動しますか？</string>
+    <string name="move">移動</string>
 </resources>

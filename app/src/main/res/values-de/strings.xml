@@ -79,4 +79,6 @@
     <string name="by_score">Nach Punktzahl</string>
     <string name="you_dont_have_any_cards_yet">Du hast noch keine Karten.</string>
     <string name="repeat_wrong_answers">Wiederholen Sie falsche Antworten</string>
+    <string name="where_do_you_want_to_move_this_card">Wohin möchten Sie diese Karte bewegen?</string>
+    <string name="move">Bewegen</string>
 </resources>

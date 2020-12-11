@@ -79,4 +79,6 @@
     <string name="by_score">स्कोर करके</string>
     <string name="you_dont_have_any_cards_yet">आपके पास अभी तक कोई कार्ड नहीं है।</string>
     <string name="repeat_wrong_answers">गलत उत्तर दोहराएं</string>
+    <string name="where_do_you_want_to_move_this_card">आप इस कार्ड को कहाँ स्थानांतरित करना चाहते हैं?</string>
+    <string name="move">चाल</string>
 </resources>
