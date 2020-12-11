@@ -32,16 +32,14 @@ class PileFragment : Fragment(), IOnBackPressed {
     private val cardVM: CardViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
-    private lateinit var layout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        layout = inflater.inflate(R.layout.content_piles, container, false)
+        val layout = inflater.inflate(R.layout.content_piles, container, false)
         cardVM.allCards.observe(this, Observer {
-            val recyclerView = layout.findViewById<RecyclerView>(R.id.recyclerview_piles)
-            val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM, this)
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridAutofitLayoutManager(activity!!, 500)
-            ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerView)
+            val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM)
+            recyclerviewPiles.adapter = adapter
+            recyclerviewPiles.layoutManager = GridAutofitLayoutManager(activity!!, 500)
+            ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerviewPiles)
             addEventHandlers(adapter)
         })
         addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))
@@ -81,12 +79,12 @@ class PileFragment : Fragment(), IOnBackPressed {
     private fun addEventHandlers(adapter: PileListAdapter) {
         pileVM.allPiles.observe(this, Observer { piles ->
             piles?.let {
-                recyclerview_piles.doAfterAnimations {
+                recyclerviewPiles.doAfterAnimations {
                     adapter.setPiles(piles.toMutableList())
                 }
             }
         })
-        layout.addPileBtn.setOnClickListener {
+        addPileBtn.setOnClickListener {
             sessionVM.pileId.postValue(NO_ID)
             startFragment(PileEditFragment())
         }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_rehearsal.*
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
@@ -223,5 +222,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         handler.removeMessages(0) // clear timers
         startFragment(CardFragment())
         return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        correctSound.stop()
+        correctSound.release()
+        wrongSound.stop()
+        wrongSound.release()
     }
 }

@@ -21,8 +21,7 @@ class PileListAdapter internal constructor(
     private val context: Context,
     val cards: MutableList<Card>,
     var sessionVM: SessionViewModel,
-    private var pileVM: PileViewModel,
-    var fragment: PileFragment
+    private var pileVM: PileViewModel
 ) : RecyclerView.Adapter<PileListAdapter.PileViewHolder>() {
 
     private var darkMode: Boolean = false

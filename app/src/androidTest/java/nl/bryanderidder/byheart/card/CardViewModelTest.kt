@@ -75,13 +75,13 @@ class CardViewModelTest {
 
             delay(1_000)
             val londonCard = Card("United Kindom", "London", 1)
-            cardVM.insert(londonCard).invokeOnCompletion {
+            cardVM.insertAsync(londonCard).invokeOnCompletion {
                 val card = cardVM.allCards.getOrAwaitValue()[0]
                 assertThat(card).isEqualTo(londonCard)
                 assertThat(card.listIndex).isEqualTo(0)
             }
             val lisbonCard = Card("Portugal", "Lisbon", 1)
-            cardVM.insert(lisbonCard).invokeOnCompletion {
+            cardVM.insertAsync(lisbonCard).invokeOnCompletion {
                 assertThat(cardVM.allCards.getOrAwaitValue()[1].listIndex).isEqualTo(1)
             }
         }
@@ -146,7 +146,7 @@ class CardViewModelTest {
             val parisCard = Card("France", "Paris", 1).apply { this.listIndex = 3 }
             db.cardDao().insertAll(listOf(londonCard, lisbonCard, parisCard))
 
-            cardVM.delete(lisbonCard).invokeOnCompletion {
+            cardVM.deleteAsync(lisbonCard).invokeOnCompletion {
                 val cards = cardVM.allCards.getOrAwaitValue()
                 assertThat(cards).doesNotContain(lisbonCard)
                 assertThat(cards.map { it.listIndex }).containsExactly(0, 1)

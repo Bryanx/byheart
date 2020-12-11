@@ -9,7 +9,7 @@
         tools:context=".pile.PileFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_piles"
+            android:id="@+id/recyclerviewPiles"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?actionBarSize"

@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardFragment
@@ -86,15 +88,34 @@ class CardEditFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.edit_card_menu, menu)
+        menu.findItem(R.id.action_move_card)?.isVisible = showMoveOption()
+        menu.findItem(R.id.action_delete_card)?.isVisible = editMode
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun showMoveOption(): Boolean {
+        return editMode && pileVM.allPiles.value?.size ?: 0 > 1
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_confirm_edit_pile -> {
+        R.id.action_confirm_edit_card -> {
             if (addOrUpdateCard()) startFragment(CardFragment()).run { true }
             else false
         }
+        R.id.action_move_card -> {
+            MoveCardFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            true
+        }
+        R.id.action_delete_card -> true.apply { deleteCard() }
         R.drawable.ic_nav_back -> startFragment(CardFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteCard() = GlobalScope.launch {
+        cardVM.deleteByIdAsync(sessionVM.cardId.value!!).await()
+        activity?.runOnUiThread {
+            startFragment(CardFragment())
+        }
     }
 
     private fun addOrUpdateCard(): Boolean {
@@ -113,7 +134,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
                 showMessage(getString(R.string.updated_card))
             } else {
                 val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
-                cardVM.insert(card)
+                cardVM.insertAsync(card)
                 showMessage(getString(R.string.created_card))
             }
         }

@@ -1,6 +1,7 @@
 package nl.bryanderidder.byheart.card
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,7 +29,7 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         return Transformations.map(allCards) { it.filter { card -> card.pileId == id.value } }
     }
 
-    fun insert(card: Card) = scope.launch(coroutineProvider.Default) {
+    fun insertAsync(card: Card) = scope.async(coroutineProvider.Default) {
         card.listIndex = repo.getCount(card.pileId)
         repo.insert(card)
     }
@@ -55,7 +56,7 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         repo.updateAll(cards)
     }
 
-    fun delete(card: Card) = scope.launch(coroutineProvider.IO) {
+    fun deleteAsync(card: Card) = scope.async(coroutineProvider.IO) {
         repo.delete(card)
         val cards = withContext(coroutineProvider.Default) { repo.allCards }.value!!
         cards.filter { it.pileId == card.pileId }
@@ -63,6 +64,11 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
             .filter { it.listIndex > card.listIndex }
             .onEach { it.listIndex -= 1 }
             .also { repo.updateAll(it) }
+    }
+
+    fun deleteByIdAsync(id: Long) = scope.async(coroutineProvider.IO) {
+        val card = allCards.value?.find { card -> card.id == id }
+        card?.let { deleteAsync(it).await() }
     }
 
     fun getCards(pileId: Long): List<Card> = allCards.value!!.filter { it.pileId == pileId }

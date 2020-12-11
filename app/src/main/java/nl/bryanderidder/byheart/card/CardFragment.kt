@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
 import nl.bryanderidder.byheart.pile.Pile
@@ -173,11 +172,11 @@ class CardFragment : Fragment(), IOnBackPressed {
 
     fun removeCard(card: Card) = GlobalScope.launch {
         swipeLeftToDelete.isEnabled = false
+        cardVM.deleteAsync(card).await()
         activity?.runOnUiThread {
             adapter.cards.removeAt(card.listIndex)
             adapter.notifyItemRemoved(card.listIndex)
         }
-        cardVM.delete(card)
         showSnackBar(activity!!, getString(R.string.removed_card))
         swipeLeftToDelete.isEnabled = true
     }
