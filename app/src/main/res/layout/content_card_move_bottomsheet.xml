@@ -22,7 +22,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintWidth_percent="0.6"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
+        app:layout_constraintBottom_toTopOf="@+id/pileRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,6 @@
         android:id="@+id/pileRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         tools:listitem="@layout/item_pile_move"
         app:layout_constraintBottom_toBottomOf="parent"

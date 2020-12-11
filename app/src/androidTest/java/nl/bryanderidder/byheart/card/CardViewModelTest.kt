@@ -42,7 +42,7 @@ class CardViewModelTest {
             // override normal DB with in memory db.
             db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
             CardDatabase.INSTANCE = db
-            cardVM = CardViewModel(context)
+            cardVM = CardViewModel(context, CardRepository(db.cardDao()))
             // override coroutine provider so all tests are dispatched on the same thread.
             cardVM.coroutineProvider = CoroutineTestProvider()
             db.pileDao().insert(Pile("testPile1"))
