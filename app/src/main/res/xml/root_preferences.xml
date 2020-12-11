@@ -61,6 +61,13 @@
     <PreferenceCategory app:title="@string/troubleshooting">
 
         <Preference
+            app:icon="@drawable/ic_baseline_chat_24dp"
+            app:key="chat"
+            app:layout="@layout/preference_setting"
+            app:summary="@string/chat_summary"
+            app:title="@string/telegram_group_chat" />
+
+        <Preference
             app:icon="@drawable/ic_bug_report_black_24dp"
             app:key="bugreport"
             app:layout="@layout/preference_setting"
