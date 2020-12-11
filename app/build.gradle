@@ -14,8 +14,8 @@ android {
         applicationId "nl.bryanderidder.byheart"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 17
-        versionName "2.2.1"
+        versionCode 18
+        versionName "2.2.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
