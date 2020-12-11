@@ -30,7 +30,7 @@
                 android:textColor="?mainHeaderTextColor"
                 android:textColorHint="?mainEditTextColorHint"
                 android:hint="@string/card_front"
-                android:inputType="textNoSuggestions"
+                android:inputType="textNoSuggestions|textMultiLine"
                 android:imeOptions="actionNext"
                 android:ems="10" android:layout_alignStart="@+id/cardFrontLayout"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +56,7 @@
                 android:textColor="?mainHeaderTextColor"
                 android:textColorHint="?mainEditTextColorHint"
                 android:hint="@string/card_back"
-                android:inputType="textNoSuggestions"
+                android:inputType="textNoSuggestions|textMultiLine"
                 android:imeOptions="actionDone"
                 android:ems="10"/>
     </com.google.android.material.textfield.TextInputLayout>
