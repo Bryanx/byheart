@@ -31,7 +31,8 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 else super.onFalse()
                 if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                 rehearsalCard.turnToBack()
-                val delay = rehearsalCard.backText!!.length*150.toLong()
+                var delay = rehearsalCard.backText!!.length*150.toLong()
+                if (delay > 2000) delay = 2000
                 handler.postDelayed({ nextQuestionWithButtons() }, delay)
             }
         }
