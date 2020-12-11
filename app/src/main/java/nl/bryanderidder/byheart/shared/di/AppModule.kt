@@ -1,21 +1,17 @@
 package nl.bryanderidder.byheart.shared.di
 
-import nl.bryanderidder.byheart.card.CardDao
 import nl.bryanderidder.byheart.card.CardRepository
 import nl.bryanderidder.byheart.card.CardViewModel
-import nl.bryanderidder.byheart.pile.PileDao
 import nl.bryanderidder.byheart.pile.PileRepository
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.database.CardDatabase
-import nl.bryanderidder.byheart.shared.get
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 @JvmField
 val appModule: Module = module {
-
     single { CardDatabase.getDatabase(get()) }
     single { get<CardDatabase>().cardDao() }
     single { get<CardDatabase>().pileDao() }
