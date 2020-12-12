@@ -13,7 +13,7 @@ class PileRemoteRepository(private val dao: PileRemoteDao) {
     val allPiles: LiveData<List<Pile>> = dao.getAll()
 
     @WorkerThread
-    fun insert(pile: Pile): Long = dao.insert(pile)
+    fun insert(pile: Pile): String = dao.insert(pile)
 
     @WorkerThread
     fun update(pile: Pile) = dao.update(pile)

@@ -10,6 +10,7 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
+import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.util.CoroutineTestProvider
@@ -42,7 +43,9 @@ class CardViewModelTest {
             // override normal DB with in memory db.
             db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
             CardDatabase.INSTANCE = db
-            cardVM = CardViewModel(context, CardRepository(db.cardDao()))
+            cardVM = CardViewModel(context,
+                CardRepository(db.cardDao())
+            )
             // override coroutine provider so all tests are dispatched on the same thread.
             cardVM.coroutineProvider = CoroutineTestProvider()
             db.pileLocalDao().insert(Pile("testPile1"))

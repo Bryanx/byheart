@@ -2,16 +2,13 @@ package nl.bryanderidder.byheart.pile
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_pile.view.*
-import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
-import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.shared.*
 
 /**
@@ -38,7 +35,7 @@ class PileListAdapter internal constructor(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PileViewHolder, position: Int) {
         val pile = piles.find { it.listIndex == position } ?: piles[position]
-        val cardCount = cards.count { it.pileId == pile.id }
+        val cardCount = getCardcount(pile)
         val item = holder.itemView
         item.tvPileFront.text = pile.name
         item.tvPileId.text = pile.id.toString()
@@ -51,6 +48,11 @@ class PileListAdapter internal constructor(
                 item.tvPileFront.setTextColor(it.setBrightness(0.55F))
             }
         }
+    }
+
+    private fun getCardcount(pile: Pile): Int {
+        if (cards.isEmpty()) return pile.cardCount
+        else return cards.count { it.pileId == pile.id }
     }
 
     internal fun setPiles(piles: MutableList<Pile>) {

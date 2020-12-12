@@ -1,6 +1,6 @@
 package nl.bryanderidder.byheart.shared.di
 
-import nl.bryanderidder.byheart.card.CardRepository
+import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.pile.PileViewModel

@@ -1,12 +1,12 @@
 package nl.bryanderidder.byheart.card
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import kotlinx.coroutines.*
+import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.shared.CoroutineProvider
 import kotlin.coroutines.CoroutineContext
 

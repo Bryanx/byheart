@@ -33,6 +33,7 @@ data class Card(
     @ColumnInfo(name = "amountCorrect") var amountCorrect: Int = 0
     @ColumnInfo(name = "amountFalse") var amountFalse: Int = 0
 
+    constructor() : this("", "")
     constructor(q: String, a: String): this(q, a, -1)
 
     fun getCorrectPercentage(): Int {

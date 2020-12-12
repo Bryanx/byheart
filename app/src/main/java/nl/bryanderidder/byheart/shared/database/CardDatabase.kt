@@ -9,7 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
-import nl.bryanderidder.byheart.card.CardDao
+import nl.bryanderidder.byheart.card.persistence.CardDao
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.persistence.PileLocalDao
 import nl.bryanderidder.byheart.shared.Preferences

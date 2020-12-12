@@ -22,6 +22,7 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
+import nl.bryanderidder.byheart.store.StoreViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -38,6 +39,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private val cardVM: CardViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
+    private val storeVM: StoreViewModel by sharedViewModel()
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0
@@ -86,10 +88,16 @@ class CardFragment : Fragment(), IOnBackPressed {
         R.id.action_edit_pile -> startFragment(PileEditFragment()).run { true }
         R.id.action_delete_pile -> startDeleteDialog().run { true }
         R.id.action_export -> exportAsCSV().run { true }
+        R.id.action_make_public -> makePilePublic().run { true }
         R.id.action_sort_front -> adapter.sort<String>("question").run { true }
         R.id.action_sort_back -> adapter.sort<String>("answer").run { true }
         R.id.action_sort_score -> adapter.sort<Int>("CorrectPercentage").run { true }
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun makePilePublic() {
+        val pileId = sessionVM.pileId.value ?: NO_ID
+        storeVM.insertPile(pileVM.getPile(pileId), adapter.cards)
     }
 
     private fun setUpAdapter() {

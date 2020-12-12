@@ -53,6 +53,10 @@ class PileViewModel(application: Application, private val repo: PileLocalReposit
         repo.updateAll(pilesToUpdate)
     }
 
+    fun getPile(id: Long): Pile? {
+        return allPiles.value!!.find { it.id == id }
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

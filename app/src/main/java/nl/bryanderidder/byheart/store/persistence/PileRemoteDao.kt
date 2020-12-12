@@ -3,15 +3,26 @@ package nl.bryanderidder.byheart.store.persistence
 import com.google.firebase.firestore.FirebaseFirestore
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.FirestoreLiveData
+import java.util.*
 
 class PileRemoteDao {
 
     val db = FirebaseFirestore.getInstance()
 
-    fun getAll(): FirestoreLiveData<List<Pile>> = FirestoreLiveData(db.collection("piles"), Pile::class)
+    private fun collection() = db.collection("piles")
 
-    fun insert(pile: Pile): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun getAll(): FirestoreLiveData<List<Pile>> = FirestoreLiveData(collection(), Pile::class)
+
+    fun insert(pile: Pile): String {
+        val id = collection().document().id
+        val cards = pile.cards.toMutableList()
+        pile.cardCount = pile.cards.size
+        pile.cards = mutableListOf()
+        pile.creationDate = Date()
+        pile.listIndex = -1
+        db.collection("piles").document(id).set(pile)
+        db.collection("cards").document(id).set(mapOf("cards" to cards))
+        return id
     }
 
     fun update(pile: Pile) {

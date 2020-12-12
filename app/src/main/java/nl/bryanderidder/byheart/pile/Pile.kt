@@ -6,6 +6,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.shared.Exclude
+import java.util.*
 
 /**
  * Class that holds the Pile entity, it has a one to many relationship with Card.
@@ -23,4 +24,8 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
 
     // List for making json
     @Ignore var cards: MutableList<Card> = mutableListOf()
+
+    // Normalized data for remote
+    @Ignore var cardCount: Int = 0
+    @Ignore var creationDate: Date = Date()
 }

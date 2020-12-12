@@ -1,7 +1,8 @@
-package nl.bryanderidder.byheart.card
+package nl.bryanderidder.byheart.card.persistence
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import nl.bryanderidder.byheart.card.Card
 
 /**
  * The main card database access object.
