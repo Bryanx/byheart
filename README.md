@@ -20,7 +20,9 @@ Byheart is an Android app for learning and memorizing words or phrases with flas
 You help by creating an issue or a PR.
 
 ## Screenshots
-<img src="./demo/screen_one.png"> <img src="./demo/screen_two.png"><img src="./demo/screen_three.png">
+Multiple Choice            |  Cards.                   |  Typed mode
+:-------------------------:|:-------------------------:|:-------------------------:
+![](./demo/screen_one.png) |  ![](./demo/screen_two.png)|  ![](./demo/screen_three.png)
 
 ## Privacy policy
 
