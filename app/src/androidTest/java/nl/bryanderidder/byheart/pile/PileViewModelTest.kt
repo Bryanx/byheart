@@ -39,9 +39,9 @@ class PileViewModelTest {
         pileVM = PileViewModel(context)
         // override coroutine provider so all tests are dispatched on the same thread.
         pileVM.coroutineProvider = CoroutineTestProvider()
-        db.pileDao().insert(Pile("test1").apply { this.id = 1; this.listIndex = 0 })
-        db.pileDao().insert(Pile("test2").apply { this.id = 2; this.listIndex = 1 })
-        db.pileDao().insert(Pile("test3").apply { this.id = 3; this.listIndex = 2 })
+        db.pileLocalDao().insert(Pile("test1").apply { this.id = 1; this.listIndex = 0 })
+        db.pileLocalDao().insert(Pile("test2").apply { this.id = 2; this.listIndex = 1 })
+        db.pileLocalDao().insert(Pile("test3").apply { this.id = 3; this.listIndex = 2 })
     }
 
     @Test // Test if after removing a pile the listIndex remains correctly ordered.
@@ -49,7 +49,7 @@ class PileViewModelTest {
         val testPile1 = Pile("test1").apply { this.id = 1; this.listIndex = 0 }
         val testPile2 = Pile("test1").apply { this.id = 2; this.listIndex = 1 }
         val testPile3 = Pile("test1").apply { this.id = 3; this.listIndex = 2 }
-        db.pileDao().insertAll(listOf(testPile1, testPile2, testPile3))
+        db.pileLocalDao().insertAll(listOf(testPile1, testPile2, testPile3))
 
         pileVM.delete(1).invokeOnCompletion {
             val piles = pileVM.allPiles.getOrAwaitValue()

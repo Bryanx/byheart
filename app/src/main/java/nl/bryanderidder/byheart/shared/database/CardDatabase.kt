@@ -11,7 +11,7 @@ import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardDao
 import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.pile.PileDao
+import nl.bryanderidder.byheart.pile.persistence.PileLocalDao
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.Preferences.KEY_NOT_FIRST_START
 import nl.bryanderidder.byheart.shared.Preferences.KEY_REHEARSAL_TYPED
@@ -24,7 +24,7 @@ import nl.bryanderidder.byheart.shared.color
 @Database(entities = [Card::class, Pile::class], version = 3, exportSchema = true)
 abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
-    abstract fun pileDao(): PileDao
+    abstract fun pileLocalDao(): PileLocalDao
 
     companion object {
         @Volatile
@@ -54,7 +54,7 @@ abstract class CardDatabase : RoomDatabase() {
                 if (!isFirstStart()) return
                 INSTANCE?.let { database ->
                     GlobalScope.launch {
-                        populateDatabase(database.cardDao(), database.pileDao(), context)
+                        populateDatabase(database.cardDao(), database.pileLocalDao(), context)
                     }
                 }
             }
@@ -70,20 +70,20 @@ abstract class CardDatabase : RoomDatabase() {
             return false
         }
 
-        fun populateDatabase(cardDao: CardDao, pileDao: PileDao, context: Context) {
+        fun populateDatabase(cardDao: CardDao, pileLocalDao: PileLocalDao, context: Context) {
             cardDao.deleteAll()
-            pileDao.deleteAll()
+            pileLocalDao.deleteAll()
             val pile = InitialData.getFrench(context.color(R.color.teal_200))
-            pileDao.insert(pile)
+            pileLocalDao.insert(pile)
             cardDao.insertAll(pile.cards)
             val pile2 = InitialData.getCapitals(context.color(R.color.orange_300))
-            pileDao.insert(pile2)
+            pileLocalDao.insert(pile2)
             cardDao.insertAll(pile2.cards)
             val pile3 = InitialData.getPeriodicTable(context.color(R.color.purple_200))
-            pileDao.insert(pile3)
+            pileLocalDao.insert(pile3)
             cardDao.insertAll(pile3.cards)
             val pile4 = InitialData.getPersonalPile(context.color(R.color.blue_200))
-            pileDao.insert(pile4)
+            pileLocalDao.insert(pile4)
             cardDao.insertAll(pile4.cards)
         }
     }

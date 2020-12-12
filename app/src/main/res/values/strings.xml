@@ -96,4 +96,5 @@
     <string name="move">Move</string>
     <string name="telegram_group_chat" translatable="false">Telegram group chat</string>
     <string name="chat_summary" translatable="false">For requests, bugs or feedback please join our group chat here (English only).</string>
+    <string name="store">Store</string>
 </resources>

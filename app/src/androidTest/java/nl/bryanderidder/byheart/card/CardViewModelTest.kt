@@ -45,8 +45,8 @@ class CardViewModelTest {
             cardVM = CardViewModel(context, CardRepository(db.cardDao()))
             // override coroutine provider so all tests are dispatched on the same thread.
             cardVM.coroutineProvider = CoroutineTestProvider()
-            db.pileDao().insert(Pile("testPile1"))
-            db.pileDao().insert(Pile("testPile2"))
+            db.pileLocalDao().insert(Pile("testPile1"))
+            db.pileLocalDao().insert(Pile("testPile2"))
         }
     }
 

@@ -7,6 +7,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
+import nl.bryanderidder.byheart.pile.persistence.PileLocalDao
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.util.getOrAwaitValue
 import org.junit.After
@@ -17,9 +18,9 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class PileDaoTest {
+class PileLocalDaoTest {
 
-    private lateinit var pileDao: PileDao
+    private lateinit var pileLocalDao: PileLocalDao
     private lateinit var db: CardDatabase
     private lateinit var testPile: Pile
 
@@ -33,10 +34,10 @@ class PileDaoTest {
         val context = ApplicationProvider.getApplicationContext<Context>() as Application
         db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
         CardDatabase.INSTANCE = db
-        pileDao = db.pileDao()
+        pileLocalDao = db.pileLocalDao()
         testPile = Pile("test")
         testPile.id = 1
-        pileDao.insert(testPile)
+        pileLocalDao.insert(testPile)
     }
 
     @After
@@ -44,46 +45,46 @@ class PileDaoTest {
     fun tearDown() = db.close()
 
     @Test
-    fun getAll() = assertThat(pileDao.getAll().getOrAwaitValue()).isNotNull()
+    fun getAll() = assertThat(pileLocalDao.getAll().getOrAwaitValue()).isNotNull()
 
     @Test
-    fun insert() = assertThat(pileDao.getAll().getOrAwaitValue()).contains(testPile)
+    fun insert() = assertThat(pileLocalDao.getAll().getOrAwaitValue()).contains(testPile)
 
     @Test
     fun update() {
         testPile.name = "test2"
-        pileDao.update(testPile)
-        assertThat(pileDao.getAll().getOrAwaitValue()[0].name).isEqualTo("test2")
+        pileLocalDao.update(testPile)
+        assertThat(pileLocalDao.getAll().getOrAwaitValue()[0].name).isEqualTo("test2")
     }
 
     @Test
     fun updateAll() {
-        pileDao.insert(Pile("test2"))
-        val piles = pileDao.getAll().getOrAwaitValue()
+        pileLocalDao.insert(Pile("test2"))
+        val piles = pileLocalDao.getAll().getOrAwaitValue()
         piles.forEach { it.languageCardFront = "nl_NL" }
-        pileDao.updateAll(piles)
-        pileDao.getAll().getOrAwaitValue().forEach {
+        pileLocalDao.updateAll(piles)
+        pileLocalDao.getAll().getOrAwaitValue().forEach {
             assertThat(it.languageCardFront).isEqualTo("nl_NL")
         }
     }
 
     @Test
     fun delete() {
-        pileDao.delete(testPile)
-        assertThat(pileDao.getAll().getOrAwaitValue()).isEmpty()
+        pileLocalDao.delete(testPile)
+        assertThat(pileLocalDao.getAll().getOrAwaitValue()).isEmpty()
     }
 
     @Test
     fun deleteAll() {
-        pileDao.insert(Pile("test2"))
-        pileDao.deleteAll()
-        assertThat(pileDao.getAll().getOrAwaitValue()).isEmpty()
+        pileLocalDao.insert(Pile("test2"))
+        pileLocalDao.deleteAll()
+        assertThat(pileLocalDao.getAll().getOrAwaitValue()).isEmpty()
     }
 
     @Test
     fun getCount() {
-        pileDao.deleteAll()
-        pileDao.insert(Pile("test1"))
-        assertThat(pileDao.getCount()).isEqualTo(1)
+        pileLocalDao.deleteAll()
+        pileLocalDao.insert(Pile("test1"))
+        assertThat(pileLocalDao.getCount()).isEqualTo(1)
     }
 }

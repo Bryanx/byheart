@@ -60,6 +60,11 @@ object IoUtils {
         }!!
     }
 
+    fun readJson(data: String): Pile {
+        val gson = GsonBuilder().addDeserializationExclusionStrategy(JsonExclusionStrategy).create()
+        return gson.fromJson(data, Pile::class.java)
+    }
+
     private fun exportData(activity: Activity?, uri: Uri) {
         val extension = uri.toString().getExtension()
         val intent = Intent().apply {

@@ -86,6 +86,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:18.0.0'
     implementation 'com.google.firebase:firebase-analytics-ktx:18.0.0'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:17.3.0'
+    implementation 'com.google.firebase:firebase-firestore:22.0.0'
 
     // OpenCSV
     implementation('com.opencsv:opencsv:4.1') {

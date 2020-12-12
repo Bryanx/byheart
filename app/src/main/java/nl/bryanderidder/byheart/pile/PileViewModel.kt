@@ -7,8 +7,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.shared.CoroutineProvider
-import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -16,7 +16,7 @@ import kotlin.coroutines.CoroutineContext
  * The object is updating on backend or frontend changes.
  * @author Bryan de Ridder
  */
-class PileViewModel(application: Application, private val repo: PileRepository) : AndroidViewModel(application) {
+class PileViewModel(application: Application, private val repo: PileLocalRepository) : AndroidViewModel(application) {
 
     var coroutineProvider: CoroutineProvider = CoroutineProvider()
     private var parentJob: Job = Job()

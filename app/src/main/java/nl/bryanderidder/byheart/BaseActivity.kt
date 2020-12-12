@@ -18,6 +18,7 @@ import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.getExtension
 import nl.bryanderidder.byheart.shared.startFragment
 import nl.bryanderidder.byheart.shared.utils.IoUtils
+import nl.bryanderidder.byheart.store.StoreViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -29,6 +30,7 @@ open class BaseActivity : AppCompatActivity() {
     private val sessionVM: SessionViewModel by viewModel()
     private val cardVM: CardViewModel by viewModel()
     private val pileVM: PileViewModel by viewModel()
+    private val storeVM: StoreViewModel by viewModel()
     private var resultCode = 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {

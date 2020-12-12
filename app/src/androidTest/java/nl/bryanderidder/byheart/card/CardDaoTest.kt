@@ -34,7 +34,7 @@ class CardDaoTest {
         val context = ApplicationProvider.getApplicationContext<Context>() as Application
         db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
         CardDatabase.INSTANCE = db
-        db.pileDao().insert(Pile("testPile").apply { this.id = 1 })
+        db.pileLocalDao().insert(Pile("testPile").apply { this.id = 1 })
         cardDao = db.cardDao()
         testCard = Card("test_front", "test_back", 1)
         testCard.id = 1
