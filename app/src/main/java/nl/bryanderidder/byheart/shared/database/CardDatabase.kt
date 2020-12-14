@@ -21,7 +21,7 @@ import nl.bryanderidder.byheart.shared.color
  * Room database class.
  * @author Bryan de Ridder
  */
-@Database(entities = [Card::class, Pile::class], version = 3, exportSchema = true)
+@Database(entities = [Card::class, Pile::class], version = 4, exportSchema = true)
 abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
     abstract fun pileLocalDao(): PileLocalDao
@@ -42,6 +42,7 @@ abstract class CardDatabase : RoomDatabase() {
                     .addCallback(CardDatabaseCallback(context))
                     .addMigrations(DatabaseMigrations.MIGRATION_1_2)
                     .addMigrations(DatabaseMigrations.MIGRATION_2_3)
+                    .addMigrations(DatabaseMigrations.MIGRATION_3_4)
                     .build()
                 INSTANCE = instance
                 return instance

@@ -12,6 +12,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
+import nl.bryanderidder.byheart.card.edit.MoveCardFragment
+import nl.bryanderidder.byheart.card.share.ShareFragment
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
@@ -88,16 +90,10 @@ class CardFragment : Fragment(), IOnBackPressed {
         R.id.action_edit_pile -> startFragment(PileEditFragment()).run { true }
         R.id.action_delete_pile -> startDeleteDialog().run { true }
         R.id.action_export -> exportAsCSV().run { true }
-        R.id.action_make_public -> makePilePublic().run { true }
         R.id.action_sort_front -> adapter.sort<String>("question").run { true }
         R.id.action_sort_back -> adapter.sort<String>("answer").run { true }
         R.id.action_sort_score -> adapter.sort<Int>("CorrectPercentage").run { true }
         else -> super.onOptionsItemSelected(item)
-    }
-
-    private fun makePilePublic() {
-        val pileId = sessionVM.pileId.value ?: NO_ID
-        storeVM.insertPile(pileVM.getPile(pileId), adapter.cards)
     }
 
     private fun setUpAdapter() {
@@ -120,7 +116,12 @@ class CardFragment : Fragment(), IOnBackPressed {
     private fun addEventHandlers() {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
-        buttonShare.setOnClickListener { share() }
+        buttonShare.setOnClickListener {
+            if (adapter.cards.isEmpty())
+                showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
+            else
+                ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+        }
         cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
             clProgressBar.visibility = GONE
@@ -165,13 +166,6 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
-
-    private fun share() {
-        pile?.let {
-            it.cards.addAll(adapter.cards)
-            IoUtils.createJson(context!!, arrayOf(it), "Byheart-${pile?.name}.byheart")
-        }
-    }
 
     fun updateReorderedCards(cards: List<Card>) {
         updateAllCards(cards)

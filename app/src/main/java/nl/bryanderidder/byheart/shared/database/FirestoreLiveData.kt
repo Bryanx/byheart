@@ -25,7 +25,6 @@ class FirestoreLiveData<T>(
                 for (snapshot in queryDocumentSnapshots.documents) {
                     val item = snapshot.toObject(clazz.java) as T
                     itemList.add(item)
-                    Log.i(TAG, "snapshot is " + snapshot.id)
                 }
                 value = itemList as T
             }

@@ -8,6 +8,7 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.ColorFilter
 import android.graphics.PorterDuff
+import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.util.TypedValue
@@ -15,10 +16,8 @@ import android.view.*
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -250,6 +249,21 @@ fun Any.getAttr(name: String): Any? {
 
 fun String.initCaps(): String {
     return this[0].toUpperCase() + this.substring(1, this.length)
+}
+
+fun ProgressBar.setColor(@ColorInt color: Int = ContextCompat.getColor(context, R.color.colorPrimary)) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        indeterminateTintList = ColorStateList.valueOf(color)
+    } else {
+        (indeterminateDrawable as? LayerDrawable)?.apply {
+            if (numberOfLayers >= 2) {
+                setId(0, android.R.id.progress)
+                setId(1, android.R.id.secondaryProgress)
+                val progressDrawable = findDrawableByLayerId(android.R.id.progress).mutate()
+                progressDrawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+            }
+        }
+    }
 }
 
 // property extensions

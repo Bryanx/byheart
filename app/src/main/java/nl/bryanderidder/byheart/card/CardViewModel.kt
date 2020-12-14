@@ -34,9 +34,9 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         repo.insert(card)
     }
 
-    fun insertAll(cards: List<Card>) = runBlocking(coroutineProvider.Default) {
+    fun insertAllAsync(cards: List<Card>) = scope.async(coroutineProvider.Default) {
         cards.forEachIndexed { i, card -> card.listIndex = i }
-        return@runBlocking repo.insertAll(cards)
+        repo.insertAll(cards)
     }
 
     fun update(card: Card) = scope.launch(coroutineProvider.IO) {

@@ -3,29 +3,41 @@ package nl.bryanderidder.byheart.store
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.recyclerview.widget.RecyclerView.NO_ID
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import nl.bryanderidder.byheart.card.Card
+import nl.bryanderidder.byheart.card.persistence.CardRemoteRepository
 import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
-import nl.bryanderidder.byheart.store.persistence.PileRemoteRepository
+import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
 
 /**
  * ViewModel that contains all store information.
  * @author Bryan de Ridder
  */
-class StoreViewModel(application: Application, private val repo: PileRemoteRepository) : AndroidViewModel(application) {
+class StoreViewModel(
+    application: Application,
+    private val pileRepo: PileRemoteRepository,
+    private val cardRepo: CardRemoteRepository
+) : AndroidViewModel(application) {
 
-//    var coroutineProvider: CoroutineProvider = CoroutineProvider()
-//    private var parentJob: Job = Job()
-//    private val coroutineContext: CoroutineContext
-//        get() = parentJob + coroutineProvider.Main
-//    private val scope: CoroutineScope = CoroutineScope(coroutineContext)
+    val allPiles: LiveData<List<Pile>> = pileRepo.allPiles
 
-    val allPiles: LiveData<List<Pile>> = repo.allPiles
-
-    fun insertPile(pile: Pile?, cards: MutableList<Card>) {
-        pile?.cards = cards
-        pile?.let { repo.insert(it) }
+    fun insertPileAsync(pile: Pile, cards: List<Card>): Deferred<String> = GlobalScope.async {
+        pile.cardCount = cards.size
+        val id = pileRepo.insert(pile)
+        cardRepo.insertAllAsync(id, cards).await()
+        id
     }
 
+    fun getPileAsync(remotePileId: String): Deferred<Pile> = GlobalScope.async {
+        val pile = pileRepo.findAsync(remotePileId).await()
+        pile.cards = cardRepo.findAllForPileIdAsync(remotePileId).await().toMutableList()
+        pile
+    }
+
+    fun deleteAsync(remotePileId: String) = GlobalScope.async {
+        pileRepo.deleteAsync(remotePileId).await()
+        cardRepo.deleteAsync(remotePileId).await()
+    }
 }

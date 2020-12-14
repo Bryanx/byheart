@@ -22,4 +22,11 @@ object DatabaseMigrations {
             database.execSQL("UPDATE Card SET listIndex = id-1")
         }
     }
+
+    // DB Migration version 3 to 4
+    val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE Pile ADD COLUMN remoteId TEXT DEFAULT '' NOT NULL")
+        }
+    }
 }

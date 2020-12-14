@@ -2,12 +2,13 @@ package nl.bryanderidder.byheart
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.View
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardViewModel
@@ -59,48 +60,66 @@ open class BaseActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_OPEN_FILE)
     }
 
-    fun handleFileOpening(uri: Uri?, viaShare: Boolean = false) {
-        if (uri == null) return
-        when {
-            uri.toString().getExtension() == "csv" || resultCode == RESULT_CSV -> {
-                val pile = Pile("CSV import")
-                pile.cards = IoUtils.readCSV(contentResolver?.openInputStream(uri))
-                insertPileWithCards(listOf(pile), viaShare)
-            }
-            else -> try {
-                val piles = IoUtils.readJson(contentResolver?.openInputStream(uri))
-                insertPileWithCards(piles.toList(), viaShare)
-            } catch (e: JsonSyntaxException) {
-                //TODO: Add snackbar...
-//                Snackbar.make(currentFocus!!, "File could not be read.", Snackbar.LENGTH_SHORT)
-                e.printStackTrace()
+    fun handleUrlOpening(uri: Uri?) {
+        showMainProgressBar(true)
+        GlobalScope.launch {
+            uri?.lastPathSegment?.also { remotePileId ->
+                val pile = storeVM.getPileAsync(remotePileId).await()
+                insertPileWithCards(listOf(pile), true).await()
             }
         }
     }
 
-    private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = GlobalScope.launch {
+    fun handleFileOpening(uri: Uri?, viaShare: Boolean = false) {
+        if (uri == null) return
+        showMainProgressBar(true)
+        GlobalScope.launch {
+            when {
+                uri.toString().getExtension() == "csv" || resultCode == RESULT_CSV -> {
+                    val pile = Pile("CSV import")
+                    pile.cards = IoUtils.readCSV(contentResolver?.openInputStream(uri))
+                    insertPileWithCards(listOf(pile), viaShare).await()
+                }
+                else -> try {
+                    val piles = IoUtils.readJson(contentResolver?.openInputStream(uri))
+                    insertPileWithCards(piles.toList(), viaShare).await()
+                } catch (e: JsonSyntaxException) {
+                    //TODO: Add snackbar...
+//                Snackbar.make(currentFocus!!, "File could not be read.", Snackbar.LENGTH_SHORT)
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = GlobalScope.async {
         piles.forEach { pile ->
-            val id = pileVM.insert(pile)
+            val id = pileVM.insertAsync(pile).await()
             val newCards = pile.cards.map { Card(it.question, it.answer, id) }
             pile.cards.clear()
-            cardVM.insertAll(newCards)
+            cardVM.insertAllAsync(newCards).await()
             sessionVM.pileId.postValue(id)
             sessionVM.pileName.postValue(pile.name)
         }
         runOnUiThread {
-            val bar = findViewById<ProgressBar>(R.id.progressBar)
-            bar.visibility = View.GONE
+            showMainProgressBar(false)
             if (viaShare) startFragment(PileFragment())
         }
     }
 
     fun startFragment(fragment: Fragment) {
-        findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
         val activeFragments = supportFragmentManager.fragments
         when {
             activeFragments.isEmpty() -> supportFragmentManager.startFragment(fragment)
             else -> supportFragmentManager.startFragment(activeFragments[0])
         }
+    }
+
+    fun showMainProgressBar(visible: Boolean) {
+        if (visible)
+            findViewById<View>(R.id.mainProgressBar).alpha = 1F
+        else
+            findViewById<View>(R.id.mainProgressBar).animate().alpha(0F)
     }
 
     companion object {

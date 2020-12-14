@@ -20,11 +20,29 @@
         app:theme="?activeActionBarTheme"
         app:title="@string/app_name" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+    <com.ferfalk.simplesearchview.SimpleSearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="?mainHeaderTextColor"
+        app:searchBackground="?mainBackgroundColorLighter"
+        app:hintColor="?mainTextColor"
+        app:iconsTint="?mainTextColor"
+        app:backIconTint="?mainTextColor"/>
+
+    <RelativeLayout
+        android:id="@+id/mainProgressBar"
+        android:alpha="0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?mainBackgroundColor">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="?mainBackgroundColor" />
+    </RelativeLayout>
 
 </FrameLayout>

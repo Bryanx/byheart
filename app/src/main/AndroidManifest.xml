@@ -44,6 +44,38 @@
                 <data android:pathPattern=".*\\..*\\..*\\.csv" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.csv" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="www.bryanderidder.nl"
+                    android:pathPrefix="/byheart" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="bryanderidder.nl"
+                    android:pathPattern="/byheart" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="byheart"
+                    android:host="bryanderidder.nl" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".settings.SettingsActivity"
@@ -51,7 +83,7 @@
         <activity
             android:name=".about.AboutActivity"
             android:label="@string/about" />
-        <activity android:name=".BaseActivity" />
+        <activity android:name=".BaseActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

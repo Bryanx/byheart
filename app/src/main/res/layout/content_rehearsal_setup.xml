@@ -19,133 +19,57 @@
         android:text="@string/start_rehearsal"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
+        app:layout_constraintBottom_toTopOf="@+id/crsReverse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/switch1"
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/crsReverse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/switch2"
+        app:icon="@drawable/ic_flip_24dp"
+        app:text="@string/reverse_cards"
+        app:layout_constraintBottom_toTopOf="@+id/crsPronounce"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/flip_icon"
-            android:src="@drawable/ic_flip_24dp"
-            android:tint="?mainTextColor" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/crsReverse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/reverse_cards"
-            android:textColor="?mainTextColor"
-            android:theme="@style/AppTheme" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/switch2"
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/crsPronounce"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/switch3"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1">
+        app:icon="@drawable/ic_volume_up_black_24dp"
+        app:text="@string/pronounce_cards"
+        app:layout_constraintBottom_toTopOf="@+id/crsShuffle"
+        app:layout_constraintEnd_toEndOf="@+id/crsReverse"
+        app:layout_constraintStart_toStartOf="@+id/crsReverse" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/pronounce_icon"
-            android:src="@drawable/ic_volume_up_black_24dp"
-            android:tint="?mainTextColor" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/crsPronounce"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/pronounce_cards"
-            android:textColor="?mainTextColor"
-            android:theme="@style/AppTheme" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/switch3"
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/crsShuffle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/switch4"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1">
+        app:icon="@drawable/ic_random_24dp"
+        app:text="@string/shuffle_cards"
+        app:layout_constraintBottom_toTopOf="@+id/crsRepeatWrong"
+        app:layout_constraintEnd_toEndOf="@+id/crsReverse"
+        app:layout_constraintStart_toStartOf="@+id/crsReverse" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/shuffle_icon"
-            android:src="@drawable/ic_random_24dp"
-            android:tint="?mainTextColor" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/crsShuffle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/shuffle_cards"
-            android:textColor="?mainTextColor"
-            android:theme="@style/AppTheme" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/switch4"
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/crsRepeatWrong"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
+        app:icon="@drawable/ic_replay_black_24dp"
+        app:text="@string/repeat_wrong_answers"
         app:layout_constraintBottom_toTopOf="@+id/toggleGroup"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/repeat_icon"
-            android:src="@drawable/ic_replay_black_24dp"
-            android:tint="?mainTextColor" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/crsRepeatWrong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/repeat_wrong_answers"
-            android:textColor="?mainTextColor"
-            android:theme="@style/AppTheme" />
-
-    </LinearLayout>
-
+        app:layout_constraintEnd_toEndOf="@+id/crsReverse"
+        app:layout_constraintStart_toStartOf="@+id/crsReverse" />
 
     <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
         android:id="@+id/toggleGroup"
@@ -215,8 +139,8 @@
         android:textColor="?mainTextColor"
         android:lines="2"
         app:layout_constraintBottom_toTopOf="@+id/crsStart"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1" />
+        app:layout_constraintEnd_toEndOf="@+id/crsReverse"
+        app:layout_constraintStart_toStartOf="@+id/crsReverse" />
 
     <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
         android:id="@+id/crsStart"
@@ -224,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         app:toggle_circularCornerRadius="true"
         app:toggle_textPaddingHorizontal="15dp"
         app:toggle_textPaddingVertical="10dp"

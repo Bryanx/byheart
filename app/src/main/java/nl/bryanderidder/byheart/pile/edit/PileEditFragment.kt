@@ -12,10 +12,8 @@ import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
-import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
@@ -161,7 +159,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
             pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
             pile.color = pileColor
-            pileVM.insert(pile)
+            pileVM.insertAsync(pile).await()
             sessionVM.message.value=getString(R.string.created_stack)
             startFragment(PileFragment())
         }

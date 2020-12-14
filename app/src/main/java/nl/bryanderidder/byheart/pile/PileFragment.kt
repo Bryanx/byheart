@@ -46,7 +46,7 @@ class PileFragment : Fragment(), IOnBackPressed {
             ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerviewPiles)
             addEventHandlers(adapter)
         })
-        addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))
+        addToolbar(hasBackButton = false, title = resources.getString(R.string.my_card_stacks))
         return layout
     }
 

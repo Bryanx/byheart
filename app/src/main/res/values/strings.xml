@@ -96,5 +96,11 @@
     <string name="move">Move</string>
     <string name="telegram_group_chat" translatable="false">Telegram group chat</string>
     <string name="chat_summary" translatable="false">For requests, bugs or feedback please join our group chat here (English only).</string>
-    <string name="store">Store</string>
+    <string name="this_will_create_a_public_copy_of_your_stack_which_you_can_share_or_update_later">This will create a public copy of your stack, which you can share or update later.</string>
+    <string name="share_public_link">Share public link</string>
+    <string name="make_stack_public">Make stack public</string>
+    <string name="share_stack">Share stack</string>
+    <string name="public_stacks">Public stacks</string>
+    <string name="my_card_stacks">My card stacks</string>
+    <string name="search">Search</string>
 </resources>

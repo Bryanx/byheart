@@ -1,14 +1,17 @@
 package nl.bryanderidder.byheart.shared.di
 
+import com.google.firebase.firestore.FirebaseFirestore
 import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.card.CardViewModel
+import nl.bryanderidder.byheart.card.persistence.CardRemoteDao
+import nl.bryanderidder.byheart.card.persistence.CardRemoteRepository
 import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.store.StoreViewModel
-import nl.bryanderidder.byheart.store.persistence.PileRemoteDao
-import nl.bryanderidder.byheart.store.persistence.PileRemoteRepository
+import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
+import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -20,11 +23,16 @@ val appModule: Module = module {
     single { get<CardDatabase>().pileLocalDao() }
     single { CardRepository(get()) }
     single { PileLocalRepository(get()) }
-    single { PileRemoteDao() }
+
+    single { FirebaseFirestore.getInstance() }
+
+    single { PileRemoteDao(get()) }
     single { PileRemoteRepository(get()) }
+    single { CardRemoteDao(get()) }
+    single { CardRemoteRepository(get()) }
 
     viewModel { SessionViewModel(get()) }
     viewModel { CardViewModel(get(), get()) }
     viewModel { PileViewModel(get(), get()) }
-    viewModel { StoreViewModel(get(), get()) }
+    viewModel { StoreViewModel(get(), get(), get()) }
 }

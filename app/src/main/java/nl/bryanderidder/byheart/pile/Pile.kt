@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.google.gson.Gson
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.shared.Exclude
 import java.util.*
@@ -19,6 +20,7 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @ColumnInfo(name = "languageCardBack") var languageCardBack: String = "en"
     @ColumnInfo(name = "color") var color: Int? = -7288071
     @ColumnInfo(name = "listIndex") var listIndex: Int = -1
+    @ColumnInfo(name = "remoteId") var remoteId: String = ""
 
     constructor() : this("")
 
@@ -26,6 +28,22 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @Ignore var cards: MutableList<Card> = mutableListOf()
 
     // Normalized data for remote
-    @Ignore var cardCount: Int = 0
-    @Ignore var creationDate: Date = Date()
+    @Exclude @Ignore var cardCount: Int = 0
+    @Exclude @Ignore var creationDate: Date = Date()
+
+    fun deepCopy(): Pile {
+        val JSON = Gson().toJson(this)
+        return Gson().fromJson(JSON, Pile::class.java)
+    }
+
+    companion object {
+        fun from(map: Map<String, Any>): Pile {
+            val pile: Pile = Pile(map["name"] as String)
+            map["languageCardFront"]?.let { pile.languageCardFront = it as String }
+            map["languageCardBack"]?.let { pile.languageCardBack = it as String }
+            map["color"]?.let { pile.color = (it as Long).toInt() }
+            map["listIndex"]?.let { pile.listIndex = (it as Long).toInt() }
+            return pile
+        }
+    }
 }

@@ -96,7 +96,7 @@ class CardViewModelTest {
             delay(1_000)
             val londonCard = Card("United Kindom", "London", 1)
             val lisbonCard = Card("Portugal", "Lisbon", 1)
-            cardVM.insertAll(listOf(londonCard, lisbonCard))
+            cardVM.insertAllAsync(listOf(londonCard, lisbonCard))
             assertThat(cardVM.allCards.getOrAwaitValue()[0]).isEqualTo(londonCard)
             assertThat(cardVM.allCards.getOrAwaitValue()[1]).isEqualTo(lisbonCard)
         }

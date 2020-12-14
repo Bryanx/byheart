@@ -43,4 +43,14 @@ data class Card(
         val percentage = correct / (wrong + correct).toFloat() * 100
         return percentage.toInt()
     }
+
+    companion object {
+        fun from(map: Map<String, Any>): Card {
+            return Card(
+                map["question"] as String,
+                map["answer"] as String,
+                map["pileId"] as Long
+            )
+        }
+    }
 }

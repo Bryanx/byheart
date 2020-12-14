@@ -3,10 +3,7 @@ package nl.bryanderidder.byheart.pile
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.shared.CoroutineProvider
 import kotlin.coroutines.CoroutineContext
@@ -25,7 +22,7 @@ class PileViewModel(application: Application, private val repo: PileLocalReposit
     private val scope: CoroutineScope = CoroutineScope(coroutineContext)
     val allPiles: LiveData<List<Pile>> = repo.allPiles
 
-    suspend fun insert(pile: Pile): Long = withContext(coroutineProvider.Default) {
+    fun insertAsync(pile: Pile): Deferred<Long> = scope.async(coroutineProvider.Default) {
         pile.listIndex = repo.getCount()
         repo.insert(pile)
     }
