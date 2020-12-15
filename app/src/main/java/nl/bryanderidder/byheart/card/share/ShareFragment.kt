@@ -2,7 +2,6 @@ package nl.bryanderidder.byheart.card.share
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,8 +21,7 @@ import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.setBrightness
-import nl.bryanderidder.byheart.shared.setColor
-import nl.bryanderidder.byheart.store.StoreViewModel
+import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -35,7 +33,7 @@ class ShareFragment : BaseBottomSheet() {
     private val pileVM: PileViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val cardVM: CardViewModel by sharedViewModel()
-    private val storeVM: StoreViewModel by sharedViewModel()
+    private val fireStoreVM: FireStoreViewModel by sharedViewModel()
     private var job: Job? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,6 +46,7 @@ class ShareFragment : BaseBottomSheet() {
         val pileIsPublic = pile?.remoteId?.isNotEmpty() ?: false
         cpsSwitch.isChecked = pileIsPublic
         cpsShare.alpha = if (pileIsPublic) 1F else 0F
+        cpsSwitch.text = if (pileIsPublic) getString(R.string.stack_is_public) else getString(R.string.make_stack_public)
         showShareLink(pileIsPublic)
         addEventHandlers(pile)
         sessionVM.pileColor.value?.let { setColors(it) }
@@ -71,10 +70,11 @@ class ShareFragment : BaseBottomSheet() {
             val pileId = sessionVM.pileId.value ?: NO_ID
             val cards = cardVM.getCards(pileId)
             pileVM.getPile(pileId)?.let {
-                val id = storeVM.insertPileAsync(it, cards).await()
+                val id = fireStoreVM.insertPileAsync(it, cards).await()
                 pileVM.update(it.apply { remoteId = id })
             }
             activity?.runOnUiThread {
+                cpsSwitch.text = getString(R.string.stack_is_public)
                 showProgressBar(false)
                 showShareLink(true)
             }
@@ -86,10 +86,11 @@ class ShareFragment : BaseBottomSheet() {
         job = GlobalScope.launch {
             delay(500L)
             getSessionPile()?.let {
-                storeVM.deleteAsync(it.remoteId).await()
+                fireStoreVM.deleteAsync(it.remoteId).await()
                 pileVM.update(it.apply { remoteId = "" })
             }
             activity?.runOnUiThread {
+                cpsSwitch.text = getString(R.string.make_stack_public)
                 showProgressBar(false)
                 showShareLink(false)
             }
