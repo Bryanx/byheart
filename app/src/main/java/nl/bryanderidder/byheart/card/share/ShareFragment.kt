@@ -116,13 +116,11 @@ class ShareFragment : BaseBottomSheet() {
 
     private fun setColors(pileColor: Int) {
         cpsSwitch.switchColor = pileColor
-        if (Preferences.DARK_MODE) {
+        cpsProgressBar.setCircleColor(pileColor)
+        if (Preferences.DARK_MODE)
             cpsShare.textColor = pileColor
-            cpsProgressCircle.setColor(pileColor)
-        } else {
+        else
             cpsShare.textColor = pileColor.setBrightness(0.55F)
-            cpsProgressCircle.setColor(pileColor.setBrightness(0.55F))
-        }
     }
 
     override fun onDismiss(dialog: DialogInterface) {

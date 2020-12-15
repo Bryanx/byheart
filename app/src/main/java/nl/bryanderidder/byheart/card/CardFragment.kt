@@ -70,6 +70,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             pile = piles.find { it.id == sessionVM.pileId.value }
             val buttons = arrayOf(buttonShare, buttonAdd, buttonPlay)
             pile?.color?.let { color ->
+                clProgressBar.setCircleColor(color)
                 if (Preferences.DARK_MODE) {
                     buttons.forEach { it.setIconColor(color) }
                     btnAddCardPlaceholder.tvText.setTextColor(color)
@@ -129,7 +130,6 @@ class CardFragment : Fragment(), IOnBackPressed {
         }
         cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
-            clProgressBar.visibility = GONE
             recyclerview.doAfterAnimations {
                 adapter.setCards(cards.toMutableList())
             }
@@ -167,7 +167,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun deletePile() {
-        clProgressBar.visibility = VISIBLE
+        clProgressBar.show()
         GlobalScope.launch {
             delay(500L)
             if (pile?.remoteId?.isNotEmpty() == true)
@@ -175,7 +175,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             pileVM.delete(sessionVM.pileId.value)
             activity?.runOnUiThread {
                 sessionVM.message.value = getString(R.string.deleted_stack)
-                clProgressBar.visibility = GONE
+                clProgressBar.hide()
                 startFragment(PileFragment())
             }
         }

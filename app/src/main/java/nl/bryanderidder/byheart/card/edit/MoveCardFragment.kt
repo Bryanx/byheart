@@ -44,6 +44,11 @@ class MoveCardFragment : BaseBottomSheet() {
         return layout
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        progressBar.setCircleColor(sessionVM.pileColor.value!!)
+    }
+
     private fun setUpAdapter(layout: View) {
         val moveCardPilesAdapter = MoveCardPilesAdapter(context!!, ::onClickMoveCard)
         layout.pileRecycler.adapter = moveCardPilesAdapter
