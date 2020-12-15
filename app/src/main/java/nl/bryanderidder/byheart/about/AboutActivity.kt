@@ -36,7 +36,6 @@ class AboutActivity : AppCompatActivity() {
 
     private fun addEventHandlers() {
         rateUs.setOnClickListener { goToUrl(getString(R.string.play_store_url))}
-        buyCoffee.setOnClickListener { goToUrl( getString(R.string.url_bunq))}
         createIssue.setOnClickListener { goToUrl( getString(R.string.url_github_issue))}
     }
 

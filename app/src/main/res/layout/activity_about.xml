@@ -86,20 +86,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <TextView
-                android:id="@+id/buyCoffee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="16dp"
-                android:text="@string/buy_me_a_cup_of_coffee"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rateUs" />
-
-            <TextView
                 android:id="@+id/createIssue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +97,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buyCoffee" />
+                app:layout_constraintTop_toBottomOf="@+id/rateUs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
