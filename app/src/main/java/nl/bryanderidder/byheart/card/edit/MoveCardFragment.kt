@@ -66,6 +66,7 @@ class MoveCardFragment : BaseBottomSheet() {
                 cardVM.insertAsync(Card(it.question, it.answer, pileId)).await()
             }
             activity?.runOnUiThread {
+                sessionVM.message.value = getString(R.string.card_was_moved)
                 showProgressBar(false)
                 dismiss()
                 startFragment(CardFragment())

@@ -60,6 +60,9 @@ class CardFragment : Fragment(), IOnBackPressed {
         setUpAdapter()
         addEventHandlers()
         changeColors()
+        sessionVM.findMessage()?.let {
+            showSnackBar(activity!!, it)
+        }
     }
 
     private fun changeColors() {

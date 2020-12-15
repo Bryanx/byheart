@@ -103,4 +103,5 @@
     <string name="public_stacks">Public stacks</string>
     <string name="my_card_stacks">My card stacks</string>
     <string name="search">Search</string>
+    <string name="card_was_moved">Card was moved.</string>
 </resources>
