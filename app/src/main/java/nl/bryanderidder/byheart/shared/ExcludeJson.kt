@@ -6,4 +6,4 @@ package nl.bryanderidder.byheart.shared
  */
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
-annotation class Exclude
+annotation class ExcludeJson
