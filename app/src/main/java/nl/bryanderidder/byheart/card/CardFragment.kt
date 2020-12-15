@@ -3,16 +3,18 @@ package nl.bryanderidder.byheart.card
 import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
+import kotlinx.android.synthetic.main.content_piles.*
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
-import nl.bryanderidder.byheart.card.edit.MoveCardFragment
 import nl.bryanderidder.byheart.card.share.ShareFragment
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
@@ -155,14 +157,25 @@ class CardFragment : Fragment(), IOnBackPressed {
         context!!.dialog()
             .setMessage(getString(R.string.delete_confirm_stack))
             .setCancelable(false)
-            .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                pileVM.delete(sessionVM.pileId.value)
-                sessionVM.message.value = getString(R.string.deleted_stack)
-                startFragment(PileFragment())
-            }
+            .setPositiveButton(getString(R.string.delete)) { _, _ -> deletePile() }
             .setNegativeButton(getString(R.string.cancel), null)
             .setAnimation(R.style.SlidingDialog)
             .show()
+    }
+
+    private fun deletePile() {
+        clProgressBar.visibility = VISIBLE
+        GlobalScope.launch {
+            delay(500L)
+            if (pile?.remoteId?.isNotEmpty() == true)
+                storeVM.deleteAsync(pile?.remoteId ?: "").await()
+            pileVM.delete(sessionVM.pileId.value)
+            activity?.runOnUiThread {
+                sessionVM.message.value = getString(R.string.deleted_stack)
+                clProgressBar.visibility = GONE
+                startFragment(PileFragment())
+            }
+        }
     }
 
     private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
