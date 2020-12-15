@@ -36,7 +36,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
         onClick("importCSV") { requestFile(RESULT_CSV) }
         onClickGoToUrl("bugreport", getString(R.string.url_github_issue))
         onClickGoToUrl("chat", getString(R.string.url_chat))
-        onClickGoToUrl("coffeeLink", getString(R.string.url_bunq))
         onClickGoToUrl("rate", getString(R.string.play_store_url))
         onClick("about") { startActivity(Intent(context, AboutActivity::class.java)) }
     }

@@ -78,12 +78,6 @@
     <PreferenceCategory app:title="@string/support">
 
         <Preference
-            app:icon="@drawable/ic_coffee_hot_cup"
-            app:key="coffeeLink"
-            app:layout="@layout/preference_setting"
-            app:title="@string/buy_me_a_cup_of_coffee" />
-
-        <Preference
             app:icon="@drawable/ic_play_circle_outline_black_24dp"
             app:key="rate"
             app:layout="@layout/preference_setting"
