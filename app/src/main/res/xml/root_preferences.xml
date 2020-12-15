@@ -16,21 +16,14 @@
 
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory>
+    <PreferenceCategory app:key="top">
 
         <Preference
             app:icon="@drawable/ic_person_black_24dp"
-            app:key="account"
+            app:key="sign_in"
             app:layout="@layout/preference_setting"
-            app:summary="@string/coming_soon"
-            app:title="@string/account" />
-
-        <Preference
-            app:icon="@drawable/ic_alarm_black_24dp"
-            app:key="reminders"
-            app:layout="@layout/preference_setting"
-            app:summary="@string/coming_soon"
-            app:title="@string/reminders" />
+            app:title="@string/common_signin_button_text_long"
+            app:summary="@string/after_logging_in_you_will_be_able_to_share_cards" />
 
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/import_and_export">
@@ -75,7 +68,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/support">
+    <PreferenceCategory app:key="support" app:title="@string/support">
 
         <Preference
             app:icon="@drawable/ic_play_circle_outline_black_24dp"
@@ -88,6 +81,16 @@
             app:key="about"
             app:layout="@layout/preference_setting"
             app:title="@string/about" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:key="sign_out_category">
+
+        <Preference
+            app:icon="@drawable/ic_sign_out_24dp"
+            app:key="sign_out"
+            app:layout="@layout/preference_setting"
+            app:title="@string/sign_out" />
 
     </PreferenceCategory>
 

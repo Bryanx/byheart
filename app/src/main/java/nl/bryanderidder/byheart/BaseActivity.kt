@@ -14,6 +14,7 @@ import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
+import nl.bryanderidder.byheart.settings.AuthViewModel
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.getExtension
 import nl.bryanderidder.byheart.shared.startFragment
@@ -31,6 +32,7 @@ open class BaseActivity : AppCompatActivity() {
     private val cardVM: CardViewModel by viewModel()
     private val pileVM: PileViewModel by viewModel()
     private val fireStoreVM: FireStoreViewModel by viewModel()
+    private val authVM: AuthViewModel by viewModel()
     private var resultCode = 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {

@@ -3,6 +3,7 @@ package nl.bryanderidder.byheart.shared.firestore
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -23,20 +24,20 @@ class FireStoreViewModel(
 
     val allPiles: LiveData<List<Pile>> = pileRepo.allPiles
 
-    fun insertPileAsync(pile: Pile, cards: List<Card>): Deferred<String> = GlobalScope.async {
+    fun insertPileAsync(pile: Pile, cards: List<Card>): Deferred<String> = viewModelScope.async {
         pile.cardCount = cards.size
         val id = pileRepo.insert(pile)
         cardRepo.insertAllAsync(id, cards).await()
         id
     }
 
-    fun getPileAsync(remotePileId: String): Deferred<Pile> = GlobalScope.async {
+    fun getPileAsync(remotePileId: String): Deferred<Pile> = viewModelScope.async {
         val pile = pileRepo.findAsync(remotePileId).await()
         pile.cards = cardRepo.findAllForPileIdAsync(remotePileId).await().toMutableList()
         pile
     }
 
-    fun deleteAsync(remotePileId: String) = GlobalScope.async {
+    fun deleteAsync(remotePileId: String) = viewModelScope.async {
         pileRepo.deleteAsync(remotePileId).await()
         cardRepo.deleteAsync(remotePileId).await()
     }

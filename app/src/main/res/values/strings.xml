@@ -103,4 +103,7 @@
     <string name="my_card_stacks">My card stacks</string>
     <string name="card_was_moved">Card was moved.</string>
     <string name="stack_is_public">Stack is public</string>
+    <string name="sign_out">Sign out</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">After logging in you will be able to share cards.</string>
+    <string name="welcome_back_name">Welcome back %1$s</string>
 </resources>
