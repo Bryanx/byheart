@@ -2,7 +2,6 @@ package nl.bryanderidder.byheart
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -19,7 +18,7 @@ import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.getExtension
 import nl.bryanderidder.byheart.shared.startFragment
 import nl.bryanderidder.byheart.shared.utils.IoUtils
-import nl.bryanderidder.byheart.store.StoreViewModel
+import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -31,7 +30,7 @@ open class BaseActivity : AppCompatActivity() {
     private val sessionVM: SessionViewModel by viewModel()
     private val cardVM: CardViewModel by viewModel()
     private val pileVM: PileViewModel by viewModel()
-    private val storeVM: StoreViewModel by viewModel()
+    private val fireStoreVM: FireStoreViewModel by viewModel()
     private var resultCode = 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
@@ -64,7 +63,7 @@ open class BaseActivity : AppCompatActivity() {
         showMainProgressBar(true)
         GlobalScope.launch {
             uri?.lastPathSegment?.also { remotePileId ->
-                val pile = storeVM.getPileAsync(remotePileId).await()
+                val pile = fireStoreVM.getPileAsync(remotePileId).await()
                 insertPileWithCards(listOf(pile), true).await()
             }
         }

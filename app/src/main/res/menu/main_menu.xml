@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_store"
-        android:icon="@drawable/ic_public_24dp"
-        app:iconTint="?mainHeaderTextColor"
-        android:title="@string/public_stacks"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/action_dark_mode"
         android:orderInCategory="100"
         android:title="@string/dark_mode"

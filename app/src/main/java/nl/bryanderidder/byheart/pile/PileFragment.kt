@@ -6,14 +6,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.*
-import kotlinx.android.synthetic.main.content_piles.view.*
-import kotlinx.android.synthetic.main.item_pile.view.*
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseActivity.Companion.REQUEST_PICK_FILE
-import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
@@ -21,11 +16,11 @@ import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.settings.SettingsActivity
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
+import nl.bryanderidder.byheart.shared.touchhelpers.DragAndDropCallback
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import nl.bryanderidder.byheart.store.StoreFragment
 
 /**
  * Fragment that contains a list of all piles and a button to add a new pile.
@@ -77,7 +72,6 @@ class PileFragment : Fragment(), IOnBackPressed {
         R.id.action_settings -> {
             activity?.startActivityForResult(Intent(context, SettingsActivity::class.java), REQUEST_PICK_FILE).run { true }
         }
-        R.id.action_store -> startFragment(StoreFragment()).run { true }
         else -> super.onOptionsItemSelected(item)
     }
 

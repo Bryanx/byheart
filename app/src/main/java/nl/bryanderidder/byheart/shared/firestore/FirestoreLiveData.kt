@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared.database
+package nl.bryanderidder.byheart.shared.firestore
 
 import android.util.Log
 import androidx.annotation.Nullable

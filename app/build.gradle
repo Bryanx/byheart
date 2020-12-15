@@ -97,8 +97,6 @@ dependencies {
     // GSON
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation 'com.github.Ferfalk:SimpleSearchView:0.1.6'
-
     // Testing
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:core:1.2.0'

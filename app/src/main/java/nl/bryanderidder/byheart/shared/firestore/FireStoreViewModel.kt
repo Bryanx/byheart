@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.store
+package nl.bryanderidder.byheart.shared.firestore
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -15,7 +15,7 @@ import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
  * ViewModel that contains all store information.
  * @author Bryan de Ridder
  */
-class StoreViewModel(
+class FireStoreViewModel(
     application: Application,
     private val pileRepo: PileRemoteRepository,
     private val cardRepo: CardRemoteRepository

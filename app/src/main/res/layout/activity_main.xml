@@ -20,16 +20,6 @@
         app:theme="?activeActionBarTheme"
         app:title="@string/app_name" />
 
-    <com.ferfalk.simplesearchview.SimpleSearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="?mainHeaderTextColor"
-        app:searchBackground="?mainBackgroundColorLighter"
-        app:hintColor="?mainTextColor"
-        app:iconsTint="?mainTextColor"
-        app:backIconTint="?mainTextColor"/>
-
     <nl.bryanderidder.byheart.shared.views.CustomProgressBar
         android:id="@+id/mainProgressBar"
         android:alpha="0"

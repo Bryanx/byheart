@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared
+package nl.bryanderidder.byheart.shared.touchhelpers
 
 import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper

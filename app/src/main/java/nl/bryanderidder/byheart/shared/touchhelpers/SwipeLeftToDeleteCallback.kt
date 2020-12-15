@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.shared
+package nl.bryanderidder.byheart.shared.touchhelpers
 
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardListAdapter
+import nl.bryanderidder.byheart.shared.color
 
 /**
  * Contains all logic for the cards in the card fragment to be swiped left to be deleted.

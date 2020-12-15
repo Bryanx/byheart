@@ -9,7 +9,7 @@ import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.SessionViewModel
 import nl.bryanderidder.byheart.shared.database.CardDatabase
-import nl.bryanderidder.byheart.store.StoreViewModel
+import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
 import org.koin.android.viewmodel.dsl.viewModel
@@ -34,5 +34,5 @@ val appModule: Module = module {
     viewModel { SessionViewModel(get()) }
     viewModel { CardViewModel(get(), get()) }
     viewModel { PileViewModel(get(), get()) }
-    viewModel { StoreViewModel(get(), get(), get()) }
+    viewModel { FireStoreViewModel(get(), get(), get()) }
 }

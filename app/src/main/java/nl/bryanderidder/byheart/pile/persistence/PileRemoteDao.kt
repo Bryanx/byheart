@@ -7,14 +7,18 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.tasks.await
 import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.shared.database.FirestoreLiveData
+import nl.bryanderidder.byheart.shared.firestore.FirestoreLiveData
 import java.util.*
 
 class PileRemoteDao(private val db: FirebaseFirestore) {
 
     private fun collection() = db.collection("piles")
 
-    fun getAll(): FirestoreLiveData<List<Pile>> = FirestoreLiveData(collection(), Pile::class)
+    fun getAll(): FirestoreLiveData<List<Pile>> =
+        FirestoreLiveData(
+            collection(),
+            Pile::class
+        )
 
     fun insert(newPile: Pile): String {
         val pile = newPile.deepCopy()

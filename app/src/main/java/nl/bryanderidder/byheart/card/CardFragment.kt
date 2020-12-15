@@ -3,13 +3,11 @@ package nl.bryanderidder.byheart.card
 import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
-import kotlinx.android.synthetic.main.content_piles.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,7 +24,9 @@ import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
-import nl.bryanderidder.byheart.store.StoreViewModel
+import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
+import nl.bryanderidder.byheart.shared.touchhelpers.SwipeLeftToDeleteCallback
+import nl.bryanderidder.byheart.shared.touchhelpers.SwipeRightToEditCallback
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -43,7 +43,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private val cardVM: CardViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
-    private val storeVM: StoreViewModel by sharedViewModel()
+    private val fireStoreVM: FireStoreViewModel by sharedViewModel()
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0
@@ -107,8 +107,14 @@ class CardFragment : Fragment(), IOnBackPressed {
         recyclerview.adapter = adapter
         layoutManager = GridAutofitLayoutManager(layout.context, 850)
         recyclerview.layoutManager = layoutManager
-        swipeLeftToDelete = SwipeLeftToDeleteCallback(adapter)
-        swipeRightToEdit = SwipeRightToEditCallback(adapter)
+        swipeLeftToDelete =
+            SwipeLeftToDeleteCallback(
+                adapter
+            )
+        swipeRightToEdit =
+            SwipeRightToEditCallback(
+                adapter
+            )
         ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
         ItemTouchHelper(swipeRightToEdit).attachToRecyclerView(recyclerview)
     }
@@ -171,7 +177,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         GlobalScope.launch {
             delay(500L)
             if (pile?.remoteId?.isNotEmpty() == true)
-                storeVM.deleteAsync(pile?.remoteId ?: "").await()
+                fireStoreVM.deleteAsync(pile?.remoteId ?: "").await()
             pileVM.delete(sessionVM.pileId.value)
             activity?.runOnUiThread {
                 sessionVM.message.value = getString(R.string.deleted_stack)
