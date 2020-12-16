@@ -54,15 +54,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun onSignedIn() {
-        Log.e("TEST", "onSignedIn")
         signOutCategory.addPreference(signOutPreference)
+        signInPreference.isEnabled = false
         signInPreference.title = getString(R.string.welcome_back_name, authVM.getCurrentUser()?.displayName)
         signInPreference.summary = "${authVM.getCurrentUser()?.email}"
     }
 
     private fun onSignedOut() {
-        Log.e("TEST", "onSignedOut")
         signOutCategory.removePreference(signOutPreference)
+        signInPreference.isEnabled = true
         signInPreference.title = getString(R.string.common_signin_button_text_long)
         signInPreference.summary = getString(R.string.after_logging_in_you_will_be_able_to_share_cards)
     }
