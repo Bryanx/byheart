@@ -21,9 +21,9 @@ val Int.px: Int get() = (this * Resources.getSystem().displayMetrics.density).to
 
 val Int.dp: Int get() = (this / Resources.getSystem().displayMetrics.density).toInt()
 
-fun showSnackBar(activity: Activity, message: String) {
+fun showSnackBar(activity: Activity, message: String, length: Int = Snackbar.LENGTH_SHORT) {
     val rootView = activity.window.decorView.findViewById<View>(android.R.id.content)
-    Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT)
+    Snackbar.make(rootView, message, length)
         .setTextColor(Color.WHITE)
         .show()
 }

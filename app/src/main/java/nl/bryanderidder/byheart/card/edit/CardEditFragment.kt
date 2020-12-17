@@ -9,10 +9,10 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
@@ -111,7 +111,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun deleteCard() = GlobalScope.launch {
+    private fun deleteCard() = lifecycleScope.launch {
         cardVM.deleteByIdAsync(sessionVM.cardId.value!!).await()
         activity?.runOnUiThread {
             startFragment(CardFragment())

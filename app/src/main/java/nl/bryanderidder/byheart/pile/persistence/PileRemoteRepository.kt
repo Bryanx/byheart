@@ -2,9 +2,8 @@ package nl.bryanderidder.byheart.pile.persistence
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 
@@ -20,12 +19,12 @@ class PileRemoteRepository(private val dao: PileRemoteDao) {
     fun insert(pile: Pile): String = dao.insert(pile)
 
     @WorkerThread
-    fun findAsync(remotePileId: String): Deferred<Pile> = GlobalScope.async {
-        dao.findAsync(remotePileId).await()
+    fun findAsync(remotePileId: String): Deferred<Pile> {
+        return dao.findAsync(remotePileId)
     }
 
     @WorkerThread
-    fun deleteAsync(remotePileId: String) = GlobalScope.async {
-        dao.deleteAsync(remotePileId).await()
+    fun deleteAsync(remotePileId: String): Deferred<Void> {
+        return dao.deleteAsync(remotePileId)
     }
 }

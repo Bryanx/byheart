@@ -2,9 +2,8 @@ package nl.bryanderidder.byheart.card.persistence
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
@@ -16,15 +15,17 @@ import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 class CardRemoteRepository(private val dao: CardRemoteDao) {
 
     @WorkerThread
-    fun insertAllAsync(pileId: String, cards: List<Card>) = GlobalScope.async {
-        dao.insertAllAsync(pileId, cards).await()
+    fun insertAllAsync(pileId: String, cards: List<Card>): Deferred<Void> {
+        return dao.insertAllAsync(pileId, cards)
     }
 
-    fun findAllForPileIdAsync(pileId: String): Deferred<List<Card>> = GlobalScope.async {
-        dao.findAllForPileIdAsync(pileId).await()
+    @WorkerThread
+    fun findAllForPileIdAsync(pileId: String): Deferred<List<Card>> {
+        return dao.findAllForPileIdAsync(pileId)
     }
 
-    fun deleteAsync(remotePileId: String) = GlobalScope.async {
-        dao.deleteAsync(remotePileId).await()
+    @WorkerThread
+    fun deleteAsync(remotePileId: String): Deferred<Void> {
+        return dao.deleteAsync(remotePileId)
     }
 }

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card_move_bottomsheet.*
 import kotlinx.android.synthetic.main.content_card_move_bottomsheet.view.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.BaseBottomSheet
@@ -63,7 +63,7 @@ class MoveCardFragment : BaseBottomSheet() {
 
     private fun onClickMoveCard(pileId: Long) {
         showProgressBar(true)
-        moveCardJob = GlobalScope.launch {
+        moveCardJob = lifecycleScope.launch {
             val cardId = sessionVM.cardId
             val card: Card? = cardVM.allCards.value?.find { it.id == cardId.value }
             card?.let {

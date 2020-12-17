@@ -5,7 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
@@ -54,7 +55,7 @@ abstract class CardDatabase : RoomDatabase() {
                 super.onOpen(db)
                 if (!isFirstStart()) return
                 INSTANCE?.let { database ->
-                    GlobalScope.launch {
+                    CoroutineScope(IO).launch {
                         populateDatabase(database.cardDao(), database.pileLocalDao(), context)
                     }
                 }

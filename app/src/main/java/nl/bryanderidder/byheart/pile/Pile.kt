@@ -33,6 +33,7 @@ data class Pile(@ColumnInfo(name = "name") var name: String?) {
     // Normalized data for remote
     @ExcludeJson @Ignore var cardCount: Int = 0
     @ExcludeJson @Ignore var creationDate: Date = Date()
+    @ExcludeJson @Ignore var userId: String = ""
 
     fun deepCopy(): Pile {
         val JSON = Gson().toJson(this)

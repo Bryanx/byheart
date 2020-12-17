@@ -5,8 +5,8 @@ import android.net.Uri
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.gson.JsonSyntaxException
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.card.Card
@@ -15,11 +15,10 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.settings.AuthViewModel
-import nl.bryanderidder.byheart.shared.SessionViewModel
-import nl.bryanderidder.byheart.shared.getExtension
-import nl.bryanderidder.byheart.shared.startFragment
-import nl.bryanderidder.byheart.shared.utils.IoUtils
+import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.exceptions.ByheartException
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
+import nl.bryanderidder.byheart.shared.utils.IoUtils
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -63,10 +62,14 @@ open class BaseActivity : AppCompatActivity() {
 
     fun handleUrlOpening(uri: Uri?) {
         showMainProgressBar(true)
-        GlobalScope.launch {
+        lifecycleScope.launch {
             uri?.lastPathSegment?.also { remotePileId ->
-                val pile = fireStoreVM.getPileAsync(remotePileId).await()
-                insertPileWithCards(listOf(pile), true).await()
+                try {
+                    val pile = fireStoreVM.getPileAsync(remotePileId).await()
+                    insertPileWithCards(listOf(pile), true).await()
+                } catch (e: ByheartException) {
+                    showErrorDialog(e)
+                }
             }
         }
     }
@@ -74,7 +77,7 @@ open class BaseActivity : AppCompatActivity() {
     fun handleFileOpening(uri: Uri?, viaShare: Boolean = false) {
         if (uri == null) return
         showMainProgressBar(true)
-        GlobalScope.launch {
+        lifecycleScope.launch {
             when {
                 uri.toString().getExtension() == "csv" || resultCode == RESULT_CSV -> {
                     val pile = Pile("CSV import")
@@ -93,7 +96,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = GlobalScope.async {
+    private fun insertPileWithCards(piles: List<Pile>, viaShare: Boolean) = lifecycleScope.async {
         piles.forEach { pile ->
             val id = pileVM.insertAsync(pile).await()
             val newCards = pile.cards.map { Card(it.question, it.answer, id) }
@@ -121,6 +124,17 @@ open class BaseActivity : AppCompatActivity() {
             findViewById<View>(R.id.mainProgressBar).alpha = 1F
         else
             findViewById<View>(R.id.mainProgressBar).animate().alpha(0F)
+    }
+
+    private fun showErrorDialog(e: ByheartException) = runOnUiThread {
+        showMainProgressBar(false)
+        startFragment(PileFragment())
+        this.dialog()
+            .setMessage(e.message ?: "Something went wrong")
+            .setCancelable(false)
+            .setPositiveButton(getString(R.string.ok)) { _, _ ->  }
+            .setAnimation(R.style.SlidingDialog)
+            .show()
     }
 
     companion object {

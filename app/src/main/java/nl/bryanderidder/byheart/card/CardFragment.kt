@@ -5,10 +5,10 @@ import android.view.*
 import android.view.View.GONE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
@@ -174,7 +174,7 @@ class CardFragment : Fragment(), IOnBackPressed {
 
     private fun deletePile() {
         clProgressBar.show()
-        GlobalScope.launch {
+        lifecycleScope.launch {
             delay(500L)
             if (pile?.remoteId?.isNotEmpty() == true)
                 fireStoreVM.deleteAsync(pile?.remoteId ?: "").await()
@@ -194,7 +194,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         layoutManager.scrollToPosition(0)
     }
 
-    fun removeCard(card: Card) = GlobalScope.launch {
+    fun removeCard(card: Card) = lifecycleScope.launch {
         swipeLeftToDelete.isEnabled = false
         cardVM.deleteAsync(card).await()
         activity?.runOnUiThread {

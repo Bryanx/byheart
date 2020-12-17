@@ -1,18 +1,15 @@
 package nl.bryanderidder.byheart.card.share
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_pile_share_bottomsheet.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.BaseBottomSheet
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardViewModel
@@ -34,10 +31,10 @@ class ShareFragment : BaseBottomSheet() {
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val cardVM: CardViewModel by sharedViewModel()
     private val fireStoreVM: FireStoreViewModel by sharedViewModel()
-    private var job: Job? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.content_pile_share_bottomsheet, container, false)
+        //TODO: On show if remoteid exists update remote pile + cards.
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +62,7 @@ class ShareFragment : BaseBottomSheet() {
 
     private fun onMakePublic() {
         showProgressBar(true)
-        job = GlobalScope.launch {
+        lifecycleScope.launch {
             delay(2000L)
             val pileId = sessionVM.pileId.value ?: NO_ID
             val cards = cardVM.getCards(pileId)
@@ -83,7 +80,7 @@ class ShareFragment : BaseBottomSheet() {
 
     private fun onRemovePublic() {
         showProgressBar(true)
-        job = GlobalScope.launch {
+        lifecycleScope.launch {
             delay(500L)
             getSessionPile()?.let {
                 fireStoreVM.deleteAsync(it.remoteId).await()
@@ -122,10 +119,5 @@ class ShareFragment : BaseBottomSheet() {
             cpsShare.textColor = pileColor
         else
             cpsShare.textColor = pileColor.setBrightness(0.55F)
-    }
-
-    override fun onDismiss(dialog: DialogInterface) {
-        job?.cancel()
-        super.onDismiss(dialog)
     }
 }
