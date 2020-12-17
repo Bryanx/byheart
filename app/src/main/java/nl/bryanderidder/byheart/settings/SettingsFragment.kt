@@ -1,9 +1,7 @@
 package nl.bryanderidder.byheart.settings
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
@@ -12,9 +10,12 @@ import nl.bryanderidder.byheart.BaseActivity.Companion.RESULT_CSV
 import nl.bryanderidder.byheart.BaseActivity.Companion.RESULT_JSON
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.about.AboutActivity
+import nl.bryanderidder.byheart.auth.AuthViewModel
+import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.utils.IoUtils
+import nl.bryanderidder.byheart.shared.utils.goToUrl
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
@@ -41,16 +42,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun addEventHandlers() {
+        onClick("sign_in") { onClickSignIn() }
         onClick("exportBackup") { exportBackup() }
         onClick("importBackup") { requestFile(RESULT_JSON) }
         onClick("importCSV") { requestFile(RESULT_CSV) }
         onClickGoToUrl("bugreport", getString(R.string.url_github_issue))
         onClickGoToUrl("chat", getString(R.string.url_chat))
         onClickGoToUrl("rate", getString(R.string.play_store_url))
-        onClick("sign_in") { authVM.signInWithGoogle(activity!!) }
         onClick("about") { startActivity(Intent(context, AboutActivity::class.java)) }
+        onClickGoToUrl("privacy_policy", getString(R.string.privacy_policy_url))
+        onClickGoToUrl("terms_and_conditions", getString(R.string.terms_and_conditions_url))
         onClick("sign_out") { authVM.signOut(activity!!) }
         authVM.isSignedIn.observe(this, Observer { if (it) onSignedIn() else onSignedOut() })
+    }
+
+    private fun onClickSignIn() {
+        LoginFragment()
+            .also { authVM.loginMessage.value = getString(R.string.after_logging_in_you_will_be_able_to_share_cards) }
+            .also { it.show(activity!!.supportFragmentManager, it.tag) }
     }
 
     private fun onSignedIn() {
@@ -89,10 +98,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun onClickGoToUrl(key: String, url: String) {
         findPreference<Preference>(key)?.setOnPreferenceClickListener {
-            val uriUrl = Uri.parse(url)
-            val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
-            launchBrowser.addCategory(Intent.CATEGORY_BROWSABLE)
-            startActivity(launchBrowser)
+            goToUrl(activity!!, url)
             true
         }
     }

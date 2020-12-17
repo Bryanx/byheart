@@ -34,7 +34,6 @@ class ShareFragment : BaseBottomSheet() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.content_pile_share_bottomsheet, container, false)
-        //TODO: On show if remoteid exists update remote pile + cards.
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

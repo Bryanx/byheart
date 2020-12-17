@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".settings.LoginActivity"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">

@@ -15,7 +15,7 @@ import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
-import nl.bryanderidder.byheart.settings.AuthViewModel
+import nl.bryanderidder.byheart.auth.AuthViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module

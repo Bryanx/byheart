@@ -1,4 +1,4 @@
-package nl.bryanderidder.byheart.settings
+package nl.bryanderidder.byheart.auth
 
 import android.app.Activity
 import android.app.Application
@@ -21,12 +21,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.Preferences.KEY_USER_ID
+import nl.bryanderidder.byheart.shared.views.CustomProgressBar
 
 /**
  * ViewModel that contains all auth information.
  * @author Bryan de Ridder
  */
-const val RC_SIGN_IN = 1
+const val REQUEST_SIGN_IN = 1
 
 class AuthViewModel(
     application: Application,
@@ -35,6 +36,8 @@ class AuthViewModel(
 ) : AndroidViewModel(application) {
 
     var isSignedIn: MutableLiveData<Boolean> = MutableLiveData()
+    var loginMessage: MutableLiveData<String> = MutableLiveData()
+    var isTermsAndConditionsChecked: MutableLiveData<Boolean> = MutableLiveData()
 
     var googleSignIn : GoogleSignInClient? = null
 
@@ -47,10 +50,12 @@ class AuthViewModel(
         }
     }
 
-    fun signInWithGoogle(activity: Activity) {
-        activity.settingsProgressBar.show()
+    fun signInWithGoogle(activity: Activity, progressBar: CustomProgressBar) {
+        progressBar.show()
         val intent = getGoogleSignIn(activity).signInIntent
-        activity.startActivityForResult(intent, RC_SIGN_IN)
+        activity.startActivityForResult(intent,
+            REQUEST_SIGN_IN
+        )
     }
 
     fun signOut(activity: Activity) {
@@ -63,18 +68,18 @@ class AuthViewModel(
         }
     }
 
-    fun onActivityResult(activity: Activity, requestCode: Int, data: Intent?) {
-        if (requestCode == RC_SIGN_IN) {
+    fun onActivityResult(activity: Activity, requestCode: Int, data: Intent?, onAfterLogin: () -> Unit) {
+        if (requestCode == REQUEST_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task, activity)
+            handleSignInResult(task, activity, onAfterLogin)
         }
     }
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>, activity: Activity) = viewModelScope.launch {
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>, activity: Activity, onAfterLogin: () -> Unit) = viewModelScope.launch {
         val account = completedTask.getResult(ApiException::class.java) ?: return@launch
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).await()
-        activity.runOnUiThread { activity.settingsProgressBar.hide() }
+        activity.runOnUiThread { onAfterLogin() }
     }
 
     private fun getGoogleSignIn(activity: Activity): GoogleSignInClient {

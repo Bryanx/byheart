@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.content_card.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.auth.AuthViewModel
+import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
 import nl.bryanderidder.byheart.card.share.ShareFragment
 import nl.bryanderidder.byheart.pile.Pile
@@ -20,6 +22,7 @@ import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.Preferences.USER_ID
 import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
@@ -44,6 +47,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
     private val fireStoreVM: FireStoreViewModel by sharedViewModel()
+    private val authVM: AuthViewModel by sharedViewModel()
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0
@@ -107,14 +111,8 @@ class CardFragment : Fragment(), IOnBackPressed {
         recyclerview.adapter = adapter
         layoutManager = GridAutofitLayoutManager(layout.context, 850)
         recyclerview.layoutManager = layoutManager
-        swipeLeftToDelete =
-            SwipeLeftToDeleteCallback(
-                adapter
-            )
-        swipeRightToEdit =
-            SwipeRightToEditCallback(
-                adapter
-            )
+        swipeLeftToDelete = SwipeLeftToDeleteCallback(adapter)
+        swipeRightToEdit = SwipeRightToEditCallback(adapter)
         ItemTouchHelper(swipeLeftToDelete).attachToRecyclerView(recyclerview)
         ItemTouchHelper(swipeRightToEdit).attachToRecyclerView(recyclerview)
     }
@@ -129,10 +127,13 @@ class CardFragment : Fragment(), IOnBackPressed {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
         buttonShare.setOnClickListener {
-            if (adapter.cards.isEmpty())
-                showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
-            else
-                ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            when {
+                adapter.cards.isEmpty() -> showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
+                USER_ID.isEmpty() -> LoginFragment()
+                    .also { authVM.loginMessage.value = getString(R.string.share_block_login_message) }
+                    .also { it.show(activity!!.supportFragmentManager, it.tag) }
+                else -> ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            }
         }
         cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.

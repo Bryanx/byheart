@@ -87,6 +87,18 @@
     <PreferenceCategory app:key="sign_out_category">
 
         <Preference
+            app:icon="@drawable/ic_privacy_tip_24dp"
+            app:key="privacy_policy"
+            app:layout="@layout/preference_setting"
+            app:title="@string/privacy_policy" />
+
+        <Preference
+            app:icon="@drawable/ic_privacy_tip_24dp"
+            app:key="terms_and_conditions"
+            app:layout="@layout/preference_setting"
+            app:title="@string/terms_and_conditions" />
+
+        <Preference
             app:icon="@drawable/ic_sign_out_24dp"
             app:key="sign_out"
             app:layout="@layout/preference_setting"

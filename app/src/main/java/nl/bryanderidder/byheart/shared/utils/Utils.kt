@@ -1,8 +1,10 @@
 package nl.bryanderidder.byheart.shared.utils
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
+import android.net.Uri
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
@@ -15,6 +17,13 @@ import com.google.android.material.snackbar.Snackbar
 fun getDeviceWidth(ctx: Activity): Float {
     val displayMetrics = ctx.resources.displayMetrics
     return displayMetrics.widthPixels / displayMetrics.density
+}
+
+fun goToUrl(activity: Activity, url: String) {
+    val uriUrl = Uri.parse(url)
+    val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
+    launchBrowser.addCategory(Intent.CATEGORY_BROWSABLE)
+    activity.startActivity(launchBrowser)
 }
 
 val Int.px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
