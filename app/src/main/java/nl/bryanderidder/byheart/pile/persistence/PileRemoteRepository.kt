@@ -2,10 +2,8 @@ package nl.bryanderidder.byheart.pile.persistence
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.*
 import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 
 /**
  * Repository for local piles
@@ -26,5 +24,9 @@ class PileRemoteRepository(private val dao: PileRemoteDao) {
     @WorkerThread
     fun deleteAsync(remotePileId: String): Deferred<Void> {
         return dao.deleteAsync(remotePileId)
+    }
+
+    fun updateAsync(pile: Pile): Deferred<Void> {
+        return dao.updateAsync(pile)
     }
 }

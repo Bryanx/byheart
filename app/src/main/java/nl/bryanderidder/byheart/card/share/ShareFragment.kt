@@ -31,6 +31,7 @@ class ShareFragment : BaseBottomSheet() {
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val cardVM: CardViewModel by sharedViewModel()
     private val fireStoreVM: FireStoreViewModel by sharedViewModel()
+    private val pileId get() = sessionVM.pileId.value ?: NO_ID
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.content_pile_share_bottomsheet, container, false)
@@ -43,9 +44,26 @@ class ShareFragment : BaseBottomSheet() {
         cpsSwitch.isChecked = pileIsPublic
         cpsShare.alpha = if (pileIsPublic) 1F else 0F
         cpsSwitch.text = if (pileIsPublic) getString(R.string.stack_is_public) else getString(R.string.make_stack_public)
+        if (pileIsPublic) updateRemoteStack()
         showShareLink(pileIsPublic)
         addEventHandlers(pile)
         sessionVM.pileColor.value?.let { setColors(it) }
+    }
+
+    private fun updateRemoteStack() {
+        showProgressBar(true)
+        lifecycleScope.launch {
+            delay(100L)
+            val cards = cardVM.getCards(pileId)
+            pileVM.getPile(pileId)?.let {
+                fireStoreVM.updatePileAsync(it, cards).await()
+            }
+            activity?.runOnUiThread {
+                cpsSwitch.text = getString(R.string.stack_is_public)
+                showProgressBar(false)
+                showShareLink(true)
+            }
+        }
     }
 
     private fun addEventHandlers(pile: Pile?) {
@@ -63,7 +81,6 @@ class ShareFragment : BaseBottomSheet() {
         showProgressBar(true)
         lifecycleScope.launch {
             delay(2000L)
-            val pileId = sessionVM.pileId.value ?: NO_ID
             val cards = cardVM.getCards(pileId)
             pileVM.getPile(pileId)?.let {
                 val id = fireStoreVM.insertPileAsync(it, cards).await()
@@ -107,7 +124,6 @@ class ShareFragment : BaseBottomSheet() {
     }
 
     private fun getSessionPile(): Pile? {
-        val pileId = sessionVM.pileId.value ?: NO_ID
         return pileVM.getPile(pileId)
     }
 

@@ -42,4 +42,12 @@ class PileRemoteDao(private val db: FirebaseFirestore) {
     fun deleteAsync(remotePileId: String): Deferred<Void> {
         return collection().document(remotePileId).delete().asDeferred()
     }
+
+    fun updateAsync(updatePile: Pile): Deferred<Void> {
+        val pile = updatePile.deepCopy()
+        pile.lastUpdateDate = Date()
+        pile.listIndex = -1
+        pile.userId = Preferences.USER_ID
+        return collection().document(pile.remoteId).set(pile).asDeferred()
+    }
 }

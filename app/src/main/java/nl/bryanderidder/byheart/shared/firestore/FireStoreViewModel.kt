@@ -40,4 +40,9 @@ class FireStoreViewModel(
         pileRepo.deleteAsync(remotePileId).await()
         cardRepo.deleteAsync(remotePileId).await()
     }
+
+    fun updatePileAsync(pile: Pile, cards: List<Card>) = viewModelScope.async {
+        pileRepo.updateAsync(pile).await()
+        cardRepo.updateAllAsync(pile.remoteId, cards).await()
+    }
 }

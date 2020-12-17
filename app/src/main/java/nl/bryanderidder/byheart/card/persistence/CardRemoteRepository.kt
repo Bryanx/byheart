@@ -28,4 +28,8 @@ class CardRemoteRepository(private val dao: CardRemoteDao) {
     fun deleteAsync(remotePileId: String): Deferred<Void> {
         return dao.deleteAsync(remotePileId)
     }
+
+    fun updateAllAsync(remoteId: String, cards: List<Card>): Deferred<Void> {
+        return dao.insertAllAsync(remoteId, cards)
+    }
 }
