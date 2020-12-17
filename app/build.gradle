@@ -14,8 +14,8 @@ android {
         applicationId "nl.bryanderidder.byheart"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 18
-        versionName "2.2.2"
+        versionCode 19
+        versionName "2.2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -71,8 +71,9 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.5"
 
     // Lifecycle components
-    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
-    kapt "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 
     // Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
@@ -84,8 +85,12 @@ dependencies {
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.firebase:firebase-analytics-ktx:18.0.0'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:17.3.0'
+    implementation 'com.google.firebase:firebase-firestore:22.0.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.2.1'
 
     // OpenCSV
     implementation('com.opencsv:opencsv:4.1') {

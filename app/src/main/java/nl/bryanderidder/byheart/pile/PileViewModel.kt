@@ -3,12 +3,9 @@ package nl.bryanderidder.byheart.pile
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import nl.bryanderidder.byheart.pile.persistence.PileLocalRepository
 import nl.bryanderidder.byheart.shared.CoroutineProvider
-import nl.bryanderidder.byheart.shared.database.CardDatabase
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -16,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
  * The object is updating on backend or frontend changes.
  * @author Bryan de Ridder
  */
-class PileViewModel(application: Application, private val repo: PileRepository) : AndroidViewModel(application) {
+class PileViewModel(application: Application, private val repo: PileLocalRepository) : AndroidViewModel(application) {
 
     var coroutineProvider: CoroutineProvider = CoroutineProvider()
     private var parentJob: Job = Job()
@@ -25,7 +22,7 @@ class PileViewModel(application: Application, private val repo: PileRepository) 
     private val scope: CoroutineScope = CoroutineScope(coroutineContext)
     val allPiles: LiveData<List<Pile>> = repo.allPiles
 
-    suspend fun insert(pile: Pile): Long = withContext(coroutineProvider.Default) {
+    fun insertAsync(pile: Pile): Deferred<Long> = scope.async(coroutineProvider.Default) {
         pile.listIndex = repo.getCount()
         repo.insert(pile)
     }
@@ -51,6 +48,10 @@ class PileViewModel(application: Application, private val repo: PileRepository) 
         val pilesToUpdate = allPiles.value!!.filter { it != pile && it.listIndex > pile?.listIndex!! }
         pilesToUpdate.forEach { it.listIndex -= 1 }
         repo.updateAll(pilesToUpdate)
+    }
+
+    fun getPile(id: Long): Pile? {
+        return allPiles.value!!.find { it.id == id }
     }
 
     override fun onCleared() {

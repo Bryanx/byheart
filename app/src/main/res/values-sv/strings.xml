@@ -81,4 +81,18 @@
     <string name="repeat_wrong_answers">Upprepa fel svar</string>
     <string name="where_do_you_want_to_move_this_card">Var vill du flytta det här kortet?</string>
     <string name="move">Flytta</string>
+    <string name="share_stack_message">Detta genererar en offentlig länk till denna stack. Alla med länken kan kopiera den här stacken.</string>
+    <string name="share_public_link">Dela allmän länk</string>
+    <string name="make_stack_public">Gör stacken offentlig</string>
+    <string name="update_public_stack">Uppdatera offentlig stack</string>
+    <string name="share_stack">Dela stack</string>
+    <string name="my_card_stacks">Mitt kort stackar</string>
+    <string name="card_was_moved">Kortet flyttades.</string>
+    <string name="stack_is_public">Stack är offentlig</string>
+    <string name="sign_out">Logga ut</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Efter inloggning kommer du att kunna dela kort.</string>
+    <string name="welcome_back_name">Välkommen tillbaka %1$s</string>
+    <string name="share_block_login_message">För att dela dina kort måste du skapa ett konto. Alternativt kan du exportera en CSV-fil och dela den filen.</string>
+    <string name="read_terms_and_conditions">Läs villkoren</string>
+    <string name="agree_terms">Jag godkänner villkoren</string>
 </resources>

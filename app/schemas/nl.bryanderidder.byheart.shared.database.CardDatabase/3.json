@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "559f09bbbd55761418a9f71c85cc1d4a",
+    "identityHash": "779982e8a04f7aadfef8b8bc16d8f8fa",
     "entities": [
       {
         "tableName": "card",
@@ -74,7 +74,7 @@
       },
       {
         "tableName": "Pile",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `languageCardFront` TEXT NOT NULL, `languageCardBack` TEXT NOT NULL, `color` INTEGER, `listIndex` INTEGER NOT NULL, `name` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `languageCardFront` TEXT NOT NULL, `languageCardBack` TEXT NOT NULL, `color` INTEGER, `listIndex` INTEGER NOT NULL, `remoteId` TEXT NOT NULL, `name` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -107,6 +107,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "remoteId",
+            "columnName": "remoteId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
@@ -123,9 +129,10 @@
         "foreignKeys": []
       }
     ],
+    "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"559f09bbbd55761418a9f71c85cc1d4a\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '779982e8a04f7aadfef8b8bc16d8f8fa')"
     ]
   }
 }

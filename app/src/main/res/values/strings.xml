@@ -39,9 +39,12 @@
     <string name="rate_this_app">Rate this app</string>
     <string name="buy_me_a_cup_of_coffee">Buy me a cup of coffee!</string>
     <string name="create_a_bug_report">Create a bug report</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="url_chat" translatable="false">https://t.me/byheartapp</string>
+    <string name="privacy_policy_url" translatable="false">https://www.notion.so/bryanderidder/Privacy-Policy-4120cbe4c26848a68e448bf5613e3dd1</string>
+    <string name="terms_and_conditions_url" translatable="false">https://www.notion.so/bryanderidder/Terms-and-Conditions-6e99b51a769149f7b1367069047d73aa</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_and_conditions" translatable="false">Terms and Conditions</string>
     <string name="delete_confirm_stack">Are you sure you want to delete this stack?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
@@ -96,4 +99,18 @@
     <string name="move">Move</string>
     <string name="telegram_group_chat" translatable="false">Telegram group chat</string>
     <string name="chat_summary" translatable="false">For requests, bugs or feedback please join our group chat here (English only).</string>
+    <string name="share_stack_message">This will generate a public link to this stack. Anyone with the link can copy this stack.</string>
+    <string name="share_public_link">Share public link</string>
+    <string name="make_stack_public">Make stack public</string>
+    <string name="update_public_stack">Update public stack</string>
+    <string name="share_stack">Share stack</string>
+    <string name="my_card_stacks">My card stacks</string>
+    <string name="card_was_moved">Card was moved.</string>
+    <string name="stack_is_public">Stack is public</string>
+    <string name="sign_out">Sign out</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">After logging in you will be able to share cards.</string>
+    <string name="welcome_back_name">Welcome back %1$s</string>
+    <string name="share_block_login_message">In order to share your cards you need to create an account. Alternatively you can export a CSV file and share that file.</string>
+    <string name="read_terms_and_conditions">Read terms and conditions</string>
+    <string name="agree_terms">I agree with the terms and conditions</string>
 </resources>

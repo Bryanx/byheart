@@ -44,6 +44,38 @@
                 <data android:pathPattern=".*\\..*\\..*\\.csv" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.csv" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.bryanderidder.nl"
+                    android:pathPrefix="/byheart"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="bryanderidder.nl"
+                    android:pathPattern="/byheart"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="bryanderidder.nl"
+                    android:scheme="byheart" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".settings.SettingsActivity"

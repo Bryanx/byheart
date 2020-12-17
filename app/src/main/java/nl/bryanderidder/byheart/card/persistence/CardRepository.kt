@@ -1,9 +1,10 @@
-package nl.bryanderidder.byheart.card
+package nl.bryanderidder.byheart.card.persistence
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import nl.bryanderidder.byheart.card.Card
 
 /**
  * Manages queries and allows you to use multiple backend's.

@@ -1,12 +1,12 @@
 package nl.bryanderidder.byheart.card
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import kotlinx.coroutines.*
+import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.shared.CoroutineProvider
 import kotlin.coroutines.CoroutineContext
 
@@ -34,9 +34,9 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         repo.insert(card)
     }
 
-    fun insertAll(cards: List<Card>) = runBlocking(coroutineProvider.Default) {
+    fun insertAllAsync(cards: List<Card>) = scope.async(coroutineProvider.Default) {
         cards.forEachIndexed { i, card -> card.listIndex = i }
-        return@runBlocking repo.insertAll(cards)
+        repo.insertAll(cards)
     }
 
     fun update(card: Card) = scope.launch(coroutineProvider.IO) {

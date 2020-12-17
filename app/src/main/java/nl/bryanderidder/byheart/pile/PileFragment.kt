@@ -6,18 +6,17 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_piles.*
-import kotlinx.android.synthetic.main.content_piles.view.*
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseActivity.Companion.REQUEST_PICK_FILE
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.settings.SettingsActivity
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.KEY_DARK_MODE
+import nl.bryanderidder.byheart.shared.touchhelpers.DragAndDropCallback
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
@@ -36,13 +35,13 @@ class PileFragment : Fragment(), IOnBackPressed {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = inflater.inflate(R.layout.content_piles, container, false)
         cardVM.allCards.observe(this, Observer {
-            val adapter = PileListAdapter(context!!, it.toMutableList(), sessionVM, pileVM)
+            val adapter = PileListAdapter(context!!, it.toMutableList(), ::onClickPile, ::onAfterMovingPiles)
             recyclerviewPiles.adapter = adapter
             recyclerviewPiles.layoutManager = GridAutofitLayoutManager(activity!!, 500)
             ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerviewPiles)
             addEventHandlers(adapter)
         })
-        addToolbar(hasBackButton = false, title = resources.getString(R.string.app_name))
+        addToolbar(hasBackButton = false, title = resources.getString(R.string.my_card_stacks))
         return layout
     }
 
@@ -88,6 +87,17 @@ class PileFragment : Fragment(), IOnBackPressed {
             sessionVM.pileId.postValue(NO_ID)
             startFragment(PileEditFragment())
         }
+    }
+
+    private fun onAfterMovingPiles(piles: List<Pile>) {
+        pileVM.updateAll(piles)
+    }
+
+    private fun onClickPile(id: Long, name: String, piles: List<Pile>) {
+        sessionVM.pileId.postValue(id)
+        sessionVM.pileName.postValue(name)
+        sessionVM.pileColor.postValue(piles.first { it.id == id }.color)
+        startFragment(CardFragment())
     }
 
     override fun onBackPressed(): Boolean {

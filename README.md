@@ -26,4 +26,4 @@ Multiple Choice            |  Cards                    |  Typed mode
 
 ## Privacy policy
 
-<a href="https://docs.google.com/document/d/1aqIOj_3VO_oDcVl7VROD7y5E813pKJTZp7JZKljl0F0/edit?usp=drivesdk" rel="privacy policy">Read it here.</a>
+<a href="https://www.notion.so/bryanderidder/Privacy-Policy-4120cbe4c26848a68e448bf5613e3dd1" rel="privacy policy">Read it here.</a>

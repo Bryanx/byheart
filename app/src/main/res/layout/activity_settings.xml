@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?mainBackgroundColor">
 
     <FrameLayout
         android:id="@+id/settings"
@@ -19,11 +20,11 @@
         app:title="@string/settings"
         app:elevation="4dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <nl.bryanderidder.byheart.shared.views.CustomProgressBar
+        android:id="@+id/settingsProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:background="?mainBackgroundColor"
+        android:alpha="0"/>
 </FrameLayout>

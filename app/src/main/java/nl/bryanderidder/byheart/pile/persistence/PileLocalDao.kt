@@ -1,7 +1,8 @@
-package nl.bryanderidder.byheart.pile
+package nl.bryanderidder.byheart.pile.persistence
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import nl.bryanderidder.byheart.pile.Pile
 
 /**
  * Main data access object for the Pile entity. All queries are listed here.
@@ -9,7 +10,7 @@ import androidx.room.*
  * @author Bryan de Ridder
  */
 @Dao
-interface PileDao {
+interface PileLocalDao {
 
     @Query("SELECT * FROM pile")
     fun getAll(): LiveData<List<Pile>>

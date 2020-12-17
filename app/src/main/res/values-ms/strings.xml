@@ -81,4 +81,18 @@
     <string name="repeat_wrong_answers">Ulangi jawapan yang salah</string>
     <string name="where_do_you_want_to_move_this_card">Di mana anda mahu memindahkan kad ini?</string>
     <string name="move">Bergerak</string>
+    <string name="share_stack_message">Ini akan menghasilkan pautan awam ke timbunan ini. Sesiapa sahaja yang mempunyai pautan boleh menyalin timbunan ini.</string>
+    <string name="share_public_link">Kongsi pautan awam</string>
+    <string name="make_stack_public">Buat timbunan untuk umum</string>
+    <string name="update_public_stack">Kemas kini timbunan awam</string>
+    <string name="share_stack">Kongsi timbunan</string>
+    <string name="my_card_stacks">Kad saya tumpukan</string>
+    <string name="card_was_moved">Kad dipindahkan.</string>
+    <string name="stack_is_public">Stack adalah umum</string>
+    <string name="sign_out">Keluar</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Selepas log masuk anda akan dapat berkongsi kad.</string>
+    <string name="welcome_back_name">Selamat datang kembali %1$s</string>
+    <string name="share_block_login_message">Untuk berkongsi kad anda, anda perlu membuat akaun. Sebagai alternatif anda boleh mengeksport fail CSV dan berkongsi fail tersebut.</string>
+    <string name="read_terms_and_conditions">Baca terma dan syarat</string>
+    <string name="agree_terms">Saya bersetuju dengan terma dan syarat</string>
 </resources>

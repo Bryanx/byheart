@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:gravity="start"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/cpsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/share_stack"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintBottom_toTopOf="@+id/cpsDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cpsDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/share_stack_message"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="?mainTextColor"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintBottom_toTopOf="@+id/cpsSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/cpsSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:icon="@drawable/ic_public_24dp"
+        app:text="@string/make_stack_public"
+        app:layout_constraintBottom_toTopOf="@+id/cpsShare"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <nl.bryanderidder.byheart.shared.views.CustomProgressBar
+        android:id="@+id/cpsProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+        android:id="@+id/cpsShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:toggle_circularCornerRadius="true"
+        app:toggle_textPaddingHorizontal="15dp"
+        app:toggle_textPaddingVertical="10dp"
+        app:toggle_backgroundColor="?dialogBackgroundButton"
+        app:toggle_text="@string/share_public_link"
+        app:toggle_textColor="?dialogButtonIconColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

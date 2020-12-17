@@ -81,4 +81,18 @@
     <string name="repeat_wrong_answers">Ulangi jawaban yang salah</string>
     <string name="where_do_you_want_to_move_this_card">Ke mana Anda ingin memindahkan kartu ini?</string>
     <string name="move">Pindah</string>
+    <string name="share_stack_message">Ini akan menghasilkan tautan publik ke tumpukan ini. Siapa pun yang memiliki tautan dapat menyalin tumpukan ini.</string>
+    <string name="share_public_link">Bagikan tautan publik</string>
+    <string name="make_stack_public">Jadikan tumpukan publik</string>
+    <string name="update_public_stack">Perbarui tumpukan publik</string>
+    <string name="share_stack">Bagikan tumpukan</string>
+    <string name="my_card_stacks">Kartu saya bertumpuk</string>
+    <string name="card_was_moved">Kartu dipindahkan.</string>
+    <string name="stack_is_public">Tumpukan bersifat publik</string>
+    <string name="sign_out">Keluar</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Setelah masuk, Anda akan dapat berbagi kartu.</string>
+    <string name="welcome_back_name">Selamat datang kembali %1$s</string>
+    <string name="share_block_login_message">Untuk membagikan kartu Anda, Anda perlu membuat akun. Atau, Anda dapat mengekspor file CSV dan membagikan file itu.</string>
+    <string name="read_terms_and_conditions">Baca syarat dan ketentuan</string>
+    <string name="agree_terms">Saya setuju dengan syarat dan ketentuan</string>
 </resources>

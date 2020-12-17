@@ -20,4 +20,10 @@
         <attr name="daySrc" format="reference" />
         <attr name="nightSrc" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="CustomSwitch">
+        <attr name="text" format="string" />
+        <attr name="icon" format="reference" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
 </resources>

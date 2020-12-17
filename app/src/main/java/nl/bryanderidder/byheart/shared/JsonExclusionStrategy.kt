@@ -14,6 +14,6 @@ object JsonExclusionStrategy : ExclusionStrategy {
     }
 
     override fun shouldSkipField(field: FieldAttributes): Boolean {
-        return field.getAnnotation(Exclude::class.java) != null
+        return field.getAnnotation(ExcludeJson::class.java) != null
     }
 }

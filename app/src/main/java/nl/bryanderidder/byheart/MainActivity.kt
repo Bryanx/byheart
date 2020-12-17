@@ -3,6 +3,8 @@ package nl.bryanderidder.byheart
 import android.content.ContentResolver.SCHEME_CONTENT
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.pile.PileFragment
@@ -33,7 +35,11 @@ class MainActivity : BaseActivity() {
 
     // Check if app was openened with a file
     private fun checkFileOpening(intent: Intent) {
-        if (intent.action == Intent.ACTION_VIEW && intent.scheme == SCHEME_CONTENT) {
+        if (intent.action == Intent.ACTION_VIEW && intent.scheme == SCHEME_HTTPS)
+            super.handleUrlOpening(intent.data)
+        else if (intent.action == Intent.ACTION_VIEW && intent.scheme == SCHEME_BYHEART)
+            super.handleUrlOpening(intent.data)
+        else if (intent.action == Intent.ACTION_VIEW && intent.scheme == SCHEME_CONTENT) {
             intent.action = Intent.ACTION_MAIN
             super.handleFileOpening(intent.data, true)
         } else {
@@ -46,5 +52,9 @@ class MainActivity : BaseActivity() {
         if (!(fragment as? IOnBackPressed)?.onBackPressed()!!) {
             super.onBackPressed()
         }
+    }
+    companion object {
+        const val SCHEME_HTTPS = "https"
+        const val SCHEME_BYHEART = "byheart"
     }
 }

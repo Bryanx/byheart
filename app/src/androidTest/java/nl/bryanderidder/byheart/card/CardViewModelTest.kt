@@ -10,6 +10,7 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
+import nl.bryanderidder.byheart.card.persistence.CardRepository
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.util.CoroutineTestProvider
@@ -42,11 +43,13 @@ class CardViewModelTest {
             // override normal DB with in memory db.
             db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
             CardDatabase.INSTANCE = db
-            cardVM = CardViewModel(context, CardRepository(db.cardDao()))
+            cardVM = CardViewModel(context,
+                CardRepository(db.cardDao())
+            )
             // override coroutine provider so all tests are dispatched on the same thread.
             cardVM.coroutineProvider = CoroutineTestProvider()
-            db.pileDao().insert(Pile("testPile1"))
-            db.pileDao().insert(Pile("testPile2"))
+            db.pileLocalDao().insert(Pile("testPile1"))
+            db.pileLocalDao().insert(Pile("testPile2"))
         }
     }
 
@@ -93,7 +96,7 @@ class CardViewModelTest {
             delay(1_000)
             val londonCard = Card("United Kindom", "London", 1)
             val lisbonCard = Card("Portugal", "Lisbon", 1)
-            cardVM.insertAll(listOf(londonCard, lisbonCard))
+            cardVM.insertAllAsync(listOf(londonCard, lisbonCard))
             assertThat(cardVM.allCards.getOrAwaitValue()[0]).isEqualTo(londonCard)
             assertThat(cardVM.allCards.getOrAwaitValue()[1]).isEqualTo(lisbonCard)
         }

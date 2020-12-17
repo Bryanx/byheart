@@ -4,8 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.google.firebase.firestore.Exclude
+import com.google.firebase.firestore.IgnoreExtraProperties
 import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.shared.Exclude
+import nl.bryanderidder.byheart.shared.ExcludeJson
 
 /**
  * Main card entity.
@@ -14,6 +16,7 @@ import nl.bryanderidder.byheart.shared.Exclude
  * The Id is automatically generated.
  * @author Bryan de Ridder
  */
+@IgnoreExtraProperties
 @Entity(
     tableName = "card",
     foreignKeys = [ForeignKey(
@@ -26,20 +29,31 @@ import nl.bryanderidder.byheart.shared.Exclude
 data class Card(
     @ColumnInfo(name = "question") var question: String?,
     @ColumnInfo(name = "answer") var answer: String?,
-    @Exclude @ColumnInfo(name = "pile_id") val pileId: Long = 1
+    @get:Exclude @ExcludeJson @ColumnInfo(name = "pile_id") val pileId: Long = 1
 ) {
-    @Exclude @PrimaryKey(autoGenerate = true) var id: Long = 0
-    @ColumnInfo(name = "listIndex") var listIndex: Int = -1
-    @ColumnInfo(name = "amountCorrect") var amountCorrect: Int = 0
-    @ColumnInfo(name = "amountFalse") var amountFalse: Int = 0
+    @get:Exclude @ExcludeJson @PrimaryKey(autoGenerate = true) var id: Long = 0
+    @get:Exclude @ColumnInfo(name = "listIndex") var listIndex: Int = -1
+    @get:Exclude @ColumnInfo(name = "amountCorrect") var amountCorrect: Int = 0
+    @get:Exclude @ColumnInfo(name = "amountFalse") var amountFalse: Int = 0
 
+    constructor() : this("", "")
     constructor(q: String, a: String): this(q, a, -1)
 
+    @Exclude
     fun getCorrectPercentage(): Int {
         val correct = amountCorrect
         if (correct == 0) return 0
         val wrong = amountFalse
         val percentage = correct / (wrong + correct).toFloat() * 100
         return percentage.toInt()
+    }
+
+    companion object {
+        fun from(map: Map<String, Any>): Card {
+            return Card(
+                map["question"] as String,
+                map["answer"] as String
+            )
+        }
     }
 }

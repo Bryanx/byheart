@@ -3,14 +3,9 @@ package nl.bryanderidder.byheart.rehearsal.setup
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
-import android.view.animation.OvershootInterpolator
-import android.view.animation.ScaleAnimation
 import kotlinx.android.synthetic.main.content_rehearsal_setup.*
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.BaseBottomSheet
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.rehearsal.RehearsalMemoryFragment
@@ -65,14 +60,16 @@ class RehearsalSetupFragment : BaseBottomSheet() {
             crsModeDescription.setTextColor(pileColor)
             crsStart.textColor = pileColor
         }
-        updateSwitchColors()
+        listOf(crsShuffle, crsPronounce, crsReverse, crsRepeatWrong).forEach {
+            it.switchColor = pileColor
+        }
     }
 
     private fun addEventHandlers() {
-        crsShuffle.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_SHUFFLE, checked) }
-        crsPronounce.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_PRONOUNCE, checked) }
-        crsReverse.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_REVERSE, checked) }
-        crsRepeatWrong.setOnCheckedChangeListener { _, checked -> updateSwitch(KEY_REHEARSAL_REPEAT_WRONG, checked) }
+        crsShuffle.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_SHUFFLE, checked) }
+        crsPronounce.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_PRONOUNCE, checked) }
+        crsReverse.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_REVERSE, checked) }
+        crsRepeatWrong.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_REPEAT_WRONG, checked) }
         btnMultipleChoice.setOnClickListener { selectMode(KEY_REHEARSAL_MULTIPLE_CHOICE) }
         btnTyped.setOnClickListener { selectMode(KEY_REHEARSAL_TYPED) }
         btnMemory.setOnClickListener { selectMode(KEY_REHEARSAL_MEMORY) }
@@ -87,23 +84,6 @@ class RehearsalSetupFragment : BaseBottomSheet() {
             Preferences.REHEARSAL_TYPED -> RehearsalTypedFragment()
             else -> RehearsalMultipleChoiceFragment()
         })
-    }
-
-    private fun updateSwitch(key: String, checked: Boolean) {
-        Preferences.write(key, checked)
-        updateSwitchColors()
-    }
-
-    private fun updateSwitchColors() {
-        listOf(crsShuffle, crsPronounce, crsReverse, crsRepeatWrong).forEach {
-            if (!Preferences.DARK_MODE) {
-                it.checkedColor = pileColor
-                it.unCheckedColor = context!!.color(R.color.grey_300)
-            } else {
-                it.checkedColor = pileColor.setBrightness(0.65F)
-                it.unCheckedColor = context!!.color(R.color.white)
-            }
-        }
     }
 
     private fun selectMode(key: String) {

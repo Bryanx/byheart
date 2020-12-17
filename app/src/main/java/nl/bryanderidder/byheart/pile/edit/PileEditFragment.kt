@@ -7,15 +7,13 @@ import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_pile_edit.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import nl.bryanderidder.byheart.BaseActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
-import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
@@ -140,7 +138,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         return isCorrect
     }
 
-    private fun addOrUpdatePile() = GlobalScope.launch(Dispatchers.Main) {
+    private fun addOrUpdatePile() = lifecycleScope.launch(Dispatchers.Main) {
         etPileName.clearFocus()
         if (editMode) {
             val pile = pileVM.allPiles.value?.find { it.id == sessionVM.pileId.value ?: NO_ID }
@@ -161,8 +159,8 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             pile.languageCardFront = getLocaleFromSpinner(spinnerCardFront)
             pile.languageCardBack = getLocaleFromSpinner(spinnerCardBack)
             pile.color = pileColor
-            pileVM.insert(pile)
-            sessionVM.message.value=getString(R.string.created_stack)
+            pileVM.insertAsync(pile).await()
+            sessionVM.message.value = getString(R.string.created_stack)
             startFragment(PileFragment())
         }
     }

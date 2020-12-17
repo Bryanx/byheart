@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:gravity="start"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/clbTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/common_signin_button_text"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintBottom_toTopOf="@+id/clbDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clbDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="You have to sign in to see this content."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="?mainTextColor"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintBottom_toTopOf="@+id/clbLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+        android:id="@+id/clbLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:toggle_circularCornerRadius="true"
+        app:toggle_textPaddingHorizontal="15dp"
+        app:toggle_textPaddingVertical="10dp"
+        app:toggle_backgroundColor="?dialogBackgroundButton"
+        app:toggle_text="@string/common_signin_button_text_long"
+        app:toggle_textColor="?mainTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/clbTermsSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <nl.bryanderidder.byheart.shared.views.CustomSwitch
+        android:id="@+id/clbTermsSwitch"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="horizontal"
+        app:icon="@drawable/ic_privacy_tip_24dp"
+        app:text="@string/agree_terms"
+        app:layout_constraintBottom_toTopOf="@+id/clbTermsLink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <nl.bryanderidder.byheart.shared.views.CustomProgressBar
+        android:id="@+id/clbProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clbWelcomeBack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="?mainHeaderTextColor"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clbTermsLink"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/read_terms_and_conditions"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textColor="?mainTextColor"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

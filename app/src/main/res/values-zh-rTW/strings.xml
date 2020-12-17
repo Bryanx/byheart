@@ -41,7 +41,7 @@
     <string name="cancel">取消</string>
     <string name="five_card_warning">您至少需要5張卡片。</string>
     <string name="ok">好</string>
-    <string name="color_swatch_description_selected">選擇的顏色</string>
+    <string name="color_swatch_description_selected">所選顏色</string>
     <string name="select_card_color">選擇卡片顏色</string>
     <string name="cards">牌</string>
     <string name="export_csv">導出CSV</string>
@@ -81,4 +81,19 @@
     <string name="repeat_wrong_answers">重複錯誤答案</string>
     <string name="where_do_you_want_to_move_this_card">您要將卡片移到哪裡？</string>
     <string name="move">移動</string>
+    <string name="share_stack_message">這將生成指向該堆棧的公共鏈接。知道鏈接的任何人都可以復制此堆棧。</string>
+    <string name="share_public_link">分享公共鏈接</string>
+    <string name="make_stack_public">將堆棧公開</string>
+    <string name="update_public_stack">更新公共堆棧</string>
+    <string name="share_stack">共享堆棧</string>
+    <string name="my_card_stacks">我的卡疊</string>
+    <string name="card_was_moved">卡已移動。</string>
+    <string name="stack_is_public">堆棧是公共的</string>
+    <string name="sign_out">登出</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">登錄後，您將可以共享卡。</string>
+    <string name="welcome_back_name">歡迎+返回％1$s</string>
+    <string name="share_block_login_message">為了共享您的卡，您需要創建一個帳戶。或者，您可以導出CSV文件並共享該文件。</string>
+    <string name="read_terms_and_conditions">閱讀條款和條件</string>
+    <string name="agree_terms">我同意條款和條件</string>
+    <string name="move">移动</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
+import nl.bryanderidder.byheart.card.persistence.CardDao
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import nl.bryanderidder.byheart.util.getOrAwaitValue
@@ -34,7 +35,7 @@ class CardDaoTest {
         val context = ApplicationProvider.getApplicationContext<Context>() as Application
         db = Room.inMemoryDatabaseBuilder(context, CardDatabase::class.java).build()
         CardDatabase.INSTANCE = db
-        db.pileDao().insert(Pile("testPile").apply { this.id = 1 })
+        db.pileLocalDao().insert(Pile("testPile").apply { this.id = 1 })
         cardDao = db.cardDao()
         testCard = Card("test_front", "test_back", 1)
         testCard.id = 1

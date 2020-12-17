@@ -5,23 +5,31 @@ import android.view.*
 import android.view.View.GONE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_card.*
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.auth.AuthViewModel
+import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.card.edit.CardEditFragment
+import nl.bryanderidder.byheart.card.share.ShareFragment
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.Preferences.USER_ID
 import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
+import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
+import nl.bryanderidder.byheart.shared.touchhelpers.SwipeLeftToDeleteCallback
+import nl.bryanderidder.byheart.shared.touchhelpers.SwipeRightToEditCallback
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -38,6 +46,8 @@ class CardFragment : Fragment(), IOnBackPressed {
     private val cardVM: CardViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
+    private val fireStoreVM: FireStoreViewModel by sharedViewModel()
+    private val authVM: AuthViewModel by sharedViewModel()
     private lateinit var layout: View
     private var pileId: Long = NO_ID
     var pileColor: Int = 0
@@ -54,6 +64,9 @@ class CardFragment : Fragment(), IOnBackPressed {
         setUpAdapter()
         addEventHandlers()
         changeColors()
+        sessionVM.findMessage()?.let {
+            showSnackBar(activity!!, it)
+        }
     }
 
     private fun changeColors() {
@@ -61,6 +74,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             pile = piles.find { it.id == sessionVM.pileId.value }
             val buttons = arrayOf(buttonShare, buttonAdd, buttonPlay)
             pile?.color?.let { color ->
+                clProgressBar.setCircleColor(color)
                 if (Preferences.DARK_MODE) {
                     buttons.forEach { it.setIconColor(color) }
                     btnAddCardPlaceholder.tvText.setTextColor(color)
@@ -112,10 +126,17 @@ class CardFragment : Fragment(), IOnBackPressed {
     private fun addEventHandlers() {
         btnAddCardPlaceholder.setOnClickListener { startEditFragment() }
         buttonAdd.setOnClickListener { startEditFragment() }
-        buttonShare.setOnClickListener { share() }
+        buttonShare.setOnClickListener {
+            when {
+                adapter.cards.isEmpty() -> showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
+                USER_ID.isEmpty() -> LoginFragment()
+                    .also { authVM.loginMessage.value = getString(R.string.share_block_login_message) }
+                    .also { it.show(activity!!.supportFragmentManager, it.tag) }
+                else -> ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            }
+        }
         cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
             // Update the cached copy of the words in the adapter.
-            clProgressBar.visibility = GONE
             recyclerview.doAfterAnimations {
                 adapter.setCards(cards.toMutableList())
             }
@@ -146,31 +167,35 @@ class CardFragment : Fragment(), IOnBackPressed {
         context!!.dialog()
             .setMessage(getString(R.string.delete_confirm_stack))
             .setCancelable(false)
-            .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                pileVM.delete(sessionVM.pileId.value)
-                sessionVM.message.value = getString(R.string.deleted_stack)
-                startFragment(PileFragment())
-            }
+            .setPositiveButton(getString(R.string.delete)) { _, _ -> deletePile() }
             .setNegativeButton(getString(R.string.cancel), null)
             .setAnimation(R.style.SlidingDialog)
             .show()
     }
 
-    private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
-
-    private fun share() {
-        pile?.let {
-            it.cards.addAll(adapter.cards)
-            IoUtils.createJson(context!!, arrayOf(it), "Byheart-${pile?.name}.byheart")
+    private fun deletePile() {
+        clProgressBar.show()
+        lifecycleScope.launch {
+            delay(500L)
+            if (pile?.remoteId?.isNotEmpty() == true)
+                fireStoreVM.deleteAsync(pile?.remoteId ?: "").await()
+            pileVM.delete(sessionVM.pileId.value)
+            activity?.runOnUiThread {
+                sessionVM.message.value = getString(R.string.deleted_stack)
+                clProgressBar.hide()
+                startFragment(PileFragment())
+            }
         }
     }
+
+    private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
 
     fun updateReorderedCards(cards: List<Card>) {
         updateAllCards(cards)
         layoutManager.scrollToPosition(0)
     }
 
-    fun removeCard(card: Card) = GlobalScope.launch {
+    fun removeCard(card: Card) = lifecycleScope.launch {
         swipeLeftToDelete.isEnabled = false
         cardVM.deleteAsync(card).await()
         activity?.runOnUiThread {
