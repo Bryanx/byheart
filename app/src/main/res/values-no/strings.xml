@@ -81,4 +81,18 @@
     <string name="repeat_wrong_answers">Gjenta feil svar</string>
     <string name="where_do_you_want_to_move_this_card">Hvor vil du flytte dette kortet?</string>
     <string name="move">Bevege seg</string>
+    <string name="share_stack_message">Dette vil generere en offentlig lenke til denne stabelen. Alle med lenken kan kopiere denne stabelen.</string>
+    <string name="share_public_link">Del offentlig lenke</string>
+    <string name="make_stack_public">Gjør stabelen offentlig</string>
+    <string name="update_public_stack">Oppdater offentlig stack</string>
+    <string name="share_stack">Del stabelen</string>
+    <string name="my_card_stacks">Kortet mitt stabler</string>
+    <string name="card_was_moved">Kortet ble flyttet.</string>
+    <string name="stack_is_public">Stack er offentlig</string>
+    <string name="sign_out">Logg ut</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Etter innlogging vil du kunne dele kort.</string>
+    <string name="welcome_back_name">Velkommen tilbake %1$s</string>
+    <string name="share_block_login_message">For å dele kortene dine må du opprette en konto. Alternativt kan du eksportere en CSV-fil og dele den filen.</string>
+    <string name="read_terms_and_conditions">Les vilkår og betingelser</string>
+    <string name="agree_terms">Jeg er enig i vilkårene</string>
 </resources>

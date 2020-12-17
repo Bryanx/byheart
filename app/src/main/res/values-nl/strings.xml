@@ -43,7 +43,6 @@
     <string name="five_card_warning">Je hebt hiervoor minimaal 5 kaarten nodig.</string>
     <string name="ok">Oke</string>
     <string name="select_card_color">Kies een kaart kleur</string>
-    <string name="color_swatch_description">kleur</string>
     <string name="color_swatch_description_selected">Gekozen kleur</string>
     <string name="cards">KAARTEN</string>
     <string name="export_csv">Export CSV</string>
@@ -83,4 +82,18 @@
     <string name="repeat_wrong_answers">Herhaal foute antwoorden</string>
     <string name="where_do_you_want_to_move_this_card">Waar wil je deze kaart naartoe verplaatsen?</string>
     <string name="move">Verplaatsen</string>
+    <string name="share_stack_message">Dit zal een publieke link genereren naar deze stapel. Iedereen met de link kan deze stapel kopiëren.</string>
+    <string name="share_public_link">Deel publieke link</string>
+    <string name="make_stack_public">Maak stapel publiek</string>
+    <string name="update_public_stack">Update publieke stapel</string>
+    <string name="share_stack">Deel stapel</string>
+    <string name="my_card_stacks">Mijn kaartenstapels</string>
+    <string name="card_was_moved">Kaart is verwijderd.</string>
+    <string name="stack_is_public">Stapel is publiek</string>
+    <string name="sign_out">Uitloggen</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Na het inloggen zal het mogelijk zijn om kaarten te delen.</string>
+    <string name="welcome_back_name">Welkom terug %1$s</string>
+    <string name="share_block_login_message">Om kaarten te kunnen delen moet je een account aanmaken. Je kan als alternatief eventueel ook CSV bestand aanmaken en delen.</string>
+    <string name="read_terms_and_conditions">Lees terms en conditions</string>
+    <string name="agree_terms">Ik ga akkoord met de voorwaarden</string>
 </resources>

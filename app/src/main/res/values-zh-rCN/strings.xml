@@ -31,7 +31,7 @@
     <string name="no">没有</string>
     <string name="add_card">新增卡</string>
     <string name="edit_card">编辑卡</string>
-    <string name="about_description">感谢您使用此应用程序！我这么做是因为所有现代抽认卡应用要么充斥着广告，要么需要订阅，要么包含许多不必要的功能。</string>
+    <string name="about_description">感谢您使用此应用程序！我之所以这样做，是因为所有现代抽认卡应用要么充斥着广告，要么需要订阅，要么包含许多不必要的功能。</string>
     <string name="about_subtext">如果您喜欢此应用，请考虑执行以下操作：</string>
     <string name="rate_this_app">为这个应用软件评分</string>
     <string name="buy_me_a_cup_of_coffee">给我买一杯咖啡！</string>
@@ -41,7 +41,7 @@
     <string name="cancel">取消</string>
     <string name="five_card_warning">您至少需要5张卡片。</string>
     <string name="ok">好</string>
-    <string name="color_swatch_description_selected">所选颜色</string>
+    <string name="color_swatch_description_selected">选择的颜色</string>
     <string name="select_card_color">选择卡片颜色</string>
     <string name="cards">牌</string>
     <string name="export_csv">导出CSV</string>
@@ -81,4 +81,18 @@
     <string name="repeat_wrong_answers">重复错误答案</string>
     <string name="where_do_you_want_to_move_this_card">您要将卡片移到哪里？</string>
     <string name="move">移动</string>
+    <string name="share_stack_message">这将生成指向该堆栈的公共链接。知道链接的任何人都可以复制此堆栈。</string>
+    <string name="share_public_link">分享公共链接</string>
+    <string name="make_stack_public">公开堆栈</string>
+    <string name="update_public_stack">更新公共堆栈</string>
+    <string name="share_stack">共享堆栈</string>
+    <string name="my_card_stacks">我的卡叠</string>
+    <string name="card_was_moved">卡已移动。</string>
+    <string name="stack_is_public">堆栈是公共的</string>
+    <string name="sign_out">登出</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">登录后，您将可以共享卡。</string>
+    <string name="welcome_back_name">欢迎+返回％1$s</string>
+    <string name="share_block_login_message">为了共享您的卡，您需要创建一个帐户。或者，您可以导出CSV文件并共享该文件。</string>
+    <string name="read_terms_and_conditions">阅读条款和条件</string>
+    <string name="agree_terms">我同意条款和条件</string>
 </resources>

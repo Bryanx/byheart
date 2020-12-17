@@ -43,7 +43,6 @@
     <string name="five_card_warning">Vous avez besoin d\'au moins 5 cartes pour cela.</string>
     <string name="ok">d\'accord</string>
     <string name="select_card_color">Choisissez une couleur de carte</string>
-    <string name="color_swatch_description">couleur</string>
     <string name="color_swatch_description_selected">Couleur choisie</string>
     <string name="cards">CARTES</string>
     <string name="export_csv">Exporter CSV</string>
@@ -83,4 +82,18 @@
     <string name="repeat_wrong_answers">Répète les mauvaises réponses</string>
     <string name="where_do_you_want_to_move_this_card">Où voulez-vous déplacer ce carte?</string>
     <string name="move">Déplacer</string>
+    <string name="share_stack_message">Cela générera un lien public vers cette pile. Toute personne disposant du lien peut copier cette pile.</string>
+    <string name="share_public_link">Partager le lien public</string>
+    <string name="make_stack_public">Rendre la pile publique</string>
+    <string name="update_public_stack">Mettre à jour la pile publique</string>
+    <string name="share_stack">Partager la pile</string>
+    <string name="my_card_stacks">Mes piles de cartes</string>
+    <string name="card_was_moved">La carte a été déplacée.</string>
+    <string name="stack_is_public">La pile est publique</string>
+    <string name="sign_out">Déconnexion</string>
+    <string name="after_logging_in_you_will_be_able_to_share_cards">Une fois connecté, vous pourrez partager des cartes.</string>
+    <string name="welcome_back_name">Bienvenue à nouveau %1$s</string>
+    <string name="share_block_login_message">Afin de partager vos cartes, vous devez créer un compte. Vous pouvez également exporter un fichier CSV et partager ce fichier.</string>
+    <string name="read_terms_and_conditions">Lire les termes et conditions</string>
+    <string name="agree_terms">J\'accepte les termes et conditions</string>
 </resources>

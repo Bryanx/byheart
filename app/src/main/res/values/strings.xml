@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_id" translatable="false">808671785379</string>
     <string name="app_name" translatable="false">Byheart</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="pile_name">Stack name</string>
@@ -40,7 +39,6 @@
     <string name="rate_this_app">Rate this app</string>
     <string name="buy_me_a_cup_of_coffee">Buy me a cup of coffee!</string>
     <string name="create_a_bug_report">Create a bug report</string>
-    <string name="url_bunq" translatable="false">https://bunq.me/PayBryan/3</string>
     <string name="url_github_issue" translatable="false">https://github.com/Bryanx/byheart/issues/new</string>
     <string name="url_chat" translatable="false">https://t.me/byheartapp</string>
     <string name="privacy_policy_url" translatable="false">https://www.notion.so/bryanderidder/Privacy-Policy-4120cbe4c26848a68e448bf5613e3dd1</string>
@@ -114,5 +112,5 @@
     <string name="welcome_back_name">Welcome back %1$s</string>
     <string name="share_block_login_message">In order to share your cards you need to create an account. Alternatively you can export a CSV file and share that file.</string>
     <string name="read_terms_and_conditions">Read terms and conditions</string>
-    <string name="agree_terms">I agree with the Terms and Conditions</string>
+    <string name="agree_terms">I agree with the terms and conditions</string>
 </resources>
