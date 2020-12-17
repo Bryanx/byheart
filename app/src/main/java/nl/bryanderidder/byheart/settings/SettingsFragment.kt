@@ -56,8 +56,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun onSignedIn() {
         signOutCategory.addPreference(signOutPreference)
         signInPreference.isEnabled = false
-        signInPreference.title = getString(R.string.welcome_back_name, authVM.getCurrentUser()?.displayName)
-        signInPreference.summary = "${authVM.getCurrentUser()?.email}"
+        signInPreference.title = getString(R.string.welcome_back_name, authVM.currentUser?.displayName)
+        signInPreference.summary = "${authVM.currentUser?.email}"
     }
 
     private fun onSignedOut() {

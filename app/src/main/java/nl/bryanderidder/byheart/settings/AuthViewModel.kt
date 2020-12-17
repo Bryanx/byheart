@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import nl.bryanderidder.byheart.shared.Preferences
+import nl.bryanderidder.byheart.shared.Preferences.KEY_USER_ID
 
 /**
  * ViewModel that contains all auth information.
@@ -36,14 +38,13 @@ class AuthViewModel(
 
     var googleSignIn : GoogleSignInClient? = null
 
+    val currentUser: FirebaseUser? get() = firebaseAuth.currentUser
+
     init {
         firebaseAuth.addAuthStateListener {
             isSignedIn.postValue(it.currentUser?.uid != null)
+            Preferences.write(KEY_USER_ID, it.currentUser?.uid ?: "")
         }
-    }
-
-    fun getCurrentUser(): FirebaseUser? {
-        return firebaseAuth.currentUser
     }
 
     fun signInWithGoogle(activity: Activity) {
@@ -55,7 +56,7 @@ class AuthViewModel(
     fun signOut(activity: Activity) {
         activity.settingsProgressBar.show()
         viewModelScope.launch {
-            delay(500L)
+            delay(500L) // some delay to prevent spamming
             getGoogleSignIn(activity).signOut().await()
             firebaseAuth.signOut()
             activity.runOnUiThread { activity.settingsProgressBar.hide() }

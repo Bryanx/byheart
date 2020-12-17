@@ -19,6 +19,7 @@ object Preferences {
     const val KEY_DARK_MODE = "DARK_MODE"
     const val KEY_REHEARSAL_MULTIPLE_CHOICE = "REHEARSAL_MULTIPLE_CHOICE"
     const val KEY_REHEARSAL_MEMORY = "REHEARSAL_MEMORY"
+    const val KEY_USER_ID = "USER_ID"
     val DARK_MODE: Boolean get() = this.read(KEY_DARK_MODE)
     val REHEARSAL_REVERSE: Boolean get() = this.read(KEY_REHEARSAL_REVERSE)
     val REHEARSAL_MULTIPLE_CHOICE: Boolean get() = this.read(KEY_REHEARSAL_MULTIPLE_CHOICE)
@@ -28,13 +29,14 @@ object Preferences {
     val REHEARSAL_MEMORY: Boolean get() = this.read(KEY_REHEARSAL_MEMORY)
     val REHEARSAL_PRONOUNCE: Boolean get() = this.read(KEY_REHEARSAL_PRONOUNCE)
     val NOT_FIRST_START: Boolean get() = this.read(KEY_NOT_FIRST_START)
+    val USER_ID: String get() = this.read(KEY_USER_ID, "")
 
     fun init(context: Context) {
         if (pref == null)
             pref = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     }
 
-    fun read(key: String, default: String): String? = pref?.getString(key.toUpperCase(), default)
+    fun read(key: String, default: String): String = pref?.getString(key.toUpperCase(), default) ?: ""
 
     fun write(key: String, value: String): Unit = pref!!.edit().putString(key.toUpperCase(), value).apply()
 
