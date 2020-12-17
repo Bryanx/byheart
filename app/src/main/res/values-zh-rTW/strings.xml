@@ -95,5 +95,4 @@
     <string name="share_block_login_message">為了共享您的卡，您需要創建一個帳戶。或者，您可以導出CSV文件並共享該文件。</string>
     <string name="read_terms_and_conditions">閱讀條款和條件</string>
     <string name="agree_terms">我同意條款和條件</string>
-    <string name="move">移动</string>
 </resources>
