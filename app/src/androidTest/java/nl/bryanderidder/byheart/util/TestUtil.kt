@@ -73,18 +73,4 @@ object TestUtil {
         CardDatabase.INSTANCE = db
         return db
     }
-
-    fun getCardViewModel(): CardViewModel {
-        val context = ApplicationProvider.getApplicationContext<Context>() as Application
-        val cardVM = CardViewModel(context)
-        cardVM.coroutineProvider = CoroutineTestProvider()
-        return cardVM
-    }
-
-    fun getPileViewModel(): PileViewModel {
-        val context = ApplicationProvider.getApplicationContext<Context>() as Application
-        val pileVM = PileViewModel(context)
-        pileVM.coroutineProvider = CoroutineTestProvider()
-        return pileVM
-    }
 }

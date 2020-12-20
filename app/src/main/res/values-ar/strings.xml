@@ -92,7 +92,7 @@
     <string name="stack_is_public">كومة عامة</string>
     <string name="sign_out">خروج</string>
     <string name="after_logging_in_you_will_be_able_to_share_cards">بعد تسجيل الدخول سوف تكون قادرة على مشاركة البطاقات.</string>
-    <string name="welcome_back_name">مرحبا بك مرة أخرى</string>
+    <string name="welcome_back_name">مرحبا بك مرة أخرى %1$s</string>
     <string name="share_block_login_message">من أجل مشاركة البطاقات الخاصة بك تحتاج إلى إنشاء حساب. </string>
     <string name="read_terms_and_conditions">قراءة الشروط والأحكام</string>
     <string name="agree_terms">اني اوافق على الشروط والظروف</string>
