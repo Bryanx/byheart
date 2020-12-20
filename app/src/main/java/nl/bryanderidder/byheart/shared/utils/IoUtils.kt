@@ -24,7 +24,7 @@ object IoUtils {
     fun createCSV(context: Context, cards: List<Card>, name: String) {
         val file = File(context.cacheDir, name)
         writeCSV(cards, file.path)
-        val contentUri = FileProvider.getUriForFile(context, "nl.bryanderidder.byheart", file)
+        val contentUri = FileProvider.getUriForFile(context, context.packageName, file)
         file.deleteOnExit()
         exportData(context as Activity, contentUri)
     }
@@ -65,11 +65,11 @@ object IoUtils {
         return gson.fromJson(data, Pile::class.java)
     }
 
-    private fun exportData(activity: Activity?, uri: Uri) {
+    fun exportData(activity: Activity?, uri: Uri, fileType: String = "text") {
         val extension = uri.toString().getExtension()
         val intent = Intent().apply {
             action = Intent.ACTION_SEND
-            type = "text/$extension"
+            type = "$fileType/$extension"
             putExtra(Intent.EXTRA_STREAM, uri)
             flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         }

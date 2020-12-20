@@ -23,24 +23,34 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
+        android:id="@+id/crrPileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:textColor="?mainTextColor"
+        android:text="@string/pile_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crrMedal" />
+
+    <TextView
         android:id="@+id/crrTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="80dp"
-        android:text="Not bad!"
+        android:text="@string/perfection"
         android:textColor="?mainHeaderTextColor"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crrMedal" />
+        app:layout_constraintTop_toBottomOf="@+id/crrPileName" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?mainTextColor"
-        android:text="Score"
+        android:text="@string/score"
         app:layout_constraintTop_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent" />
@@ -63,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:textColor="?mainTextColor"
-        android:text="Grade"
+        android:text="@string/grade"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/crrTitle" />
@@ -85,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?mainTextColor"
-        android:text="Time"
+        android:text="@string/time"
         app:layout_constraintTop_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
@@ -108,7 +118,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".5" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

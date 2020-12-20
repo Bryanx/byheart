@@ -23,7 +23,7 @@ class RehearsalViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val ONE_SECOND: Long = 1000
     private var initialTime: Int = 0
-    private val timer: Timer = Timer()
+    private var timer: Timer? = null
 
     private val amountOfAnswers: Int get() = amountCorrect.value?.plus(amountFalse.value ?: 0) ?: 0
     val percentageCorrect: Int get() = fractionToPercentage(amountCorrect, amountOfAnswers)
@@ -38,7 +38,8 @@ class RehearsalViewModel(application: Application) : AndroidViewModel(applicatio
 
     private fun startTimer() {
         initialTime = SystemClock.elapsedRealtime().toInt()
-        timer.scheduleAtFixedRate(ONE_SECOND, ONE_SECOND) { // on timer tick:
+        timer = Timer()
+        timer?.scheduleAtFixedRate(ONE_SECOND, ONE_SECOND) { // on timer tick:
             val newValue: Int = (SystemClock.elapsedRealtime().toInt() - initialTime) / ONE_SECOND.toInt()
             mElapsedTime.postValue(newValue)
         }
@@ -78,8 +79,10 @@ class RehearsalViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    fun cancelTimer() = timer?.cancel()
+
     override fun onCleared() {
-        timer.cancel()
+        cancelTimer()
         super.onCleared()
     }
 }
