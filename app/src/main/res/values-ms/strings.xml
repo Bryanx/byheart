@@ -106,4 +106,8 @@
     <string name="stay_focused">Tetap fokus</string>
     <string name="you_can_do_it">Anda boleh melakukannya</string>
     <string name="pretty_bad">Cukup buruk</string>
+    <string name="score">Markah</string>
+    <string name="grade">Gred</string>
+    <string name="time">Masa</string>
+    <string name="try_again">Cuba lagi</string>
 </resources>

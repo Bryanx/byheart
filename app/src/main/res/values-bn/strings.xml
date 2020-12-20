@@ -107,4 +107,8 @@
     <string name="stay_focused">Stay focused</string>
     <string name="you_can_do_it">তুমি এটা করতে পার</string>
     <string name="pretty_bad">খুব খারাপ</string>
+    <string name="score">স্কোর</string>
+    <string name="grade">শ্রেণী</string>
+    <string name="time">সময়</string>
+    <string name="try_again">Try again</string>
 </resources>

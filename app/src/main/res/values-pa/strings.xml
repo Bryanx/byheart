@@ -106,4 +106,8 @@
     <string name="stay_focused">ਫੋਕਸ ਰਹੋ</string>
     <string name="you_can_do_it">ਤੁਸੀਂ ਇਹ ਕਰ ਸਕਦੇ ਹੋ</string>
     <string name="pretty_bad">ਬਹੁਤ ਮਾੜਾ</string>
+    <string name="try_again">ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
+    <string name="time">ਸਮਾਂ</string>
+    <string name="grade">ਗ੍ਰੇਡ</string>
+    <string name="score">ਸਕੋਰ</string>
 </resources>

@@ -106,4 +106,8 @@
     <string name="stay_focused">ध्यान केंद्रित रहना</string>
     <string name="you_can_do_it">तुम कर सकते हो</string>
     <string name="pretty_bad">बहुत बुरा</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="time">समय</string>
+    <string name="grade">ग्रेड</string>
+    <string name="score">स्कोर</string>
 </resources>

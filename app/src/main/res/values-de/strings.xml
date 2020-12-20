@@ -106,4 +106,8 @@
     <string name="stay_focused">Konzentriert bleiben</string>
     <string name="hang_in_there">Halte durch</string>
     <string name="you_can_do_it">Du kannst es schaffen</string>
+    <string name="score">Ergebnis</string>
+    <string name="grade">Klasse</string>
+    <string name="time">Zeit</string>
+    <string name="try_again">Versuchen Sie es nochmal</string>
 </resources>

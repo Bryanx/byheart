@@ -106,4 +106,8 @@
     <string name="stay_focused">Keskity</string>
     <string name="you_can_do_it">Sinä voit tehdä sen</string>
     <string name="pretty_bad">Aika paha</string>
+    <string name="try_again">Yritä uudelleen</string>
+    <string name="time">Aika</string>
+    <string name="grade">Arvosana</string>
+    <string name="score">Pisteet</string>
 </resources>

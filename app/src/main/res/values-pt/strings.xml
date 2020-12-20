@@ -106,4 +106,8 @@
     <string name="stay_focused">Mantenha o foco</string>
     <string name="you_can_do_it">Você pode fazer isso</string>
     <string name="pretty_bad">Muito ruim</string>
+    <string name="score">Ponto</string>
+    <string name="grade">Grau</string>
+    <string name="time">Tempo</string>
+    <string name="try_again">Tente novamente</string>
 </resources>

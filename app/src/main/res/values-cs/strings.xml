@@ -107,4 +107,8 @@
 	<string name="stay_focused">Zůstaňte soustředěni</string>
 	<string name="you_can_do_it">Můžeš to udělat</string>
 	<string name="pretty_bad">Dost špatné</string>
+    <string name="try_again">Zkus to znovu</string>
+	<string name="time">Čas</string>
+	<string name="grade">Školní známka</string>
+	<string name="score">Skóre</string>
 </resources>

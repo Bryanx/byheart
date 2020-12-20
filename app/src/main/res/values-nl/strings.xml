@@ -107,4 +107,8 @@
     <string name="stay_focused">Blijf gefocust</string>
     <string name="you_can_do_it">Je kan het</string>
     <string name="pretty_bad">Niet zo best</string>
+    <string name="score">Score</string>
+    <string name="grade">Cijfer</string>
+    <string name="time">Tijd</string>
+    <string name="try_again">Probeer opnieuw</string>
 </resources>

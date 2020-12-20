@@ -106,4 +106,8 @@
     <string name="stay_focused">集中してください</string>
     <string name="you_can_do_it">できます</string>
     <string name="pretty_bad">かなり悪い</string>
+    <string name="score">スコア</string>
+    <string name="grade">グレード</string>
+    <string name="time">時間</string>
+    <string name="try_again">再試行</string>
 </resources>

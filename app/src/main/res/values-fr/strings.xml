@@ -107,4 +107,8 @@
     <string name="stay_focused">Reste concentré</string>
     <string name="you_can_do_it">Tu peux le faire</string>
     <string name="pretty_bad">Plutot mauvais</string>
+    <string name="score">But</string>
+    <string name="grade">Classe</string>
+    <string name="time">Temps</string>
+    <string name="try_again">Réessayer</string>
 </resources>

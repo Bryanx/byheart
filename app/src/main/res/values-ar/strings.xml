@@ -107,4 +107,8 @@
     <string name="stay_focused"> حافظ على تركيزك </string>
     <string name="you_can_do_it"> يمكنك فعل ذلك </string>
     <string name="pretty_bad"> سيئ جدًا </string>
+    <string name="score">أحرز هدفا</string>
+    <string name="grade">درجة</string>
+    <string name="time">زمن</string>
+    <string name="try_again">حاول مرة أخري</string>
 </resources>

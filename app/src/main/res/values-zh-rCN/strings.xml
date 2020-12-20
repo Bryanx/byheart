@@ -106,4 +106,8 @@
     <string name="stay_focused">保持专注</string>
     <string name="you_can_do_it">您可以做到</string>
     <string name="pretty_bad">非常糟糕</string>
+    <string name="try_again">再试一次</string>
+    <string name="time">时间</string>
+    <string name="grade">年级</string>
+    <string name="score">得分</string>
 </resources>

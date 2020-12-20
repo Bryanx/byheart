@@ -107,4 +107,8 @@
 	<string name="stay_focused">Forbliv fokuseret</string>
 	<string name="you_can_do_it">Du kan gøre det</string>
 	<string name="pretty_bad">Temmelig dårlig</string>
+    <string name="score">Score</string>
+	<string name="grade">karakter</string>
+	<string name="time">Tid</string>
+	<string name="try_again">Prøv igen</string>
 </resources>
