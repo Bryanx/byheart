@@ -1,5 +1,6 @@
 package nl.bryanderidder.byheart.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -43,6 +44,10 @@ class LoginFragment : BaseBottomSheet() {
         addEventHandlers()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        authVM.onActivityResult(activity!!, requestCode, resultCode, data, ::onAfterLogin, ::onLoginFailed, ::onLoginCanceled)
+    }
 
     private fun addEventHandlers() {
         clbLogin.setOnClickListener { onClickLogin() }
@@ -57,15 +62,15 @@ class LoginFragment : BaseBottomSheet() {
     }
 
     private fun onClickLogin() {
-        for (it in listOf(clbTitle, clbTermsSwitch, clbTermsLink, clbLogin, clbDescription))
-            it.animate().alpha(0F)
+        showProgressBar(true)
         if (authVM.isTermsAndConditionsChecked.value == true)
-            authVM.signInWithGoogle(activity!!, clbProgressBar)
+            authVM.signInWithGoogle(activity!!)
     }
 
-    fun onAfterLogin() {
+    @SuppressLint("StringFormatInvalid")
+    private fun onAfterLogin() {
         clbProgressBar.hide()
-        clbWelcomeBack.text = getString(R.string.welcome_back_name, authVM.currentUser?.displayName + " \uD83D\uDC4B")
+        clbWelcomeBack.text = getString(R.string.welcome_back_name, "${authVM.currentUser?.displayName} \uD83D\uDC4B")
         clbWelcomeBack.animate().alpha(1F)
         lifecycleScope.launch {
             delay(1000L)
@@ -75,8 +80,13 @@ class LoginFragment : BaseBottomSheet() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        authVM.onActivityResult(activity!!, requestCode, data, ::onAfterLogin)
+    private fun onLoginFailed(e: ApiException?) = showProgressBar(false)
+
+    private fun onLoginCanceled() = showProgressBar(false)
+
+    private fun showProgressBar(isVisible: Boolean) {
+        for (it in listOf(clbTitle, clbTermsSwitch, clbTermsLink, clbLogin, clbDescription))
+            it.animate().alpha(if (isVisible) 0F else 1F)
+        clbProgressBar.animate().alpha(if (isVisible) 1F else 0F)
     }
 }
