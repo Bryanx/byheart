@@ -7,6 +7,7 @@ import nl.bryanderidder.byheart.BaseBottomSheet
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalViewModel
+import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.ScreenShotUtil
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -34,7 +35,9 @@ class RehearsalResultFragment : BaseBottomSheet(), IOnBackPressed {
         crrMedal.setDrawable(rehearsalVM.getMedal())
         crrTitle.text = rehearsalVM.getTitle(context!!)
         crrPileName.text = sessionVM.pileName.value ?: ""
+        crrTryAgain.textColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
         rehearsalVM.cancelTimer()
+        addEventHandlers()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -45,6 +48,12 @@ class RehearsalResultFragment : BaseBottomSheet(), IOnBackPressed {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_share_screenshot -> true.apply { ScreenShotUtil.createAndShare(activity!!) }
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun addEventHandlers() {
+        crrTryAgain.setOnClickListener {
+            RehearsalSetupFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+        }
     }
 
     override fun onBackPressed(): Boolean = startFragment(CardFragment()).run { true }

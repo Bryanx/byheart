@@ -112,6 +112,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
+    <nl.bryanderidder.byheart.shared.views.CustomButton
+        android:id="@+id/crrTryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crrScorePercent"
+        app:toggle_backgroundColor="?dialogBackgroundButton"
+        app:toggle_btnCornerRadius="100dp"
+        app:toggle_paddingHorizontal="15dp"
+        app:toggle_paddingVertical="10dp"
+        app:toggle_text="@string/try_again"
+        app:toggle_textColor="?mainTextColor"
+        app:toggle_textPaddingHorizontal="15dp"
+        app:toggle_textPaddingVertical="7dp" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
