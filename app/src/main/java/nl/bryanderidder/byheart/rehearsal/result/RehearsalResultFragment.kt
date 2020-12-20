@@ -13,7 +13,7 @@ import nl.bryanderidder.byheart.shared.utils.ScreenShotUtil
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
- * Fragment that pops up to share a pile
+ * Fragment that is shown upon finishing a rehearsal
  * @author Bryan de Ridder
  */
 class RehearsalResultFragment : BaseBottomSheet(), IOnBackPressed {
