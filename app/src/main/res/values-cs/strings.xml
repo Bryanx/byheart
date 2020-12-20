@@ -96,4 +96,19 @@
 	<string name="share_block_login_message">Pro sdílení karet musíte vytvořit účet. </string>
 	<string name="read_terms_and_conditions">Přečtěte si podmínky</string>
 	<string name="agree_terms">Souhlasím s podmínkami</string>
+    <string name="perfection">Dokonalost</string>
+	<string name="amazing">Úžasný</string>
+	<string name="well_done">Výborně</string>
+	<string name="keep_going">Pokračuj</string>
+	<string name="nice_work">Pěkná práce</string>
+	<string name="not_bad">Není špatné</string>
+	<string name="keep_learning">Stále se uč</string>
+	<string name="hang_in_there">Vydržte tam</string>
+	<string name="stay_focused">Zůstaňte soustředěni</string>
+	<string name="you_can_do_it">Můžeš to udělat</string>
+	<string name="pretty_bad">Dost špatné</string>
+    <string name="try_again">Zkus to znovu</string>
+	<string name="time">Čas</string>
+	<string name="grade">Školní známka</string>
+	<string name="score">Skóre</string>
 </resources>

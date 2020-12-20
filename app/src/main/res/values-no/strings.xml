@@ -95,4 +95,19 @@
     <string name="share_block_login_message">For å dele kortene dine må du opprette en konto. Alternativt kan du eksportere en CSV-fil og dele den filen.</string>
     <string name="read_terms_and_conditions">Les vilkår og betingelser</string>
     <string name="agree_terms">Jeg er enig i vilkårene</string>
+    <string name="perfection">Perfeksjon</string>
+    <string name="amazing">Fantastisk</string>
+    <string name="well_done">Godt gjort</string>
+    <string name="keep_going">Fortsett</string>
+    <string name="nice_work">Fin jobbing</string>
+    <string name="not_bad">Ikke dårlig</string>
+    <string name="keep_learning">Fortsett å lære</string>
+    <string name="hang_in_there">Heng der</string>
+    <string name="stay_focused">Hold fokus</string>
+    <string name="you_can_do_it">Du kan gjøre det</string>
+    <string name="pretty_bad">Ganske dårlig</string>
+    <string name="try_again">Prøv igjen</string>
+    <string name="time">Tid</string>
+    <string name="grade">Karakter</string>
+    <string name="score">Resultat</string>
 </resources>

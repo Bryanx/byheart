@@ -32,7 +32,7 @@
     <string name="no">No</string>
     <string name="add_card">Aggiungi carta</string>
     <string name="edit_card">Modifica carta</string>
-    <string name="about_description">Grazie per aver usato questa app! </string>
+    <string name="about_description">Grazie per aver usato questa app!</string>
     <string name="about_subtext">Se ti piace questa app, considera di fare quanto segue:</string>
     <string name="rate_this_app">Valuta questa applicazione</string>
     <string name="buy_me_a_cup_of_coffee">Comprami una tazza di caffè!</string>
@@ -47,10 +47,10 @@
     <string name="cards">CARTE</string>
     <string name="export_csv">Esporta CSV.</string>
     <string name="import_csv">Importa CSV.</string>
-    <string name="export_csv_summary">Esportare tutte le carte in un file separato da virgola. </string>
+    <string name="export_csv_summary">Esportare tutte le carte in un file separato da virgola.</string>
     <string name="import_csv_summary">Importa da Microsoft Excel, Google fogli, numeri di Apple o Utilizzare questo per importare le tue flashcard da un\'app diversa.</string>
-    <string name="create_backup_summary">Creare un file di backup dei tuoi dati. </string>
-    <string name="import_backup_summary">Importa un file di backup. </string>
+    <string name="create_backup_summary">Creare un file di backup dei tuoi dati.</string>
+    <string name="import_backup_summary">Importa un file di backup.</string>
     <string name="coming_soon">Prossimamente.</string>
     <string name="reminders">Promemoria</string>
     <string name="account">account</string>
@@ -67,7 +67,7 @@
     <string name="updated_card">Carta aggiornata</string>
     <string name="created_card">Creato carta</string>
     <string name="field_may_not_be_blank">Il campo potrebbe non essere vuoto</string>
-    <string name="memory_mode_description">Esercitarsi da solo. </string>
+    <string name="memory_mode_description">Esercitarsi da solo.</string>
     <string name="multiple_choice_mode_description">Scegli la risposta giusta su quattro carte diverse.</string>
     <string name="typed_mode_description">Digita la risposta corretta per ogni carta.</string>
     <string name="start_rehearsal">Inizia a praticare</string>
@@ -82,7 +82,7 @@
     <string name="repeat_wrong_answers">Ripeti le risposte sbagliate</string>
     <string name="where_do_you_want_to_move_this_card">Dove vuoi spostare questa carta?</string>
     <string name="move">Mossa</string>
-    <string name="share_stack_message">Questo genererà un collegamento pubblico a questo stack. </string>
+    <string name="share_stack_message">Questo genererà un collegamento pubblico a questo stack.</string>
     <string name="share_public_link">Condividi il link pubblico</string>
     <string name="make_stack_public">Fare pubbliche pila</string>
     <string name="update_public_stack">Aggiorna la pila pubblica</string>
@@ -96,4 +96,19 @@
     <string name="share_block_login_message">Per condividere le tue carte è necessario creare un account.</string>
     <string name="read_terms_and_conditions">Leggi i termini e le condizioni</string>
     <string name="agree_terms">Sono d\'accordo con i termini e le condizioni</string>
+    <string name="perfection">Perfezione</string>
+    <string name="amazing">Amazing</string>
+    <string name="well_done">Ben fatto</string>
+    <string name="keep_going">Continua</string>
+    <string name="nice_work">Bel lavoro</string>
+    <string name="not_bad">Non male</string>
+    <string name="keep_learning">Continua ad imparare</string>
+    <string name="hang_in_there">Aspetta</string>
+    <string name="stay_focused">Rimani concentrato</string>
+    <string name="you_can_do_it">Puoi farlo</string>
+    <string name="pretty_bad">Pessimo</string>
+    <string name="try_again">Riprova</string>
+    <string name="time">Tempo</string>
+    <string name="grade">Grado</string>
+    <string name="score">Punto</string>
 </resources>

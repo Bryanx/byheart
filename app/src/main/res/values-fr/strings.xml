@@ -96,4 +96,19 @@
     <string name="share_block_login_message">Afin de partager vos cartes, vous devez créer un compte. Vous pouvez également exporter un fichier CSV et partager ce fichier.</string>
     <string name="read_terms_and_conditions">Lire les termes et conditions</string>
     <string name="agree_terms">J\'accepte les termes et conditions</string>
+    <string name="perfection">La perfection</string>
+    <string name="amazing">Incroyable</string>
+    <string name="well_done">Bien joué</string>
+    <string name="keep_going">Continue</string>
+    <string name="nice_work">Bon travail</string>
+    <string name="not_bad">Pas mal</string>
+    <string name="keep_learning">Continue d\'apprendre</string>
+    <string name="hang_in_there">Accrochez-vous</string>
+    <string name="stay_focused">Reste concentré</string>
+    <string name="you_can_do_it">Tu peux le faire</string>
+    <string name="pretty_bad">Plutot mauvais</string>
+    <string name="score">But</string>
+    <string name="grade">Classe</string>
+    <string name="time">Temps</string>
+    <string name="try_again">Réessayer</string>
 </resources>

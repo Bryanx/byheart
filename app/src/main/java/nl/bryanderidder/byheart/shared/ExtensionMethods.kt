@@ -2,6 +2,7 @@ package nl.bryanderidder.byheart.shared
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
@@ -29,6 +30,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_rehearsal_result.*
 import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.pile.edit.ColorStateDrawable
@@ -141,6 +143,19 @@ fun ImageView.setDrawableColor(drawableId: Int, color: Int) {
             arrayOf(this.context.resources.getDrawable(drawableId)),
             color)
     )
+}
+@SuppressLint("UseCompatLoadingForDrawables")
+fun ImageView.setDrawable(drawableId: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        setImageDrawable(resources.getDrawable(drawableId, context!!.theme))
+    else
+        setImageDrawable(resources.getDrawable(drawableId))
+}
+
+fun Timer.scheduleAtFixedRate(delay: Long, period: Long, onTick: () -> Unit) {
+    scheduleAtFixedRate(object : TimerTask() {
+        override fun run() { onTick() }
+    }, delay, period)
 }
 
 fun FloatingActionButton.setIconColor(color: Int) {

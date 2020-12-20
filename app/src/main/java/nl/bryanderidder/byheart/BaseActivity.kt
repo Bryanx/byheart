@@ -17,6 +17,7 @@ import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.auth.AuthViewModel
 import nl.bryanderidder.byheart.auth.LoginFragment
+import nl.bryanderidder.byheart.rehearsal.RehearsalViewModel
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.exceptions.ByheartException
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
@@ -34,6 +35,7 @@ open class BaseActivity : AppCompatActivity() {
     private val pileVM: PileViewModel by viewModel()
     private val fireStoreVM: FireStoreViewModel by viewModel()
     private val authVM: AuthViewModel by viewModel()
+    private val rehearsalViewModel: RehearsalViewModel by viewModel()
     private var resultCode = 0
 
     private val loginFragment: LoginFragment?

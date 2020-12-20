@@ -95,4 +95,19 @@
     <string name="share_block_login_message">為了共享您的卡，您需要創建一個帳戶。或者，您可以導出CSV文件並共享該文件。</string>
     <string name="read_terms_and_conditions">閱讀條款和條件</string>
     <string name="agree_terms">我同意條款和條件</string>
+    <string name="perfection">完美</string>
+    <string name="amazing">了不起的</string>
+    <string name="well_done">做得好</string>
+    <string name="keep_going">繼續前進</string>
+    <string name="nice_work">好工作</string>
+    <string name="not_bad">還不錯</string>
+    <string name="keep_learning">繼續學習</string>
+    <string name="hang_in_there">掛在那裡</string>
+    <string name="stay_focused">保持專注</string>
+    <string name="you_can_do_it">您可以做到</string>
+    <string name="pretty_bad">非常糟糕</string>
+    <string name="score">得分</string>
+    <string name="grade">年級</string>
+    <string name="time">時間</string>
+    <string name="try_again">Try again</string>
 </resources>

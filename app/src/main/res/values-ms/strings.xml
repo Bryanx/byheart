@@ -95,4 +95,19 @@
     <string name="share_block_login_message">Untuk berkongsi kad anda, anda perlu membuat akaun. Sebagai alternatif anda boleh mengeksport fail CSV dan berkongsi fail tersebut.</string>
     <string name="read_terms_and_conditions">Baca terma dan syarat</string>
     <string name="agree_terms">Saya bersetuju dengan terma dan syarat</string>
+    <string name="perfection">Kesempurnaan</string>
+    <string name="amazing">Hebat</string>
+    <string name="well_done">Syabas</string>
+    <string name="keep_going">Terus</string>
+    <string name="nice_work">Kerja bagus</string>
+    <string name="not_bad">Tidak buruk</string>
+    <string name="keep_learning">Terus belajar</string>
+    <string name="hang_in_there">Tunggu di sana</string>
+    <string name="stay_focused">Tetap fokus</string>
+    <string name="you_can_do_it">Anda boleh melakukannya</string>
+    <string name="pretty_bad">Cukup buruk</string>
+    <string name="score">Markah</string>
+    <string name="grade">Gred</string>
+    <string name="time">Masa</string>
+    <string name="try_again">Cuba lagi</string>
 </resources>

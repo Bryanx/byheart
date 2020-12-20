@@ -95,4 +95,19 @@
     <string name="share_block_login_message">Чтобы поделиться своими картами, вам необходимо создать учетную запись. Кроме того, вы можете экспортировать файл CSV и поделиться этим файлом.</string>
     <string name="read_terms_and_conditions">Ознакомьтесь с условиями</string>
     <string name="agree_terms">Я согласен с Условиями использования</string>
+    <string name="perfection">Совершенство</string>
+    <string name="amazing">Прекрасно</string>
+    <string name="well_done">Молодец</string>
+    <string name="keep_going">Продолжайте</string>
+    <string name="nice_work">Отличная работа</string>
+    <string name="not_bad">Неплохо</string>
+    <string name="keep_learning">Продолжайте учиться</string>
+    <string name="hang_in_there">Держись здесь</string>
+    <string name="stay_focused">Сосредоточьтесь</string>
+    <string name="you_can_do_it">Вы можете это сделать</string>
+    <string name="pretty_bad">Неплохо</string>
+    <string name="score">Гол</string>
+    <string name="grade">Оценка</string>
+    <string name="time">Время</string>
+    <string name="try_again">Попробуйте снова</string>
 </resources>

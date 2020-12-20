@@ -95,4 +95,19 @@
     <string name="share_block_login_message">ਤੁਹਾਡੇ ਕਾਰਡਾਂ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ ਇੱਕ ਖਾਤਾ ਬਣਾਉਣ ਦੀ ਜ਼ਰੂਰਤ ਹੈ. ਵਿਕਲਪਿਕ ਤੌਰ ਤੇ ਤੁਸੀਂ ਇੱਕ CSV ਫਾਈਲ ਨਿਰਯਾਤ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਉਸ ਫਾਈਲ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੇ ਹੋ.</string>
     <string name="read_terms_and_conditions">ਨਿਯਮ ਅਤੇ ਸ਼ਰਤਾਂ ਪੜ੍ਹੋ</string>
     <string name="agree_terms">ਮੈਂ ਨਿਯਮਾਂ ਅਤੇ ਸ਼ਰਤਾਂ ਨਾਲ ਸਹਿਮਤ ਹਾਂ</string>
+    <string name="perfection">ਸੰਪੂਰਨ</string>
+    <string name="amazing">ਹੈਰਾਨੀਜਨਕ</string>
+    <string name="well_done">ਵਧੀਆ</string>
+    <string name="keep_going">ਜਾਰੀ ਰੱਖੋ</string>
+    <string name="nice_work">ਵਧੀਆ ਕੰਮ</string>
+    <string name="not_bad">ਬੁਰਾ ਨਹੀਂ</string>
+    <string name="keep_learning">ਸਿੱਖਦੇ ਰਹੋ</string>
+    <string name="hang_in_there">ਉਥੇ ਰਹੋ</string>
+    <string name="stay_focused">ਫੋਕਸ ਰਹੋ</string>
+    <string name="you_can_do_it">ਤੁਸੀਂ ਇਹ ਕਰ ਸਕਦੇ ਹੋ</string>
+    <string name="pretty_bad">ਬਹੁਤ ਮਾੜਾ</string>
+    <string name="try_again">ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
+    <string name="time">ਸਮਾਂ</string>
+    <string name="grade">ਗ੍ਰੇਡ</string>
+    <string name="score">ਸਕੋਰ</string>
 </resources>

@@ -95,4 +95,19 @@
     <string name="share_block_login_message">Um Ihre Karten zu teilen, müssen Sie ein Konto erstellen. Alternativ können Sie eine CSV-Datei exportieren und diese Datei freigeben.</string>
     <string name="read_terms_and_conditions">Lesen Sie die Allgemeinen Geschäftsbedingungen</string>
     <string name="agree_terms">Ich stimme den Nutzungsbedingungen zu</string>
+    <string name="pretty_bad">Ziemlich schlecht</string>
+    <string name="perfection">Perfektion</string>
+    <string name="amazing">Tolle</string>
+    <string name="well_done">Gut gemacht</string>
+    <string name="keep_going">Mach weiter</string>
+    <string name="nice_work">Gute Arbeit</string>
+    <string name="not_bad">Nicht schlecht</string>
+    <string name="keep_learning">Lerne weiter</string>
+    <string name="stay_focused">Konzentriert bleiben</string>
+    <string name="hang_in_there">Halte durch</string>
+    <string name="you_can_do_it">Du kannst es schaffen</string>
+    <string name="score">Ergebnis</string>
+    <string name="grade">Klasse</string>
+    <string name="time">Zeit</string>
+    <string name="try_again">Versuchen Sie es nochmal</string>
 </resources>

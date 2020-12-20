@@ -16,6 +16,7 @@ import nl.bryanderidder.byheart.card.CardFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileViewModel
+import nl.bryanderidder.byheart.rehearsal.result.RehearsalResultFragment
 import nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.getScreenWidth
@@ -34,7 +35,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     private val cardVM: CardViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
     private val pileVM: PileViewModel by sharedViewModel()
-    protected lateinit var languageCardBack: Locale
+    private val rehearsalViewModel: RehearsalViewModel by sharedViewModel()
     protected lateinit var layout: View
     protected lateinit var pile: Pile
     protected lateinit var cards: MutableList<Card>
@@ -43,19 +44,18 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected lateinit var wrongSound: MediaPlayer
     protected val handler: Handler = Handler()
     protected var cardIndex = 0
-    private var pileId: Long = NO_ID
     private val animations: MutableList<Animation> = mutableListOf()
-    protected var pileColor: Int = R.color.colorPrimary
+    private val pileId: Long get() = sessionVM.pileId.value ?: NO_ID
+    protected val pileColor: Int get() = sessionVM.pileColor.value ?: R.color.colorPrimary
 
     open fun doAfterGetData(): Unit = addEventHandlers()
 
     abstract fun addEventHandlers()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        pileId = sessionVM.pileId.value ?: NO_ID
-        pileColor = sessionVM.pileColor.value ?: R.color.colorPrimary
         getCards()
         addToolbar()
+        rehearsalViewModel.reset()
         pileVM.allPiles.observe(this, Observer { piles ->
             pile = piles.first { pile -> pile.id == pileId }
             val rehearsalCard = layout.findViewById<RehearsalCard>(R.id.rehearsalCard)
@@ -184,7 +184,9 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         val moveX = moveX(rehearsalCard, 0F, -screenWidth)
         animations.add(moveX)
         moveX.onAnimateEnd {
-            if (cardIndex + 1 < cards.size) {
+            if (cardIndex + 1 >= cards.size)
+                startFragment(RehearsalResultFragment())
+            else {
                 rehearsalCard.resetCard()
                 nextCard()
                 val move2 = moveX(rehearsalCard, screenWidth, 0F)
@@ -193,8 +195,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                     doAfter()
                     animations.clear()
                 }
-            } else {
-                startFragment(CardFragment())
             }
         }
     }
@@ -206,11 +206,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     open fun onCorrect() {
         correctSound.start()
+        rehearsalViewModel.incrementAmountCorrect()
         cards[cardIndex].amountCorrect++
     }
 
     open fun onFalse() {
         wrongSound.start()
+        rehearsalViewModel.incrementAmountFalse()
         cards[cardIndex].amountFalse++
         if (Preferences.REHEARSAL_REPEAT_WRONG) cards.add(cards[cardIndex])
     }

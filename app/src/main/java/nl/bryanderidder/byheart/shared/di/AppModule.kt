@@ -16,6 +16,7 @@ import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 import nl.bryanderidder.byheart.pile.persistence.PileRemoteRepository
 import nl.bryanderidder.byheart.auth.AuthViewModel
+import nl.bryanderidder.byheart.rehearsal.RehearsalViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -43,6 +44,7 @@ val appModule: Module = module {
         .build() }
 
     viewModel { SessionViewModel(get()) }
+    viewModel { RehearsalViewModel(get()) }
     viewModel { CardViewModel(get(), get()) }
     viewModel { PileViewModel(get(), get()) }
     viewModel { FireStoreViewModel(get(), get(), get()) }

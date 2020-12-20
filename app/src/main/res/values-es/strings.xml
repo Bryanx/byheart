@@ -95,4 +95,19 @@
     <string name="share_block_login_message">Para compartir sus tarjetas, debe crear una cuenta. Alternativamente, puede exportar un archivo CSV y compartir ese archivo.</string>
     <string name="read_terms_and_conditions">Leer términos y condiciones</string>
     <string name="agree_terms">Estoy de acuerdo con los términos y condiciones</string>
+    <string name="perfection">Perfección</string>
+    <string name="amazing">Increíble</string>
+    <string name="well_done">Bien hecho</string>
+    <string name="keep_going">Continúa</string>
+    <string name="nice_work">Buen trabajo</string>
+    <string name="not_bad">Nada mal</string>
+    <string name="keep_learning">Sigue aprendiendo</string>
+    <string name="hang_in_there">Aguanta</string>
+    <string name="stay_focused">Manténgase enfocado</string>
+    <string name="you_can_do_it">Puede hacerlo</string>
+    <string name="pretty_bad">Bastante malo</string>
+    <string name="try_again">Inténtalo de nuevo</string>
+    <string name="time">Hora</string>
+    <string name="grade">Grado</string>
+    <string name="score">Puntuación</string>
 </resources>

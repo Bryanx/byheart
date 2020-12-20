@@ -95,4 +95,19 @@
     <string name="share_block_login_message">Para compartilhar seus cartões, você precisa criar uma conta. Alternativamente, você pode exportar um arquivo CSV e compartilhar esse arquivo.</string>
     <string name="read_terms_and_conditions">Leia os termos e condições</string>
     <string name="agree_terms">Eu concordo com os termos e condições</string>
+    <string name="perfection">Perfeição</string>
+    <string name="amazing">Incrível</string>
+    <string name="well_done">Muito bem</string>
+    <string name="keep_going">Continue</string>
+    <string name="nice_work">Bom trabalho</string>
+    <string name="not_bad">Nada mal</string>
+    <string name="keep_learning">Continue aprendendo</string>
+    <string name="hang_in_there">Aguente firme</string>
+    <string name="stay_focused">Mantenha o foco</string>
+    <string name="you_can_do_it">Você pode fazer isso</string>
+    <string name="pretty_bad">Muito ruim</string>
+    <string name="score">Ponto</string>
+    <string name="grade">Grau</string>
+    <string name="time">Tempo</string>
+    <string name="try_again">Tente novamente</string>
 </resources>

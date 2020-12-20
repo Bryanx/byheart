@@ -96,4 +96,19 @@
     <string name="share_block_login_message">আপনার কার্ডগুলি ভাগ করার জন্য আপনাকে একটি অ্যাকাউন্ট তৈরি করতে হবে। </string>
     <string name="read_terms_and_conditions">শর্তাবলী পড়ুন</string>
     <string name="agree_terms">আমি শর্তাবলী সঙ্গে একমত</string>
+    <string name="perfection">পরিপূর্ণতা</string>
+    <string name="amazing">বিস্ময়কর</string>
+    <string name="well_done">সাবাশ</string>
+    <string name="keep_going">চোলতে থাকা</string>
+    <string name="nice_work">চমৎকার কাজ</string>
+    <string name="not_bad">খারাপ না</string>
+    <string name="keep_learning">Keep learning</string>
+    <string name="hang_in_there">সেখানে থাকো</string>
+    <string name="stay_focused">Stay focused</string>
+    <string name="you_can_do_it">তুমি এটা করতে পার</string>
+    <string name="pretty_bad">খুব খারাপ</string>
+    <string name="score">স্কোর</string>
+    <string name="grade">শ্রেণী</string>
+    <string name="time">সময়</string>
+    <string name="try_again">Try again</string>
 </resources>
