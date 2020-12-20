@@ -2,13 +2,12 @@ package nl.bryanderidder.byheart
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.gson.JsonSyntaxException
-import kotlinx.android.synthetic.main.content_login_bottomsheet.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.card.Card
@@ -18,7 +17,6 @@ import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.auth.AuthViewModel
 import nl.bryanderidder.byheart.auth.LoginFragment
-import nl.bryanderidder.byheart.auth.REQUEST_SIGN_IN
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.exceptions.ByheartException
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
@@ -38,12 +36,15 @@ open class BaseActivity : AppCompatActivity() {
     private val authVM: AuthViewModel by viewModel()
     private var resultCode = 0
 
+    private val loginFragment: LoginFragment?
+        get() = supportFragmentManager.fragments
+            .filterIsInstance<LoginFragment>()
+            .firstOrNull()
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == REQUEST_SIGN_IN) {
-            supportFragmentManager.fragments
-                .filterIsInstance<LoginFragment>()
-                .firstOrNull()?.onActivityResult(requestCode, resultCode, intent)
+            loginFragment?.onActivityResult(requestCode, resultCode, intent)
             return
         }
         when (resultCode) {
@@ -79,6 +80,7 @@ open class BaseActivity : AppCompatActivity() {
                     insertPileWithCards(listOf(pile), true).await()
                 } catch (e: ByheartException) {
                     showErrorDialog(e)
+                    FirebaseCrashlytics.getInstance().recordException(e)
                 }
             }
         }
@@ -150,5 +152,6 @@ open class BaseActivity : AppCompatActivity() {
         const val RESULT_JSON = 2
         const val REQUEST_OPEN_FILE = 3
         const val REQUEST_PICK_FILE = 4
+        const val REQUEST_SIGN_IN = 5
     }
 }
