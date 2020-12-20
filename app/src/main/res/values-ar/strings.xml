@@ -96,4 +96,15 @@
     <string name="share_block_login_message">من أجل مشاركة البطاقات الخاصة بك تحتاج إلى إنشاء حساب. </string>
     <string name="read_terms_and_conditions">قراءة الشروط والأحكام</string>
     <string name="agree_terms">اني اوافق على الشروط والظروف</string>
+    <string name="perfection"> الكمال </string>
+    <string name="amazing"> مذهل </string>
+    <string name="well_done"> أحسنت </string>
+    <string name="keep_going"> استمر في العمل </string>
+    <string name="nice_work"> عمل جيد </string>
+    <string name="not_bad"> ليس سيئًا </string>
+    <string name="keep_learning"> استمر في التعلم </string>
+    <string name="hang_in_there"> انتظر هناك </string>
+    <string name="stay_focused"> حافظ على تركيزك </string>
+    <string name="you_can_do_it"> يمكنك فعل ذلك </string>
+    <string name="pretty_bad"> سيئ جدًا </string>
 </resources>

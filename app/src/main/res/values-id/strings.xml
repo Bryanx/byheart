@@ -95,4 +95,15 @@
     <string name="share_block_login_message">Untuk membagikan kartu Anda, Anda perlu membuat akun. Atau, Anda dapat mengekspor file CSV dan membagikan file itu.</string>
     <string name="read_terms_and_conditions">Baca syarat dan ketentuan</string>
     <string name="agree_terms">Saya setuju dengan syarat dan ketentuan</string>
+    <string name="perfection">Kesempurnaan</string>
+    <string name="amazing">Luar Biasa</string>
+    <string name="well_done">Bagus</string>
+    <string name="keep_going">Lanjutkan</string>
+    <string name="nice_work">Kerja bagus</string>
+    <string name="not_bad">Lumayan</string>
+    <string name="keep_learning">Terus belajar</string>
+    <string name="hang_in_there">Bertahanlah di sana</string>
+    <string name="stay_focused">Tetap fokus</string>
+    <string name="you_can_do_it">Anda dapat melakukannya</string>
+    <string name="pretty_bad">Sangat buruk</string>
 </resources>

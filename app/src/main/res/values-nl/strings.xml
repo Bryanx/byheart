@@ -96,4 +96,15 @@
     <string name="share_block_login_message">Om kaarten te kunnen delen moet je een account aanmaken. Je kan als alternatief eventueel ook CSV bestand aanmaken en delen.</string>
     <string name="read_terms_and_conditions">Lees terms en conditions</string>
     <string name="agree_terms">Ik ga akkoord met de voorwaarden</string>
+    <string name="perfection">Perfect</string>
+    <string name="amazing">Geweldig</string>
+    <string name="well_done">Goed gedaan</string>
+    <string name="keep_going">Blijf oefenen</string>
+    <string name="nice_work">Netjes</string>
+    <string name="not_bad">Niet slecht</string>
+    <string name="keep_learning">Blijf leren</string>
+    <string name="hang_in_there">Kom op</string>
+    <string name="stay_focused">Blijf gefocust</string>
+    <string name="you_can_do_it">Je kan het</string>
+    <string name="pretty_bad">Niet zo best</string>
 </resources>

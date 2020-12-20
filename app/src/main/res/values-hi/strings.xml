@@ -95,4 +95,15 @@
     <string name="share_block_login_message">अपने कार्ड साझा करने के लिए आपको एक खाता बनाने की आवश्यकता है। वैकल्पिक रूप से आप एक CSV फ़ाइल निर्यात कर सकते हैं और उस फ़ाइल को साझा कर सकते हैं।</string>
     <string name="read_terms_and_conditions">नियम और शर्तें पढ़ें</string>
     <string name="agree_terms">मैं नियम और शर्तों से सहमत हूं</string>
+    <string name="perfection">पूर्णता</string>
+    <string name="amazing">गजब का</string>
+    <string name="well_done">बहुत बढ़िया</string>
+    <string name="keep_going">बढ़ा चल</string>
+    <string name="nice_work">अच्छा काम</string>
+    <string name="not_bad">बुरा नहीं</string>
+    <string name="keep_learning">सीखते रहो</string>
+    <string name="hang_in_there">वहाँ पर लटका हुआ</string>
+    <string name="stay_focused">ध्यान केंद्रित रहना</string>
+    <string name="you_can_do_it">तुम कर सकते हो</string>
+    <string name="pretty_bad">बहुत बुरा</string>
 </resources>

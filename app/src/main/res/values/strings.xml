@@ -113,4 +113,16 @@
     <string name="share_block_login_message">In order to share your cards you need to create an account. Alternatively you can export a CSV file and share that file.</string>
     <string name="read_terms_and_conditions">Read terms and conditions</string>
     <string name="agree_terms">I agree with the terms and conditions</string>
+    <string name="medal" translatable="false">Medal</string>
+    <string name="perfection">Perfection</string>
+    <string name="amazing">Amazing</string>
+    <string name="well_done">Well done</string>
+    <string name="keep_going">Keep going</string>
+    <string name="nice_work">Nice work</string>
+    <string name="not_bad">Not bad</string>
+    <string name="keep_learning">Keep learning</string>
+    <string name="hang_in_there">Hang in there</string>
+    <string name="stay_focused">Stay focused</string>
+    <string name="you_can_do_it">You can do it</string>
+    <string name="pretty_bad">Pretty bad</string>
 </resources>

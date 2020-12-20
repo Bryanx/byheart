@@ -95,4 +95,15 @@
     <string name="share_block_login_message">Jotta voit jakaa korttisi, sinun on luotava tili. Vaihtoehtoisesti voit viedä CSV-tiedoston ja jakaa tiedoston.</string>
     <string name="read_terms_and_conditions">Lue käyttöehdot</string>
     <string name="agree_terms">Hyväksyn käyttöehdot</string>
+    <string name="perfection">Täydellinen</string>
+    <string name="amazing">Hämmästyttävä</string>
+    <string name="well_done">Hyvin tehty</string>
+    <string name="keep_going">Pysy menossa</string>
+    <string name="nice_work">Hyvää työtä</string>
+    <string name="not_bad">Ei paha</string>
+    <string name="keep_learning">Keep learning</string>
+    <string name="hang_in_there">Pysy siinä</string>
+    <string name="stay_focused">Keskity</string>
+    <string name="you_can_do_it">Sinä voit tehdä sen</string>
+    <string name="pretty_bad">Aika paha</string>
 </resources>

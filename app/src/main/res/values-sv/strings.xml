@@ -95,4 +95,15 @@
     <string name="share_block_login_message">För att dela dina kort måste du skapa ett konto. Alternativt kan du exportera en CSV-fil och dela den filen.</string>
     <string name="read_terms_and_conditions">Läs villkoren</string>
     <string name="agree_terms">Jag godkänner villkoren</string>
+    <string name="perfection">Perfektion</string>
+    <string name="amazing">Fantastiskt</string>
+    <string name="well_done">Bra gjort</string>
+    <string name="keep_going">Fortsätt</string>
+    <string name="nice_work">Trevligt arbete</string>
+    <string name="not_bad">Inte dåligt</string>
+    <string name="keep_learning">Fortsätt lära dig</string>
+    <string name="hang_in_there">Häng där</string>
+    <string name="stay_focused">Håll fokus</string>
+    <string name="you_can_do_it">Du kan göra det</string>
+    <string name="pretty_bad">Ganska dåligt</string>
 </resources>

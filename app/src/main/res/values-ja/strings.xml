@@ -95,4 +95,15 @@
     <string name="share_block_login_message">カードを共有するには、アカウントを作成する必要があります。または、CSVファイルをエクスポートしてそのファイルを共有することもできます。</string>
     <string name="read_terms_and_conditions">利用規約を読む</string>
     <string name="agree_terms">利用規約に同意します</string>
+    <string name="perfection">完璧</string>
+    <string name="amazing">すごい</string>
+    <string name="well_done">よくできました</string>
+    <string name="keep_going">続けてください</string>
+    <string name="nice_work">いい仕事</string>
+    <string name="not_bad">悪くない</string>
+    <string name="keep_learning">学習を続ける</string>
+    <string name="hang_in_there">ちょっと待ってください</string>
+    <string name="stay_focused">集中してください</string>
+    <string name="you_can_do_it">できます</string>
+    <string name="pretty_bad">かなり悪い</string>
 </resources>

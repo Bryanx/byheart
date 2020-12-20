@@ -96,4 +96,15 @@
 	<string name="share_block_login_message">For at dele dine kort skal du oprette en konto. </string>
 	<string name="read_terms_and_conditions">Læs vilkår og betingelser</string>
 	<string name="agree_terms">Jeg er enig med vilkårene og betingelserne</string>
+    <string name="perfection">Fuldkommenhed</string>
+	<string name="amazing">Fantastiske</string>
+	<string name="well_done">Godt klaret</string>
+	<string name="keep_going">Fortsæt</string>
+	<string name="nice_work">Flot arbejde</string>
+	<string name="not_bad">Ikke dårligt</string>
+	<string name="keep_learning">Fortsæt med at lære</string>
+	<string name="hang_in_there">Bliv ved</string>
+	<string name="stay_focused">Forbliv fokuseret</string>
+	<string name="you_can_do_it">Du kan gøre det</string>
+	<string name="pretty_bad">Temmelig dårlig</string>
 </resources>

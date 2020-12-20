@@ -95,4 +95,15 @@
     <string name="share_block_login_message">为了共享您的卡，您需要创建一个帐户。或者，您可以导出CSV文件并共享该文件。</string>
     <string name="read_terms_and_conditions">阅读条款和条件</string>
     <string name="agree_terms">我同意条款和条件</string>
+    <string name="perfection">完美</string>
+    <string name="amazing">了不起的</string>
+    <string name="well_done">做得好</string>
+    <string name="keep_going">继续前进</string>
+    <string name="nice_work">好工作</string>
+    <string name="not_bad">还不错</string>
+    <string name="keep_learning">继续学习</string>
+    <string name="hang_in_there">挂在那里</string>
+    <string name="stay_focused">保持专注</string>
+    <string name="you_can_do_it">您可以做到</string>
+    <string name="pretty_bad">非常糟糕</string>
 </resources>
