@@ -48,13 +48,13 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     }
 
     private fun setButtonsVisibility(visibility: Int) {
-        cardBtnCorrect.visibility = visibility
-        cardBtnFalse.visibility = visibility
+        cardBtnCorrect?.visibility = visibility
+        cardBtnFalse?.visibility = visibility
     }
 
     private fun buttonsAreEnabled(bool: Boolean) {
-        cardBtnCorrect.isEnabled = bool
-        cardBtnFalse.isEnabled = bool
+        cardBtnCorrect?.isEnabled = bool
+        cardBtnFalse?.isEnabled = bool
     }
 
     override fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)?): Boolean {
