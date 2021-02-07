@@ -42,13 +42,24 @@ object IoUtils {
         writer.close()
     }
 
+    fun readCSV(content: InputStream?) : MutableList<Card> {
+        val cards = mutableListOf<Card>()
+        content?.bufferedReader()?.useLines { it.forEachIndexed { i, line ->
+            if (i!=0 && line.contains(",")) {
+                val splittedLine = line.split(',')
+                cards.add(Card(splittedLine[0],splittedLine[1]))
+            }
+        }}
+        return cards
+    }
+
     fun createJson(context: Context, piles: Array<Pile>, name: String) {
         val gson = GsonBuilder().addSerializationExclusionStrategy(JsonExclusionStrategy).setPrettyPrinting().create()
         val file = File(context.cacheDir, name)
         val writer = FileWriter(file.path)
         writer.write(gson.toJson(piles))
         writer.close()
-        val contentUri = FileProvider.getUriForFile(context, "nl.bryanderidder.byheart", file)
+        val contentUri = FileProvider.getUriForFile(context, context.packageName, file)
         file.deleteOnExit()
         exportData(context as Activity, contentUri)
     }
@@ -74,16 +85,5 @@ object IoUtils {
             flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         }
         activity?.startActivity(intent)
-    }
-
-    fun readCSV(content: InputStream?) : MutableList<Card> {
-        val cards = mutableListOf<Card>()
-        content?.bufferedReader()?.useLines { it.forEachIndexed { i, line ->
-            if (i!=0 && line.contains(",")) {
-                val splittedLine = line.split(',')
-                cards.add(Card(splittedLine[0],splittedLine[1]))
-            }
-        }}
-        return cards
     }
 }
