@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.content_card_edit.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.Card
@@ -68,6 +69,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
             pile?.color?.let { color ->
                 if (Preferences.DARK_MODE) btnAddAnotherCard.tvText.setTextColor(color)
                 else btnAddAnotherCard.tvText.setTextColor(color.setBrightness(0.55F))
+                progressBarCardEdit.setCircleColor(color)
             }
         })
     }
@@ -99,8 +101,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_confirm_edit_card -> {
-            if (addOrUpdateCard()) startFragment(CardFragment()).run { true }
-            else false
+            addOrUpdateCard { startFragment(CardFragment()) }.run { true }
         }
         R.id.action_move_card -> {
             MoveCardFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
@@ -118,31 +119,44 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    private fun addOrUpdateCard(): Boolean {
-        val q = etCardFront.text.toString()
-        val a = etCardBack.text.toString()
-        val frontCorrect = checkInput(q, "question", cardFrontLayout)
-        val backCorrect = checkInput(a, "answer", cardBackLayout)
-        if (frontCorrect && backCorrect) {
-            etCardFront.clearFocus()
-            etCardBack.clearFocus()
-            if (editMode) {
-                val card = cardVM.getCards(sessionVM.pileId.value ?: NO_ID).find { it.id == sessionVM.cardId.value }
-                card?.question = q
-                card?.answer = a
-                cardVM.update(card!!)
-                showMessage(getString(R.string.updated_card))
-            } else {
-                val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
-                cardVM.insertAsync(card)
-                showMessage(getString(R.string.created_card))
+    private fun addOrUpdateCard(onSuccess: () -> Unit) {
+        showProgressBar(true)
+        lifecycleScope.launch {
+            val q = etCardFront.text.toString()
+            val a = etCardBack.text.toString()
+            val frontCorrect = checkInput(q, "question", cardFrontLayout)
+            val backCorrect = checkInput(a, "answer", cardBackLayout)
+            if (frontCorrect && backCorrect) {
+                etCardFront.clearFocus()
+                etCardBack.clearFocus()
+                if (editMode) {
+                    val card = cardVM.getCards(sessionVM.pileId.value ?: NO_ID).find { it.id == sessionVM.cardId.value }
+                    card?.question = q
+                    card?.answer = a
+                    card?.let { cardVM.updateAsync(it).await() }
+                    showMessage(getString(R.string.updated_card))
+                } else {
+                    val card = Card(q, a, sessionVM.pileId.value ?: NO_ID)
+                    cardVM.insertAsync(card).await()
+                    showMessage(getString(R.string.created_card))
+                }
+                delay(100L)
+            }
+            activity?.runOnUiThread {
+                showProgressBar(false)
+                if (frontCorrect && backCorrect) onSuccess.invoke()
             }
         }
-        return frontCorrect && backCorrect
+    }
+
+    private fun showProgressBar(show: Boolean) {
+        progressBarCardEdit.alpha = if (show) 1F else 0F
     }
 
     private fun showMessage(msg: String) {
-        activity?.let { showSnackBar(it, msg) }
+        activity?.runOnUiThread {
+            activity?.let { showSnackBar(it, msg) }
+        }
     }
 
     private fun checkInput(q: String, property: String, layout: TextInputLayout): Boolean {
@@ -160,7 +174,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
 
     private fun addEventHandlers() {
         btnAddAnotherCard.setOnClickListener {
-            if (addOrUpdateCard()) startFragment(CardEditFragment())
+            addOrUpdateCard { startFragment(CardEditFragment()) }
         }
         etCardFront.addTextChangedListener {
             checkInput(etCardFront.string, "question", cardFrontLayout)
@@ -176,7 +190,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         }
         etCardBack.setOnEditorActionListener{_, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE)
-                if (addOrUpdateCard()) startFragment(CardFragment())
+                addOrUpdateCard { startFragment(CardEditFragment()) }
             false
         }
         etCardFront.setOnEditorActionListener{_, actionId, _ ->

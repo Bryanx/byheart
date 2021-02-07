@@ -27,10 +27,11 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_rehearsal_result.*
 import nl.bryanderidder.byheart.MainActivity
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.pile.edit.ColorStateDrawable
@@ -313,3 +314,12 @@ var SwitchMaterial.unCheckedColor: Int
             else ColorStateList.valueOf(color.setAlpha(0.35F))
         }
     }
+
+fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: androidx.lifecycle.Observer<T>) {
+    observe(lifecycleOwner, object : androidx.lifecycle.Observer<T> {
+        override fun onChanged(t: T?) {
+            observer.onChanged(t)
+            removeObserver(this)
+        }
+    })
+}

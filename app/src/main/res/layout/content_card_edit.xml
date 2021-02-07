@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/llCardEdit"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,42 +36,55 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cardBackLayout"
+        android:id="@+id/cardBackLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="?mainEditTextColorHint"
+        app:errorEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFrontLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCardBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="false"
-            app:hintEnabled="false"
+            android:ems="10"
+            android:hint="@string/card_back"
+            android:imeOptions="actionDone"
+            android:inputType="textNoSuggestions|textMultiLine"
+            android:textColor="?mainHeaderTextColor"
             android:textColorHint="?mainEditTextColorHint"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/cardFrontLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCardBack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/edit_text_size"
-                app:backgroundTint="@color/grey_500"
-                android:textColor="?mainHeaderTextColor"
-                android:textColorHint="?mainEditTextColorHint"
-                android:hint="@string/card_back"
-                android:inputType="textNoSuggestions|textMultiLine"
-                android:imeOptions="actionDone"
-                android:ems="10"/>
+            android:textSize="@dimen/edit_text_size"
+            app:backgroundTint="@color/grey_500" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
         android:id="@+id/btnAddAnotherCard"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:visibility="visible"
         android:layout_marginTop="16dp"
-        app:toggle_text="@string/add_another_card"
-        app:toggle_textPaddingVertical="12dp"
-        app:toggle_textPaddingHorizontal="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardBackLayout"
         app:toggle_backgroundColor="?mainBackgroundColorLighter"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent" />
-</LinearLayout>
+        app:toggle_text="@string/add_another_card"
+        app:toggle_textPaddingHorizontal="25dp"
+        app:toggle_textPaddingVertical="12dp" />
+
+    <nl.bryanderidder.byheart.shared.views.CustomProgressBar
+        android:id="@+id/progressBarCardEdit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

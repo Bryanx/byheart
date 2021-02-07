@@ -24,7 +24,6 @@ import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.USER_ID
 import nl.bryanderidder.byheart.shared.utils.IoUtils
-import nl.bryanderidder.byheart.shared.utils.doAfterAnimations
 import nl.bryanderidder.byheart.shared.utils.showSnackBar
 import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
@@ -135,13 +134,9 @@ class CardFragment : Fragment(), IOnBackPressed {
                 else -> ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
             }
         }
-        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer { cards ->
-            // Update the cached copy of the words in the adapter.
-            recyclerview.doAfterAnimations {
-                adapter.setCards(cards.toMutableList())
-            }
-            if (cards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
-            else placeholderNoCards.visibility = GONE
+        cardVM.getByPileId(sessionVM.pileId).observeOnce(this, Observer { cards ->
+            adapter.setCards(cards.toMutableList())
+            showPlaceholder(cards)
         })
         buttonPlay.setOnClickListener {
             if (adapter.cards.isEmpty()) {
@@ -201,9 +196,15 @@ class CardFragment : Fragment(), IOnBackPressed {
         activity?.runOnUiThread {
             adapter.cards.removeAt(card.listIndex)
             adapter.notifyItemRemoved(card.listIndex)
+            showPlaceholder(adapter.cards)
         }
         showSnackBar(activity!!, getString(R.string.removed_card))
         swipeLeftToDelete.isEnabled = true
+    }
+
+    private fun showPlaceholder(cards: List<Card>) {
+        if (cards.isEmpty()) placeholderNoCards.visibility = View.VISIBLE
+        else placeholderNoCards.visibility = GONE
     }
 
     fun updateAllCards(cards: List<Card>) = cardVM.updateAll(cards)
