@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SeekBarPreference
 import nl.bryanderidder.byheart.BaseActivity.Companion.RESULT_CSV
 import nl.bryanderidder.byheart.BaseActivity.Companion.RESULT_JSON
 import nl.bryanderidder.byheart.R
@@ -14,6 +15,7 @@ import nl.bryanderidder.byheart.auth.AuthViewModel
 import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.PileViewModel
+import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.utils.IoUtils
 import nl.bryanderidder.byheart.shared.utils.goToUrl
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -42,6 +44,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun addEventHandlers() {
+        onSlideSeekBar("delayTime") { newValue ->
+            Preferences.write(Preferences.KEY_REHEARSAL_DELAY_TIME, newValue as Int)
+        }
         onClick("sign_in") { onClickSignIn() }
         onClick("exportBackup") { exportBackup() }
         onClick("importBackup") { requestFile(RESULT_JSON) }
@@ -52,14 +57,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         onClick("about") { startActivity(Intent(context, AboutActivity::class.java)) }
         onClickGoToUrl("privacy_policy", getString(R.string.privacy_policy_url))
         onClickGoToUrl("terms_and_conditions", getString(R.string.terms_and_conditions_url))
-        onClick("sign_out") { authVM.signOut(activity!!) }
+        onClick("sign_out") { authVM.signOut(requireActivity()) }
         authVM.isSignedIn.observe(this, Observer { if (it) onSignedIn() else onSignedOut() })
     }
 
     private fun onClickSignIn() {
         LoginFragment()
             .also { authVM.loginMessage.value = getString(R.string.after_logging_in_you_will_be_able_to_share_cards) }
-            .also { it.show(activity!!.supportFragmentManager, it.tag) }
+            .also { it.show(requireActivity().supportFragmentManager, it.tag) }
     }
 
     private fun onSignedIn() {
@@ -80,7 +85,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         pileVM.allPiles.observe(this, Observer {piles ->
             cardVM.allCards.observe(this, Observer {cards ->
                 piles.forEach { it.cards.addAll(cards.filter { c -> c.pileId == it.id }) }
-                IoUtils.createJson(context!!, piles.toTypedArray(), "Byheart-backup.byheart")
+                IoUtils.createJson(requireContext(), piles.toTypedArray(), "Byheart-backup.byheart")
             })
         })
     }
@@ -96,9 +101,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
     }
 
+    private fun onSlideSeekBar(key: String, action: (Any) -> Unit) {
+        findPreference<SeekBarPreference>(key)?.setOnPreferenceChangeListener { _, newValue: Any ->
+            action.invoke(newValue).run { true }
+        }
+    }
+
     private fun onClickGoToUrl(key: String, url: String) {
         findPreference<Preference>(key)?.setOnPreferenceClickListener {
-            goToUrl(activity!!, url)
+            goToUrl(requireActivity(), url)
             true
         }
     }

@@ -30,13 +30,11 @@ class RehearsalMemoryFragment : RehearsalFragment() {
                 if (it == cardBtnCorrect) super.onCorrect()
                 else super.onFalse()
                 if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
-                rehearsalCard.turnToBack()
-                var delay = rehearsalCard.backText!!.length*150.toLong()
-                if (delay > 2000) delay = 2000
+                val delay = Preferences.REHEARSAL_DELAY_TIME.toLong()
                 handler.postDelayed({ nextQuestionWithButtons() }, delay)
             }
         }
-        rehearsalCard.setOnClickListener {
+        rehearsalLayout.setOnClickListener {
             rehearsalCard.flipCard()
             setButtonsVisibility(VISIBLE)
         }

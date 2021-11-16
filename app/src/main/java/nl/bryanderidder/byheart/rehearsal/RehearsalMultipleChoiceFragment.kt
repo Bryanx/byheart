@@ -69,15 +69,16 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                     buttonsAreEnabled(false)
                     super.onCorrect()
                     if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
-                    btn.textColor = context!!.color(R.color.white)
-                    btn.bgColor = context!!.getAttr(R.attr.colorGreen)
-                    rehearsalCard.turnToBack()
-                    handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
+                    btn.textColor = requireContext().color(R.color.white)
+                    btn.bgColor = requireContext().getAttr(R.attr.colorGreen)
+                    val delay = Preferences.REHEARSAL_DELAY_TIME.toLong()
+                    if (delay > 500) rehearsalCard.turnToBack()
+                    handler.postDelayed({ nextQuestionWithButtons() }, delay)
                 } else {
                     if (!falseAnswer) super.onFalse().also { falseAnswer = true }
                     else wrongSound.start() // don't count each consecutive wrong answer
-                    btn.textColor = context!!.color(R.color.white)
-                    btn.bgColor = context!!.color(R.color.red)
+                    btn.textColor = requireContext().color(R.color.white)
+                    btn.bgColor = requireContext().color(R.color.red)
                     btn.isEnabled = false
                 }
             }

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 fun moveX(view: View, from: Float, to: Float): TranslateAnimation {
     view.visibility = View.VISIBLE
     val animate: TranslateAnimation = TranslateAnimation(from, to, 0f, 0f).apply {
-        duration = 200
+        duration = 150
         fillAfter = true
         interpolator = AccelerateDecelerateInterpolator()
     }

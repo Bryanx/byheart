@@ -39,7 +39,7 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         repo.insertAll(cards)
     }
 
-    fun update(card: Card) = scope.launch(coroutineProvider.IO) {
+    fun updateAsync(card: Card) = scope.async(coroutineProvider.IO) {
         val cards = withContext(coroutineProvider.Default) { allCards }
         cards.value!!.find { it.id == card.id }?.let {
             it.answer = card.answer

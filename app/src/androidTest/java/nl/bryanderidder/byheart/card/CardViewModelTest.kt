@@ -111,7 +111,7 @@ class CardViewModelTest {
             db.cardDao().insert(londonCard)
 
             londonCard.answer = "Liverpool"
-            cardVM.update(londonCard).invokeOnCompletion {
+            cardVM.updateAsync(londonCard).invokeOnCompletion {
                 val cards = cardVM.allCards.getOrAwaitValue()
                 assertThat(cards[0].question).isEqualTo("United Kindom")
                 assertThat(cards[0].answer).isEqualTo("Liverpool")

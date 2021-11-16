@@ -64,15 +64,15 @@ class RehearsalTypedFragment : RehearsalFragment() {
 
     override fun onCorrect() {
         super.onCorrect()
-        etInput.setLineColor(context!!.color(R.color.green))
-        btnGo.setBackgroundTint(context!!.color(R.color.green))
+        etInput.setLineColor(requireContext().color(R.color.green))
+        btnGo.setBackgroundTint(requireContext().color(R.color.green))
         handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_correct_duration).toLong())
     }
 
     override fun onFalse() {
         super.onFalse()
-        etInput.setLineColor(context!!.color(R.color.red))
-        btnGo.setBackgroundTint(context!!.color(R.color.red))
+        etInput.setLineColor(requireContext().color(R.color.red))
+        btnGo.setBackgroundTint(requireContext().color(R.color.red))
         handler.postDelayed({ nextQuestionWithButtons() }, resources.getInteger(R.integer.rehearsal_false_duration).toLong())
     }
 

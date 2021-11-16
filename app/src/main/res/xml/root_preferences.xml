@@ -14,7 +14,8 @@
   ~ limitations under the License.
   -->
 
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:key="top">
 
@@ -26,6 +27,23 @@
             app:summary="@string/after_logging_in_you_will_be_able_to_share_cards" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/rehearsals">
+        <SeekBarPreference
+            app:icon="@drawable/ic_baseline_speed_24"
+            app:key="delayTime"
+            app:adjustable="true"
+            app:persistent="true"
+            app:min="0"
+            app:seekBarIncrement="5"
+            android:max="3000"
+            app:defaultValue="1500"
+            app:updatesContinuously="true"
+            app:showSeekBarValue="true"
+            app:summary="Configure the delay in milliseconds between each flashcard when rehearsing. Standard delay is 1500 ms."
+            app:title="Delay between cards" />
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/import_and_export">
 
         <Preference
