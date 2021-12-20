@@ -34,10 +34,10 @@ class PileFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = inflater.inflate(R.layout.content_piles, container, false)
-        cardVM.allCards.observe(this, Observer {
-            val adapter = PileListAdapter(context!!, it.toMutableList(), ::onClickPile, ::onAfterMovingPiles)
+        cardVM.allCards.observe(viewLifecycleOwner, Observer {
+            val adapter = PileListAdapter(requireContext(), it.toMutableList(), ::onClickPile, ::onAfterMovingPiles)
             recyclerviewPiles.adapter = adapter
-            recyclerviewPiles.layoutManager = GridAutofitLayoutManager(activity!!, 500)
+            recyclerviewPiles.layoutManager = GridAutofitLayoutManager(requireActivity(), 240)
             ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerviewPiles)
             addEventHandlers(adapter)
         })
@@ -76,7 +76,7 @@ class PileFragment : Fragment(), IOnBackPressed {
     }
 
     private fun addEventHandlers(adapter: PileListAdapter) {
-        pileVM.allPiles.observe(this, Observer { piles ->
+        pileVM.allPiles.observe(viewLifecycleOwner, Observer { piles ->
             piles?.let {
                 recyclerviewPiles.doAfterAnimations {
                     adapter.setPiles(piles.toMutableList())
