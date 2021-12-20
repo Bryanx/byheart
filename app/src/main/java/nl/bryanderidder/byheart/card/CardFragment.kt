@@ -80,7 +80,7 @@ class CardFragment : Fragment(), IOnBackPressed {
                 } else {
                     buttons.forEach {
                         it.setIconColor(color.setBrightness(.55F))
-                        it.setColor(context!!.color(R.color.grey_100))
+                        it.setColor(requireContext().color(R.color.grey_100))
                     }
                     btnAddCardPlaceholder.tvText.setTextColor(color.setBrightness(0.55F))
                 }
@@ -118,7 +118,7 @@ class CardFragment : Fragment(), IOnBackPressed {
 
     private fun getBundle() {
         pileId = sessionVM.pileId.value ?: NO_ID
-        pileColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
+        pileColor = sessionVM.pileColor.value ?: requireContext().color(R.color.colorPrimary)
         content_card_title.text = sessionVM.pileName.value
     }
 
@@ -159,7 +159,7 @@ class CardFragment : Fragment(), IOnBackPressed {
     }
 
     private fun startDeleteDialog() {
-        context!!.dialog()
+        requireContext().dialog()
             .setMessage(getString(R.string.delete_confirm_stack))
             .setCancelable(false)
             .setPositiveButton(getString(R.string.delete)) { _, _ -> deletePile() }
@@ -183,7 +183,7 @@ class CardFragment : Fragment(), IOnBackPressed {
         }
     }
 
-    private fun exportAsCSV() = IoUtils.createCSV(context!!, adapter.cards, "Byheart-${pile?.name}.csv")
+    private fun exportAsCSV() = IoUtils.createCSV(requireContext(), adapter.cards, "Byheart-${pile?.name}.csv")
 
     fun updateReorderedCards(cards: List<Card>) {
         updateAllCards(cards)

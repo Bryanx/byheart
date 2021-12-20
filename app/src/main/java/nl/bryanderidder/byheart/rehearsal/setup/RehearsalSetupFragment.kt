@@ -44,7 +44,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         if (Preferences.REHEARSAL_TYPED) toggleGroup.selectButton(btnTyped)
         if (Preferences.REHEARSAL_MEMORY) toggleGroup.selectButton(btnMemory)
         moreThanFiveCards = sessionVM.cardCount.value ?: 0 > 5
-        pileColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
+        pileColor = sessionVM.pileColor.value ?: requireContext().color(R.color.colorPrimary)
         setColors()
         updateModeDescription()
         addEventHandlers()
@@ -102,7 +102,7 @@ class RehearsalSetupFragment : BaseBottomSheet() {
             else -> "Choose a mode to continue."
         }
         if (Preferences.read(KEY_REHEARSAL_MULTIPLE_CHOICE) && !moreThanFiveCards)
-            crsModeDescription.setTextColor(context!!.color(R.color.red))
+            crsModeDescription.setTextColor(requireContext().color(R.color.red))
         else if (Preferences.DARK_MODE) crsModeDescription.setTextColor(pileColor)
         else crsModeDescription.setTextColor(pileColor.setBrightness(0.55F))
     }

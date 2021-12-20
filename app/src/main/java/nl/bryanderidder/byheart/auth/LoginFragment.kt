@@ -28,7 +28,7 @@ class LoginFragment : BaseBottomSheet() {
 
     private val authVM: AuthViewModel by sharedViewModel()
     private val sessionVM: SessionViewModel by sharedViewModel()
-    private val pileColor get() = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
+    private val pileColor get() = sessionVM.pileColor.value ?: requireContext().color(R.color.colorPrimary)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = inflater.inflate(R.layout.content_login_bottomsheet, container, false)
@@ -54,7 +54,7 @@ class LoginFragment : BaseBottomSheet() {
         clbTermsLink.setOnClickListener { goToUrl(activity!!, getString(R.string.terms_and_conditions_url)) }
         authVM.isTermsAndConditionsChecked.observe(this, Observer { checked ->
             clbLogin.isEnabled = checked
-            clbLogin.textColor = if (checked) context!!.getAttr(R.attr.mainHeaderTextColor) else context!!.getAttr(R.attr.mainTextColor)
+            clbLogin.textColor = if (checked) requireContext().getAttr(R.attr.mainHeaderTextColor) else requireContext().getAttr(R.attr.mainTextColor)
         })
         clbTermsSwitch.setOnCheckedChanged { checked ->
             authVM.isTermsAndConditionsChecked.value = checked

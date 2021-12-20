@@ -33,9 +33,9 @@ class RehearsalResultFragment : BaseBottomSheet(), IOnBackPressed {
         crrScorePercent.text = "${rehearsalVM.percentageCorrect}%"
         crrElapsedTime.text = rehearsalVM.elapsedTime
         crrMedal.setDrawable(rehearsalVM.getMedal())
-        crrTitle.text = rehearsalVM.getTitle(context!!)
+        crrTitle.text = rehearsalVM.getTitle(requireContext())
         crrPileName.text = sessionVM.pileName.value ?: ""
-        crrTryAgain.textColor = sessionVM.pileColor.value ?: context!!.color(R.color.colorPrimary)
+        crrTryAgain.textColor = sessionVM.pileColor.value ?: requireContext().color(R.color.colorPrimary)
         rehearsalVM.cancelTimer()
         addEventHandlers()
     }
@@ -46,13 +46,13 @@ class RehearsalResultFragment : BaseBottomSheet(), IOnBackPressed {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.action_share_screenshot -> true.apply { ScreenShotUtil.createAndShare(activity!!) }
+        R.id.action_share_screenshot -> true.apply { ScreenShotUtil.createAndShare(requireActivity()) }
         else -> super.onOptionsItemSelected(item)
     }
 
     private fun addEventHandlers() {
         crrTryAgain.setOnClickListener {
-            RehearsalSetupFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            RehearsalSetupFragment().also { it.show(requireActivity().supportFragmentManager, it.tag) }
         }
     }
 

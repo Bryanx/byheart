@@ -57,11 +57,11 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun setRandomColor() {
-        pileColor = getColors(context!!).random()
+        pileColor = getColors(requireContext()).random()
     }
 
     private fun setUpTextToSpeech() {
-        context!!.resources.getStringArray(R.array.languages).forEach {code ->
+        requireContext().resources.getStringArray(R.array.languages).forEach {code ->
             locales.find { it.code == code }?.let {locale ->
                 localeList.add(locale)
                 countries.add(locale.displayName)
@@ -69,10 +69,10 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         }
         countries.sort()
         if (Preferences.DARK_MODE) {
-            adapter = ArrayAdapter(context!!, R.layout.spinner_dark_item, countries)
+            adapter = ArrayAdapter(requireContext(), R.layout.spinner_dark_item, countries)
             adapter.setDropDownViewResource(R.layout.spinner_dark_dropdown_item)
         } else {
-            adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, countries)
+            adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countries)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
         fillSpinner(spinnerCardFront, adapter, "languageCardFront")
@@ -185,7 +185,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             val pile = piles.find { it.id == sessionVM.pileId.value }
             pileColor = when {
                 editMode && pile?.color != null -> pile.color!!
-                else -> getColors(context!!).random()
+                else -> getColors(requireContext()).random()
             }
             if (editMode) setUpTextToSpeech()
         })

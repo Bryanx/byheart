@@ -50,9 +50,9 @@ class MoveCardFragment : BaseBottomSheet() {
     }
 
     private fun setUpAdapter(layout: View) {
-        val moveCardPilesAdapter = MoveCardPilesAdapter(context!!, ::onClickMoveCard)
+        val moveCardPilesAdapter = MoveCardPilesAdapter(requireContext(), ::onClickMoveCard)
         layout.pileRecycler.adapter = moveCardPilesAdapter
-        layout.pileRecycler.layoutManager = LinearLayoutManager(context!!)
+        layout.pileRecycler.layoutManager = LinearLayoutManager(requireContext())
         pileVM.allPiles.observe(this, Observer {
             moveCardPilesAdapter.setList(it
                 .toMutableList()

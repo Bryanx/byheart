@@ -105,7 +105,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                 startFragment(RehearsalMemoryFragment()).run { true }
             }
             R.id.rehearsal_multiple_choice -> {
-                if (cards.size < 5) context!!.dialog()
+                if (cards.size < 5) requireContext().dialog()
                     .setMessage(getString(R.string.five_card_warning))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.ok)) { _, _ -> }

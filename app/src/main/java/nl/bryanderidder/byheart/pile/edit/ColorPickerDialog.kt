@@ -47,7 +47,7 @@ class ColorPickerDialog : AppCompatDialogFragment() {
         val view = LayoutInflater.from(activity).inflate(R.layout.color_picker_dialog, null)
         palette = view.findViewById(R.id.color_picker)
         palette.init(mColumns, this::onSelectColor)
-        mColors = getColors(context!!)
+        mColors = getColors(requireContext())
         showPaletteView()
         return AlertDialog.Builder(activity)
             .setView(view)
