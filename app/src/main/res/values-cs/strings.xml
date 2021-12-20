@@ -111,4 +111,5 @@
 	<string name="time">Čas</string>
 	<string name="grade">Školní známka</string>
 	<string name="score">Skóre</string>
+    <string name="rehearsals">Zkoušky</string>
 </resources>

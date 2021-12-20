@@ -109,5 +109,6 @@
     <string name="score">得分</string>
     <string name="grade">年級</string>
     <string name="time">時間</string>
-    <string name="try_again">Try again</string>
+    <string name="try_again">再试一次</string>
+    <string name="rehearsals">排练</string>
 </resources>

@@ -110,4 +110,5 @@
     <string name="try_again">다시 시도하십시오</string>
     <string name="grade">등급</string>
     <string name="score">점수</string>
+    <string name="rehearsals">리허설</string>
 </resources>

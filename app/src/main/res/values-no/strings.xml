@@ -110,4 +110,5 @@
     <string name="time">Tid</string>
     <string name="grade">Karakter</string>
     <string name="score">Resultat</string>
+    <string name="rehearsals">Prøver</string>
 </resources>

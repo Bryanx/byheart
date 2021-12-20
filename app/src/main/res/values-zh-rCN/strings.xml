@@ -110,4 +110,5 @@
     <string name="time">时间</string>
     <string name="grade">年级</string>
     <string name="score">得分</string>
+    <string name="rehearsals">排练</string>
 </resources>

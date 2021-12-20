@@ -111,4 +111,5 @@
     <string name="time">Tempo</string>
     <string name="grade">Grado</string>
     <string name="score">Punto</string>
+    <string name="rehearsals">Prove</string>
 </resources>

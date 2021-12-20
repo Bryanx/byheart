@@ -110,4 +110,5 @@
     <string name="time">Aika</string>
     <string name="grade">Arvosana</string>
     <string name="score">Pisteet</string>
+    <string name="rehearsals">Harjoitukset</string>
 </resources>

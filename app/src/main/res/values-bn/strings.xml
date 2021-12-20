@@ -102,13 +102,14 @@
     <string name="keep_going">চোলতে থাকা</string>
     <string name="nice_work">চমৎকার কাজ</string>
     <string name="not_bad">খারাপ না</string>
-    <string name="keep_learning">Keep learning</string>
+    <string name="keep_learning">শিখতে থাকুন</string>
     <string name="hang_in_there">সেখানে থাকো</string>
-    <string name="stay_focused">Stay focused</string>
+    <string name="stay_focused">মনোযোগী থাকো</string>
     <string name="you_can_do_it">তুমি এটা করতে পার</string>
     <string name="pretty_bad">খুব খারাপ</string>
     <string name="score">স্কোর</string>
     <string name="grade">শ্রেণী</string>
     <string name="time">সময়</string>
-    <string name="try_again">Try again</string>
+    <string name="try_again">আবার চেষ্টা করুন</string>
+    <string name="rehearsals">মহড়া</string>
 </resources>
