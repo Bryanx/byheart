@@ -46,12 +46,12 @@ class LoginFragment : BaseBottomSheet() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        authVM.onActivityResult(activity!!, requestCode, resultCode, data, ::onAfterLogin, ::onLoginFailed, ::onLoginCanceled)
+        authVM.onActivityResult(requireActivity(), requestCode, resultCode, data, ::onAfterLogin, ::onLoginFailed, ::onLoginCanceled)
     }
 
     private fun addEventHandlers() {
         clbLogin.setOnClickListener { onClickLogin() }
-        clbTermsLink.setOnClickListener { goToUrl(activity!!, getString(R.string.terms_and_conditions_url)) }
+        clbTermsLink.setOnClickListener { goToUrl(requireActivity(), getString(R.string.terms_and_conditions_url)) }
         authVM.isTermsAndConditionsChecked.observe(this, Observer { checked ->
             clbLogin.isEnabled = checked
             clbLogin.textColor = if (checked) requireContext().getAttr(R.attr.mainHeaderTextColor) else requireContext().getAttr(R.attr.mainTextColor)
@@ -64,7 +64,7 @@ class LoginFragment : BaseBottomSheet() {
     private fun onClickLogin() {
         showProgressBar(true)
         if (authVM.isTermsAndConditionsChecked.value == true)
-            authVM.signInWithGoogle(activity!!)
+            authVM.signInWithGoogle(requireActivity())
     }
 
     @SuppressLint("StringFormatInvalid")
@@ -74,7 +74,7 @@ class LoginFragment : BaseBottomSheet() {
         clbWelcomeBack.animate().alpha(1F)
         lifecycleScope.launch {
             delay(1000L)
-            activity!!.runOnUiThread {
+            requireActivity().runOnUiThread {
                 dismiss()
             }
         }

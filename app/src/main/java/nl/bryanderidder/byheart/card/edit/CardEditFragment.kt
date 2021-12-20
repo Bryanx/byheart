@@ -48,7 +48,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
         llCardEdit.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         editMode = sessionVM.cardId.value != NO_ID
         addEventHandlers()
-        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer {
+        cardVM.getByPileId(sessionVM.pileId).observe(viewLifecycleOwner, Observer {
             cards = it
             if (editMode) {
                 currentCard = cards.find { card: Card ->
@@ -104,7 +104,7 @@ class CardEditFragment : Fragment(), IOnBackPressed {
             addOrUpdateCard { startFragment(CardFragment()) }.run { true }
         }
         R.id.action_move_card -> {
-            MoveCardFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+            MoveCardFragment().also { it.show(requireActivity().supportFragmentManager, it.tag) }
             true
         }
         R.id.action_delete_card -> true.apply { deleteCard() }

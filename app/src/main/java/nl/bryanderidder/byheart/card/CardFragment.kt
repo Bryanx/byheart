@@ -64,12 +64,12 @@ class CardFragment : Fragment(), IOnBackPressed {
         addEventHandlers()
         changeColors()
         sessionVM.findMessage()?.let {
-            showSnackBar(activity!!, it)
+            showSnackBar(requireActivity(), it)
         }
     }
 
     private fun changeColors() {
-        pileVM.allPiles.observe(this, Observer { piles ->
+        pileVM.allPiles.observe(viewLifecycleOwner, Observer { piles ->
             pile = piles.find { it.id == sessionVM.pileId.value }
             val buttons = arrayOf(buttonShare, buttonAdd, buttonPlay)
             pile?.color?.let { color ->
@@ -130,8 +130,8 @@ class CardFragment : Fragment(), IOnBackPressed {
                 adapter.cards.isEmpty() -> showSnackBar(getString(R.string.you_dont_have_any_cards_yet), resources.getString(R.string.add_a_card), pileColor) { startEditFragment() }
                 USER_ID.isEmpty() -> LoginFragment()
                     .also { authVM.loginMessage.value = getString(R.string.share_block_login_message) }
-                    .also { it.show(activity!!.supportFragmentManager, it.tag) }
-                else -> ShareFragment().also { it.show(activity!!.supportFragmentManager, it.tag) }
+                    .also { it.show(requireActivity().supportFragmentManager, it.tag) }
+                else -> ShareFragment().also { it.show(requireActivity().supportFragmentManager, it.tag) }
             }
         }
         cardVM.getByPileId(sessionVM.pileId).observeOnce(this, Observer { cards ->
@@ -146,7 +146,7 @@ class CardFragment : Fragment(), IOnBackPressed {
                 sessionVM.cardCount.value = adapter.cards.size
                 sessionVM.pileColor.value = pile?.color
                 RehearsalSetupFragment().also {
-                    it.show(activity!!.supportFragmentManager, it.tag)
+                    it.show(requireActivity().supportFragmentManager, it.tag)
                 }
 
             }
@@ -198,7 +198,7 @@ class CardFragment : Fragment(), IOnBackPressed {
             adapter.notifyItemRemoved(card.listIndex)
             showPlaceholder(adapter.cards)
         }
-        showSnackBar(activity!!, getString(R.string.removed_card))
+        showSnackBar(requireActivity(), getString(R.string.removed_card))
         swipeLeftToDelete.isEnabled = true
     }
 

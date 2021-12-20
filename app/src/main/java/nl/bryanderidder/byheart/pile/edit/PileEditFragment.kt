@@ -82,7 +82,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
     private fun fillSpinner(spinner: AppCompatSpinner, adapter: ArrayAdapter<String>, attr: String) {
         spinner.adapter = adapter
         if (editMode) {
-            pileVM.allPiles.observe(this, Observer {
+            pileVM.allPiles.observe(viewLifecycleOwner, Observer {
                 val thisPile = it.find { pile -> pile.id == sessionVM.pileId.value }
                 spinner.setSelection(localeList.indexOfFirst { loc -> loc.code == thisPile[attr]})
             })
@@ -105,7 +105,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
         }
         R.id.action_colorpicker -> {
             val dialog = ColorPickerDialog.newInstance(R.string.go, pileColor, 4, 2)
-            dialog.show(fragmentManager!!, "picker")
+            dialog.show(requireFragmentManager(), "picker")
             dialog.listener = {
                 pileColor = it
             }
@@ -151,7 +151,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             pile?.let { pileVM.update(pile).invokeOnCompletion {
                 sessionVM.pileName.postValue(pile.name)
                 sessionVM.pileColor.postValue(pile.color)
-                showSnackBar(activity!!, getString(R.string.updated_stack))
+                showSnackBar(requireActivity(), getString(R.string.updated_stack))
                 startFragment(CardFragment())
             } }
         } else {
@@ -180,7 +180,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
             if (checkInput()) addOrUpdatePile()
             return@onEnter true
         }
-        pileVM.allPiles.observe(this, Observer { listPiles ->
+        pileVM.allPiles.observe(viewLifecycleOwner, Observer { listPiles ->
             this.piles = listPiles
             val pile = piles.find { it.id == sessionVM.pileId.value }
             pileColor = when {
