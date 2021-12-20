@@ -37,7 +37,7 @@ class PileFragment : Fragment(), IOnBackPressed {
         cardVM.allCards.observe(viewLifecycleOwner, Observer {
             val adapter = PileListAdapter(requireContext(), it.toMutableList(), ::onClickPile, ::onAfterMovingPiles)
             recyclerviewPiles.adapter = adapter
-            recyclerviewPiles.layoutManager = GridAutofitLayoutManager(requireActivity(), 240)
+            recyclerviewPiles.layoutManager = GridAutofitLayoutManager(requireActivity(), 500, 2)
             ItemTouchHelper(DragAndDropCallback(adapter)).attachToRecyclerView(recyclerviewPiles)
             addEventHandlers(adapter)
         })

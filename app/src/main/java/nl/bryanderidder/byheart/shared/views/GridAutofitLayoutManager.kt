@@ -14,7 +14,8 @@ import kotlin.math.max
  */
 class GridAutofitLayoutManager/* Initially set spanCount to 1, will be changed automatically later. */(
     context: Context,
-    columnWidth: Int
+    columnWidth: Int,
+    private val minTabcount: Int = 1
 ) : GridLayoutManager(context, 1) {
     private var columnWidth: Int = 0
     private var isColumnWidthChanged = true
@@ -23,11 +24,6 @@ class GridAutofitLayoutManager/* Initially set spanCount to 1, will be changed a
 
     init {
         setColumnWidth(checkedColumnWidth(context, columnWidth))
-    }
-
-    override fun canScrollVertically(): Boolean = when {
-        this.childCount <= 3 -> false
-        else -> super.canScrollVertically()
     }
 
     private fun checkedColumnWidth(context: Context, columnWidth: Int): Int {
@@ -60,7 +56,7 @@ class GridAutofitLayoutManager/* Initially set spanCount to 1, will be changed a
             } else {
                 height - paddingTop - paddingBottom
             }
-            val spanCount = max(1, totalSpace / columnWidth)
+            val spanCount = max(minTabcount, totalSpace / columnWidth)
             setSpanCount(spanCount)
             isColumnWidthChanged = false
         }
