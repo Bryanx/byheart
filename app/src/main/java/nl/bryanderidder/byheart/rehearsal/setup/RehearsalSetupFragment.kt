@@ -70,10 +70,14 @@ class RehearsalSetupFragment : BaseBottomSheet() {
         crsPronounce.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_PRONOUNCE, checked) }
         crsReverse.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_REVERSE, checked) }
         crsRepeatWrong.setOnCheckedChanged { checked -> Preferences.write(KEY_REHEARSAL_REPEAT_WRONG, checked) }
-        btnMultipleChoice.setOnClickListener { selectMode(KEY_REHEARSAL_MULTIPLE_CHOICE) }
-        btnTyped.setOnClickListener { selectMode(KEY_REHEARSAL_TYPED) }
-        btnMemory.setOnClickListener { selectMode(KEY_REHEARSAL_MEMORY) }
         crsStart.setOnClickListener { onStartPressed() }
+        toggleGroup.setOnSelectListener {
+            when (it) {
+                btnMultipleChoice -> selectMode(KEY_REHEARSAL_MULTIPLE_CHOICE)
+                btnTyped -> selectMode(KEY_REHEARSAL_TYPED)
+                btnMemory -> selectMode(KEY_REHEARSAL_MEMORY)
+            }
+        }
     }
 
     private fun onStartPressed() {
