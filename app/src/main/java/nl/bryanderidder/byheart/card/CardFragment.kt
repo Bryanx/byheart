@@ -23,12 +23,12 @@ import nl.bryanderidder.byheart.pile.edit.PileEditFragment
 import nl.bryanderidder.byheart.rehearsal.setup.RehearsalSetupFragment
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.Preferences.USER_ID
-import nl.bryanderidder.byheart.shared.utils.IoUtils
-import nl.bryanderidder.byheart.shared.utils.showSnackBar
-import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
 import nl.bryanderidder.byheart.shared.touchhelpers.SwipeLeftToDeleteCallback
 import nl.bryanderidder.byheart.shared.touchhelpers.SwipeRightToEditCallback
+import nl.bryanderidder.byheart.shared.utils.IoUtils
+import nl.bryanderidder.byheart.shared.utils.showSnackBar
+import nl.bryanderidder.byheart.shared.views.GridAutofitLayoutManager
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**

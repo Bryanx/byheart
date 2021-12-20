@@ -4,7 +4,6 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.view.View
 import androidx.core.content.FileProvider
-import nl.bryanderidder.byheart.R
 import java.io.File
 import java.io.FileOutputStream
 

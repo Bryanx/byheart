@@ -1,7 +1,6 @@
 package nl.bryanderidder.byheart.shared.views
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.Gravity.CENTER_VERTICAL
@@ -11,9 +10,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.switchmaterial.SwitchMaterial
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.R.styleable.*
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.utils.px
-import nl.bryanderidder.byheart.R.styleable.*
 
 
 /**

@@ -1,12 +1,8 @@
 package nl.bryanderidder.byheart.card.persistence
 
 import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
-import com.google.android.gms.tasks.Task
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
 import nl.bryanderidder.byheart.card.Card
-import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.pile.persistence.PileRemoteDao
 
 /**
  * Repository for local piles

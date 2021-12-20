@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.item_card.view.*
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.get
-import nl.bryanderidder.byheart.shared.getAttr
 import nl.bryanderidder.byheart.shared.setBrightness
 
 

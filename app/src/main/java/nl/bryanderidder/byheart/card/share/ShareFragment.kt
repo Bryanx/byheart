@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_pile_share_bottomsheet.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import nl.bryanderidder.byheart.BaseBottomSheet
 import nl.bryanderidder.byheart.R
 import nl.bryanderidder.byheart.card.CardViewModel
@@ -17,8 +18,8 @@ import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.Preferences
 import nl.bryanderidder.byheart.shared.SessionViewModel
-import nl.bryanderidder.byheart.shared.setBrightness
 import nl.bryanderidder.byheart.shared.firestore.FireStoreViewModel
+import nl.bryanderidder.byheart.shared.setBrightness
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**

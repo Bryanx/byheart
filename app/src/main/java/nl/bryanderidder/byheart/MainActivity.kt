@@ -3,8 +3,6 @@ package nl.bryanderidder.byheart
 import android.content.ContentResolver.SCHEME_CONTENT
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import nl.bryanderidder.byheart.pile.PileFragment

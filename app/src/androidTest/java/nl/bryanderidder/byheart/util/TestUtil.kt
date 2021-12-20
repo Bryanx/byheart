@@ -6,9 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import nl.bryanderidder.byheart.card.CardViewModel
-import nl.bryanderidder.byheart.pile.Pile
-import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.shared.database.CardDatabase
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit

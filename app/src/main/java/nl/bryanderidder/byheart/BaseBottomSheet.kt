@@ -2,20 +2,15 @@ package nl.bryanderidder.byheart
 
 import android.app.Dialog
 import android.content.DialogInterface
-import android.content.DialogInterface.OnShowListener
 import android.content.res.Resources.getSystem
 import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-
 import android.widget.FrameLayout
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
-
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
 /**

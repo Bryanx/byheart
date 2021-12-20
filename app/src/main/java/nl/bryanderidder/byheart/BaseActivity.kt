@@ -10,13 +10,13 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import nl.bryanderidder.byheart.auth.AuthViewModel
+import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.card.CardViewModel
 import nl.bryanderidder.byheart.pile.Pile
 import nl.bryanderidder.byheart.pile.PileFragment
 import nl.bryanderidder.byheart.pile.PileViewModel
-import nl.bryanderidder.byheart.auth.AuthViewModel
-import nl.bryanderidder.byheart.auth.LoginFragment
 import nl.bryanderidder.byheart.rehearsal.RehearsalViewModel
 import nl.bryanderidder.byheart.shared.*
 import nl.bryanderidder.byheart.shared.exceptions.ByheartException
