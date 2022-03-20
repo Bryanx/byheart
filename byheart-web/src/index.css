@@ -1,0 +1,19 @@
+@tailwind base;
+
+* {
+  /* transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms; */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: theme('colors.bgcolor');
+}
+
+.dark body {
+  background-color: theme('colors.bgcolordark');
+}
+
+@tailwind components;
+@tailwind utilities;
