@@ -1,9 +1,6 @@
 package nl.bryanderidder.byheart.card
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
 import nl.bryanderidder.byheart.pile.Pile
@@ -29,7 +26,7 @@ import nl.bryanderidder.byheart.shared.ExcludeJson
 data class Card(
     @ColumnInfo(name = "question") var question: String?,
     @ColumnInfo(name = "answer") var answer: String?,
-    @get:Exclude @ExcludeJson @ColumnInfo(name = "pile_id") val pileId: Long = 1
+    @get:Exclude @ExcludeJson @ColumnInfo(name = "pile_id") var pileId: Long = 1
 ) {
     @get:Exclude @ExcludeJson @PrimaryKey(autoGenerate = true) var id: Long = 0
     @get:Exclude @ColumnInfo(name = "listIndex") var listIndex: Int = -1
@@ -37,7 +34,7 @@ data class Card(
     @get:Exclude @ColumnInfo(name = "amountFalse") var amountFalse: Int = 0
 
     constructor() : this("", "")
-    constructor(q: String, a: String): this(q, a, -1)
+    @Ignore constructor(q: String, a: String): this(q, a, -1)
 
     @Exclude
     fun getCorrectPercentage(): Int {

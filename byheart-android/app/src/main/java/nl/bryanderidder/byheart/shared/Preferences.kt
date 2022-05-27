@@ -38,17 +38,17 @@ object Preferences {
             pref = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     }
 
-    fun read(key: String, default: String): String = pref?.getString(key.toUpperCase(), default) ?: ""
+    fun read(key: String, default: String): String = pref?.getString(key.uppercase(), default) ?: ""
 
-    fun write(key: String, value: String): Unit = pref!!.edit().putString(key.toUpperCase(), value).apply()
+    fun write(key: String, value: String): Unit = pref!!.edit().putString(key.uppercase(), value).apply()
 
-    fun read(key: String, default: Boolean = false): Boolean = pref!!.getBoolean(key.toUpperCase(), default)
+    fun read(key: String, default: Boolean = false): Boolean = pref!!.getBoolean(key.uppercase(), default)
 
-    fun write(key: String, value: Boolean): Unit = pref!!.edit().putBoolean(key.toUpperCase(), value).apply()
+    fun write(key: String, value: Boolean): Unit = pref!!.edit().putBoolean(key.uppercase(), value).apply()
 
-    fun read(key: String, default: Int): Int = pref!!.getInt(key.toUpperCase(), default)
+    fun read(key: String, default: Int): Int = pref!!.getInt(key.uppercase(), default)
 
-    fun write(key: String, value: Int?): Unit = pref!!.edit().putInt(key.toUpperCase(), value!!).apply()
+    fun write(key: String, value: Int?): Unit = pref!!.edit().putInt(key.uppercase(), value!!).apply()
 
-    fun toggle(key:String): Unit = pref!!.edit().putBoolean(key.toUpperCase(), !read(key, false)).apply()
+    fun toggle(key:String): Unit = pref!!.edit().putBoolean(key.uppercase(), !read(key, false)).apply()
 }

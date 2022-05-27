@@ -206,7 +206,7 @@ fun ObjectAnimator.onAnimateEnd(args: () -> Unit) {
 }
 
 fun String.equalsIgnoreCase(string: String): Boolean {
-    return this.toLowerCase() == string.toLowerCase()
+    return this.lowercase() == string.lowercase()
 }
 
 fun String.getExtension(): String {
@@ -264,7 +264,7 @@ fun Any.getAttr(name: String): Any? {
 }
 
 fun String.initCaps(): String {
-    return this[0].toUpperCase() + this.substring(1, this.length)
+    return this[0].uppercase() + this.substring(1, this.length)
 }
 
 fun ProgressBar.setColor(@ColorInt color: Int = ContextCompat.getColor(context, R.color.colorPrimary)) {

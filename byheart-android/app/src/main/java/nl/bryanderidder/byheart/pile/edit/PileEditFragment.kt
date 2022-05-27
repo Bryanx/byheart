@@ -123,7 +123,7 @@ class PileEditFragment : Fragment(), IOnBackPressed {
                 pileNameLayout.error = resources.getString(R.string.field_may_not_be_blank)
                 isCorrect = false
             }
-            name.toLowerCase() in pileVM.allPiles.value!!.map { it.name?.toLowerCase() } -> {
+            name.lowercase() in pileVM.allPiles.value!!.map { it.name?.lowercase() } -> {
                 if ((editMode && name != sessionVM.pileName.value) || !editMode) {
                     pileNameLayout.isErrorEnabled = true
                     pileNameLayout.error = getString(R.string.pile_same_name)

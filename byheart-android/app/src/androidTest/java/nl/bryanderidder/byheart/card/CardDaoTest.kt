@@ -44,7 +44,10 @@ class CardDaoTest {
 
     @After
     @Throws(IOException::class)
-    fun tearDown() = db.close()
+    fun tearDown() {
+        if (::db.isInitialized)
+            db.close()
+    }
 
     @Test
     fun getAll() = assertThat(cardDao.getAll().getOrAwaitValue()).isNotNull()

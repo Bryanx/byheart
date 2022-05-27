@@ -19,7 +19,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
+        debug {
+            ext.enableCrashlytics = false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -62,9 +69,9 @@ dependencies {
     implementation 'nl.bryanderidder:themed-toggle-button-group:1.4.0'
 
     // Koin
-    implementation "org.koin:koin-android:2.2.0"
-    implementation "org.koin:koin-android-scope:2.2.0"
-    implementation "org.koin:koin-android-viewmodel:2.2.0"
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-android-scope:2.2.2"
+    implementation "org.koin:koin-android-viewmodel:2.2.2"
 
     // Room components
     implementation "androidx.room:room-runtime:2.2.5"
