@@ -83,6 +83,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             R.id.rehearsal_restart -> onRestart(true)
             R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getId(resources)).run { true }
             R.id.rehearsal_repeat_wrong -> {
+                cardIndex = 0
                 toggleMenuItem(item, item.getId(resources)).run { true }
                 getCards()
                 onRestart(false)
