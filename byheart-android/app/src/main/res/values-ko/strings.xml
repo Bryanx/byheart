@@ -111,4 +111,5 @@
     <string name="grade">등급</string>
     <string name="score">점수</string>
     <string name="rehearsals">리허설</string>
+    <string name="undo">끄르다</string>
 </resources>

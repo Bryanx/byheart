@@ -34,6 +34,18 @@ class CardViewModel(application: Application, private val repo: CardRepository) 
         repo.insert(card)
     }
 
+    fun insertAtIndexAsync(card: Card, listIndex: Int) = scope.async(coroutineProvider.Default) {
+        val cards = withContext(coroutineProvider.Default) { repo.allCards }.value!!
+        if (listIndex < 0  || listIndex > cards.size) return@async
+        card.listIndex = listIndex
+        cards.filter { it.pileId == card.pileId }
+            .filter { it != card }
+            .filter { it.listIndex >= card.listIndex }
+            .onEach { it.listIndex += 1 }
+            .also { repo.updateAll(it) }
+        repo.insert(card)
+    }
+
     fun insertAllAsync(cards: List<Card>) = scope.async(coroutineProvider.Default) {
         cards.forEachIndexed { i, card -> card.listIndex = i }
         repo.insertAll(cards)

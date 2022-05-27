@@ -112,4 +112,5 @@
     <string name="time">زمن</string>
     <string name="try_again">حاول مرة أخري</string>
     <string name="rehearsals">البروفات</string>
+    <string name="undo">فك</string>
 </resources>

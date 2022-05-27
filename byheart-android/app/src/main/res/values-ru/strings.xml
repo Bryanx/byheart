@@ -110,4 +110,6 @@
     <string name="grade">Оценка</string>
     <string name="time">Время</string>
     <string name="try_again">Попробуйте снова</string>
+    <string name="undo">отменить</string>
+    <string name="rehearsals">репетиции</string>
 </resources>

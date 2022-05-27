@@ -112,4 +112,5 @@
 	<string name="grade">Školní známka</string>
 	<string name="score">Skóre</string>
     <string name="rehearsals">Zkoušky</string>
+    <string name="undo">Vrátit</string>
 </resources>

@@ -110,4 +110,6 @@
     <string name="time">Hora</string>
     <string name="grade">Grado</string>
     <string name="score">Puntuación</string>
+    <string name="undo">Deshacer</string>
+    <string name="rehearsals">Ensayos</string>
 </resources>

@@ -198,7 +198,16 @@ class CardFragment : Fragment(), IOnBackPressed {
             adapter.notifyItemRemoved(card.listIndex)
             showPlaceholder(adapter.cards)
         }
-        showSnackBar(requireActivity(), getString(R.string.removed_card))
+        showSnackBar(getString(R.string.removed_card), getString(R.string.undo), pileColor) {
+            lifecycleScope.launch {
+                cardVM.insertAtIndexAsync(card, card.listIndex).await()
+                activity?.runOnUiThread {
+                    adapter.cards.add(card.listIndex, card)
+                    adapter.notifyItemInserted(card.listIndex)
+                    showPlaceholder(adapter.cards)
+                }
+            }
+        }
         swipeLeftToDelete.isEnabled = true
     }
 

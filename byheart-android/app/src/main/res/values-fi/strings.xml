@@ -111,4 +111,5 @@
     <string name="grade">Arvosana</string>
     <string name="score">Pisteet</string>
     <string name="rehearsals">Harjoitukset</string>
+    <string name="undo">Kumoa</string>
 </resources>

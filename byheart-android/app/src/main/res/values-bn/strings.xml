@@ -112,4 +112,5 @@
     <string name="time">সময়</string>
     <string name="try_again">আবার চেষ্টা করুন</string>
     <string name="rehearsals">মহড়া</string>
+    <string name="undo">পূর্বাবস্থা</string>
 </resources>

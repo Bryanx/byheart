@@ -110,4 +110,6 @@
     <string name="grade">Kvalitet</string>
     <string name="time">Tid</string>
     <string name="try_again">Försök igen</string>
+    <string name="undo">Ångra</string>
+    <string name="rehearsals">Repetitioner</string>
 </resources>

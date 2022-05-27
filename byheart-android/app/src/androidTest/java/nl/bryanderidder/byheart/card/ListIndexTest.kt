@@ -68,7 +68,7 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterDeletingOneCardFromTheMiddle(): Unit = runBlocking {
+    fun whenDeletingOneCardFromTheMiddle_listIndexShouldRemainOrdered(): Unit = runBlocking {
         cardVM.deleteAsync(lisbonCard).await()
         val cards = cardVM.allCards.getOrAwaitValue()
         assertThat(cards).containsExactly(londonCard, parisCard, berlinCard)
@@ -76,7 +76,7 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterDeletingTwoCardsFromTheMiddle(): Unit = runBlocking {
+    fun whenDeletingTwoCardsFromTheMiddle_listIndexShouldRemainOrdered(): Unit = runBlocking {
         cardVM.deleteByIdAsync(lisbonCard.id).await()
         cardVM.deleteByIdAsync(parisCard.id).await()
         val cards = cardVM.allCards.getOrAwaitValue()
@@ -85,7 +85,7 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterDeletingTheFirstCard(): Unit = runBlocking {
+    fun whenDeletingTheFirstCard_listIndexShouldRemainOrdered(): Unit = runBlocking {
         cardVM.deleteAsync(londonCard).await()
         val cards = cardVM.allCards.getOrAwaitValue()
         assertThat(cards).containsExactly(lisbonCard, parisCard, berlinCard)
@@ -93,7 +93,7 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterDeletingTheLastCard(): Unit = runBlocking {
+    fun whenDeletingTheLastCard_listIndexShouldRemainOrdered(): Unit = runBlocking {
         cardVM.deleteAsync(berlinCard).await()
         val cards = cardVM.allCards.getOrAwaitValue()
         assertThat(cards).containsExactly(londonCard, lisbonCard, parisCard)
@@ -101,7 +101,7 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterInsertingOneCard(): Unit = runBlocking {
+    fun whenInsertingOneCard_listIndexShouldRemainOrdered(): Unit = runBlocking {
         val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
         cardVM.insertAsync(moscowCard).await()
         val cards = cardVM.allCards.getOrAwaitValue()
@@ -110,14 +110,59 @@ class ListIndexTest {
     }
 
     @Test
-    fun listIndexShouldRemainOrderedAfterInsertingTwoCards(): Unit = runBlocking {
+    fun whenInsertingTwoCard_listIndexShouldRemainOrdered(): Unit = runBlocking {
         val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
-        val madridCard = Card("Russia", "Madrid", 1).apply { id = 6 }
+        val madridCard = Card("Spain", "Madrid", 1).apply { id = 6 }
         cardVM.insertAsync(moscowCard).await()
         cardVM.insertAsync(madridCard).await()
         val cards = cardVM.allCards.getOrAwaitValue()
         assertThat(cards).containsAllOf(moscowCard, madridCard)
         assertThat(cards.map { it.listIndex }).isStrictlyOrdered()
         assertThat(cards.size).isEqualTo(6)
+    }
+
+    @Test
+    fun whenInsertingOneCardAtIndex_listIndexShouldRemainOrdered(): Unit = runBlocking {
+        val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
+        cardVM.insertAtIndexAsync(moscowCard, 3).await()
+        val cards = cardVM.allCards.getOrAwaitValue()
+        assertThat(cards).containsExactly(londonCard, lisbonCard, moscowCard, parisCard, berlinCard)
+        assertThat(cards.map { it.listIndex }.sorted()).isStrictlyOrdered()
+    }
+
+    @Test
+    fun whenInsertingOneCardAtStartIndex_listIndexShouldRemainOrdered(): Unit = runBlocking {
+        val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
+        cardVM.insertAtIndexAsync(moscowCard, 0).await()
+        val cards = cardVM.allCards.getOrAwaitValue()
+        assertThat(cards).containsExactly(londonCard, lisbonCard, moscowCard, parisCard, berlinCard)
+        assertThat(cards.map { it.listIndex }.sorted()).isStrictlyOrdered()
+    }
+
+    @Test
+    fun whenInsertingOneCardAtLastIndex_listIndexShouldRemainOrdered(): Unit = runBlocking {
+        val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
+        cardVM.insertAtIndexAsync(moscowCard, 4).await()
+        val cards = cardVM.allCards.getOrAwaitValue()
+        assertThat(cards).containsExactly(londonCard, lisbonCard, moscowCard, parisCard, berlinCard)
+        assertThat(cards.map { it.listIndex }.sorted()).isStrictlyOrdered()
+    }
+
+    @Test
+    fun whenInsertingAtANegativeIndex_insertAtIndexShouldFail(): Unit = runBlocking {
+        val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
+        cardVM.insertAtIndexAsync(moscowCard, -1).await()
+        val cards = cardVM.allCards.getOrAwaitValue()
+        assertThat(cards).containsExactly(londonCard, lisbonCard, parisCard, berlinCard)
+        assertThat(cards.map { it.listIndex }).isStrictlyOrdered()
+    }
+
+    @Test
+    fun whenInsertingAtAnOutOfBoundsIndex_insertAtIndexShouldFail(): Unit = runBlocking {
+        val moscowCard = Card("Russia", "Moscow", 1).apply { id = 5 }
+        cardVM.insertAtIndexAsync(moscowCard, 5).await()
+        val cards = cardVM.allCards.getOrAwaitValue()
+        assertThat(cards).containsExactly(londonCard, lisbonCard, parisCard, berlinCard)
+        assertThat(cards.map { it.listIndex }).isStrictlyOrdered()
     }
 }

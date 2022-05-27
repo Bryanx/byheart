@@ -112,4 +112,5 @@
 	<string name="time">Tid</string>
 	<string name="try_again">Prøv igen</string>
     <string name="rehearsals">Øvelser</string>
+    <string name="undo">Fortryd</string>
 </resources>
