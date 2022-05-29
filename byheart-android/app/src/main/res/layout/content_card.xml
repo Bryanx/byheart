@@ -18,7 +18,7 @@
                 android:background="?mainBackgroundColor"
                 app:title=""
                 app:expandedTitleGravity="top|center_horizontal"
-                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+                app:layout_scrollFlags="noScroll">
 
             <TextView
                     android:id="@+id/content_card_title"

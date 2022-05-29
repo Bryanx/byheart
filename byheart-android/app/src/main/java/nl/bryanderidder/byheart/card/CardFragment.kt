@@ -220,4 +220,14 @@ class CardFragment : Fragment(), IOnBackPressed {
 
     // This method is called by the MainActivity.
     override fun onBackPressed(): Boolean = startFragment(PileFragment()).run { true }
+
+    override fun onPause() {
+        super.onPause()
+        sessionVM.pushCardListState(layoutManager.onSaveInstanceState())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        layoutManager.onRestoreInstanceState(sessionVM.cardListState.value?.get(sessionVM.pileId.value))
+    }
 }
