@@ -8,8 +8,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.content_rehearsal_memory.*
 import nl.bryanderidder.byheart.R
-import nl.bryanderidder.byheart.shared.Preferences
-import nl.bryanderidder.byheart.shared.inflate
+import nl.bryanderidder.byheart.shared.*
 
 /**
  * Fragment that contains the rehearsal memory mode.
@@ -27,8 +26,16 @@ class RehearsalMemoryFragment : RehearsalFragment() {
         listOf(cardBtnFalse, cardBtnCorrect).forEach { button ->
             button.setOnClickListener {
                 buttonsAreEnabled(false)
-                if (it == cardBtnCorrect) super.onCorrect()
-                else super.onFalse()
+                if (it == cardBtnCorrect) {
+                    button.setIconColor(requireContext().color(R.color.white))
+                    button.animateBgColor(requireContext().getAttr(R.attr.colorGreen))
+                    super.onCorrect()
+                }
+                else {
+                    button.setIconColor(requireContext().color(R.color.white))
+                    button.animateBgColor(requireContext().color(R.color.red))
+                    super.onFalse()
+                }
                 if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
                 val delay = Preferences.REHEARSAL_DELAY_TIME.toLong()
                 handler.postDelayed({ nextQuestionWithButtons() }, delay)
@@ -43,6 +50,10 @@ class RehearsalMemoryFragment : RehearsalFragment() {
     private fun nextQuestionWithButtons() = nextQuestion { /* on new card: */
         buttonsAreEnabled(true)
         setButtonsVisibility(GONE)
+        cardBtnCorrect.setIconColor(requireContext().color(R.color.green))
+        cardBtnCorrect.animateBgColor(requireContext().getAttr(R.attr.mainBackgroundColorLighter))
+        cardBtnFalse.setIconColor(requireContext().color(R.color.red))
+        cardBtnFalse.animateBgColor(requireContext().getAttr(R.attr.mainBackgroundColorLighter))
     }
 
     private fun setButtonsVisibility(visibility: Int) {

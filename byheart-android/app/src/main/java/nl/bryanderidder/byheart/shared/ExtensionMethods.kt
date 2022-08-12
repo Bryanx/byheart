@@ -1,7 +1,9 @@
 package nl.bryanderidder.byheart.shared
 
 import android.animation.Animator
+import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -118,8 +120,11 @@ fun FloatingActionButton.setColor(color: Int) {
     this.backgroundTintList = ColorStateList.valueOf(color)
 }
 
-fun FloatingActionButton.setPureColor(color: Int) {
-    this.backgroundTintList = ColorStateList.valueOf(color)
+fun FloatingActionButton.animateBgColor(color: Int) {
+    ValueAnimator.ofObject(ArgbEvaluator(), backgroundTintList?.defaultColor, color).apply {
+        this.addUpdateListener { backgroundTintList = ColorStateList.valueOf(it.animatedValue as Int) }
+        this.duration = 200L
+    }.start()
 }
 
 fun ImageView.setTint(id: Int, blendMode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN) {
