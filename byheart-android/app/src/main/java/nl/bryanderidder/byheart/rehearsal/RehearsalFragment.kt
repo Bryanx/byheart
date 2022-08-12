@@ -1,13 +1,11 @@
 package nl.bryanderidder.byheart.rehearsal
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
 import android.view.animation.Animation
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView.NO_ID
 import kotlinx.android.synthetic.main.content_rehearsal.*
 import nl.bryanderidder.byheart.R
@@ -19,6 +17,7 @@ import nl.bryanderidder.byheart.pile.PileViewModel
 import nl.bryanderidder.byheart.rehearsal.result.RehearsalResultFragment
 import nl.bryanderidder.byheart.rehearsal.views.RehearsalCard
 import nl.bryanderidder.byheart.shared.*
+import nl.bryanderidder.byheart.shared.utils.RehearsalSoundUtil
 import nl.bryanderidder.byheart.shared.utils.getScreenWidth
 import nl.bryanderidder.byheart.shared.utils.moveX
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -40,8 +39,7 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     protected lateinit var pile: Pile
     protected lateinit var cards: MutableList<Card>
     protected lateinit var menu: Menu
-    protected lateinit var correctSound: MediaPlayer
-    protected lateinit var wrongSound: MediaPlayer
+    protected lateinit var sounds: RehearsalSoundUtil
     protected val handler: Handler = Handler()
     protected var cardIndex = 0
     private val animations: MutableList<Animation> = mutableListOf()
@@ -56,16 +54,15 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         getCards()
         addToolbar()
         rehearsalViewModel.reset()
-        pileVM.allPiles.observe(this, Observer { piles ->
+        pileVM.allPiles.observe(viewLifecycleOwner) { piles ->
             pile = piles.first { pile -> pile.id == pileId }
             val rehearsalCard = layout.findViewById<RehearsalCard>(R.id.rehearsalCard)
             rehearsalCard.setBackColor(pileColor)
             rehearsalCard.addPronounceLocale(
                 Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront },
                 Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack })
-        })
-        correctSound = MediaPlayer.create(context, R.raw.correct)
-        wrongSound = MediaPlayer.create(context, R.raw.incorrect)
+        }
+        sounds = RehearsalSoundUtil(requireContext())
         return layout
     }
 
@@ -147,14 +144,14 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     private fun getCards() {
-        cardVM.getByPileId(sessionVM.pileId).observe(this, Observer {
+        cardVM.getByPileId(sessionVM.pileId).observe(viewLifecycleOwner) {
             val tempCards = it.toMutableList()
             if (Preferences.REHEARSAL_SHUFFLE) tempCards.shuffle()
             else tempCards.sortBy { card -> card.listIndex }
             cards = tempCards
             doAfterGetData()
             updateView()
-        })
+        }
     }
 
     open fun onRestart(startFromBeginning: Boolean, doAfter: (() -> Unit)? = null): Boolean {
@@ -206,13 +203,13 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     }
 
     open fun onCorrect() {
-        correctSound.start()
+        sounds.playCorrect()
         rehearsalViewModel.incrementAmountCorrect()
         cards[cardIndex].amountCorrect++
     }
 
     open fun onFalse() {
-        wrongSound.start()
+        sounds.playFalse()
         rehearsalViewModel.incrementAmountFalse()
         cards[cardIndex].amountFalse++
         if (Preferences.REHEARSAL_REPEAT_WRONG) cards.add(cards[cardIndex])
@@ -229,9 +226,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onDestroy() {
         super.onDestroy()
-        correctSound.stop()
-        correctSound.release()
-        wrongSound.stop()
-        wrongSound.release()
+        sounds.destroy()
     }
 }

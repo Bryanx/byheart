@@ -76,7 +76,7 @@ class RehearsalMultipleChoiceFragment : RehearsalFragment() {
                     handler.postDelayed({ nextQuestionWithButtons() }, delay)
                 } else {
                     if (!falseAnswer) super.onFalse().also { falseAnswer = true }
-                    else wrongSound.start() // don't count each consecutive wrong answer
+                    else sounds.playFalse() // don't count each consecutive wrong answer
                     btn.textColor = requireContext().color(R.color.white)
                     btn.bgColor = requireContext().color(R.color.red)
                     btn.isEnabled = false
