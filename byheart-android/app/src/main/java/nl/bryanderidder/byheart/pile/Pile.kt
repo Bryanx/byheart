@@ -9,6 +9,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.gson.Gson
 import nl.bryanderidder.byheart.card.Card
 import nl.bryanderidder.byheart.shared.ExcludeJson
+import nl.bryanderidder.byheart.shared.code
 import java.util.*
 
 /**
@@ -19,8 +20,8 @@ import java.util.*
 @Entity
 data class Pile(@ColumnInfo(name = "name") var name: String?) {
     @get:Exclude @ExcludeJson @PrimaryKey(autoGenerate = true) var id: Long = 0
-    @ColumnInfo(name = "languageCardFront") var languageCardFront: String = "en"
-    @ColumnInfo(name = "languageCardBack") var languageCardBack: String = "en"
+    @ColumnInfo(name = "languageCardFront") var languageCardFront: String = Locale.getDefault().code
+    @ColumnInfo(name = "languageCardBack") var languageCardBack: String = Locale.getDefault().code
     @ColumnInfo(name = "color") var color: Int? = -7288071
     @get:Exclude @ColumnInfo(name = "listIndex") var listIndex: Int = -1
     @get:Exclude @ColumnInfo(name = "remoteId") var remoteId: String = ""

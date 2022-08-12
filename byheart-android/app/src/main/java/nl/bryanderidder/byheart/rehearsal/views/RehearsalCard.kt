@@ -82,12 +82,12 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         handler.postDelayed({ ivPronounce.setTint(context.color(R.color.grey_500)) }, 100)
     }
 
-    fun addPronounceLocale(frontLocale: Locale, backLocale: Locale) {
-        languageCardFront = frontLocale
-        languageCardBack = backLocale
+    fun addPronounceLocale(frontLocale: Locale?, backLocale: Locale?) {
+        languageCardFront = frontLocale ?: Locale.getDefault()
+        languageCardBack = backLocale ?: Locale.getDefault()
         ivPronounce.setOnClickListener {
-            if (backIsVisible) speakCard(cardBack.textView, backLocale)
-            else speakCard(cardFront.textView, frontLocale)
+            if (backIsVisible) speakCard(cardBack.textView, languageCardFront)
+            else speakCard(cardFront.textView, languageCardBack)
         }
     }
 

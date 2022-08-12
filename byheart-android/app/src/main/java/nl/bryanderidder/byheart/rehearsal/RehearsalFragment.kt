@@ -59,8 +59,8 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             val rehearsalCard = layout.findViewById<RehearsalCard>(R.id.rehearsalCard)
             rehearsalCard.setBackColor(pileColor)
             rehearsalCard.addPronounceLocale(
-                Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardFront },
-                Locale.getAvailableLocales().first { loc -> loc.code == pile.languageCardBack })
+                Locale.getAvailableLocales().firstOrNull { it.code == pile.languageCardFront },
+                Locale.getAvailableLocales().firstOrNull { it.code == pile.languageCardBack })
         }
         sounds = RehearsalSoundUtil(requireContext())
         return layout
