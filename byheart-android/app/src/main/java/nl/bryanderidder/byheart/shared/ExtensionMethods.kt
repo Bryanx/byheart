@@ -188,7 +188,13 @@ fun AlertDialog.Builder.setAnimation(styleId: Int): AlertDialog {
     return dialog
 }
 
-fun TextToSpeech.pronounce(text: String?) = this.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+fun TextToSpeech.pronounce(text: String?) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        this.speak(text,TextToSpeech.QUEUE_FLUSH,null,null)
+    } else {
+        this.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+    }
+}
 
 // get menu item name
 fun MenuItem.getId(res: Resources): String =
