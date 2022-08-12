@@ -26,13 +26,13 @@ class RehearsalSoundUtil(context: Context) {
     }
 
     fun playCorrect() {
-        if (Preferences.REHEARSAL_MUTE) return
+        if (Preferences.REHEARSAL_MUTE_SOUNDS) return
         stopCorrect()
         correctSound.start()
     }
 
     fun playFalse() {
-        if (Preferences.REHEARSAL_MUTE) return
+        if (Preferences.REHEARSAL_MUTE_SOUNDS) return
         stopIncorrect()
         incorrectSound.start()
     }

@@ -93,7 +93,6 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
 
     private fun speakCard(tv: TextView, language: Locale) {
         when {
-            Preferences.REHEARSAL_MUTE -> return
             !Preferences.REHEARSAL_REVERSE -> ivPronounce.language = language
             tv == cardBack.textView -> ivPronounce.language = languageCardFront
             else -> ivPronounce.language = languageCardBack

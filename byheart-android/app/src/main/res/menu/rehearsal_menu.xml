@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/rehearsal_mute"
-        android:title="Mute"
-        android:checkable="true"
-        app:iconTint="?mainHeaderTextColor"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/rehearsal_restart"
         android:icon="@drawable/ic_replay_black_24dp"
         android:title="@string/restart"
@@ -47,5 +41,10 @@
         android:id="@+id/rehearsal_memory"
         android:checkable="true"
         android:title="@string/memory_mode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rehearsal_mute_sounds"
+        android:title="Correct/false sounds"
+        android:checkable="true"
         app:showAsAction="never" />
 </menu>

@@ -72,16 +72,12 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
         menu.forEachIndexed { _, item ->
             item.isChecked = Preferences.read(item.getId(resources))
             if (item.isChecked) hideOtherViews(item)
-            if (item.itemId == R.id.rehearsal_mute) setVolumeIcon(item, true)
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.rehearsal_mute -> {
-                setVolumeIcon(item)
-                toggleMenuItem(item, item.getId(resources)).run { true }
-            }
+            R.id.rehearsal_mute_sounds -> toggleMenuItem(item, item.getId(resources)).run { true }
             R.id.rehearsal_restart -> onRestart(true)
             R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getId(resources)).run { true }
             R.id.rehearsal_repeat_wrong -> {
@@ -122,12 +118,6 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun setVolumeIcon(item: MenuItem, initial: Boolean = false) {
-        val isChecked = if (initial) !item.isChecked else item.isChecked
-        if (isChecked) item.setIcon(R.drawable.ic_volume_up_black_24dp)
-        else item.setIcon(R.drawable.ic_volume_off_black_24)
     }
 
     // Toggles the other items in the menu, and shows the corresponding view.
