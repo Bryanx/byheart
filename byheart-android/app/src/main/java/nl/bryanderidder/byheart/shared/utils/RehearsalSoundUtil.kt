@@ -3,6 +3,7 @@ package nl.bryanderidder.byheart.shared.utils
 import android.content.Context
 import android.media.MediaPlayer
 import nl.bryanderidder.byheart.R
+import nl.bryanderidder.byheart.shared.Preferences
 
 /**
  * Facade for managing rehearsal sounds
@@ -25,11 +26,13 @@ class RehearsalSoundUtil(context: Context) {
     }
 
     fun playCorrect() {
+        if (Preferences.REHEARSAL_MUTE) return
         stopCorrect()
         correctSound.start()
     }
 
     fun playFalse() {
+        if (Preferences.REHEARSAL_MUTE) return
         stopIncorrect()
         incorrectSound.start()
     }

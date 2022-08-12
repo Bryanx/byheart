@@ -21,6 +21,7 @@ object Preferences {
     const val KEY_REHEARSAL_MEMORY = "REHEARSAL_MEMORY"
     const val KEY_USER_ID = "USER_ID"
     const val KEY_REHEARSAL_DELAY_TIME = "REHEARSAL_DELAY_TIME"
+    const val KEY_REHEARSAL_MUTE = "REHEARSAL_MUTE"
     val DARK_MODE: Boolean get() = this.read(KEY_DARK_MODE)
     val REHEARSAL_REVERSE: Boolean get() = this.read(KEY_REHEARSAL_REVERSE)
     val REHEARSAL_MULTIPLE_CHOICE: Boolean get() = this.read(KEY_REHEARSAL_MULTIPLE_CHOICE)
@@ -32,6 +33,7 @@ object Preferences {
     val NOT_FIRST_START: Boolean get() = this.read(KEY_NOT_FIRST_START)
     val USER_ID: String get() = this.read(KEY_USER_ID, "")
     val REHEARSAL_DELAY_TIME: Int get() = this.read(KEY_REHEARSAL_DELAY_TIME, 1500)
+    val REHEARSAL_MUTE: Boolean get() = this.read(KEY_REHEARSAL_MUTE, false)
 
     fun init(context: Context) {
         if (pref == null)
