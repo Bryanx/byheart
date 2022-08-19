@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.*
 import android.view.animation.Animation
+import androidx.core.view.MenuCompat
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView.NO_ID
@@ -68,16 +69,16 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.rehearsal_menu, menu)
+        MenuCompat.setGroupDividerEnabled(menu, true)
         this.menu = menu
         menu.forEachIndexed { _, item ->
             item.isChecked = Preferences.read(item.getId(resources))
-            if (item.isChecked) hideOtherViews(item)
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.rehearsal_mute_sounds -> toggleMenuItem(item, item.getId(resources)).run { true }
+            R.id.rehearsal_result_sounds -> toggleMenuItem(item, item.getId(resources)).run { true }
             R.id.rehearsal_restart -> onRestart(true)
             R.id.rehearsal_pronounce -> toggleMenuItem(item, item.getId(resources)).run { true }
             R.id.rehearsal_repeat_wrong -> {
@@ -96,14 +97,17 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
                 onRestart(false)
             }
             R.id.rehearsal_typed -> {
+                if (Preferences.REHEARSAL_TYPED) return true
                 hideOtherViews(item)
                 startFragment(RehearsalTypedFragment()).run { true }
             }
             R.id.rehearsal_memory -> {
+                if (Preferences.REHEARSAL_MEMORY) return true
                 hideOtherViews(item)
                 startFragment(RehearsalMemoryFragment()).run { true }
             }
             R.id.rehearsal_multiple_choice -> {
+                if (Preferences.REHEARSAL_MULTIPLE_CHOICE) return true
                 if (cards.size < 5) requireContext().dialog()
                     .setMessage(getString(R.string.five_card_warning))
                     .setCancelable(false)
