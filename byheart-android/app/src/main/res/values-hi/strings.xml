@@ -112,4 +112,6 @@
     <string name="score">स्कोर</string>
     <string name="rehearsals">रिहर्सल</string>
     <string name="undo">पूर्ववत</string>
+    <string name="info">जानकारी</string>
+    <string name="card_edit_info_dialog">कई उत्तरों के लिए एक स्थान टाइप करें, जिसके बाद एक स्लैश और दूसरा स्थान एक दूसरा उत्तर जोड़ने के लिए। उदाहरण के लिए \'हैलो / हाय\'।</string>
 </resources>

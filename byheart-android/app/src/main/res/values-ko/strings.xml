@@ -112,4 +112,6 @@
     <string name="score">점수</string>
     <string name="rehearsals">리허설</string>
     <string name="undo">끄르다</string>
+    <string name="info">정보</string>
+    <string name="card_edit_info_dialog">여러 답변의 경우 A 형 공간에 이어 슬래시와 두 번째 답변을 추가 할 수있는 다른 공간이 이어집니다. 예를 들어 \'Hello / Hi\'입니다.</string>
 </resources>

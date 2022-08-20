@@ -112,4 +112,6 @@
     <string name="try_again">Tente novamente</string>
     <string name="rehearsals">Ensaios</string>
     <string name="undo">Desfazer</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">Para várias respostas, digite um espaço seguido de uma barra e outro espaço para adicionar uma segunda resposta. Por exemplo, \'Olá / oi\'.</string>
 </resources>

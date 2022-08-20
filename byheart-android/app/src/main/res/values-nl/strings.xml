@@ -113,4 +113,6 @@
     <string name="try_again">Probeer opnieuw</string>
     <string name="rehearsals">Oefeningen</string>
     <string name="undo">Annuleren</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">Voor meerdere antwoorden type een spatie gevolgd door een schuine streep en weer een spatie om een tweede antwoord toe te voegen. Bijvoorbeeld \'Hallo / Hi\'.</string>
 </resources>

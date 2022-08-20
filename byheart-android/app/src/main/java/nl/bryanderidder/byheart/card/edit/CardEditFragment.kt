@@ -64,14 +64,14 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     }
 
     private fun updateColors() {
-        pileVM.allPiles.observe(this, Observer {
+        pileVM.allPiles.observe(viewLifecycleOwner) {
             val pile = it.find { pile -> pile.id == sessionVM.pileId.value }
             pile?.color?.let { color ->
                 if (Preferences.DARK_MODE) btnAddAnotherCard.tvText.setTextColor(color)
                 else btnAddAnotherCard.tvText.setTextColor(color.setBrightness(0.55F))
                 progressBarCardEdit.setCircleColor(color)
             }
-        })
+        }
     }
 
     private fun updateView() {
@@ -100,6 +100,16 @@ class CardEditFragment : Fragment(), IOnBackPressed {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_info_edit_card -> {
+            requireContext().dialog()
+                .setTitle(getString(R.string.info))
+                .setIcon(R.drawable.ic_info_outline_black_24dp)
+                .setMessage(getString(R.string.card_edit_info_dialog))
+                .setPositiveButton(getString(R.string.ok)) { _, _ ->  }
+                .setAnimation(R.style.SlidingDialog)
+                .show()
+            true
+        }
         R.id.action_confirm_edit_card -> {
             addOrUpdateCard { startFragment(CardFragment()) }.run { true }
         }

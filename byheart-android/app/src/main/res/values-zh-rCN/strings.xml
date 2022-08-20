@@ -112,4 +112,6 @@
     <string name="score">得分</string>
     <string name="rehearsals">排练</string>
     <string name="undo">撤消</string>
+    <string name="info">信息</string>
+    <string name="card_edit_info_dialog">对于多个答案，A类型A空间，然后是斜线和另一个空间来添加第二个答案。例如“你好 /嗨”。</string>
 </resources>

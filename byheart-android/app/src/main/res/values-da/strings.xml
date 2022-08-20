@@ -113,4 +113,6 @@
 	<string name="try_again">Prøv igen</string>
     <string name="rehearsals">Øvelser</string>
     <string name="undo">Fortryd</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">For flere svar skal du skrive et rum efterfulgt af en skråstreg og et andet rum til at tilføje et andet svar. For eksempel \'Hej / Hi\'.</string>
 </resources>

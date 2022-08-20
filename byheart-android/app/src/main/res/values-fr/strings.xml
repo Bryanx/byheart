@@ -113,4 +113,6 @@
     <string name="try_again">Réessayer</string>
     <string name="rehearsals">Répétitions</string>
     <string name="undo">Annuler</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">Pour plusieurs réponses, tapez un espace suivi d\'une barre oblique et d\'un autre espace pour ajouter une deuxième réponse. Par exemple «Bonjour / salut».</string>
 </resources>

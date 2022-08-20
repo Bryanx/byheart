@@ -112,4 +112,6 @@
     <string name="score">Pisteet</string>
     <string name="rehearsals">Harjoitukset</string>
     <string name="undo">Kumoa</string>
+    <string name="info">Tiedot</string>
+    <string name="card_edit_info_dialog">Useita vastauksia tyyppiä A -tilaa, jota seuraa viiva ja toinen tila toisen vastauksen lisäämiseksi. Esimerkiksi \'Hei / Hi\'.</string>
 </resources>

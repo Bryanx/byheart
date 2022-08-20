@@ -174,10 +174,10 @@ abstract class RehearsalFragment : Fragment(), IOnBackPressed {
     private fun updateView() {
         if (Preferences.REHEARSAL_REVERSE) {
             rehearsalCard.frontText = cards[cardIndex].answer
-            rehearsalCard.backText = cards[cardIndex].question
+            rehearsalCard.backText = cards[cardIndex].question ?: ""
         } else {
             rehearsalCard.frontText = cards[cardIndex].question
-            rehearsalCard.backText = cards[cardIndex].answer
+            rehearsalCard.backText = cards[cardIndex].answer ?: ""
         }
         rehearsalCounter.text = "${cardIndex + 1}/${cards.size}"
     }

@@ -113,4 +113,6 @@
     <string name="try_again">আবার চেষ্টা করুন</string>
     <string name="rehearsals">মহড়া</string>
     <string name="undo">পূর্বাবস্থা</string>
+    <string name="info">তথ্য</string>
+    <string name="card_edit_info_dialog">একাধিক উত্তরের জন্য একটি স্পেস টাইপ করুন তারপরে একটি স্ল্যাশ এবং দ্বিতীয় উত্তর যুক্ত করার জন্য অন্য একটি স্থান। উদাহরণস্বরূপ \'হ্যালো / হাই\'।</string>
 </resources>

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_info_edit_card"
+          android:title="@string/info"
+          android:icon="@drawable/ic_info_outline_black_24dp"
+          app:iconTint="?mainHeaderTextColor"
+          android:orderInCategory="1"
+          app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_confirm_edit_card"
           android:title="@string/confirm"
           android:icon="@drawable/ic_done_black_24dp"
           app:iconTint="?mainHeaderTextColor"
           android:orderInCategory="100"
-          app:showAsAction="always"/>
+          app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_move_card"
           android:title="@string/move"
           app:iconTint="?mainHeaderTextColor"

@@ -112,4 +112,6 @@
     <string name="try_again">Попробуйте снова</string>
     <string name="undo">отменить</string>
     <string name="rehearsals">репетиции</string>
+    <string name="info">Информация</string>
+    <string name="card_edit_info_dialog">Для нескольких ответов введите пространство A, за которым следует черта и еще одно пространство, чтобы добавить второй ответ. Например, «Привет / Hi».</string>
 </resources>

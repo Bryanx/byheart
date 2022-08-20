@@ -112,4 +112,6 @@
     <string name="try_again">Cuba lagi</string>
     <string name="rehearsals">Latihan</string>
     <string name="undo">Buat asal</string>
+    <string name="info">Maklumat</string>
+    <string name="card_edit_info_dialog">Untuk pelbagai jawapan taipkan ruang diikuti oleh slash dan ruang lain untuk menambah jawapan kedua. Contohnya \'Hello / Hi\'.</string>
 </resources>

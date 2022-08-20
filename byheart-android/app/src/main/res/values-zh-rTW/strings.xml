@@ -112,4 +112,6 @@
     <string name="try_again">再试一次</string>
     <string name="rehearsals">排练</string>
     <string name="undo">Undo</string>
+    <string name="info">信息</string>
+    <string name="card_edit_info_dialog">對於多個答案，A類型A空間，然後是斜線和另一個空間來添加第二個答案。例如“你好 /嗨”。</string>
 </resources>

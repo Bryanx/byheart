@@ -35,7 +35,7 @@ class RehearsalCard(context: Context, attrs: AttributeSet) : RelativeLayout(cont
             cardFront.textView.text = text
         }
 
-    var backText: String?
+    var backText: String
         get() = cardBack.textView.string
         set(text) {
             cardBack.textView.text = text

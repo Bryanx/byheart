@@ -131,4 +131,6 @@
     <string name="try_again">Try again</string>
     <string name="rehearsals">Rehearsals</string>
     <string name="undo">Undo</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">For multiple answers type a space followed by a slash and another space to add a second answer. For example \'Hello / Hi\'.</string>
 </resources>

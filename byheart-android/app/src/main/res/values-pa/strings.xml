@@ -112,4 +112,6 @@
     <string name="score">ਸਕੋਰ</string>
     <string name="rehearsals">ਰਿਹਰਸਲ</string>
     <string name="undo">ਵਾਪਿਸ</string>
+    <string name="info">ਜਾਣਕਾਰੀ</string>
+    <string name="card_edit_info_dialog">ਮਲਟੀਪਲ ਜਵਾਬਾਂ ਲਈ ਇੱਕ ਦੂਜੇ ਦਾ ਉੱਤਰ ਜੋੜਨ ਲਈ ਇੱਕ ਸਲੈਸ਼ ਅਤੇ ਇਕ ਹੋਰ ਜਗ੍ਹਾ ਦੇ ਬਾਅਦ ਇੱਕ ਸਪੇਸ ਟਾਈਪ ਕਰੋ. ਉਦਾਹਰਣ ਲਈ \'ਹੈਲੋ / ਹਾਇ\'.</string>
 </resources>

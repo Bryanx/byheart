@@ -57,9 +57,14 @@ class RehearsalTypedFragment : RehearsalFragment() {
         btnGo.text = ""
         btnGo.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_forward_white_24dp, 0, 0, 0)
         rehearsalCard.flipCard()
-        if (etInput.string.equalsIgnoreCase(rehearsalCard.backText!!)) onCorrect()
+        if (isAnswerCorrect(etInput.string)) onCorrect()
         else onFalse()
         if (Preferences.REHEARSAL_PRONOUNCE) rehearsalCard.sayBackCard()
+    }
+
+    private fun isAnswerCorrect(input: String): Boolean {
+        val backText = rehearsalCard.backText
+        return backText.split(" / ").map(String::lowercase).contains(input)
     }
 
     override fun onCorrect() {

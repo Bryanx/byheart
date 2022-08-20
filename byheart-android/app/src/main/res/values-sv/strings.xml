@@ -112,4 +112,6 @@
     <string name="try_again">Försök igen</string>
     <string name="undo">Ångra</string>
     <string name="rehearsals">Repetitioner</string>
+    <string name="info">Info</string>
+    <string name="card_edit_info_dialog">För flera svar typ A -utrymme följt av ett snedstreck och ett annat utrymme för att lägga till ett andra svar. Till exempel \"Hej / Hi\".</string>
 </resources>

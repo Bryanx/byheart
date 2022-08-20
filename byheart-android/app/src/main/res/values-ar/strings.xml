@@ -113,4 +113,6 @@
     <string name="try_again">حاول مرة أخري</string>
     <string name="rehearsals">البروفات</string>
     <string name="undo">فك</string>
+    <string name="info">معلومات</string>
+    <string name="card_edit_info_dialog">للحصول على إجابات متعددة ، اكتب مساحة تليها مائلة ومساحة أخرى لإضافة إجابة ثانية. على سبيل المثال \"Hi / Hallo\".</string>
 </resources>
