@@ -114,4 +114,5 @@
     <string name="rehearsals">Ensayos</string>
     <string name="info">Información</string>
     <string name="card_edit_info_dialog">Para múltiples respuestas, escriba un espacio seguido de un corte y otro espacio para agregar una segunda respuesta. Por ejemplo \'Hola / Hi\'.</string>
+    <string name="correct_false_sounds">Sonidos correctos/incorrectos</string>
 </resources>

@@ -133,4 +133,5 @@
     <string name="undo">Undo</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">For multiple answers type a space followed by a slash and another space to add a second answer. For example \'Hello / Hi\'.</string>
+    <string name="correct_false_sounds">Correct/false sounds</string>
 </resources>

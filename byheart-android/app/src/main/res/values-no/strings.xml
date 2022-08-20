@@ -114,4 +114,5 @@
     <string name="undo">Angre</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">For flere svar Skriv inn et rom etterfulgt av en skråstrek og et annet rom for å legge til et nytt svar. For eksempel \'Hei / Hi\'.</string>
+    <string name="correct_false_sounds">Riktig/uriktige lyder</string>
 </resources>

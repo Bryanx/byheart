@@ -115,4 +115,5 @@
     <string name="undo">فك</string>
     <string name="info">معلومات</string>
     <string name="card_edit_info_dialog">للحصول على إجابات متعددة ، اكتب مساحة تليها مائلة ومساحة أخرى لإضافة إجابة ثانية. على سبيل المثال \"Hi / Hallo\".</string>
+    <string name="correct_false_sounds">الأصوات الصحيحة/غير الصحيحة</string>
 </resources>

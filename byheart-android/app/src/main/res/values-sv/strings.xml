@@ -114,4 +114,5 @@
     <string name="rehearsals">Repetitioner</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">För flera svar typ A -utrymme följt av ett snedstreck och ett annat utrymme för att lägga till ett andra svar. Till exempel \"Hej / Hi\".</string>
+    <string name="correct_false_sounds">Korrekt/felaktigt ljud</string>
 </resources>

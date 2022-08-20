@@ -114,4 +114,5 @@
     <string name="undo">元に戻す</string>
     <string name="info">情報</string>
     <string name="card_edit_info_dialog">複数の回答の場合、スペースを入力し、その後にスラッシュと別のスペースを入力して、2番目の回答を追加します。たとえば、「Hi / Hello」。</string>
+    <string name="correct_false_sounds">正解/間違った音</string>
 </resources>

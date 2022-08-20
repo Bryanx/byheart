@@ -115,4 +115,5 @@
     <string name="undo">Annuler</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">Pour plusieurs réponses, tapez un espace suivi d\'une barre oblique et d\'un autre espace pour ajouter une deuxième réponse. Par exemple «Bonjour / salut».</string>
+    <string name="correct_false_sounds">Sons corrects / incorrects</string>
 </resources>

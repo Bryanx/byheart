@@ -115,4 +115,5 @@
     <string name="undo">Annullare</string>
     <string name="info">Informazioni</string>
     <string name="card_edit_info_dialog">Per più risposte, digitare uno spazio seguito da una barra e un altro spazio per aggiungere una seconda risposta. Ad esempio \"ciao / hi\".</string>
+    <string name="correct_false_sounds">Suoni corretti/errati</string>
 </resources>

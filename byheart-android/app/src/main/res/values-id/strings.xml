@@ -114,4 +114,5 @@
     <string name="undo">Membuka</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">Untuk beberapa jawaban, ketik ruang diikuti dengan tebasan dan ruang lain untuk menambahkan jawaban kedua. Misalnya \'Halo / Hai\'.</string>
+    <string name="correct_false_sounds">Suara yang benar/salah</string>
 </resources>

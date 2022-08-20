@@ -114,4 +114,5 @@
     <string name="undo">Buat asal</string>
     <string name="info">Maklumat</string>
     <string name="card_edit_info_dialog">Untuk pelbagai jawapan taipkan ruang diikuti oleh slash dan ruang lain untuk menambah jawapan kedua. Contohnya \'Hello / Hi\'.</string>
+    <string name="correct_false_sounds">Bunyi yang betul/tidak betul</string>
 </resources>

@@ -114,4 +114,5 @@
     <string name="undo">Rückgängig machen</string>
     <string name="info">Die Info</string>
     <string name="card_edit_info_dialog">Für mehrere Antworten geben Sie einen Platz ein, gefolgt von einem Schrägstrich und einem anderen Raum, um eine zweite Antwort hinzuzufügen. Zum Beispiel \'Hallo / Hi\'.</string>
+    <string name="correct_false_sounds">Richtige/falsche Geräusche</string>
 </resources>

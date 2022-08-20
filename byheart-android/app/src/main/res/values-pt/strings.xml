@@ -114,4 +114,5 @@
     <string name="undo">Desfazer</string>
     <string name="info">Info</string>
     <string name="card_edit_info_dialog">Para várias respostas, digite um espaço seguido de uma barra e outro espaço para adicionar uma segunda resposta. Por exemplo, \'Olá / oi\'.</string>
+    <string name="correct_false_sounds">Sons corretos/incorretos</string>
 </resources>

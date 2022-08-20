@@ -115,4 +115,5 @@
     <string name="undo">Vrátit</string>
 	<string name="info">Informace</string>
 	<string name="card_edit_info_dialog">Pro více odpovědí Typ A Space následovaný lomítkem a dalším prostorem pro přidání druhé odpovědi. Například „Hello / Hi“.</string>
+    <string name="correct_false_sounds">Správné/nesprávné zvuky</string>
 </resources>
