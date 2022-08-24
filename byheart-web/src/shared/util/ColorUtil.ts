@@ -3,6 +3,6 @@ export default class ColorUtil {
     if (color === undefined)
       return "";
     else
-      return '#'+ ('000000' + (color & 0xFFFFFF).toString(16)).slice(-6);
+      return '#' + ('000000' + (color & 0xFFFFFF).toString(16)).slice(-6);
   }
 }

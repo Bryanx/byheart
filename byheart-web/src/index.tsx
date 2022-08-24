@@ -2,26 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'react-spring-bottom-sheet/dist/style.css'
-import HomeRoute from './home/HomeRoute';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import NotFoundRoute from './error/NotFoundRoute';
-import PileRoute from './piles/PileRoute';
-import ThemeWrapper from './shared/ThemeWrapper';
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import App from "./app/App";
 
+// store.dispatch(fetchPiles())
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeWrapper>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeRoute />} />
-          <Route path="stacks">
-            <Route path=":stackId" element={<PileRoute />} />
-          </Route>
-          <Route path="*" element={<NotFoundRoute />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeWrapper>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <React.StrictMode>
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+)

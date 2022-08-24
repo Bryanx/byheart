@@ -1,11 +1,13 @@
-import {createTheme, ThemeProvider} from "@mui/material";
-import {orange} from "@mui/material/colors";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { orange } from "@mui/material/colors";
 import "./spec.d.ts";
+import React from "react";
 
-const ThemeWrapper = (props: {
-  children?: JSX.Element,
-}) => {
+interface ThemeWrapperProps {
+  children?: JSX.Element;
+}
 
+const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
   const theme = createTheme({
     status: {
       danger: orange[500],
@@ -13,7 +15,7 @@ const ThemeWrapper = (props: {
   });
 
   return (
-    <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
   )
 };
 

@@ -1,6 +1,6 @@
-import {Card} from "../../cards/models/Card";
+import { Card } from "../../cards/models/Card";
 
-export default interface Pile {
+export interface Pile {
   id: number;
   name: string;
   color?: number;
