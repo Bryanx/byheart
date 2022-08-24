@@ -1,4 +1,4 @@
-import Card from "../../cards/models/Card";
+import {Card} from "../../cards/models/Card";
 
 export default interface Pile {
   id: number;

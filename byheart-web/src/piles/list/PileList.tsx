@@ -1,14 +1,14 @@
 import Add from "@mui/icons-material/Add";
-import { Fab } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { delay } from "rxjs";
+import {Fab} from "@mui/material";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {delay} from "rxjs";
 import Pile from "../models/Pile";
-import { rawPiles$ } from "../services/PileService";
+import {rawPiles$} from "../services/PileService";
 import './PileList.scss';
 import PileListItem from "./PileListItem";
 
-export default function PileList() {
+const PileList = () => {
   const [piles, setPiles] = useState<Array<Pile>>([]);
 
   useEffect(() => {
@@ -33,4 +33,6 @@ export default function PileList() {
       </div>
     </div>
   )
-}
+};
+
+export default PileList

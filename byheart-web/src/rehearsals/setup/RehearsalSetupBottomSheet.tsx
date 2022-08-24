@@ -1,42 +1,43 @@
-import { ReactComponent as FlipIcon } from '../../shared/svgs/flip.svg';
-import { ReactComponent as RandomIcon } from '../../shared/svgs/random.svg';
-import { BottomSheet } from "react-spring-bottom-sheet";
-import { Box, Switch } from '@mui/material';
+import {ReactComponent as FlipIcon} from '../../shared/svgs/flip.svg';
+import {ReactComponent as RandomIcon} from '../../shared/svgs/random.svg';
+import {BottomSheet} from "react-spring-bottom-sheet";
+import {Box, Switch} from '@mui/material';
 import Replay from '@mui/icons-material/Replay';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 
-export default function RehearsalSetupBottomSheet(props: { open: boolean, onDismiss: () => void }) {
-  return (
+const RehearsalSetupBottomSheet = (props: { open: boolean, onDismiss: () => void }) => (
     <BottomSheet open={props.open} onDismiss={props.onDismiss}>
       <h2 className="text-center m-5">Start practicing</h2>
       <Box display="flex" justifyContent="space-between">
         <div className="flex">
-          <FlipIcon />
+          <FlipIcon/>
           <span>Reverse cards</span>
         </div>
-        <Switch />
+        <Switch/>
       </Box>
       <Box display="flex" justifyContent="space-between">
         <div className="flex">
-          <VolumeUp />
+          <VolumeUp/>
           <span>Pronounce cards</span>
         </div>
-        <Switch />
+        <Switch/>
       </Box>
       <Box display="flex" justifyContent="space-between">
         <div className="flex">
-          <RandomIcon />
+          <RandomIcon/>
           <span>Shuffle cards</span>
         </div>
-        <Switch />
+        <Switch/>
       </Box>
       <Box display="flex" justifyContent="space-between">
         <div className="flex">
-          <Replay />
+          <Replay/>
           <span>Repeat wrong answers</span>
         </div>
-        <Switch />
+        <Switch/>
       </Box>
     </BottomSheet>
-  )
-}
+);
+
+export default RehearsalSetupBottomSheet
+

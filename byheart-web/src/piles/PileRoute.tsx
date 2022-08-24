@@ -1,17 +1,17 @@
 import Add from "@mui/icons-material/Add";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import Share from "@mui/icons-material/Share";
-import { Fab } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import {Fab} from "@mui/material";
+import {useEffect, useState} from "react";
+import {Outlet, useParams} from "react-router-dom";
 import CardList from "../cards/list/CardList";
 import Header from "../header/Header";
 import RehearsalSetupBottomSheet from "../rehearsals/setup/RehearsalSetupBottomSheet";
 import ColorUtil from "../shared/util/ColorUtil";
 import Pile from "./models/Pile";
-import { getPile } from "./services/PileService";
+import {getPile} from "./services/PileService";
 
-export default function PileRoute() {
+const PileRoute = () => {
   const [openSetup, setOpenSetup] = useState(false)
   const [loading, setLoading] = useState(true)
   const [pile, setPile] = useState<Pile>()
@@ -46,5 +46,8 @@ export default function PileRoute() {
       <Outlet />
     </div>
   )
-}
+};
+
+export default PileRoute
+
 

@@ -1,10 +1,10 @@
-import { createTheme, ThemeProvider } from "@mui/material";
-import { orange } from "@mui/material/colors";
+import {createTheme, ThemeProvider} from "@mui/material";
+import {orange} from "@mui/material/colors";
 import "./spec.d.ts";
 
-export default function ThemeWrapper(props: {
+const ThemeWrapper = (props: {
   children?: JSX.Element,
-}) {
+}) => {
 
   const theme = createTheme({
     status: {
@@ -15,4 +15,7 @@ export default function ThemeWrapper(props: {
   return (
     <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
   )
-}
+};
+
+export default ThemeWrapper
+

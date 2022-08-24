@@ -1,6 +1,3 @@
-
-import { Theme, ThemeOptions } from '@mui/material';
-
 export declare module '@mui/material/styles' {
   interface Theme {
     status: {

@@ -1,10 +1,10 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import NightsStay from "@mui/icons-material/NightsStay";
 import Settings from "@mui/icons-material/Settings";
-import { useEffect } from "react";
+import {useEffect} from "react";
 
-export default function Header(props: { title?: string, hasBackButton?: boolean }) {
+const Header = (props: { title?: string, hasBackButton?: boolean }) => {
   const toggleDarkMode = () => {
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
       document.documentElement.classList.add('dark');
@@ -62,4 +62,7 @@ export default function Header(props: { title?: string, hasBackButton?: boolean 
       </section>
     </header>
   )
-}
+};
+
+export default Header
+

@@ -1,6 +1,5 @@
-import { BehaviorSubject, map, delay, Observable } from "rxjs";
+import {BehaviorSubject, delay, map, Observable} from "rxjs";
 import Pile from "../models/Pile";
-import { collection, getDocs } from "firebase/firestore"; 
 
 export const rawPiles$ = new BehaviorSubject<Pile[]>([]);
 
@@ -18,9 +17,7 @@ rawPiles$.next([
   { id: 5, name: "Hungarian", color: -18611 },
 ]);
 
-export function getPile(pileId: number): Observable<Pile | undefined> {
-  return rawPiles$.pipe(
+export const getPile = (pileId: number): Observable<Pile | undefined> => rawPiles$.pipe(
     delay(500),
     map((piles: Pile[]) => piles.find((pile: Pile) => pile.id === pileId))
-  )
-}
+);
