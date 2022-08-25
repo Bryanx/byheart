@@ -13,24 +13,22 @@ const SnackbarProvider: React.FC = ({ children }) => {
   }, [snackbar]);
 
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') return;
+    if (reason === "clickaway") return;
     setOpen(false);
     dispatch(setSnackbar(undefined));
   };
 
-  return (<div>
-    {children}
-    {snackbar && (
-        <Snackbar
-            open={open}
-            autoHideDuration={6000}
-            onClose={handleClose}
-        >
-          <Alert onClose={handleClose} severity={snackbar.type} sx={{ width: '100%' }}>
+  return (
+    <div>
+      {children}
+      {snackbar && (
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity={snackbar.type} sx={{ width: "100%" }}>
             {snackbar?.message}
           </Alert>
         </Snackbar>
-    )}
-  </div>)
+      )}
+    </div>
+  );
 };
 export default SnackbarProvider;

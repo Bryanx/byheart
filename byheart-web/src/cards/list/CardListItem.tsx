@@ -1,6 +1,7 @@
-import ColorUtil from "../../shared/util/ColorUtil"
-import { Card } from "../models/Card"
+import ColorUtil from "../../shared/util/ColorUtil";
+import { Card } from "../models/Card";
 import React from "react";
+import { Typography } from "@mui/material";
 
 interface CardListItemProps {
   card?: Card;
@@ -8,16 +9,12 @@ interface CardListItemProps {
 }
 
 const CardListItem: React.FC<CardListItemProps> = ({ card, color }) => (
-    <div className="cursor-pointer rounded-xl bg-gray-100 p-4 mb-2 text-xl shadow flex flex-col justify-center dark:bg-gray-800 filter active:brightness-75 h-20">
-      <h2 style={{ color: ColorUtil.argbToRGB(color) }}>
-        {card?.question || ""}
-      </h2>
-      <span className="text-gray-500 text-xs">
-        {card?.answer || ""}
-      </span>
+  <div className="cursor-pointer rounded-xl bg-gray-100 p-4 mb-2 text-xl shadow flex flex-col justify-center dark:bg-gray-800 filter active:brightness-75 h-20">
+    <Typography sx={{ color: ColorUtil.argbToRGB(color) }}>{card?.question || ""}</Typography>
+    <div>
+      <Typography className="text-gray-500">{card?.answer || ""}</Typography>
     </div>
+  </div>
 );
 
-export default CardListItem
-
-
+export default CardListItem;

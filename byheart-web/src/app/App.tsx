@@ -25,20 +25,24 @@ const App: React.FC = () => {
         dispatch(fetchPiles());
       }
     })();
-  }, [])
+  }, [dispatch]);
 
   return (
-      <ThemeWrapper>
-        <SnackbarProvider>
-          {!profile?.profile?.token ? <Auth/> : <BrowserRouter>
+    <ThemeWrapper>
+      <SnackbarProvider>
+        {!profile?.profile?.token ? (
+          <Auth />
+        ) : (
+          <BrowserRouter>
             <Routes>
-              <Route path="/" element={<HomeRoute/>}/>
-              <Route path="stacks/:stackId" element={<PileRoute/>}/>
-              <Route path="*" element={<NotFoundRoute/>}/>
+              <Route path="/" element={<HomeRoute />} />
+              <Route path="stacks/:stackId" element={<PileRoute />} />
+              <Route path="*" element={<NotFoundRoute />} />
             </Routes>
-          </BrowserRouter>}
-        </SnackbarProvider>
-      </ThemeWrapper>
+          </BrowserRouter>
+        )}
+      </SnackbarProvider>
+    </ThemeWrapper>
   );
 };
 

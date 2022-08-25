@@ -20,10 +20,7 @@ const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
     },
   });
 
-  return (
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  )
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-export default ThemeWrapper
-
+export default ThemeWrapper;

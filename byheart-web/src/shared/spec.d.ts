@@ -1,8 +1,8 @@
-export declare module '@mui/material/styles' {
+export declare module "@mui/material/styles" {
   interface Theme {
     palette: {
       mode: string;
-    }
+    };
     status: {
       danger: string;
     };
@@ -12,7 +12,7 @@ export declare module '@mui/material/styles' {
   interface ThemeOptions {
     palette: {
       mode?: string;
-    }
+    };
     status?: {
       danger?: string;
     };
