@@ -2,20 +2,26 @@ import Add from "@mui/icons-material/Add";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import Share from "@mui/icons-material/Share";
 import { Fab } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import CardList from "../cards/list/CardList";
 import Header from "../header/Header";
 import RehearsalSetupBottomSheet from "../rehearsals/setup/RehearsalSetupBottomSheet";
 import ColorUtil from "../shared/util/ColorUtil";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { selectByPileId } from "./pileSlice";
+import { fetchCardsByPileId } from "../cards/cardSlice";
 
 const PileRoute = () => {
   const params = useParams();
   const pile = useAppSelector(selectByPileId(params.stackId));
+  const dispatch = useAppDispatch();
   const [openSetup, setOpenSetup] = useState(false)
   const loading = false;
+
+  useEffect(() => {
+    dispatch(fetchCardsByPileId(params.stackId || ""));
+  }, [])
 
   return (
       <div color="primary" className="h-full flex flex-col">
