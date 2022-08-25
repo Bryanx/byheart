@@ -1,6 +1,7 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 import { RootState } from "../app/store";
 import { Pile } from "./models/Pile";
+import { supabase } from "../index";
 
 interface PileState {
   list: Pile[]
@@ -24,6 +25,16 @@ const initialState: PileState = {
     { id: 5, name: "Hungarian", color: -18611 },
   ],
 }
+
+export const fetchPiles = createAsyncThunk("piles/fetchPilesByProfileId",
+    async (uid: string, thunkApi) => {
+      const { data, error, status } = await supabase
+          .from('piles')
+          .select(`*`);
+      console.log("data", data);
+      console.log("error", error);
+      console.log("status", status);
+    })
 
 export const pileSlice = createSlice({
   name: 'piles',
