@@ -3,29 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeRoute from "../home/HomeRoute";
 import PileRoute from "../piles/PileRoute";
 import NotFoundRoute from "../error/NotFoundRoute";
-import React, { useEffect } from "react";
+import React from "react";
 import Auth from "../profile/Auth";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { selectProfile, setProfile } from "../profile/profileSlice";
-import { supabase } from "../index";
-import { fetchPiles } from "../piles/pileSlice";
+import { useAppSelector } from "./hooks";
+import { selectProfile } from "../profile/profileSlice";
 import SnackbarProvider from "../shared/util/SnackbarProvider";
 
 const App: React.FC = () => {
   const profile = useAppSelector(selectProfile);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    (async () => {
-      const session = (await supabase.auth.getSession())?.data?.session;
-      if (session === null) {
-        await supabase.auth.signInWithOAuth({ provider: "google" });
-      } else {
-        dispatch(setProfile({ email: session?.user.email || "", token: session.access_token }));
-        dispatch(fetchPiles());
-      }
-    })();
-  }, [dispatch]);
 
   return (
     <ThemeWrapper>
