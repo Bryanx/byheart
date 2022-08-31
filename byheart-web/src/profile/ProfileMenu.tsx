@@ -9,12 +9,13 @@ import { Person } from "@mui/icons-material";
 import { Box, IconButton } from "@mui/material";
 import { useAppSelector } from "../app/hooks";
 import { selectEmail } from "./profileSlice";
-import { supabase } from "../index";
+import { useNavigate } from "react-router-dom";
 
 const ProfileMenu = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const email = useAppSelector(selectEmail);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -55,7 +56,7 @@ const ProfileMenu = () => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
                   <MenuItem onClick={() => console.log("click email")}>{email}</MenuItem>
-                  <MenuItem onClick={() => supabase.auth.signOut()}>Logout</MenuItem>
+                  <MenuItem onClick={() => navigate("/signout")}>Sign out</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
