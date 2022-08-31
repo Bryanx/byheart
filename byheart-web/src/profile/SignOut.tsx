@@ -12,11 +12,7 @@ const SignOut: React.FC = () => {
     })();
   }, []);
 
-  if (isSignedOut) {
-    return <Navigate to="/signin" replace={true} />;
-  } else {
-    return null;
-  }
+  return isSignedOut ? <Navigate to="/signin" replace={true} /> : null;
 };
 
 export default SignOut;

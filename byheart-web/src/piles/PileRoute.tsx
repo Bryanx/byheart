@@ -2,7 +2,7 @@ import Add from "@mui/icons-material/Add";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import Share from "@mui/icons-material/Share";
 import { Fab } from "@mui/material";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import CardList from "../cards/list/CardList";
 import Header from "../header/Header";
@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { selectByPileId } from "./pileSlice";
 import { fetchCardsByPileId } from "../cards/cardSlice";
 
-const PileRoute = () => {
+const PileRoute: React.FC = () => {
   const params = useParams();
   const pile = useAppSelector(selectByPileId(params.stackId));
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ const PileRoute = () => {
 
   useEffect(() => {
     dispatch(fetchCardsByPileId(params.stackId || ""));
-  }, []);
+  }, [dispatch, params]);
 
   return (
     <div color="primary" className="h-full flex flex-col">

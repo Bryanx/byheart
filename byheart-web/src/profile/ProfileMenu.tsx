@@ -11,7 +11,7 @@ import { useAppSelector } from "../app/hooks";
 import { selectEmail } from "./profileSlice";
 import { useNavigate } from "react-router-dom";
 
-const ProfileMenu = () => {
+const ProfileMenu: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const email = useAppSelector(selectEmail);
