@@ -1,21 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import ReactDOM from "react-dom/client";
 import "./index.css";
 import "react-spring-bottom-sheet/dist/style.css";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
 import App from "./app/App";
-import { createClient } from "@supabase/supabase-js";
+import AppProviders from "./shared/AppProviders";
 
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || "";
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <AppProviders>
       <App />
-    </Provider>
+    </AppProviders>
   </React.StrictMode>,
-  document.getElementById("root"),
 );

@@ -1,7 +1,7 @@
 import Add from "@mui/icons-material/Add";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import Share from "@mui/icons-material/Share";
-import { Fab } from "@mui/material";
+import { Box, Fab } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import CardList from "../cards/list/CardList";
@@ -24,7 +24,7 @@ const PileRoute: React.FC = () => {
   }, [dispatch, params]);
 
   return (
-    <div color="primary" className="h-full flex flex-col">
+    <Box sx={{ maxWidth: "1280px", display: "flex", flexDirection: "column", margin: "auto" }}>
       <Header hasBackButton={true} />
       {loading && (
         <div className="bg-gray-400 dark:bg-gray-600 rounded-md h-7 w-40 mt-5 mb-9 mx-auto animate-pulse"></div>
@@ -54,7 +54,7 @@ const PileRoute: React.FC = () => {
       <CardList loading={loading} pile={pile} />
       <RehearsalSetupBottomSheet open={openSetup} onDismiss={() => setOpenSetup(false)} />
       <Outlet />
-    </div>
+    </Box>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { supabase } from "../index";
 import { Box } from "@mui/material";
 import GoogleButton from "./GoogleButton";
+import { supabase } from "../shared/constants";
 
 const SignIn: React.FC = () => {
   const signInWithGoogle = async () => {

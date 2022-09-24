@@ -1,7 +1,7 @@
 import Add from "@mui/icons-material/Add";
 import { Fab } from "@mui/material";
 import { Link } from "react-router-dom";
-import "./PileList.scss";
+import "./PileList.css";
 import PileListItem from "./PileListItem";
 import { selectPileList } from "../pileSlice";
 import { useAppSelector } from "../../app/hooks";

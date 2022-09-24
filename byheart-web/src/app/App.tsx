@@ -7,6 +7,7 @@ import SnackbarProvider from "../shared/util/SnackbarProvider";
 import SignOut from "../profile/SignOut";
 import SignIn from "../profile/SignIn";
 import AuthGuard from "../profile/AuthGuard";
+import MiniDrawer from "../Drawer";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
             <Route path="/" element={<AuthGuard element={<HomeRoute />} />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signout" element={<SignOut />} />
+            <Route path="/drawer" element={<MiniDrawer />} />
             <Route path="stacks/:stackId" element={<AuthGuard element={<PileRoute />} />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../index";
 import { Navigate } from "react-router-dom";
+import { supabase } from "../shared/constants";
 
 const SignOut: React.FC = () => {
   const [isSignedOut, setSignedOut] = useState(false);

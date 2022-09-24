@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 import { Pile } from "./models/Pile";
-import { supabase } from "../index";
 import { setSnackbar } from "../shared/uiSlice";
+import { supabase } from "../shared/constants";
 
 interface PileState {
   list: Pile[];

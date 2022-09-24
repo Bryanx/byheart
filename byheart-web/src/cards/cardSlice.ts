@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 import { Card } from "./models/Card";
-import { supabase } from "../index";
 import { setSnackbar } from "../shared/uiSlice";
+import { supabase } from "../shared/constants";
 
 interface CardState {
   list: Card[];
@@ -15,7 +15,7 @@ const initialState: CardState = {
 export const fetchCardsByPileId = createAsyncThunk<Card[], string, { rejectValue: string }>(
   "cards/fetchCardsByPileId",
   async (pileId: string, thunkApi) => {
-    const { data, error, status } = await supabase.from("cards").select("*").eq("pile_id", pileId);
+    const { data, error } = await supabase.from("cards").select("*").eq("pile_id", pileId);
     if (error?.message) {
       thunkApi.dispatch(setSnackbar({ message: error.message, type: "error" }));
     }

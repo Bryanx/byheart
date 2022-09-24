@@ -3,8 +3,8 @@ import { useAppDispatch } from "../app/hooks";
 import { setProfile } from "./profileSlice";
 import { Navigate } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
-import { supabase } from "../index";
 import { fetchPiles } from "../piles/pileSlice";
+import { supabase } from "../shared/constants";
 
 interface AuthGuardProps {
   element: JSX.Element;
