@@ -14,8 +14,8 @@ const DrawerPiles: React.FC = () => {
   return (
     <div>
       {piles.map((pile) => (
-        <Box sx={{ m: 2 }}>
-          <Link to={`/stacks/${pile.id}`} key={pile.id}>
+        <Box sx={{ m: 2 }} key={pile.id}>
+          <Link to={`/stacks/${pile.id}`}>
             <ListItem key={pile?.name} sx={{ p: 0 }}>
               <ListItemButton
                 sx={{ borderRadius: "10px", backgroundColor: "grey.900", py: "12px" }}
