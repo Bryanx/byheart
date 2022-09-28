@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 interface GoogleButtonProps {
   onClick: () => void;
 }
 
-const GoogleButton: React.FC<GoogleButtonProps> = ({ onClick }) => (
+export const GoogleButton: React.FC<GoogleButtonProps> = ({ onClick }) => (
   <>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto" />
     <Box
@@ -62,5 +63,3 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({ onClick }) => (
     </Box>
   </>
 );
-
-export default GoogleButton;

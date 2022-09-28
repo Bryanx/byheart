@@ -1,6 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 
-const NewPileRoute: React.FC = () => <Box sx={{ ml: "239px" }}>new pile</Box>;
-
-export default NewPileRoute;
+export const NewPileRoute: React.FC = () => <Box sx={{ ml: "239px" }}>new pile</Box>;

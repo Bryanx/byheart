@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import HomeRoute from "./HomeRoute";
+import { HomeRoute } from "./HomeRoute";
 
 test("renders learn react link", () => {
   render(<HomeRoute />);

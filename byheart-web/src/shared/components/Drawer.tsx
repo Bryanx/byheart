@@ -15,14 +15,14 @@ import Typography from "@mui/material/Typography";
 import { ReactComponent as Logo } from "../svgs/logo.svg";
 import { selectEmail } from "../../profile/profileSlice";
 import { useAppSelector } from "../../app/hooks";
-import { Stack } from "@mui/material";
-import DrawerPiles from "./DrawerPiles";
+import Stack from "@mui/material/Stack";
+import { DrawerPiles } from "./DrawerPiles";
 import Search from "@mui/icons-material/Search";
 import Settings from "@mui/icons-material/Settings";
 
 const drawerWidth = 240;
 
-const ResponsiveDrawer: React.FC = () => {
+export const ResponsiveDrawer: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const email = useAppSelector(selectEmail);
 
@@ -136,5 +136,3 @@ const ResponsiveDrawer: React.FC = () => {
     </Box>
   );
 };
-
-export default ResponsiveDrawer;

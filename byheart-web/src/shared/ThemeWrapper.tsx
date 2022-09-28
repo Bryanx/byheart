@@ -8,7 +8,7 @@ interface ThemeWrapperProps {
   children?: JSX.Element;
 }
 
-const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
+export const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
   const mode = useAppSelector(selectColorMode);
 
   const theme = createTheme({
@@ -41,5 +41,3 @@ const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
-
-export default ThemeWrapper;

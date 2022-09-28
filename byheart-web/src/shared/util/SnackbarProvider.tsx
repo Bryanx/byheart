@@ -1,9 +1,14 @@
-import { Alert, Snackbar } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { selectSnackbar, setSnackbar } from "../uiSlice";
 
-const SnackbarProvider: React.FC = ({ children }) => {
+interface SnackbarProviderProps {
+  children?: JSX.Element;
+}
+
+export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const snackbar = useAppSelector(selectSnackbar);
   const dispatch = useAppDispatch();
@@ -31,4 +36,3 @@ const SnackbarProvider: React.FC = ({ children }) => {
     </div>
   );
 };
-export default SnackbarProvider;

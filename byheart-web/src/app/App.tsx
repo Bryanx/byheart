@@ -1,10 +1,10 @@
-import ThemeWrapper from "../shared/ThemeWrapper";
+import { ThemeWrapper } from "../shared/ThemeWrapper";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
-import SnackbarProvider from "../shared/util/SnackbarProvider";
-import AppRoutes from "../shared/AppRoutes";
+import { SnackbarProvider } from "../shared/util/SnackbarProvider";
+import { AppRoutes } from "../shared/AppRoutes";
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <ThemeWrapper>
       <SnackbarProvider>
@@ -15,5 +15,3 @@ const App: React.FC = () => {
     </ThemeWrapper>
   );
 };
-
-export default App;

@@ -1,12 +1,10 @@
 import React from "react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./app/App";
-import AppProviders from "./shared/AppProviders";
+import { App } from "./app/App";
+import { AppProviders } from "./shared/AppProviders";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AppProviders>
       <App />

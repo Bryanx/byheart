@@ -1,6 +1,7 @@
 import { ReactComponent as FlipIcon } from "../../shared/svgs/flip.svg";
 import { ReactComponent as RandomIcon } from "../../shared/svgs/random.svg";
-import { Box, Switch } from "@mui/material";
+import Box from "@mui/material/Box";
+import Switch from "@mui/material/Switch";
 import Replay from "@mui/icons-material/Replay";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 import React from "react";
@@ -10,10 +11,7 @@ interface RehearsalSetupBottomSheetProps {
   onDismiss: () => void;
 }
 
-const RehearsalSetupBottomSheet: React.FC<RehearsalSetupBottomSheetProps> = ({
-  open,
-  onDismiss,
-}) => (
+export const RehearsalSetupBottomSheet: React.FC<RehearsalSetupBottomSheetProps> = () => (
   <Box
     sx={{
       backgroundColor: "white",
@@ -55,5 +53,3 @@ const RehearsalSetupBottomSheet: React.FC<RehearsalSetupBottomSheetProps> = ({
     </Box>
   </Box>
 );
-
-export default RehearsalSetupBottomSheet;

@@ -7,13 +7,22 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
+  },
+  "settings": {
+    "import/ignore": "node_modules",
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
@@ -27,6 +36,7 @@
     "camelcase": "error",
     "spaced-comment": "error",
     "no-duplicate-imports": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "import/no-default-export": "error"
   }
 }

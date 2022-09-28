@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 import { setProfile } from "./profileSlice";
 import { Navigate } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import { fetchPiles } from "../piles/pileSlice";
 import { supabase } from "../shared/constants";
 
@@ -10,7 +11,7 @@ interface AuthGuardProps {
   element: JSX.Element;
 }
 
-const AuthGuard: React.FC<AuthGuardProps> = ({ element }) => {
+export const AuthGuard: React.FC<AuthGuardProps> = ({ element }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
@@ -43,5 +44,3 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ element }) => {
     }
   }
 };
-
-export default AuthGuard;

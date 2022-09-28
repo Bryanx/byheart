@@ -1,5 +1,5 @@
 import { Pile } from "../../piles/models/Pile";
-import CardListItem from "./CardListItem";
+import { CardListItem } from "./CardListItem";
 import { CardListItemPlaceholder } from "./CardListItemPlaceholder";
 import { range } from "lodash-es";
 import React from "react";
@@ -21,5 +21,3 @@ export const CardList: React.FC<CardListProps> = ({ pile, loading }) => {
     </div>
   );
 };
-
-export default CardList;

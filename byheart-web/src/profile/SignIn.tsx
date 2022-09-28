@@ -1,9 +1,9 @@
 import React from "react";
-import { Box } from "@mui/material";
-import GoogleButton from "./GoogleButton";
+import Box from "@mui/material/Box";
+import { GoogleButton } from "./GoogleButton";
 import { supabase } from "../shared/constants";
 
-const SignIn: React.FC = () => {
+export const SignIn: React.FC = () => {
   const signInWithGoogle = async () => {
     await supabase.auth.signInWithOAuth({ provider: "google" });
   };
@@ -14,5 +14,3 @@ const SignIn: React.FC = () => {
     </Box>
   );
 };
-
-export default SignIn;

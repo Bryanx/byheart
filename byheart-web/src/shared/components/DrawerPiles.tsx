@@ -2,13 +2,15 @@ import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import { useAppSelector } from "../../app/hooks";
 import { selectPileList } from "../../piles/pileSlice";
-import ColorUtil from "../util/ColorUtil";
+import { ColorUtil } from "../util/ColorUtil";
 import { Link } from "react-router-dom";
 
-const DrawerPiles: React.FC = () => {
+export const DrawerPiles: React.FC = () => {
   const piles = useAppSelector(selectPileList);
 
   return (
@@ -59,5 +61,3 @@ const DrawerPiles: React.FC = () => {
     </div>
   );
 };
-
-export default DrawerPiles;

@@ -1,10 +1,10 @@
 import NightsStay from "@mui/icons-material/NightsStay";
 import Settings from "@mui/icons-material/Settings";
 import React, { useEffect } from "react";
-import ProfileMenu from "../profile/ProfileMenu";
+import { ProfileMenu } from "../profile/ProfileMenu";
 import { useAppDispatch } from "../app/hooks";
 import { toggleColorMode } from "../shared/uiSlice";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
 interface HeaderProps {
@@ -12,7 +12,7 @@ interface HeaderProps {
   hasBackButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, hasBackButton }) => {
+export const Header: React.FC<HeaderProps> = ({ title, hasBackButton }) => {
   const dispatch = useAppDispatch();
 
   const toggleDarkMode = () => {
@@ -53,5 +53,3 @@ const Header: React.FC<HeaderProps> = ({ title, hasBackButton }) => {
     </header>
   );
 };
-
-export default Header;

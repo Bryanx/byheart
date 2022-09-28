@@ -5,13 +5,14 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import Person from "@mui/icons-material/Person";
-import { Box, IconButton } from "@mui/material";
 import { useAppSelector } from "../app/hooks";
 import { selectEmail } from "./profileSlice";
 import { useNavigate } from "react-router-dom";
 
-const ProfileMenu: React.FC = () => {
+export const ProfileMenu: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const email = useAppSelector(selectEmail);
@@ -66,4 +67,3 @@ const ProfileMenu: React.FC = () => {
     </React.Fragment>
   );
 };
-export default ProfileMenu;
