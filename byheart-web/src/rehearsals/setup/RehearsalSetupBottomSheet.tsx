@@ -24,30 +24,30 @@ const RehearsalSetupBottomSheet: React.FC<RehearsalSetupBottomSheetProps> = ({
       borderRadius: "15px 15px 0px 0px",
     }}
   >
-    <h2 className="text-center m-5">Start practicing</h2>
+    <h2>Start practicing</h2>
     <Box display="flex" justifyContent="space-between">
-      <div className="flex">
+      <div>
         <FlipIcon />
         <span>Reverse cards</span>
       </div>
       <Switch />
     </Box>
     <Box display="flex" justifyContent="space-between">
-      <div className="flex">
+      <div>
         <VolumeUp />
         <span>Pronounce cards</span>
       </div>
       <Switch />
     </Box>
     <Box display="flex" justifyContent="space-between">
-      <div className="flex">
+      <div>
         <RandomIcon />
         <span>Shuffle cards</span>
       </div>
       <Switch />
     </Box>
     <Box display="flex" justifyContent="space-between">
-      <div className="flex">
+      <div>
         <Replay />
         <span>Repeat wrong answers</span>
       </div>

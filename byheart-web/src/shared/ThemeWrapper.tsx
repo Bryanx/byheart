@@ -14,9 +14,28 @@ const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
   const theme = createTheme({
     palette: {
       mode,
+      primary: {
+        main: "#5C6BC0",
+      },
     },
     status: {
       danger: orange[500],
+    },
+    typography: {
+      body1: {
+        fontSize: 15,
+        fontWeight: "500",
+      },
+      body2: {
+        fontSize: 12,
+      },
+      subtitle1: {
+        fontSize: 12,
+        fontWeight: "700",
+      },
+      subtitle2: {
+        fontSize: 10,
+      },
     },
   });
 

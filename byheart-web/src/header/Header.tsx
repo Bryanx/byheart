@@ -1,5 +1,3 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NightsStay from "@mui/icons-material/NightsStay";
 import Settings from "@mui/icons-material/Settings";
 import React, { useEffect } from "react";
@@ -7,6 +5,7 @@ import ProfileMenu from "../profile/ProfileMenu";
 import { useAppDispatch } from "../app/hooks";
 import { toggleColorMode } from "../shared/uiSlice";
 import { IconButton } from "@mui/material";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 
 interface HeaderProps {
   title?: string;
@@ -35,24 +34,20 @@ const Header: React.FC<HeaderProps> = ({ title, hasBackButton }) => {
   useEffect(toggleDarkMode);
 
   return (
-    <header className="text-gray-500 dark:text-gray-200 font-medium flex justify-between align-center h-16 px-5">
+    <header>
       {hasBackButton && (
-        <IconButton
-          className="flex self-center"
-          sx={{ height: "40px", width: "40px" }}
-          onClick={() => window.history.back()}
-        >
-          <FontAwesomeIcon icon={faArrowLeft} size="xs" />
+        <IconButton sx={{ height: "40px", width: "40px" }} onClick={() => window.history.back()}>
+          <ArrowBack />
         </IconButton>
       )}
-      <div className="flex self-center">{title}</div>
-      <section className="right-menu flex align-center">
+      <div>{title}</div>
+      <section>
         <ProfileMenu />
-        <IconButton className="flex self-center mr-3" onClick={onClickDarkMode}>
-          <NightsStay className="text-gray-500 dark:text-gray-200" />
+        <IconButton onClick={onClickDarkMode}>
+          <NightsStay />
         </IconButton>
-        <IconButton className="flex self-center" onClick={() => console.log("click settings")}>
-          <Settings className="text-gray-500 dark:text-gray-200" />
+        <IconButton onClick={() => console.log("click settings")}>
+          <Settings />
         </IconButton>
       </section>
     </header>

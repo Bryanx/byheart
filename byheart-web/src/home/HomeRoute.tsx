@@ -1,13 +1,12 @@
 import Header from "../header/Header";
-import PileList from "../piles/list/PileList";
 import React from "react";
+import { Box } from "@mui/material";
 
 const HomeRoute: React.FC = () => {
   return (
-    <div className="h-screen flex flex-col">
+    <Box sx={{ ml: "239px" }}>
       <Header title="My card stacks" />
-      <PileList />
-    </div>
+    </Box>
   );
 };
 

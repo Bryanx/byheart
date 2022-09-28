@@ -24,31 +24,27 @@ const PileRoute: React.FC = () => {
   }, [dispatch, params]);
 
   return (
-    <Box sx={{ maxWidth: "1280px", display: "flex", flexDirection: "column", margin: "auto" }}>
+    <Box
+      sx={{
+        maxWidth: "1280px",
+        display: "flex",
+        flexDirection: "column",
+        margin: "auto",
+        ml: "239px",
+      }}
+    >
       <Header hasBackButton={true} />
-      {loading && (
-        <div className="bg-gray-400 dark:bg-gray-600 rounded-md h-7 w-40 mt-5 mb-9 mx-auto animate-pulse"></div>
-      )}
-      {!loading && (
-        <div className="text-gray-500 dark:text-white mx-auto text-3xl block mt-4 mb-8 h-9">
-          {pile?.name ?? "Unavailable"}
-        </div>
-      )}
-      <section className="flex gap-5 mx-auto">
+      {loading && <div></div>}
+      {!loading && <div>{pile?.name ?? "Unavailable"}</div>}
+      <section>
         <Fab onClick={() => setOpenSetup(true)}>
           <PlayArrow style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
         </Fab>
         <Fab>
-          <Add
-            className="text-gray-500 dark:text-gray-100"
-            style={{ color: ColorUtil.argbToRGB(pile?.color) }}
-          />
+          <Add style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
         </Fab>
         <Fab>
-          <Share
-            className="text-gray-500 dark:text-gray-100"
-            style={{ color: ColorUtil.argbToRGB(pile?.color) }}
-          />
+          <Share style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
         </Fab>
       </section>
       <CardList loading={loading} pile={pile} />

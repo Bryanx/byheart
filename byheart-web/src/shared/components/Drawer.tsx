@@ -9,36 +9,39 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import HomeRoute from "./home/HomeRoute";
-import { AccountCircle, Home, Search, Settings, Style } from "@mui/icons-material";
+import { ReactComponent as Logo } from "../svgs/logo.svg";
+import { selectEmail } from "../../profile/profileSlice";
+import { useAppSelector } from "../../app/hooks";
+import { Stack } from "@mui/material";
+import DrawerPiles from "./DrawerPiles";
+import Search from "@mui/icons-material/Search";
+import Settings from "@mui/icons-material/Settings";
 
 const drawerWidth = 240;
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
-export default function ResponsiveDrawer(props: Props) {
-  const { window } = props;
+const ResponsiveDrawer: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const email = useAppSelector(selectEmail);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <div>
-      <Toolbar />
+    <Box>
+      <Stack direction="row" sx={{ p: 2 }}>
+        <Box sx={{ width: 20, height: 20 }}>
+          <Logo />
+        </Box>
+        <Stack direction="column" sx={{ pl: 1, display: "flex", justifyContent: "center" }}>
+          <Typography variant="body1">{email}</Typography>
+        </Stack>
+      </Stack>
       <List>
-        {["Home", "Search", "Account", "Settings"].map((text, index) => (
+        {["Search", "Settings"].map((text, index) => (
           <ListItem key={text} disablePadding dense>
             <ListItemButton>
               <ListItemIcon
@@ -48,39 +51,25 @@ export default function ResponsiveDrawer(props: Props) {
                   justifyContent: "center",
                 }}
               >
-                {index === 0 && <Home fontSize="small" />}
-                {index === 1 && <Search fontSize="small" />}
-                {index === 2 && <AccountCircle fontSize="small" />}
-                {index === 3 && <Settings fontSize="small" />}
+                {index === 0 && <Search fontSize="small" />}
+                {index === 1 && <Settings fontSize="small" />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <Typography variant="body1">{text}</Typography>
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["French", "Geography", "Physics", "Math"].map((text) => (
-          <ListItem key={text} disablePadding dense>
-            <ListItemButton>
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: 1,
-                  justifyContent: "center",
-                }}
-              >
-                <Style fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <Box sx={{ py: 1, pl: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: "700" }}>
+            STACKS
+          </Typography>
+        </Box>
+        <DrawerPiles />
       </List>
-    </div>
+    </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -114,7 +103,6 @@ export default function ResponsiveDrawer(props: Props) {
       >
         <Drawer
           className="mobile-drawer"
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -144,8 +132,9 @@ export default function ResponsiveDrawer(props: Props) {
         sx={{ flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar sx={{ display: { sm: "none" } }} />
-        <HomeRoute />
       </Box>
     </Box>
   );
-}
+};
+
+export default ResponsiveDrawer;

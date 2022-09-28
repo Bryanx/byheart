@@ -3,7 +3,6 @@ import React from "react";
 // @ts-ignore
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "react-spring-bottom-sheet/dist/style.css";
 import App from "./app/App";
 import AppProviders from "./shared/AppProviders";
 

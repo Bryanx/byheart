@@ -25,3 +25,5 @@ yarn-error.log*
 
 .yarn
 *.pnp.*
+
+dist/

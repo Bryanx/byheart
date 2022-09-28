@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { Person } from "@mui/icons-material";
+import Person from "@mui/icons-material/Person";
 import { Box, IconButton } from "@mui/material";
 import { useAppSelector } from "../app/hooks";
 import { selectEmail } from "./profileSlice";
