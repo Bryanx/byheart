@@ -2,74 +2,21 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { ReactComponent as Logo } from "../svgs/logo.svg";
-import { selectEmail } from "../../profile/profileSlice";
-import { useAppSelector } from "../../app/hooks";
-import Stack from "@mui/material/Stack";
-import { DrawerPiles } from "./DrawerPiles";
-import Search from "@mui/icons-material/Search";
-import Settings from "@mui/icons-material/Settings";
+import { DrawerTopMenu } from "./DrawerTopMenu";
 
 const drawerWidth = 240;
 
 export const ResponsiveDrawer: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const email = useAppSelector(selectEmail);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const drawer = (
-    <Box>
-      <Stack direction="row" sx={{ p: 2 }}>
-        <Box sx={{ width: 20, height: 20 }}>
-          <Logo />
-        </Box>
-        <Stack direction="column" sx={{ pl: 1, display: "flex", justifyContent: "center" }}>
-          <Typography variant="body1">{email}</Typography>
-        </Stack>
-      </Stack>
-      <List>
-        {["Search", "Settings"].map((text, index) => (
-          <ListItem key={text} disablePadding dense>
-            <ListItemButton>
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: 1,
-                  justifyContent: "center",
-                }}
-              >
-                {index === 0 && <Search fontSize="small" />}
-                {index === 1 && <Settings fontSize="small" />}
-              </ListItemIcon>
-              <Typography variant="body1">{text}</Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        <Box sx={{ py: 1, pl: 2 }}>
-          <Typography variant="subtitle2" sx={{ fontWeight: "700" }}>
-            STACKS
-          </Typography>
-        </Box>
-        <DrawerPiles />
-      </List>
-    </Box>
-  );
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -92,7 +39,7 @@ export const ResponsiveDrawer: React.FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            Byheart
           </Typography>
         </Toolbar>
       </AppBar>
@@ -112,7 +59,7 @@ export const ResponsiveDrawer: React.FC = () => {
             "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
           }}
         >
-          {drawer}
+          <DrawerTopMenu />
         </Drawer>
         <Drawer
           className="desktop-drawer"
@@ -124,7 +71,7 @@ export const ResponsiveDrawer: React.FC = () => {
           }}
           open
         >
-          {drawer}
+          <DrawerTopMenu />
         </Drawer>
       </Box>
       <Box

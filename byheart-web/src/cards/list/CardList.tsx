@@ -5,6 +5,7 @@ import { range } from "lodash-es";
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
 import { selectCardList } from "../cardSlice";
+import Box from "@mui/material/Box";
 
 interface CardListProps {
   pile?: Pile;
@@ -14,10 +15,10 @@ interface CardListProps {
 export const CardList: React.FC<CardListProps> = ({ pile, loading }) => {
   const cards = useAppSelector(selectCardList);
   return (
-    <div className="mt-8 px-5">
+    <Box sx={{ mt: 3 }}>
       {loading
         ? range(0, 18).map((v, i) => <CardListItemPlaceholder key={i} />)
         : cards?.map((card) => <CardListItem key={card.id} card={card} color={pile?.color} />)}
-    </div>
+    </Box>
   );
 };

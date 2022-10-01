@@ -5,12 +5,11 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Person from "@mui/icons-material/Person";
 import { useAppSelector } from "../app/hooks";
 import { selectEmail } from "./profileSlice";
 import { useNavigate } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export const ProfileMenu: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -31,11 +30,14 @@ export const ProfileMenu: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Box ref={anchorRef} className="flex self-center">
-        <IconButton onClick={handleToggle}>
-          <Person className="text-gray-500 dark:text-gray-200" />
-        </IconButton>
-      </Box>
+      <Stack
+        ref={anchorRef}
+        direction="column"
+        sx={{ pl: 1, display: "flex", justifyContent: "center", cursor: "pointer" }}
+        onClick={handleToggle}
+      >
+        <Typography variant="body1">{email}</Typography>
+      </Stack>
       <Popper
         sx={{
           zIndex: 1,
