@@ -1,25 +1,23 @@
-import Add from "@mui/icons-material/Add";
 import PlayArrow from "@mui/icons-material/PlayArrow";
-import Share from "@mui/icons-material/Share";
+import Sort from "@mui/icons-material/Sort";
 import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { CardList } from "../cards/list/CardList";
 import { Header } from "../header/Header";
-import { RehearsalSetupBottomSheet } from "../rehearsals/setup/RehearsalSetupBottomSheet";
 import { ColorUtil } from "../shared/util/ColorUtil";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { selectByPileId } from "./pileSlice";
 import { fetchCardsByPileId } from "../cards/cardSlice";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export const PileRoute: React.FC = () => {
   const params = useParams();
   const pile = useAppSelector(selectByPileId(params.stackId));
   const dispatch = useAppDispatch();
-  const [openSetup, setOpenSetup] = useState(false);
   const loading = false;
+  const color = useMemo(() => ColorUtil.argbToRGB(pile?.color), [pile]);
 
   useEffect(() => {
     dispatch(fetchCardsByPileId(params.stackId || ""));
@@ -28,40 +26,47 @@ export const PileRoute: React.FC = () => {
   return (
     <Box
       sx={{
-        maxWidth: "1280px",
         display: "flex",
         flexDirection: "column",
-        margin: "auto",
+        ml: { sm: "240px" },
       }}
     >
+      <Header hasBackButton={true} title={pile?.name || "Unavailable"} />
       <Box
         sx={{
-          ml: { sm: "240px" },
           width: "100%",
+          margin: "auto",
           display: "flex",
+          maxWidth: "1280px",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Header hasBackButton={true} />
-        <Box sx={{ display: "flex", alignContent: "center", mt: 3 }}>
-          {loading && <div></div>}
-          {!loading && <Typography variant="h4">{pile?.name ?? "Unavailable"}</Typography>}
-        </Box>
-        <Box sx={{ mt: 3 }}>
-          <Fab onClick={() => setOpenSetup(true)}>
-            <PlayArrow style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
-          </Fab>
-          <Fab>
-            <Add style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
-          </Fab>
-          <Fab>
-            <Share style={{ color: ColorUtil.argbToRGB(pile?.color) }} />
-          </Fab>
+        <Box sx={{ display: "flex", width: "100%", mt: 20, justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            {loading && <div></div>}
+            {!loading && (
+              <Box sx={{ color: `${color}`, mb: 1 }}>
+                <Typography variant="h4">{pile?.name ?? "Unavailable"}</Typography>
+              </Box>
+            )}
+            <Typography color="txt">Type your description here...</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "end" }}>
+            <Button variant="contained" sx={{ mr: 2 }} color="card" startIcon={<Sort />}>
+              Sort cards
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: `${ColorUtil.argbToRGB(pile?.color)}` }}
+              startIcon={<PlayArrow />}
+            >
+              Start rehearsal
+            </Button>
+          </Box>
         </Box>
         <CardList loading={loading} pile={pile} />
       </Box>
-      <RehearsalSetupBottomSheet open={openSetup} onDismiss={() => setOpenSetup(false)} />
     </Box>
   );
 };

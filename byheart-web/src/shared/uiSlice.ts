@@ -1,8 +1,10 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
+type ColorMode = "light" | "dark";
+
 interface UiState {
-  colorMode: "light" | "dark";
+  colorMode: ColorMode;
   snackbar?: Snackbar;
 }
 
@@ -25,10 +27,13 @@ export const uiSlice = createSlice({
     toggleColorMode: (state) => {
       state.colorMode = state.colorMode === "light" ? "dark" : "light";
     },
+    setColorMode: (state, action: PayloadAction<ColorMode>) => {
+      state.colorMode = action.payload;
+    },
   },
 });
 
-export const { setSnackbar, toggleColorMode } = uiSlice.actions;
+export const { setSnackbar, toggleColorMode, setColorMode } = uiSlice.actions;
 
 const selectUi = (state: RootState) => state.ui;
 export const selectColorMode = createSelector(selectUi, (ui) => ui.colorMode);

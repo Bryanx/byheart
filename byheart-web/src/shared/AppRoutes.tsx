@@ -5,7 +5,7 @@ import React from "react";
 import { SignOut } from "../profile/SignOut";
 import { SignIn } from "../profile/SignIn";
 import { AuthGuard } from "../profile/AuthGuard";
-import { ResponsiveDrawer } from "./components/Drawer";
+import { LeftDrawer } from "./components/LeftDrawer";
 import { NewPileRoute } from "../piles/NewPileRoute";
 
 export const AppRoutes: React.FC = () => {
@@ -23,7 +23,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="stacks/new" element={<AuthGuard element={<NewPileRoute />} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      {isValidPathForDrawer && <ResponsiveDrawer />}
+      {isValidPathForDrawer && <LeftDrawer />}
     </>
   );
 };

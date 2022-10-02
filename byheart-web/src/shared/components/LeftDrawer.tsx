@@ -11,7 +11,7 @@ import { DrawerTopMenu } from "./DrawerTopMenu";
 
 const drawerWidth = 240;
 
-export const ResponsiveDrawer: React.FC = () => {
+export const LeftDrawer: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {

@@ -5,10 +5,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  background-color: theme("colors.bgcolor");
-}
-
 a:link {
   text-decoration: none;
   color: inherit;
