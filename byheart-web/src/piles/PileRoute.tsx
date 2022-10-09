@@ -7,7 +7,7 @@ import { CardList } from "../cards/list/CardList";
 import { Header } from "../header/Header";
 import { ColorUtil } from "../shared/util/ColorUtil";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectByPileId } from "./pileSlice";
+import { selectByPileId, setActivePile } from "./pileSlice";
 import { fetchCardsByPileId } from "../cards/cardSlice";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -22,6 +22,12 @@ export const PileRoute: React.FC = () => {
   useEffect(() => {
     dispatch(fetchCardsByPileId(params.stackId || ""));
   }, [dispatch, params]);
+
+  useEffect(() => {
+    if (pile) {
+      dispatch(setActivePile(pile));
+    }
+  }, [dispatch, pile]);
 
   return (
     <Box
@@ -56,16 +62,12 @@ export const PileRoute: React.FC = () => {
             <Button variant="contained" sx={{ mr: 2 }} color="card" startIcon={<Sort />}>
               Sort cards
             </Button>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: `${ColorUtil.argbToRGB(pile?.color)}` }}
-              startIcon={<PlayArrow />}
-            >
+            <Button variant="contained" sx={{ backgroundColor: color }} startIcon={<PlayArrow />}>
               Start rehearsal
             </Button>
           </Box>
         </Box>
-        <CardList loading={loading} pile={pile} />
+        <CardList loading={loading} />
       </Box>
     </Box>
   );

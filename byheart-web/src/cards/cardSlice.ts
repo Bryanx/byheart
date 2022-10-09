@@ -23,6 +23,17 @@ export const fetchCardsByPileId = createAsyncThunk<Card[], string, { rejectValue
   },
 );
 
+export const updateCard = createAsyncThunk<void, Card, { rejectValue: string }>(
+  "cards/updateCard",
+  async (card: Card, thunkApi) => {
+    const { data, error } = await supabase.from("cards").upsert(card);
+    console.log("data", data);
+    if (error?.message) {
+      thunkApi.dispatch(setSnackbar({ message: error.message, type: "error" }));
+    }
+  },
+);
+
 export const cardSlice = createSlice({
   name: "cards",
   initialState,

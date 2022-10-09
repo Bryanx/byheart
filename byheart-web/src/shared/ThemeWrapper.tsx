@@ -47,6 +47,9 @@ export const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
             textTransform: "none",
           },
         },
+        defaultProps: {
+          disableElevation: true,
+        },
       },
     },
     status: {

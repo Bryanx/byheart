@@ -24,12 +24,10 @@
       }
     }
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
@@ -37,7 +35,7 @@
     "camelcase": "error",
     "spaced-comment": "error",
     "no-duplicate-imports": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "import/no-default-export": "error"
   }
 }
